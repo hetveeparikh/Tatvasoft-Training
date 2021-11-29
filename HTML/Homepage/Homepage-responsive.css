@@ -1,0 +1,376 @@
+
+@media only screen and (max-width: 500px){
+    .Lorem-ipsum-text{
+      width: max-content;
+      margin-top: 120px;
+      font-size: 40px;
+      font-weight: 300;
+      text-align: center;
+    }
+    .Rounded-Rectangle-5-copy-4,.Rounded-Rectangle-5,.Rounded-Rectangle-5-copy{
+      margin-top:10px;
+    }
+    .Rounded-Rectangle-5-copy{
+      margin-left: 0px;
+    }
+    img.flag{
+      margin-top: 10px;
+      margin-left:5px;
+    }
+    img.keyboard-right-arrow-button{
+      position: relative;
+      left: 28px;
+      bottom: 15px;
+    }
+    .newlist ul{
+      padding-left: 0px;
+    }
+    .newlist ul li{
+      width: 300px;
+      height: 30px;
+      margin: 25px 119px 15px 33px;
+      line-height: 1.4;
+    }
+    .Rounded-Rectangle-6-copy-5{
+      margin: 40px 7px 157px 0;
+    }
+    .column{
+      flex: 50%;
+    }
+    .Enter-your-postcode{
+      position: relative;
+      right: 80px;
+    }
+    img.Forma-1-copy {
+      position: relative;
+      right: 85px;
+    }
+    img.step-arrow1{
+      margin-left: -150px;
+      display: none;
+    }
+    .Group-22{
+      margin-left: -250px;
+    }
+    .Select-your-plan{
+      margin-left: -250px;
+    }
+    img.step-arrow1-copy{
+      margin-left: -165px;
+      display: none;
+    }
+    .Pay-securely-online{
+    margin: 40px -10px 43px -280px;  
+    }
+    img.Forma-11{
+      margin: 0px 69px 0px -210px;
+    }
+    .step-arrow1-copy-2{
+    margin-left: -180px;
+    display: none;
+    }
+    img.Forma-2 , .Enjoy-amazing-service{
+      margin-left: -260px;
+    }
+    .Why-Helperland{
+      width: max-content;
+      margin: 50px 84px 84px 40px;
+    }
+    .section33{
+      width: 100%;
+      margin-top: 240px;
+    }
+    img.Group-21{
+      margin-left: -200px;
+    }
+    .dh{
+      margin-top: 0px;
+    }
+    .Experience-Vetted-Professionals, .dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext{
+      margin-left: -200px;
+    }
+    .Secure-Online-Payment, .Payment-is-processed-securely-online-Customers-pay-safely-onli{
+      margin-left: 30px;
+    }
+    
+    .Lorem-ipsum-dolor-sit-amet-consectetur{
+      position: relative;
+      right:380px;
+      top: 850px;
+      display: block;
+      width: 300px;
+      font-size: 20px;
+      margin-top:80px;
+      margin-left: 20px;
+    }
+     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec{
+      position: relative;
+      right:380px;
+      top: 800px;
+      display: block;
+      width:300px;   
+      margin-left:20px;   
+    } 
+    .col-lg-6{
+      flex: none;
+    }
+    img.Group-36 {
+      width: 250px;
+      height: 337px;
+      margin: 220px 54px 0px 0px;
+      object-fit: contain;
+      position: relative;
+      right: 370px;
+      top: 700px;
+    }
+    .Our-Blog{
+      margin-top: 700px;
+    }
+    .section331{
+      width: 100%;
+    }
+    .ob1,.ob2,.ob3{
+      margin-left: -65px;
+    }
+    .Lorem-ipsum-dolor-sit-amet{
+      font-weight: normal;
+      font-size: 18px;
+    }
+    img.Group-28,img.Group-29,img.Group-30{
+      width: 250px;
+    }
+    .What-Our-Customers-Say{
+      margin-left: -1200px;
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    .section3311{
+      width: 100%;
+      margin-bottom: 20px;
+      margin-top: 70px;
+      margin-left: 10px;
+    }
+    .GET-OUR-NEWSLETTER{
+      margin: 30px 0 0 -1190px;
+    }
+    .Rounded-Rectangle-649{
+      margin-left: -1550px;
+      position: relative;
+      top: 1530px;
+    }
+    .Rounded-Rectangle-649-copy{
+      position: relative;
+      top: 1530px;
+    }
+    .Ellipse-649{
+      opacity: 0%;
+    }
+    
+    .Rectangle-12-copy{
+      margin-bottom: -2000px;
+      height: 110px;
+    }
+    .customers{
+      height: 1780px;
+    }
+    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
+      width: 360px;
+      margin-left: -100px;
+      text-align: center;
+    }
+    .white_logo_transparent_background-copy-4{
+      position: relative;
+      left: 20px;
+      top: 10px;
+    }
+  
+  }
+  
+
+@media screen and (max-width: 900px) and (min-width: 550px) {
+    .Rounded-Rectangle-6-copy-5{
+      margin-top: 50px;
+    }
+    .Enter-your-postcode{
+      position: relative;
+      right: 80px;
+    }
+    img.Forma-1-copy {
+      position: relative;
+      right: 75px;
+    }
+    img.step-arrow1{
+      margin-left: -150px;
+    }
+    .Group-22{
+      margin-left: -200px;
+    }
+    .Select-your-plan{
+      margin-left: -200px;
+    }
+    img.step-arrow1-copy{
+      display: none;
+    }
+    .Pay-securely-online{
+    margin: 40px -10px 43px -350px;  
+    }
+    img.Forma-11{
+      margin: 0px 69px 0px -270px;
+    }
+    .step-arrow1-copy-2{
+    margin-left: -230px;
+    }
+    img.Forma-2 , .Enjoy-amazing-service{
+      margin-left: -230px;
+    }
+    .pc{
+      flex: 20%;
+    }
+    .section33{
+      display: flex;
+      width: 100%;
+    }
+    .dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext{
+      position: relative;
+      top: 130px;
+      right: 300px;
+    }
+    img.Group-23{
+      position: relative;
+      top: 60px;
+      left: 100px;
+    }
+    .Secure-Online-Payment{
+      position: relative;
+      top: 55px;
+      left: 100px;
+    }
+    .Payment-is-processed-securely-online-Customers-pay-safely-onli{
+      position: relative;
+      top: 130px;
+      right: 230px;
+    }
+    img.Group-24{
+      position: relative;
+      top: 120px;
+      left: 110px;
+    }
+    .Dedicated-Customer-Service{
+      position: relative;
+      top: 120px;
+      left: 110px;
+    }
+    .to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
+      position: relative;
+      top: 260px;
+      width: 310px;
+      right: 200px;
+    }
+    .Lorem-ipsum-dolor-sit-amet-consectetur{
+      position: relative;
+      right:680px;
+      top: 400px;
+      display: block;
+      width: 700px;
+      font-size: 20px;
+      
+    }
+     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec{
+      position: relative;
+      right:680px;
+      top: 350px;
+      display: inline-block;
+      width: 500px;
+    } 
+
+    img.Group-36 {
+      width: 500px;
+      height: 337px;
+      margin: 62px 54px 15px 71px;
+      object-fit: contain;
+      position: relative;
+      right: 750px;
+      top: 400px;
+    }
+    .Our-Blog{
+      margin-top:1000px;
+      display: block;
+      position: relative;
+      bottom: 600px;
+    }
+    .ob1,.ob2,.ob3{
+      position: relative;
+      top: 550px;
+    }
+    .section331{
+      width: 100%;
+    }
+    .ob1{
+      margin-top:-1100px;
+      margin-left: -70px;
+      text-align:center;
+    }
+    img.Group-28,img.Group-29,img.Group-30{
+      width: inherit;
+    }
+    .one,.two,.three{
+      text-align:left;
+      margin-left:200px;
+    }
+    .ob2,.ob3{
+      margin-left:-60px
+    }
+    .ob2{
+      margin-top: -600px;
+    }
+    .ob3{
+      margin-top: -100px;
+    }
+    .What-Our-Customers-Say{
+      margin-left: -700px;
+      margin-top: 500px;
+    }
+    .section3311{
+      float: none;
+    }
+    .Rounded-Rectangle-506-copy{
+      text-align:center;
+      margin-left: 240px;
+    }
+    .Ellipse-649,img.Layer-598{
+      display: none;
+    }
+    .GET-OUR-NEWSLETTER{
+      margin-top:40px;
+      margin-left: -580px;
+    }
+    .Rounded-Rectangle-649{
+      margin-left: 260px;
+    }
+    .customers{
+      height:1600px;
+      background-color: transparent;
+    }
+    .Rectangle-12{
+      margin-top: 550px;
+    }
+  
+    .Home-About-Testimonials-FAQs-In{
+      display: none;
+    }
+    .facebook{
+      margin-left: 100px;
+    }
+    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
+      width:500px;
+      margin-left:40px;
+      text-align: center;
+      position: relative;
+      bottom:12px;
+      font-size: 13px;
+    }
+    .Rounded-Rectangle-649-copy-ok{
+      display: none;
+    }
+    
+  }

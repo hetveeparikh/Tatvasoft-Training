@@ -1,0 +1,1054 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.first {
+  background-image: url("img/group-35.png");
+  background-color: white;
+  background-attachment: fixed;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.nav-link{
+  display: inline;
+}
+.front {
+  margin-top: 10px;
+}
+.see a {
+  text-align: center;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.icons a {
+  color: white;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+  border-color:transparent;
+}
+img.white_logo_transparent_background {
+  width: 175px;
+  height: 130px;
+  object-fit: contain;
+}
+.Rounded-Rectangle-5-copy-4 {
+  width: 161px;
+  height: 40px;
+  border-radius: 20px;
+  border: solid 1px white;
+  margin-top: -10px;
+  background-color: transparent;
+}
+.Rounded-Rectangle-5 {
+  width: 97px;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: -10px;
+  border: solid 1px white;
+  background-color: transparent;
+}
+.loginbtn{
+  display: inline-block;
+}
+.Rounded-Rectangle-5-copy {
+  width: 161px;
+  height: 40px;
+  border-radius: 20px;
+  margin-left: 11px;
+  margin-top: -10px;
+  border: solid 1px white;
+  background-color: transparent;
+}
+.helper{
+  display: inline-block;
+}
+.book{
+  margin-top:0px;
+  display: inline-block;
+}
+img.flag {
+  margin-left: 20px;
+  margin-top: -10px;
+  width: 25px;
+  height: 16px;
+  object-fit: contain;
+}
+img.keyboard-right-arrow-button {
+  margin-left: 10px;
+  width: 12px;
+  margin-top: -40px;
+  height: 7px;
+  object-fit: contain;
+  background-color: transparent;
+}
+.Lorem-ipsum-text {
+  width: 420px;
+  height: 46px;
+  display: block;
+  margin: 80px 120px 22px 30px;
+  font-family: "Roboto", sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+}
+
+.newlist ul {
+  list-style: none;
+}
+
+.newlist ul li:before {
+  content: "✓ ";
+}
+.newlist ul li {
+  width: 400px;
+  height: 15px;
+  margin: 12px 119px 12px 13px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
+.Lets-Book-a-Cleaner-copy {
+  width: 161px;
+  height: 14px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: right;
+  color: #fff;
+}
+.Rounded-Rectangle-6-copy-5 {
+  width: 250px;
+  height: 57px;
+  margin: 1px 7px 157px 0;
+  padding: 18px 33px 22px 31px;
+  border-radius: 27px;
+  border: solid 1px #fff;
+  background-color: rgb(0, 96, 114, 0.5);
+}
+
+.row {
+  display: flex;
+}
+.pc {
+  flex: 2%;
+  padding-bottom: 50px;
+}
+img.Forma-1-copy {
+  width: 52px;
+  height: 55px;
+  margin: 0px 79px 44px 120px;
+  object-fit: contain;
+  background-color: var(--white);
+}
+
+img.step-arrow1 {
+  width: 85px;
+  height: 23px;
+  margin-left: -180px;
+  margin-top: 10px;
+  align-items: flex-start;
+  object-fit: contain;
+  background-color: transparent;
+}
+.step-arrow1-copy-2{
+  margin-left: -300px;
+}
+.Group-22 {
+  width: 52px;
+  height: 55px;
+  margin: 0 22px 44px -240px;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+.Select-your-plan {
+  width: 170px;
+  height: 19px;
+  display: block;
+  margin: 0px 32px 43px -240px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+}
+
+img.step-arrow1-copy {
+  width: 85px;
+  height: 23px;
+  margin-left: -275px;
+  object-fit: contain;
+  background-color: transparent;
+}
+
+img.Forma-11 {
+  width: 54px;
+  height: 54px;
+  margin: 0px 69px 40px -250px;
+  object-fit: contain;
+  background-color: transparent;
+}
+.Pay-securely-online {
+  width: 175px;
+  height: 19px;
+  display: block;
+  margin: 0px 11px 43px -285px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+}
+
+img.Forma-2 {
+  width: 62px;
+  height: 63px;
+  margin-left: -380px;
+  margin-bottom: 30px;
+  object-fit: contain;
+  background-color: transparent;
+}
+.Enjoy-amazing-service {
+  width: 200px;
+  height: 19px;
+  margin-left: -350px;
+  display: block;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+}
+.Enter-your-postcode {
+  width: 200px;
+  height: 19px;
+  display: block;
+  margin: 0px 25px 43px 49px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #fff;
+}
+
+.why {
+  margin-bottom: 700px;
+}
+
+.Why-Helperland {
+  width: 400px;
+  height: 38px;
+  margin: 87px 84px 84px 170px;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+
+.dedicated-helper {
+  width: 319.5px;
+  height: 319.5px;
+  margin-left: 100px;
+  margin-right: -100px;
+}
+img.Group-21 {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+}
+.Experience-Vetted-Professionals {
+  margin-top: 39px;
+  width: 320px;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #565656;
+}
+.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext {
+  width: 320px;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: center;
+  color: #565656;
+}
+
+img.Group-23 {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+}
+img.Group-24 {
+  width: 320px;
+  height: 320px;
+
+  object-fit: contain;
+}
+
+.online-Payment {
+  width: 320px;
+  height: 320px;
+  margin-right: -120px;
+}
+
+.Secure-Online-Payment {
+  width: 350px;
+  margin-top: 50px;
+  display: block;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+.Payment-is-processed-securely-online-Customers-pay-safely-onli {
+  width: 320px;
+  margin-top: 44px;
+  margin-left: -20px;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: center;
+  color: #565656;
+}
+.customer-service {
+  width: 320px;
+  height: 319.5px;
+}
+
+.Dedicated-Customer-Service {
+  width: 320px;
+  margin-top: 39px;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #565656;
+}
+.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th {
+  width: 350px;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: center;
+  color: #565656;
+}
+.section33 {
+  float: left;
+  width: 33.33%;
+}
+
+.Lorem-ipsum-dolor-sit-amet-consectetur {
+  width: 400px;
+  display: block;
+  height: 59px;
+  margin: 0px 27px 18px 0px;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec {
+  width: 630px;
+  height: 186px;
+  margin: 18px 97px 0px 0px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+img.Group-36 {
+  width: 403px;
+  height: 337px;
+  margin: 0px 54px 15px 71px;
+  object-fit: contain;
+}
+
+.aboveblog {
+  margin-top: 850px;
+  margin-left: 200px;
+}
+.aboveblog .left {
+  width: 50%;
+}
+.aboveblog .right {
+  float: left;
+}
+
+.Our-Blog {
+  width: 180px;
+  height: 38px;
+  margin: 0px 71px 10px 0px;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+
+.Rounded-Rectangle-583 {
+  width: 350px;
+  height: 400px;
+  margin: 66px 30px 43px 100px;
+  padding: 0 0 31px;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 #e4ebf0;
+  background-color: #fff;
+}
+img.Group-28 {
+  width: 355px;
+  height: 164px;
+  margin: 0 0 20px;
+  object-fit: contain;
+}
+.Lorem-ipsum-dolor-sit-amet {
+  width: 300px;
+  height: 19px;
+  margin: 20px 91px 7px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3d4046;
+}
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe {
+  width: 300px;
+  height: 59px;
+  margin: 14px 49px 27px 0px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+
+.Shape-2 {
+  width: 100%;
+  height: 10px;
+  margin: 31px 187px 0 11px;
+  background-color: #4f4f4f;
+}
+
+.Rounded-Rectangle-583-copy {
+  width: 357px;
+  height: 400px;
+  margin: 66px 30px 43px 15px;
+  padding: 0 0 31px;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 #e4ebf0;
+  background-color: #fff;
+}
+img.Group-29 {
+  width: 357px;
+  height: 164px;
+  margin: 0 0 20px;
+  object-fit: contain;
+}
+.Lorem-ipsum-dolor-sit-amet {
+  width: 300px;
+  height: 19px;
+  margin: 20px 91px 7px 20px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3d4046;
+}
+
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe {
+  width: 300px;
+  height: 59px;
+  margin: 14px 49px 27px 21px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+.Read-the-Post {
+  width: 150px;
+  height: 14px;
+  margin: -100px 11px 0 20px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+img.Shape-2 {
+  width: 20px;
+  height: 10px;
+  margin: 0px 0px 0 11px;
+  object-fit: contain;
+  background-color: transparent;
+}
+.Rounded-Rectangle-583-copy-2 {
+  width: 357px;
+  height: 400px;
+  margin: 66px 30px 43px 15px;
+  padding: 0 0 31px;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 #e4ebf0;
+  background-color: #fff;
+}
+img.Group-30 {
+  width: 357px;
+  height: 164px;
+  margin: 0 0 20px;
+  object-fit: contain;
+}
+.January-28-2019 {
+  width: 130px;
+  height: 12px;
+  margin: 7px 23px 14px 19px;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #a3a3a3;
+}
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe {
+  width: 287px;
+  height: 59px;
+  margin: 14px 49px 27px 21px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+.section331 {
+  float: left;
+  width: 25%;
+  margin-bottom: 0px;
+}
+/*customers*/
+
+.What-Our-Customers-Say {
+  width: 600px;
+  height: 38px;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+
+.Rounded-Rectangle-506-copy {
+  width: 357px;
+  height: 420px;
+  margin: 59px -100px 42px 200px;
+  padding: 0 19px 0 0;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 #e4ebf0;
+  background-color: var(--white);
+}
+.home_lawyer2_ourteam_2 {
+  width: 70px;
+  height: 66px;
+}
+img.Group-31 {
+  width: 70px;
+  height: 70px;
+  margin: 43px 18px 27px 35px;
+  padding: 4px 0 0;
+  object-fit: contain;
+}
+.Lary-Watson {
+  width: 150px;
+  height: 18px;
+  margin: -10px 67px 8px 80px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: right;
+  color: #4f4f4f;
+}
+.Manchester {
+  width: 74px;
+  height: 11px;
+  margin: 8px 103px 43px 115px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  text-align: right;
+  color: #8e8e8e;
+}
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe {
+  width: 240px;
+  height: 146px;
+  margin: 27px 11px 30px 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+.Shape-2 {
+  width: 29px;
+  height: 9px;
+  margin: 35px 138px 40px 11px;
+  background-color: transparent;
+}
+.section3311 {
+  float: left;
+  width: 20%;
+}
+.message {
+  width: 35px;
+  height: 36px;
+  margin: 20px 0 4px 20px;
+  background-color: transparent;
+}
+img.message {
+  width: 35px;
+  height: 36px;
+  margin: 10px 0 0px 245px;
+  object-fit: contain;
+  background-color: transparent;
+}
+.Rounded-Rectangle-506-copy-2 {
+  width: 3px;
+  height: 420px;
+  margin: -20px 35px 0 0;
+  border-radius: 1px;
+  background-color: #1d7a8c;
+}
+.Read-More {
+  width: 115px;
+  height: 14px;
+  margin: 30px 1px 40px 20px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.11;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+.home_lawyer2_ourteam_3 {
+  width: 70px;
+  height: 69px;
+}
+.John-Smith {
+  width: 230px;
+  height: 15px;
+  margin: -15px 74px 12px 2px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: right;
+  color: #4f4f4f;
+}
+.home_betheme_ourteam_2-85x85 {
+  width: 70px;
+  height: 69px;
+}
+img.Group-32 {
+  width: 70px;
+  height: 70px;
+  margin: 37px 18px 27px 35px;
+  padding: 1px 0 0;
+  object-fit: contain;
+}
+img.Group-33 {
+  width: 70px;
+  height: 70px;
+  margin: 43px 18px 27px 35px;
+  padding: 1px 0 0;
+  object-fit: contain;
+}
+.Lars-Johnson {
+  width: 230px;
+  height: 15px;
+  margin: -20px 55px 12px 25px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: right;
+  color: #4f4f4f;
+}
+.man{
+  margin-left: 128px;
+}
+.customers {
+  width: 1560px;
+  height: 908px;
+  margin: 1150px 0 0;
+  padding: 65px 0 0;
+  background-color: #f4f5f8;
+}
+.GET-OUR-NEWSLETTER {
+  width: 300px;
+  height: 13px;
+  margin: 600px 126px 20px 128px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: center;
+  color: #353548;
+}
+
+.Rounded-Rectangle-649 {
+  width: 233px;
+  height: 40px;
+  margin: 20px 11px 53px 490px;
+  padding: 14px 131px 16px 22px;
+  border-radius: 20px;
+  border: solid 1px #565656;
+  background-color: #f4f5f8;
+}
+.Your-Email {
+  width: 100px;
+  height: 10px;
+  display: block;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #565656;
+}
+.Rounded-Rectangle-649-copy {
+  width: 88px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 20px 0 0 6px;
+  padding: 5px 60px 20px 25px;
+  background-color: salmon;
+}
+.Submit {
+  width: 44px;
+  height: 11px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.29;
+  letter-spacing: normal;
+  text-align: left;
+  color: white;
+}
+.Ellipse-649 {
+  width: 48px;
+  height: 48px;
+  margin-left: 90px;
+  padding: 18px 14px 20px;
+  border-radius: 50%;
+  background-color: #525252;
+}
+img.Forma-1 {
+  width: 20px;
+  height: 10px;
+  margin-left: 0px;
+  margin-top: -20px;
+  object-fit: contain;
+  background-color: transparent;
+  position: relative;
+}
+img.Layer-598 {
+  width: 63px;
+  height: 63px;
+  margin: 0px 70px 76px 450px;
+  object-fit: contain;
+}
+.Rectangle-12 {
+  width: 1560px;
+  height: 150px;
+  margin: 0px 0 0;
+  padding: 27px 0 0;
+  background-color: #111;
+}
+img.white_logo_transparent_background-copy-4 {
+  width: 106px;
+  height: 78px;
+  margin: 0 262px 26px 122px;
+  object-fit: contain;
+}
+.Home-About-Testimonials-FAQs-In {
+  width: 575px;
+  height: 12px;
+  margin: 38px 323px 54px 50px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 2.14;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f1f1f1;
+}
+.Rectangle-12-copy {
+  width: 1560px;
+  height: 64px;
+  margin: 0px 0 0;
+  padding: 0 15px 12px 120px;
+  opacity: 0.8;
+  background-color: #292929;
+}
+
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu {
+  width: 800px;
+  height: 14px;
+  display: block;
+  margin: 25px 200px 12px 271px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f1f1f1;
+}
+
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu .text-style-1 {
+  color: #6eabef;
+}
+.Rounded-Rectangle-649-copy-ok {
+  width: 99px;
+  height: 40px;
+  margin: 12px 0 0 6px;
+  padding: 10px 37px 15px;
+  border-radius: 40px;
+  background-color: #eed507;
+}
+.OK {
+  width: 25px;
+  height: 12px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  padding-bottom: 0px;
+  line-height: 0;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--greyish-brown);
+}
+
+
+.facebook{
+  margin-right: 20px;
+}
+
+img.Ellipse-525 {
+  width: 60px;
+  height: 60px;
+  margin: 43px 34px 0 63px;
+  padding: 10px 12px;
+  object-fit: contain;
+  border: solid 1px var(--white);
+  background-color: var(--white);
+}
+img.Shape-1 {
+  position: relative;
+  left: 15px;
+  bottom: 43px;
+  width: 16px;
+  height: 20px;
+  object-fit: contain;
+  background-color: var(--white);
+}
+.row.our-blog{
+  margin-top:87px; 
+  margin-left: 110px;
+}
+
+
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: transparent;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: sticky;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
