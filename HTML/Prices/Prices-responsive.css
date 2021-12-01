@@ -1,0 +1,131 @@
+
+  @media screen and (max-width: 1400px) and (min-width: 781px) {
+    .card-deck{
+     flex-direction: column !important;
+     align-items: center !important;
+     justify-content: center !important;
+    }
+    .Experienced-and-vetted-professionals,.Dedicated-customer-service,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
+      height:100% !important;
+      width:100% !important;
+    }
+    .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
+      text-align: center !important;
+      width:100%;
+    }
+    .col2{
+      margin-left: 50px !important;
+    }
+    .Every-cleaning-is-insured,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Secure-online-payment,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
+      text-align: center !important;
+      width: 100%;
+      height: auto;
+    }
+    .col2{
+      margin-left:0px !important;
+    }
+    .links{
+      display: flex !important;
+      width:auto !important;
+      justify-content: space-between;
+            
+    }
+    .logo{
+      padding-left: 0px !important;
+      position: relative;
+      left: -100px;
+    }
+    .links a{
+      margin-left: 20px;
+
+    }
+    .Rounded-Rectangle-5{
+      margin-left: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+      margin-left: 10px;
+    }
+  }
+@media screen and (max-width:780px) and (min-width:300px){
+  .Rectangle-20 {
+    width: inherit !important;
+    height: inherit;
+    margin: 0px 40x 0px 40px;
+  }
+
+.Rectangle-20-copy {
+    width: inherit;
+    height: 59px;
+  }
+  /* .rate{
+    text-align: center !important;
+    justify-content:left !important;
+  }   */
+  .euro{
+    margin-left:150px !important;
+  }
+  .hr{
+    margin-right: 0px !important;
+  }
+  .What-we-include-in-cleaning{
+    height:auto ;
+    line-height:1;
+  }
+  .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
+    text-align: center !important;
+    width:100%;
+    height:100% !important;
+    margin-left: 40px !important;
+  }
+  /* .col2{
+    margin-left: 50px !important;
+  } */
+  .Every-cleaning-is-insured,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Secure-online-payment,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
+    text-align: center !important;
+    width: 100%;
+    height: auto !important;
+  }
+  .Every-cleaning-is-insured{
+    margin-bottom: 10px;
+  }
+  .Ellipse-649{
+    margin-left: 10px;
+  }
+  img.Layer-598{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+  
+  img.white-logo{
+
+    padding-left: 40% !important;
+  }
+  .footer .d-flex{
+    flex-direction: column;
+  }
+  .links{
+    padding-top: 0px;
+    text-align:center;
+  }
+  .icons{
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 0px;
+  }
+  .links li{
+    margin-bottom:10px;
+  }
+  .-Helperland-All-rights-reserved-Terms-and-Conditions{
+    width:auto
+  }
+  .Rounded-Rectangle-5{
+    margin-left: 0px;
+  }
+  .Warranty,.Blog,.Contact{
+    margin-left: 10px;
+  }
+  .links ul{
+    padding-left: 0px;
+  }
+}

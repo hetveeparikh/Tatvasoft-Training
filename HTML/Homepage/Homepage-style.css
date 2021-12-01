@@ -4,7 +4,6 @@
 html,
 body {
   max-width: 100%;
-  overflow-x: hidden;
 }
 .first {
   background-image: url("img/group-35.png");
@@ -416,7 +415,7 @@ img.Group-24 {
   width: 400px;
   display: block;
   height: 59px;
-  margin: 0px 27px 18px 0px;
+  margin: 0px 27px 18px 200px;
   font-family: Roboto;
   font-size: 30px;
   font-weight: bold;
@@ -430,7 +429,7 @@ img.Group-24 {
 .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec {
   width: 630px;
   height: 186px;
-  margin: 18px 97px 0px 0px;
+  margin: 18px 97px 0px 200px;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: normal;
@@ -442,22 +441,27 @@ img.Group-24 {
   color: #4f4f4f;
 }
 img.Group-36 {
-  width: 403px;
+  width: auto;
   height: 337px;
   margin: 0px 54px 15px 71px;
   object-fit: contain;
+ 
+}
+
+.rowblog{
+  display: flex;
+  width: max-content;
 }
 
 .aboveblog {
-  margin-top: 850px;
-  margin-left: 200px;
+ width: auto;
 }
-.aboveblog .left {
+/* .aboveblog .left {
   width: 50%;
 }
 .aboveblog .right {
   float: left;
-}
+} */
 
 .Our-Blog {
   width: 180px;
@@ -475,8 +479,8 @@ img.Group-36 {
 }
 
 .Rounded-Rectangle-583 {
-  width: 350px;
-  height: 400px;
+  width: 357px;
+  height: 367px;
   margin: 66px 30px 43px 100px;
   padding: 0 0 31px;
   border-radius: 4px;
@@ -484,7 +488,7 @@ img.Group-36 {
   background-color: #fff;
 }
 img.Group-28 {
-  width: 355px;
+  width: 357px;
   height: 164px;
   margin: 0 0 20px;
   object-fit: contain;
@@ -527,7 +531,7 @@ img.Group-28 {
 
 .Rounded-Rectangle-583-copy {
   width: 357px;
-  height: 400px;
+  height: 367px;
   margin: 66px 30px 43px 15px;
   padding: 0 0 31px;
   border-radius: 4px;
@@ -543,7 +547,7 @@ img.Group-29 {
 .Lorem-ipsum-dolor-sit-amet {
   width: 300px;
   height: 19px;
-  margin: 20px 91px 7px 20px;
+  margin: 0px 91px 7px 20px;
   font-family: Roboto;
   font-size: 20px;
   font-weight: bold;
@@ -572,7 +576,7 @@ img.Group-29 {
 .Read-the-Post {
   width: 150px;
   height: 14px;
-  margin: -100px 11px 0 20px;
+  margin: 0px 11px 0 20px;
   font-family: Roboto;
   font-size: 18px;
   font-weight: normal;
@@ -592,7 +596,7 @@ img.Shape-2 {
 }
 .Rounded-Rectangle-583-copy-2 {
   width: 357px;
-  height: 400px;
+  height: 367px;
   margin: 66px 30px 43px 15px;
   padding: 0 0 31px;
   border-radius: 4px;
@@ -608,7 +612,7 @@ img.Group-30 {
 .January-28-2019 {
   width: 130px;
   height: 12px;
-  margin: 7px 23px 14px 19px;
+  margin: 7px 23px 0px 21px;
   font-family: Roboto;
   font-size: 13px;
   font-weight: normal;
@@ -619,7 +623,7 @@ img.Group-30 {
   text-align: left;
   color: #a3a3a3;
 }
-.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe {
+.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe1 {
   width: 287px;
   height: 59px;
   margin: 14px 49px 27px 21px;
@@ -634,6 +638,7 @@ img.Group-30 {
   color: #565656;
 }
 .section331 {
+  
   float: left;
   width: 25%;
   margin-bottom: 0px;
@@ -654,14 +659,32 @@ img.Group-30 {
   color: #4f4f4f;
 }
 
-.Rounded-Rectangle-506-copy {
+.Rounded-Rectangle-506-copy1 {
   width: 357px;
-  height: 420px;
-  margin: 59px -100px 42px 200px;
+  height: 370px;
+  margin: 59px 3% 42px 12%;
   padding: 0 19px 0 0;
   border-radius: 4px;
   box-shadow: 0 0 30px 0 #e4ebf0;
-  background-color: var(--white);
+  background-color:white;
+}
+.Rounded-Rectangle-506-copy2 {
+  width: 357px;
+  height: 370px;
+  margin: 59px 3% 42px 3%;
+  padding: 0 19px 0 0;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 #e4ebf0;
+  background-color:white;
+}
+.Rounded-Rectangle-506-copy3 {
+  width: 357px;
+  height: 370px;
+  margin: 59px 3% 42px 3%;
+  padding: 0 19px 0 0;
+  border-radius: 4px;
+  box-shadow: 0 0 30px 0 #e4ebf0;
+  background-color:white;
 }
 .home_lawyer2_ourteam_2 {
   width: 70px;
@@ -691,7 +714,7 @@ img.Group-31 {
 .Manchester {
   width: 74px;
   height: 11px;
-  margin: 8px 103px 43px 115px;
+  margin: 0px 103px 43px 115px;
   font-family: Roboto;
   font-size: 14px;
   font-weight: normal;
@@ -705,7 +728,7 @@ img.Group-31 {
 .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe {
   width: 240px;
   height: 146px;
-  margin: 27px 11px 30px 20px;
+  margin: 27px 11px 30px 39px;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: normal;
@@ -724,24 +747,17 @@ img.Group-31 {
 }
 .section3311 {
   float: left;
-  width: 20%;
 }
 .message {
   width: 35px;
   height: 36px;
-  margin: 20px 0 4px 20px;
+  margin: 20px 0 -20px 150px;
   background-color: transparent;
 }
-img.message {
-  width: 35px;
-  height: 36px;
-  margin: 10px 0 0px 245px;
-  object-fit: contain;
-  background-color: transparent;
-}
+
 .Rounded-Rectangle-506-copy-2 {
   width: 3px;
-  height: 420px;
+  height: 370px;
   margin: -20px 35px 0 0;
   border-radius: 1px;
   background-color: #1d7a8c;
@@ -749,8 +765,9 @@ img.message {
 .Read-More {
   width: 115px;
   height: 14px;
-  margin: 30px 1px 40px 20px;
+  margin: 0px 1px 40px 39px;
   font-family: Roboto;
+  display: block;
   font-size: 14px;
   font-weight: normal;
   font-stretch: normal;
@@ -814,8 +831,8 @@ img.Group-33 {
   margin-left: 128px;
 }
 .customers {
-  width: 1560px;
-  height: 908px;
+  width: 100%;
+  height: auto;
   margin: 1150px 0 0;
   padding: 65px 0 0;
   background-color: #f4f5f8;
@@ -838,7 +855,7 @@ img.Group-33 {
 .Rounded-Rectangle-649 {
   width: 233px;
   height: 40px;
-  margin: 20px 11px 53px 490px;
+  margin: 20px 11px 0px 465px;
   padding: 14px 131px 16px 22px;
   border-radius: 20px;
   border: solid 1px #565656;
@@ -903,7 +920,7 @@ img.Layer-598 {
   object-fit: contain;
 }
 .Rectangle-12 {
-  width: 1560px;
+  width: inherit;
   height: 150px;
   margin: 0px 0 0;
   padding: 27px 0 0;
@@ -915,10 +932,17 @@ img.white_logo_transparent_background-copy-4 {
   margin: 0 262px 26px 122px;
   object-fit: contain;
 }
+.facebook,.instagram{
+  margin-top: -130px;
+}
+.facebook{
+  margin-left: 1350px;
+  margin-right:20px;
+}
 .Home-About-Testimonials-FAQs-In {
   width: 575px;
   height: 12px;
-  margin: 38px 323px 54px 50px;
+  margin: -70px 0px 54px 520px;
   font-family: Roboto;
   font-size: 14px;
   font-weight: normal;
@@ -930,7 +954,7 @@ img.white_logo_transparent_background-copy-4 {
   color: #f1f1f1;
 }
 .Rectangle-12-copy {
-  width: 1560px;
+  width: inherit;
   height: 64px;
   margin: 0px 0 0;
   padding: 0 15px 12px 120px;
@@ -980,10 +1004,6 @@ img.white_logo_transparent_background-copy-4 {
   color: var(--greyish-brown);
 }
 
-
-.facebook{
-  margin-right: 20px;
-}
 
 img.Ellipse-525 {
   width: 60px;
