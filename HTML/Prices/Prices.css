@@ -719,6 +719,7 @@ body{
     margin: 13px 0px 0px 0px;
     font-family: Roboto;
     font-size: 14px;
+    justify-content:right;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;

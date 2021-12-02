@@ -1,5 +1,5 @@
 
-  @media screen and (max-width: 1400px) and (min-width: 781px) {
+  @media screen and (max-width: 1400px) and (min-width: 771px) {
     .card-deck{
      flex-direction: column !important;
      align-items: center !important;
@@ -24,43 +24,53 @@
     .col2{
       margin-left:0px !important;
     }
-    .links{
+    .logo{
+      text-align: center;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+  }
+  .links{
       display: flex !important;
       width:auto !important;
       justify-content: space-between;
-            
-    }
-    .logo{
-      padding-left: 0px !important;
-      position: relative;
-      left: -100px;
-    }
-    .links a{
+      margin-top: 20px;      
+  }
+  .links a{
+      margin-top: 10px;
       margin-left: 20px;
-
-    }
-    .Rounded-Rectangle-5{
+      justify-content: center;
+  }
+  .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
+      padding-right: 30px;
+      margin-left: 20px;
+  }
+  .icons{
+      padding-bottom: 20px;
+      text-align: center;
+      display: flex;
+      margin: 0px;
+  }
+  .Rectangle-12 .row{
+      flex-direction: column;
+  }
+  .Rounded-Rectangle-5{
       margin-left: 0px;
-    }
+  }
     .Warranty,.Blog,.Contact{
       margin-left: 10px;
-    }
   }
-@media screen and (max-width:780px) and (min-width:300px){
+}
+@media screen and (max-width:770px) and (min-width:300px){
   .Rectangle-20 {
-    width: inherit !important;
+    width: 500px !important;
     height: inherit;
     margin: 0px 40x 0px 40px;
   }
-
-.Rectangle-20-copy {
-    width: inherit;
+  .Rectangle-20-copy {
+    width: 500px;
     height: 59px;
   }
-  /* .rate{
-    text-align: center !important;
-    justify-content:left !important;
-  }   */
   .euro{
     margin-left:150px !important;
   }
@@ -73,16 +83,16 @@
   }
   .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
     text-align: center !important;
-    width:100%;
+    width:100% !important;
     height:100% !important;
     margin-left: 40px !important;
+    display: block;
   }
-  /* .col2{
-    margin-left: 50px !important;
-  } */
+ 
   .Every-cleaning-is-insured,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Secure-online-payment,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
     text-align: center !important;
     width: 100%;
+    margin-left: 40px;
     height: auto !important;
   }
   .Every-cleaning-is-insured{
@@ -97,27 +107,26 @@
     margin-right: 10px;
   }
   
-  img.white-logo{
-
-    padding-left: 40% !important;
-  }
-  .footer .d-flex{
-    flex-direction: column;
-  }
-  .links{
-    padding-top: 0px;
-    text-align:center;
-  }
-  .icons{
+  .logo{
     text-align: center;
-    padding-bottom: 20px;
-    padding-top: 0px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+  .links ul{
+      flex-direction: column;
+      padding-left: 0px;
   }
   .links li{
-    margin-bottom:10px;
+      margin-top: 20px;
   }
-  .-Helperland-All-rights-reserved-Terms-and-Conditions{
-    width:auto
+  .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
+      padding-right: 30px;
+  }
+
+  .icons{
+      padding-bottom: 20px;
+      text-align: center;
   }
   .Rounded-Rectangle-5{
     margin-left: 0px;
