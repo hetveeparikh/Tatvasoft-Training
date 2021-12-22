@@ -1,0 +1,96 @@
+@media only screen and (max-width:760px) {
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links ul{
+        flex-direction: column;
+        padding-left: 0px;
+    }
+    .links li{
+        margin-top: 20px;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    .Rounded-Rectangle-5{
+        margin-left: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+        margin-left: 10px;
+    }
+    .Rounded-Rectangle-2-copy-2{
+        margin-top: 0px;
+        width: 295px;
+    }
+    .Rounded-Rectangle-2-copy-7{
+        width: 299px;
+    }
+    .Rounded-Rectangle-2-copy-10{
+        width: 242px;
+    }
+    .Rounded-Rectangle-2-copy-12 {
+        width: 299px;
+        margin: 0px 11px 14px 14px;
+    }
+    .Rounded-Rectangle-2-copy-11{
+        width: 299px;
+        margin: 0px 11px 14px 14px;
+        padding: 10px 0px 115px 16px;
+    }
+    .r12{
+        display: block;
+    }
+    .img1,.img3{
+        margin-left:0px;
+        margin-right: 0px;
+    }
+    .-Lorem-ipsum-text-100-Lorem-ipsum-AB,.num2, .infohelperlandcom{
+        width: inherit;
+        margin-bottom: 0px;
+    }
+    .Rectangle-21{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 761px) {
+    .Rounded-Rectangle-5{
+        margin-left: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+        margin-left: 10px;
+    }
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links{
+        display: flex !important;
+        width:auto !important;
+        justify-content: space-between;
+        margin-top: 20px;      
+    }
+    .links a{
+        margin-top: 10px;
+        margin-left: 20px;
+        justify-content: center;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+        display: flex;
+        margin: 0px;
+    }
+    .Rectangle-12 .row{
+        flex-direction: column;
+    }
+    .Rectangle-12-copy-2 {
+        margin-left:0px;
+    }
+}

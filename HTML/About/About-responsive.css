@@ -1,0 +1,68 @@
+@media only screen and (max-width:760px) {
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links ul{
+        flex-direction: column;
+        padding-left: 0px;
+    }
+    .links li{
+        margin-top: 20px;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    .Rounded-Rectangle-5{
+        margin-left: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+        margin-left: 10px;
+    }
+    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Aenea{
+        width:80%;
+    }
+}
+@media screen and (max-width: 1300px) and (min-width: 761px) {
+    .Rounded-Rectangle-5{
+        margin-left: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+        margin-left: 10px;
+    }
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links{
+        display: flex !important;
+        width:auto !important;
+        justify-content: space-between;
+        margin-top: 20px;      
+    }
+    .links a{
+        margin-top: 10px;
+        margin-left: 20px;
+        justify-content: center;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+        display: flex;
+        margin: 0px;
+    }
+    .Rectangle-12 .row{
+        flex-direction: column;
+    }
+    .Rectangle-12-copy-2 {
+        margin-left:0px;
+    }
+    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Aenea{
+        width:80%;
+    }
+}

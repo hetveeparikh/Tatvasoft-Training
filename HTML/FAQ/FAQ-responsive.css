@@ -105,7 +105,7 @@
         text-align: center;
     }
 
-    img.Vector-Smart-Object, img.Vector-Smart-Object1,.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
+    img.Vector-Smart-Object, img.Vector-Smart-Object1{
         width: auto;
         height: auto;
         padding-left: 30px;
@@ -128,7 +128,8 @@
         justify-content: center;
     }
     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
-        padding-right: 30px;
+        padding-right: 50px;
+        padding-left: 70px;
         margin-left: 20px;
     }
     .icons{
@@ -139,5 +140,8 @@
     }
     .Rectangle-12 .row{
         flex-direction: column;
+    }
+    .Rectangle-12-copy-2 {
+        margin-left:0px;
     }
 }
