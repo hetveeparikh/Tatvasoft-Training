@@ -336,16 +336,14 @@ body{
   .first-667 {
     width: 108px;
     height: 108px;
-    margin: 39px 0px 17px 0px;
-    padding: 30px 35px 30px 36px;
+    margin: 39px 0px 17px 50px;
+    padding: 30px 36px 30px 36px;
     border: solid 1px #b0c9ce;
     background: transparent;
     border-radius:50%;
+    text-align: center;
     gap: 1rem;
   }
-  /* .first,.second,.third,.fourth{
-   margin-right: 109px; 
-  } */
   .second-667 {
     width: 108px;
     height: 108px;
@@ -383,10 +381,21 @@ body{
     border-radius:50%;
   }
 
+  .first{
+    margin-left: 10%;
+  }
+  .second{
+    margin-left:-60px;
+  }
+  .fifth{
+    margin-right: 10%;
+  }
+
 
   img.firstimg {
     width: 37px;
     height: 48px;
+    text-align:center;
     object-fit: contain;
     background-color:transparent;
   }
@@ -416,7 +425,7 @@ body{
   }
 
   .Inside-cabinets {
-    width: 108px;
+    width: 100%;
     height: 12px;
     margin: 0px 0px 12px 0px;
     font-family: Roboto;
@@ -488,7 +497,7 @@ body{
 
 
   .first30 {
-    width: 95px;
+    width: 100%;
     height: 14px;
     margin: 0px 117px 61px 0px;
     font-family: Roboto;

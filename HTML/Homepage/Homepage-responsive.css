@@ -52,18 +52,21 @@
       margin-left: -150px;
       display: none;
     }
+    .pc{
+      padding-bottom: 0px;
+    }
     .Group-22{
       margin-left: -250px;
     }
     .Select-your-plan{
-      margin-left: -250px;
+      margin-left: -160px;
     }
     img.step-arrow1-copy{
       margin-left: -165px;
       display: none;
     }
     .Pay-securely-online{
-    margin: 40px -10px 43px -280px;  
+    margin: 40px -10px 43px -160px;  
     }
     img.Forma-11{
       margin: 0px 69px 0px -210px;
@@ -72,8 +75,11 @@
     margin-left: -180px;
     display: none;
     }
-    img.Forma-2 , .Enjoy-amazing-service{
-      margin-left: -260px;
+    img.Forma-2  {
+      margin-left: -130px;
+    }
+    .Enjoy-amazing-service{
+      margin-left: -30px;
     }
     .Why-Helperland{
       width: max-content;
@@ -140,7 +146,8 @@
       width: 250px;
     }
     .What-Our-Customers-Say{
-      width: 300px;
+      width: 100%;
+      text-align: center;
       margin-bottom: 20px;
     }
     .section3311{
@@ -156,7 +163,7 @@
       margin-bottom: 60px;
     }
     .Rounded-Rectangle-649{
-      margin-left: -480px;
+      margin-left: -710px;
       margin-top: 1450px;
     }
     .Rounded-Rectangle-649-copy{
@@ -167,7 +174,7 @@
     }
     .Rectangle-12{
       height:auto;
-      margin-top:-50px;
+      margin-top:0px;
       padding-bottom: 20px;
     }
     
@@ -178,30 +185,29 @@
     .customers{
       height: auto;
     }
-    .Home-About-Testimonials-FAQs-In{
-      width:inherit;
-      margin-right: 30px;
-      text-align: center;
-      margin-top: 0px;
-      margin-bottom: 70px;
-      margin-left: 30px;
-    }
+    
     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
       width: auto;
       margin-left: -70px;
       text-align: center;
     }
-    img.white_logo_transparent_background-copy-4{
-      margin-left: 38%;
-      margin-bottom: 2%;
-    }
-    .facebook{
-      margin-left:44%;
-      margin-top: 0px;
-    }
-    .instagram{
-      margin-top: 0px;
-    }
+    .logo{
+      text-align: center;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+  }
+  .links ul{
+      flex-direction: column;
+      padding-left: 0px;
+  }
+  .links li{
+      margin-top: 20px;
+  }
+  .icons{
+      padding-bottom: 20px;
+      text-align: center;
+  }
     .Rounded-Rectangle-649-copy-ok{
       margin-top: 60px;
       margin-left:50px;
@@ -247,13 +253,13 @@
       margin-left: -200px;
     }
     .Select-your-plan{
-      margin-left: -200px;
+      margin-left: -110px;
     }
     img.step-arrow1-copy{
       display: none;
     }
     .Pay-securely-online{
-    margin: 40px -10px 43px -350px;  
+    margin: 40px -10px 43px -180px;  
     }
     img.Forma-11{
       margin: 0px 69px 0px -270px;
@@ -261,8 +267,11 @@
     .step-arrow1-copy-2{
     margin-left: -230px;
     }
-    img.Forma-2 , .Enjoy-amazing-service{
+    img.Forma-2 {
       margin-left: -230px;
+    }
+    .Enjoy-amazing-service{
+      margin-left: -150px;
     }
     .pc{
       flex: 20%;
@@ -387,35 +396,40 @@
       height:auto;
       background-color: transparent;
     }
-    .Rectangle-12{
-      margin-bottom: 0px;
-      height: auto;
-      margin-top: 20px;
-    }
+    
     .GET-OUR-NEWSLETTER{
       margin-top: 10px;
     }
-    img.white_logo_transparent_background-copy-4{
-      margin-left:350px;
-      margin-top: 20px;
-    }
-    .Home-About-Testimonials-FAQs-In{
-      margin-left: 150px;
-      margin-right: 0px;
-      margin-top:0px;
-    }
-    .facebook{
-      margin-left: 377px;
-      padding-bottom: 30px;
-      margin-top: 0;
-    }
-    .instagram{
-      padding-bottom: 30px;
-      margin-top: 0px;
-    }
+    .logo{
+      text-align: center;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
+  }
+  .links{
+      display: flex !important;
+      width:auto !important;
+      justify-content: space-between;
+      margin-top: 20px;      
+  }
+  .links a{
+      margin-top: 10px;
+      margin-left: 20px;
+      justify-content: center;
+  }
+  .icons{
+      padding-bottom: 20px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      margin: 0px;
+  }
+  .Rectangle-12 .row{
+      flex-direction: column;
+  }
     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      width:500px;
-      margin-left:40px;
+      width:80%;
+      margin-left:0px;
       text-align: center;
       position: relative;
       bottom:12px;
@@ -440,18 +454,6 @@
     .Rounded-Rectangle-506-copy1{
       margin-left:11%;
     }
-    .Rounded-Rectangle-649 {
-      margin-left:34%;
-    }
-    img.Layer-598 {
-      margin-left:650px;
-    }
-    .facebook,.instagram{
-      margin-top: -130px;
-    }
-    .facebook{
-      margin-left: 1700px;
-    }
     .Home-About-Testimonials-FAQs-In{
       margin-left: 710px;
       margin-right: 0px;
@@ -472,18 +474,7 @@
   }
 
   @media screen and (max-width: 1700px) and (min-width: 1570px){
-    img.Layer-598 {
-      margin-left:520px;
-    }
-    .Rounded-Rectangle-649 {
-      margin-left:32%;
-    }
-    .facebook,.instagram{
-      margin-top: -130px;
-    }
-    .facebook{
-      margin-left: 1500px;
-    }
+    
     .Home-About-Testimonials-FAQs-In{
       margin-left: 600px;
       margin-right: 0px;
@@ -531,9 +522,7 @@
     .Home-About-Testimonials-FAQs-In{
       margin-left: 460px;
     }
-    .facebook{
-      margin-left:1200px;
-    }
+    
     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
       margin-left: 100px;
     }
@@ -603,9 +592,6 @@
     }
     .Home-About-Testimonials-FAQs-In{
       margin-left: 350px;
-    }
-    .facebook{
-      margin-left:1000px;
     }
     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
       margin-left: 0px;

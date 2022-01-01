@@ -17,6 +17,10 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
 }
+.book:hover,.prices:hover{
+  color: rgba(230, 213, 213, 0.931);
+  cursor: pointer;
+}
 .nav-link{
   display: inline;
 }
@@ -149,6 +153,7 @@ img.keyboard-right-arrow-button {
   margin: 1px 7px 157px 0;
   padding: 18px 33px 22px 31px;
   border-radius: 27px;
+  text-align: center;
   border: solid 1px #fff;
   background-color: rgb(0, 96, 114, 0.5);
 }
@@ -192,7 +197,7 @@ img.step-arrow1 {
   width: 170px;
   height: 19px;
   display: block;
-  margin: 0px 32px 43px -240px;
+  margin: 0px 32px 43px -140px;
   font-family: Roboto;
   font-size: 20px;
   font-weight: normal;
@@ -223,7 +228,7 @@ img.Forma-11 {
   width: 175px;
   height: 19px;
   display: block;
-  margin: 0px 11px 43px -285px;
+  margin: 0px 11px 43px -165px;
   font-family: Roboto;
   font-size: 20px;
   font-weight: normal;
@@ -246,7 +251,7 @@ img.Forma-2 {
 .Enjoy-amazing-service {
   width: 200px;
   height: 19px;
-  margin-left: -350px;
+  margin-left: -210px;
   display: block;
   font-family: Roboto;
   font-size: 20px;
@@ -279,9 +284,10 @@ img.Forma-2 {
 }
 
 .Why-Helperland {
-  width: 400px;
+  width: 100%;
   height: 38px;
-  margin: 87px 84px 84px 170px;
+  display: block;
+  margin: 87px 0px 84px 0px;
   font-family: Roboto;
   font-size: 40px;
   font-weight: bold;
@@ -289,7 +295,7 @@ img.Forma-2 {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #4f4f4f;
 }
 
@@ -464,9 +470,9 @@ img.Group-36 {
 } */
 
 .Our-Blog {
-  width: 180px;
+  width: 100%;
   height: 38px;
-  margin: 0px 71px 10px 0px;
+  margin: 87px 71px 10px 0px;
   font-family: Roboto;
   font-size: 40px;
   font-weight: bold;
@@ -474,7 +480,7 @@ img.Group-36 {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: left;
+  text-align: center;
   color: #4f4f4f;
 }
 
@@ -646,7 +652,7 @@ img.Group-30 {
 /*customers*/
 
 .What-Our-Customers-Say {
-  width: 600px;
+  width: 100%;
   height: 38px;
   font-family: Roboto;
   font-size: 40px;
@@ -655,7 +661,7 @@ img.Group-30 {
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: center;
+  text-align: center !important;
   color: #4f4f4f;
 }
 
@@ -838,9 +844,9 @@ img.Group-33 {
   background-color: #f4f5f8;
 }
 .GET-OUR-NEWSLETTER {
-  width: 300px;
+  width: 100%;
   height: 13px;
-  margin: 600px 126px 20px 128px;
+  margin: 600px 0px 40px 0px;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -855,8 +861,8 @@ img.Group-33 {
 .Rounded-Rectangle-649 {
   width: 233px;
   height: 40px;
-  margin: 20px 11px 0px 465px;
-  padding: 14px 131px 16px 22px;
+  padding: 14px 0px 16px 22px;
+  margin-bottom: 53px;
   border-radius: 20px;
   border: solid 1px #565656;
   background-color: #f4f5f8;
@@ -879,8 +885,9 @@ img.Group-33 {
   width: 88px;
   height: 40px;
   border-radius: 20px;
-  margin: 20px 0 0 6px;
-  padding: 5px 60px 20px 25px;
+  margin-bottom: 53px;
+  padding: 5px 0px 20px 0px;
+  color: white;
   background-color: salmon;
 }
 .Submit {
@@ -916,43 +923,38 @@ img.Forma-1 {
 img.Layer-598 {
   width: 63px;
   height: 63px;
-  margin: 0px 70px 76px 450px;
+  margin: 0px 70px 76px 0px;
   object-fit: contain;
 }
 .Rectangle-12 {
   width: inherit;
-  height: 150px;
+  height: auto;
   margin: 0px 0 0;
   padding: 27px 0 0;
   background-color: #111;
 }
-img.white_logo_transparent_background-copy-4 {
-  width: 106px;
-  height: 78px;
-  margin: 0 262px 26px 122px;
-  object-fit: contain;
+
+.links ul{
+  list-style: none;
 }
-.facebook,.instagram{
-  margin-top: -130px;
-}
-.facebook{
-  margin-left: 1350px;
-  margin-right:20px;
-}
-.Home-About-Testimonials-FAQs-In {
-  width: 575px;
-  height: 12px;
-  margin: -70px 0px 54px 520px;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 2.14;
-  letter-spacing: normal;
-  text-align: left;
+.links a{
   color: #f1f1f1;
 }
+.logo {
+  width: 106px;
+  height: 78px;
+  margin: 0px 0px 26px 0px;
+  margin-left: 7%;
+  object-fit: contain;
+}
+.icons{
+  margin-right: 4%;
+}
+
+.facebook{
+  margin-right: 20px;
+}
+
 .Rectangle-12-copy {
   width: inherit;
   height: 64px;
@@ -1024,7 +1026,6 @@ img.Shape-1 {
   background-color: var(--white);
 }
 .row.our-blog{
-  margin-top:87px; 
   margin-left: 110px;
 }
 
