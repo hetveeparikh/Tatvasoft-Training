@@ -1,0 +1,143 @@
+@media only screen and (max-width:780px) {
+    .Contact,.Blog,.Warranty,.Prices-Services{
+        margin-left:0px;
+        margin-top: 0px;
+    }
+    .Warranty{
+        margin-top:25px;
+    }
+    .ver-line{
+        display:none;
+    }
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links ul{
+        flex-direction: column;
+        padding-left: 0px;
+    }
+    .links li{
+        margin-top: 20px;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    .t{
+        width: 100% !important;
+    }
+}
+@media screen and (max-width: 1200px) and (min-width: 767px) {
+    
+    .Warranty{
+        margin-top:25px;
+    }
+    .ver-line{
+        display:none;
+    }
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links{
+        display: flex !important;
+        width:auto !important;
+        justify-content: space-between;
+        margin-top: 20px;      
+    }
+    .links a{
+        margin-top: 10px;
+        margin-left: 20px;
+        justify-content: center;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+        margin: 0px;
+    }
+    .Rectangle-12 .row{
+        flex-direction: column;
+    }
+    .Rectangle-12-copy-2 {
+        margin-left:0px;
+    }
+    .col-lg-8{
+        width: 100% !important;
+    }
+    
+}
+
+@media screen and (max-width: 1400px) and (min-width: 1200px){
+    .Contact,.Blog,.Warranty,.Prices-Services{
+        margin-left:0px;
+        margin-top: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+        margin-top:5px;
+    }
+}
+
+@media screen and (max-width: 1310px) and (min-width: 700px){
+    .sidebar {
+      width: 100%;
+      height: auto;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .sidebar a {
+      float: left;
+    }
+
+  }
+  @media screen and (max-width: 1310px) and (min-width: 992px){
+    .col-lg-8{
+      width: 100% !important;
+    }
+    .Warranty{
+        margin-top: 5px;
+        
+    }
+  }
+  @media screen and (max-width: 1310px) and (min-width: 1200px){
+    .links a{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        display: block;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media only screen and (min-width:500px) and (max-width:700px){
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 904px) {
+    .icons{
+        width:auto !important;
+    }
+  }
+  @media only screen and (min-width: 780px) and (max-width: 992px) {
+    .Contact,.Warranty,.Blog{
+        margin-left: 0px;
+    }
+  }

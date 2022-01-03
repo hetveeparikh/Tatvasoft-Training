@@ -1,680 +1,161 @@
-
-@media only screen and (max-width: 500px){
-    body {
-      height: auto;
+@media only screen and (max-width:950px){
+    .points{
+        display: block !important;
     }
-    .Lorem-ipsum-text{
-      width: max-content;
-      margin-top: 120px;
-      font-size: 40px;
-      font-weight: 300;
-      text-align: center;
+    .letsbook{
+        margin-left: 0px;
     }
-    .Rounded-Rectangle-5-copy-4,.Rounded-Rectangle-5,.Rounded-Rectangle-5-copy{
-      margin-top:10px;
+}
+@media only screen and (max-width:992px){
+    .bookrect,.bahrect{
+        margin-top: 10px;
     }
-    .Rounded-Rectangle-5-copy{
-      margin-left: 0px;
+}
+@media only screen and (max-width:620px){
+    .arrowline{
+        display: block !important;
     }
-    img.flag{
-      margin-top: 10px;
-      margin-left:5px;
+    .step-arrow1,.step-arrow1-copy,.step-arrow1-copy-2{
+        display:none;
     }
-    img.keyboard-right-arrow-button{
-      position: relative;
-      left: 28px;
-      bottom: 15px;
+    .Select-your-plan{
+        margin-bottom:43px;
     }
-    .newlist ul{
-      padding-left: 0px;
+    .housework{
+        margin-right: 20px;
+        font-size:40px;
+        width:70%;
+    }
+    .great{
+        margin-right:10px;
+        width:70%;
     }
     .newlist ul li{
-      width: 300px;
-      height: 30px;
-      margin: 25px 119px 15px 33px;
-      line-height: 1.4;
+        font-size:15px;
+        width:70%;
+        height:auto;
+        margin-right:10px;
     }
-    .Rounded-Rectangle-6-copy-5{
-      margin: 40px 7px 157px 0;
-    }
-    .column{
-      flex: 50%;
-    }
-    .Enter-your-postcode{
-      position: relative;
-      right: 80px;
-    }
-    img.Forma-1-copy {
-      position: relative;
-      right: 85px;
-    }
-    img.step-arrow1{
-      margin-left: -150px;
-      display: none;
-    }
-    .pc{
-      padding-bottom: 0px;
-    }
-    .Group-22{
-      margin-left: -250px;
-    }
-    .Select-your-plan{
-      margin-left: -160px;
-    }
-    img.step-arrow1-copy{
-      margin-left: -165px;
-      display: none;
-    }
-    .Pay-securely-online{
-    margin: 40px -10px 43px -160px;  
-    }
-    img.Forma-11{
-      margin: 0px 69px 0px -210px;
-    }
-    .step-arrow1-copy-2{
-    margin-left: -180px;
-    display: none;
-    }
-    img.Forma-2  {
-      margin-left: -130px;
-    }
-    .Enjoy-amazing-service{
-      margin-left: -30px;
-    }
-    .Why-Helperland{
-      width: max-content;
-      margin: 50px 84px 84px 40px;
-    }
-    .section33{
-      width: 100%;
-      margin-top: 240px;
-    }
-    img.Group-21{
-      margin-left: -200px;
-    }
-    .dh{
-      margin-top: 0px;
-    }
-    .Experience-Vetted-Professionals, .dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext{
-      margin-left: -200px;
-    }
-    .Secure-Online-Payment, .Payment-is-processed-securely-online-Customers-pay-safely-onli{
-      margin-left: 30px;
-    }
-    
-    .Lorem-ipsum-dolor-sit-amet-consectetur{
-     
-      display: block;
-      width: 300px;
-      font-size: 22px;
-      margin-top:280px;
-      margin-left: 30px;
-    }
-     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec{
-      display: block;
-      width:300px;   
-      margin-left:30px;   
-      margin-top: -30px;
-    } 
-    .col-lg-6{
-      flex: none;
-    }
-
-    img.Group-36 {
-      width: 250px;
-      height: 337px;
-      margin: 20px 54px 0px 0px;
-      object-fit: contain;
-      position: relative;
-      right: 370px;
-      top: 700px;
-    }
-    .Our-Blog{
-      margin-top: 500px;
-    }
-    .section331{
-      width: 100%;
-    }
-    .ob1,.ob2,.ob3{
-      margin-left: -65px;
-    }
-    .Lorem-ipsum-dolor-sit-amet{
-      font-weight: normal;
-      font-size: 18px;
-    }
-    img.Group-28,img.Group-29,img.Group-30{
-      width: 250px;
-    }
-    .What-Our-Customers-Say{
-      width: 100%;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .section3311{
-      width: 100%;
-      margin-bottom: 20px;
-      margin-top: 70px;
-      margin-left: 10px;
-    }
-    .GET-OUR-NEWSLETTER{
-      margin: 10px 0 0 0px;
-    }
-    .Rounded-Rectangle-506-copy3{
-      margin-bottom: 60px;
-    }
-    .Rounded-Rectangle-649{
-      margin-left: -710px;
-      margin-top: 1450px;
-    }
-    .Rounded-Rectangle-649-copy{
-      margin-top: 1450px;
-    }
-    .Ellipse-649{
-      opacity: 0%;
-    }
-    .Rectangle-12{
-      height:auto;
-      margin-top:0px;
-      padding-bottom: 20px;
-    }
-    
-    .Rectangle-12-copy{
-      margin-bottom: 0px;
-      height: auto;
-    }
-    .customers{
-      height: auto;
-    }
-    
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      width: auto;
-      margin-left: -70px;
-      text-align: center;
-    }
-    .logo{
-      text-align: center;
-      width: 100%;
-      padding: 0px;
-      margin: 0px;
-  }
-  .links ul{
-      flex-direction: column;
-      padding-left: 0px;
-  }
-  .links li{
-      margin-top: 20px;
-  }
-  .icons{
-      padding-bottom: 20px;
-      text-align: center;
-  }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-top: 60px;
-      margin-left:50px;
-    }
-  
-  }
-  
-
-@media screen and (max-width: 950px) and (min-width: 550px) {
-    body{
-      height:auto;
-    }
-    .nav-item{
-      margin-top:15px;
-    }
-    .Rounded-Rectangle-5-copy{
-      margin-left: 0px;
-      margin-top: 0px;
-    }
-    img.flag{
-      margin-top: 20px;
-      margin-left: 0px;
-    }
-    .dropdown{
-      margin-top: -20px;
-      margin-left: 20px;
-    }
-    .Rounded-Rectangle-6-copy-5{
-      margin-top: 50px;
-    }
-    .Enter-your-postcode{
-      position: relative;
-      right: 80px;
-    }
-    img.Forma-1-copy {
-      position: relative;
-      right: 75px;
-    }
-    img.step-arrow1{
-      margin-left: -150px;
-    }
-    .Group-22{
-      margin-left: -200px;
-    }
-    .Select-your-plan{
-      margin-left: -110px;
-    }
-    img.step-arrow1-copy{
-      display: none;
-    }
-    .Pay-securely-online{
-    margin: 40px -10px 43px -180px;  
-    }
-    img.Forma-11{
-      margin: 0px 69px 0px -270px;
-    }
-    .step-arrow1-copy-2{
-    margin-left: -230px;
-    }
-    img.Forma-2 {
-      margin-left: -230px;
-    }
-    .Enjoy-amazing-service{
-      margin-left: -150px;
-    }
-    .pc{
-      flex: 20%;
-    }
-    .section33{
-      display: flex;
-      width: 100%;
-    }
-    .dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext{
-      position: relative;
-      top: 130px;
-      right: 300px;
-    }
-    img.Group-23{
-      position: relative;
-      top: 60px;
-      left: 100px;
-    }
-    .Secure-Online-Payment{
-      position: relative;
-      top: 55px;
-      left: 100px;
-    }
-    .Payment-is-processed-securely-online-Customers-pay-safely-onli{
-      position: relative;
-      top: 130px;
-      right: 230px;
-    }
-    img.Group-24{
-      position: relative;
-      top: 120px;
-      left: 110px;
-    }
-    .Dedicated-Customer-Service{
-      position: relative;
-      top: 120px;
-      left: 110px;
-    }
-    .to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
-      position: relative;
-      top: 260px;
-      width: 310px;
-      right: 200px;
-    }
-    .Rectangle-10-copy{
-      height:auto;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur{
-      width: 700px;
-      font-size: 20px;
-      margin-top: 200px;
-      margin-left: 80px;
-    }
-     .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec{
-      display: inline-block;
-      width: 500px;
-      margin-left: 80px;
-      margin-top:-70px;
-    } 
-
-    img.Group-36 {
-      width: 500px;
-      height: 337px;
-      margin: 70px 54px 15px 71px;
-      object-fit: contain;
-      position: relative;
-      right: 750px;
-      top: 450px;
-    }
-    .Our-Blog{
-      margin-top:1000px;
-      display: block;
-      position: relative;
-      bottom: 600px;
-    }
-    .ob1,.ob2,.ob3{
-      position: relative;
-      top: 550px;
-    }
-    .section331{
-      width: 100%;
-    }
-    .ob1{
-      margin-top:-1100px;
-      margin-left: -70px;
-      text-align:center;
-    }
-    img.Group-28,img.Group-29,img.Group-30{
-      width: inherit;
-    }
-    .one,.two,.three{
-      text-align:left;
-      margin-left:200px;
-    }
-    .ob2,.ob3{
-      margin-left:-60px
-    }
-    .ob2{
-      margin-top: -600px;
-    }
-    .ob3{
-      margin-top: -100px;
-    }
-    .What-Our-Customers-Say{
-      margin-left: 0px;
-      margin-top: 500px;
-    }
-    .section3311{
-      float: none;
-    }
-    .Rounded-Rectangle-506-copy1,.Rounded-Rectangle-506-copy2,.Rounded-Rectangle-506-copy3{
-      text-align:center;
-      margin-left: 240px;
-    }
-    .Ellipse-649,img.Layer-598{
-      display: none;
-    }
-    .Rounded-Rectangle-649{
-      margin-left: 250px;
-    }
-    .customers{
-      height:auto;
-      background-color: transparent;
-    }
-    
-    .GET-OUR-NEWSLETTER{
-      margin-top: 10px;
-    }
-    .logo{
-      text-align: center;
-      width: 100%;
-      padding: 0px;
-      margin: 0px;
-  }
-  .links{
-      display: flex !important;
-      width:auto !important;
-      justify-content: space-between;
-      margin-top: 20px;      
-  }
-  .links a{
-      margin-top: 10px;
-      margin-left: 20px;
-      justify-content: center;
-  }
-  .icons{
-      padding-bottom: 20px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      margin: 0px;
-  }
-  .Rectangle-12 .row{
-      flex-direction: column;
-  }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      width:80%;
-      margin-left:0px;
-      text-align: center;
-      position: relative;
-      bottom:12px;
-      font-size: 13px;
-    }
-    .Rectangle-12-copy{
-      height:auto;
-    }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left: 250px;
-    }
-    
-  }
-
-  @media screen and (min-width: 1710px){
-    .section331{
-      width:27%;
-    }
-    .section3311{
-      width:23%;
-    }
-    .Rounded-Rectangle-506-copy1{
-      margin-left:11%;
-    }
-    .Home-About-Testimonials-FAQs-In{
-      margin-left: 710px;
-      margin-right: 0px;
-      margin-top:-70px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      margin-left: 430px;
-    }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left:150px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur,.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec{
-      margin-left: 250px;
-    }
-    img.Group-36{
-      margin-left:250px;
-    }
-  }
-
-  @media screen and (max-width: 1700px) and (min-width: 1570px){
-    
-    .Home-About-Testimonials-FAQs-In{
-      margin-left: 600px;
-      margin-right: 0px;
-      margin-top:-70px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      margin-left: 320px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur,.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec{
-      margin-left: 250px;
-    }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left:60px;
-    }
-  }
-
-  @media screen and (max-width:1460px) and (min-width: 1355px) {
-    body{
-      height:auto;
-    }
-    .section33{
-      width: 35%;
-    }
-    img.Group-36{
-      margin-left: -100px;
-    }
-    .section331{
-      width: 25%;
-    }
-    .row.our-blog{
-      margin-left: 0px;
-    }
-    .section3311{
-      width: 22%;
-    }
-    img.message{
-      margin-left: 75px;
-    }
-    .Rounded-Rectangle-649{
-      margin-left:420px;
-    }
-    img.Layer-598{
-      margin-left:350px;
-    }
-    .Home-About-Testimonials-FAQs-In{
-      margin-left: 460px;
-    }
-    
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      margin-left: 100px;
-    }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left:0px;
-    }
-  }
-
-  @media screen and (max-width:1550px) and (min-width: 1460px){
-    img.Group-36{
-      margin-left:-80px;
-    }
-    .section3311{
-      width: 25%;
-    }
-    .Rounded-Rectangle-506-copy1{
-      margin-left: 70px;
-    }
-    .Rounded-Rectangle-649{
-      margin-left:430px;
-    }
-    img.Layer-598 {
-      margin-left:400px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      margin-left: 150px;
-    }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left:0px;
-  }
 }
-  @media screen and (max-width:1355px) and (min-width: 1100px){
-    .section33{
-      width:38%;
+@media only screen and (min-width: 767px) and (max-width: 1220px) {
+    img.Group-21, img.Group-23, img.Group-24{
+        width:200px;
+        height:200px;
     }
-    img.Group-21,img.Group-23,img.Group-24{
-      width: 250px;
-      height: 250px;
+    .whytitle{
+        font-size:22px;
+        width:70%;
     }
-    .dedicated-helper{
-      margin-left: 0px;
+    .whydesc{
+        font-size:14px;
+        width:70%;
     }
-    .aboveblog{
-      margin-left:-150px;
-    }
-    .ob1{
-      margin-left:0px;
-    }
-    .section331{
-      width: 27%;
-    }
-    img.one,img.two,img.three{
-      width: 297px;
-      margin-top: -15px;
-    }
-    .section3311{
-      width: 25%;
-    }
-    .Rounded-Rectangle-506-copy1{
-      margin-left:50px;
-    }
-    .Rounded-Rectangle-649{
-      margin-left:300px;
-    }
-    img.Layer-598 {
-      margin-left:300px;
-    }
-    .Home-About-Testimonials-FAQs-In{
-      margin-left: 350px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      margin-left: 0px;
-    }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left:-100px;
-  }
-  }
-  @media screen and (max-width:1640px) and (min-width: 1560px){
-    img.Layer-598 {
-      margin-left:450px;
-    }
-  }
-
-  @media screen and (max-width:1111px) and (min-width: 950px){
-    .section33{
-      width:40%;
-    }
-    img.Group-21,img.Group-23,img.Group-24{
-      width: 250px;
-      height: 250px;
-    }
-    
-    .dedicated-helper{
-      margin-left: 20px;
-      margin-right: 20px;
-    }
-    .dedicated-helper,.online-Payment,.customer-service{
-      width: 300px;
-      height: auto;
-    }
-    .online-Payment{
-      margin-right: 20px;
-    }
-    .aboveblog{
-      margin-left:-150px;
+    .we{
+        padding-bottom: 0px;
     }
     img.Group-36{
-      width:250px;
-      height: auto;
-      margin-top:100px;
+        width:270px;
+        height:270px;
     }
-    .section331{
-      width: 32%;
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
     }
-    img.one,img.two,img.three{
-      width: 288px;
-      margin-top: -15px;
+    .links{
+        display: flex !important;
+        width:auto !important;
+        justify-content: space-between;
+        margin-top: 20px;      
     }
-    .ob1{
-      margin-left: -90px;
+    .links a{
+        margin-top: 10px;
+        margin-left: 20px;
+        justify-content: center;
     }
-    .section3311{
-      width: 27%;
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+        margin: 0px;
     }
-    .Rounded-Rectangle-506-copy1{
-      margin-left:20px;
+    .Rectangle-12 .row{
+        flex-direction: column;
     }
-    img.message{
-      margin-left:50px;
+    .Rectangle-12-copy-2 {
+        margin-left:0px;
     }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe{
-      width: 200px;
+}
+@media only screen and (max-width:780px){
+    .cyrow{
+        display: block !important;
+    }  
+    img.Group-21, img.Group-23, img.Group-24{
+        width:250px;
+        height:250px;
+    }  
+    .whydesc{
+        margin-bottom:100px;
     }
-    .Rounded-Rectangle-649{
-      margin-left:200px;
+    img.i1home,img.i3home,img.i5home,img.i2home,img.i4home,img.i6home{
+        display:none;
     }
-    img.Layer-598 {
-      margin-left:200px;
+    .wdk-title{
+        margin-top:50px;
     }
-    .Home-About-Testimonials-FAQs-In{
-      margin-left: 250px;
+    .wdkrow{
+        display:block !important;
     }
-    .facebook{
-      margin-left:900px;
+    img.Group-36{
+        width:270px;
+        height:270px;
+        margin-top: 50px;
     }
-    img.white_logo_transparent_background-copy-4{
-      margin-left:40px;
+    .grp36{
+        text-align: center;
     }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu{
-      margin-left: -30px;
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
     }
-    .Rounded-Rectangle-649-copy-ok{
-      margin-left:-200px;
-  }
+    .links ul{
+        flex-direction: column;
+        padding-left: 0px;
+    }
+    .links li{
+        margin-top: 20px;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 1200px){
+    .c-row{
+        display: block !important;
+    }
+    .box{
+        margin-bottom: 50px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .b3{
+        margin-bottom:0px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 904px) {
+    .icons{
+        width:auto !important;
+    }
+}
+@media screen and (max-width: 1310px) and (min-width: 1200px){
+    .links a{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        display: block;
+    }
   }

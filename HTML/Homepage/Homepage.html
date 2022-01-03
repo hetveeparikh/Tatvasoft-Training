@@ -2,566 +2,403 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="Homepage-style.css">
-  <link rel="stylesheet" type="text/css" href="Homepage-responsive.css">
-  <title>Homepage-Helperland</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="Homepage.css">
+    <link rel="stylesheet" href="Homepage-responsive.css">
+    <title>Homepage</title>
 </head>
 
 <body>
-
-  <header class="first">
-    <nav class="navbar navbar-expand-lg navbar-inverse bg-transparent see">
-      <div class="container-fluid custom-toggler">
-        <img src="img\white-logo-transparent-background.png" srcset="img\white-logo-transparent-background@2x.png 2x,
-           img\white-logo-transparent-background@3x.png" class="white_logo_transparent_background">
-
-        <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span style="color:rgb(255, 255, 255);" class="navbar-toggler-icon"></span>
+    <header class="first" id="head">
+        <button id="topbtn" title="Back to Top" onclick="topFunction()">
+            <div class="Ellipse-649">
+                <img src="img/forma-1(1).png">
+            </div>
         </button>
+        <nav class="navbar navbar-expand-lg navbar-inverse bg-transparent see">
+            <div class="container-fluid custom-toggler">
+                <img src="img\white-logo-transparent-background.png" srcset="img\white-logo-transparent-background@2x.png 2x,
+               img\white-logo-transparent-background@3x.png" class="white_logo_transparent_background">
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-            <li class="nav-item">
-              <div class="Rounded-Rectangle-5-copy-4 text-center">
-                <a class="nav-link active book " aria-current="page" href="#">Book a Cleaner</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link prices" href="#">Prices</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link prices" href="#">Our Guarantee</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link prices">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link prices">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <div class="Rounded-Rectangle-5 text-center">
-                <a class="nav-link loginbtn book">Login</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <div class="Rounded-Rectangle-5-copy text-center">
-                <a class="nav-link helper book">Become A Helper</a>
-              </div>
-            </li>
-            <li>
-              <img src="img/flag.png" srcset="img/flag@2x.png 2x, img/flag@3x.png 3x" class="flag">
-            </li>
-            <li>
-              <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn"><img src="img/keyboard-right-arrow-button.png" srcset="img/keyboard-right-arrow-button@2x.png 2x,
-                                                  img/keyboard-right-arrow-button@3x.png 3x"
-                    class="keyboard-right-arrow-button"></button>
-                <div id="myDropdown" class="dropdown-content">
-                  <a href="#home"><img src="img/flag.png" srcset="img/flag@2x.png 2x, img/flag@3x.png 3x"
-                      class="flag"><span>&nbsp;UK</span>
+                <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span style="color:rgb(255, 255, 255);" class="navbar-toggler-icon"></span>
+                </button>
 
-                  </a>
-                  <a href="#about"><img src="img/flag.png" srcset="img/flag@2x.png 2x, img/flag@3x.png 3x"
-                      class="flag"><span>&nbsp;USA</span></a>
-                  <a href="#contact"><img src="img/flag.png" srcset="img/flag@2x.png 2x, img/flag@3x.png 3x"
-                      class="flag"><span>&nbsp;UAE</span></a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item">
+                            <div class="bookrect text-center">
+                                <a class="nav-link book align-items-center" href="#">Book a Cleaner</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link prices" href="#">Prices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link warranty" href="#">Warranty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="loginrect text-center">
+                                <a class="nav-link loginbtn">Login</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="bahrect text-center">
+                                <a class="nav-link helper">Become A Helper!</a>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
-              </div>
-            </li>
-          </ul>
+            </div>
+        </nav>
+
+        <div class="d-flex points">
+            <div>
+                <div class="housework">
+                    Do not feel like housework?
+                </div>
+                <p class="great">
+                    Great! Book now for Helperland and enjoy the benefits
+                </p>
+                <div class="newlist">
+                    <ul>
+                        <li>certified & insured helper</li>
+                        <li>easy booking procedure</li>
+                        <li>friendly customer service</li>
+                        <li>secure online payment method</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class=" d-flex justify-content-center align-items-center">
+
+                <button class="letsbook Lets-Book-a-Cleaner-copy" type="button">
+                    Book a Helper!
+                </button>
+            </div>
         </div>
-      </div>
-    </nav>
-
-    <div class="Lorem-ipsum-text">
-      Lorem ipsum text
-    </div>
-    <div class="newlist">
-      <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing</li>
-
-      </ul>
-    </div>
-    <div class="randombutton d-flex justify-content-center">
-      <div class="Rounded-Rectangle-6-copy-5 ">
-        <span class="Lets-Book-a-Cleaner-copy">
-          Let’s Book a Cleaner
-        </span>
-      </div>
-    </div>
 
 
-    <div class="text-center">
-      <div class="row" style="margin-left: 120px;">
-        <div class="column postcode pc">
-          <img src="img/forma-1-copy.png" srcset="img/forma-1-copy@2x.png 2x,
+        <div class="d-flex justify-content-between arrowline container">
+            <div class="d-flex flex-column al1">
+                <div class="text-center">
+                    <img src="img/forma-1-copy.png" srcset="img/forma-1-copy@2x.png 2x,
                              img/forma-1-copy@3x.png 3x" class="Forma-1-copy">
-          <span class="Enter-your-postcode">Enter your Postcode</span>
+                </div>
+                <span class="Enter-your-postcode">Enter postal code</span>
+            </div>
 
-        </div>
-        <div class="column pc">
-          <img src="img/step-arrow-1.png" srcset="img/step-arrow-1@2x.png 2x,
-                             img/step-arrow-1@3x.png 3x" class="step-arrow1">
-        </div>
-        <div class="column Forma-1-copy-2 pc">
-          <img src="img/group-22.png" srcset="img/group-22@2x.png 2x,
+            <img src="img/step-arrow-1.png" srcset="img/step-arrow-1@2x.png 2x,
+                             img/step-arrow-1@3x.png 3x" class="step-arrow1 a1">
+
+            <div class="d-flex flex-column al2">
+                <div class="text-center">
+                    <img src="img/group-22.png" srcset="img/group-22@2x.png 2x,
                              img/group-22@3x.png 3x" class="Group-22">
-          <span class="Select-your-plan">
-            Select your plan
-          </span>
-        </div>
-        <div class="column pc" style="margin-top: 15px;">
-          <img src="img/step-arrow-1-copy.png" srcset="img/step-arrow-1-copy@2x.png 2x,
-                             img/step-arrow-1-copy@3x.png 3x" class="step-arrow1-copy">
-        </div>
-        <div class="column pc">
-          <img src="img/forma-1.png" srcset="img/forma-1@2x.png 2x,
+                </div>
+                <span class="Select-your-plan">
+                    Select desired date
+                </span>
+            </div>
+
+            <img src="img/step-arrow-1-copy.png" srcset="img/step-arrow-1-copy@2x.png 2x,
+                             img/step-arrow-1-copy@3x.png 3x" class="step-arrow1-copy a2">
+
+            <div class="d-flex flex-column al3">
+                <div class="text-center">
+                    <img src="img/forma-1.png" srcset="img/forma-1@2x.png 2x,
                              img/forma-1@3x.png 3x" class="Forma-11">
-          <span class="Pay-securely-online">
-            Pay securely online
-          </span>
+                </div>
+                <span class="Pay-securely-online">
+                    Secure online payment
+                </span>
+            </div>
+
+            <img src="img/step-arrow-1-copy-2.png" srcset="img/step-arrow-1-copy-2@2x.png 2x,
+                        img/step-arrow-1-copy-2@3x.png 3x" class="step-arrow1-copy-2 a3">
+
+            <div class="d-flex flex-column al4">
+                <div class="text-center">
+                    <img src="img/forma-2.png" srcset="img/forma-2@2x.png 2x,
+                    img/forma-2@3x.png 3x" class="Forma-2">
+                </div>
+                <span class="Enjoy-amazing-service">
+                    Feel at home
+                </span>
+            </div>
         </div>
-        <div class="column pc" style="margin-top:15px;">
-          <img src="img/step-arrow-1-copy-2.png" srcset="img/step-arrow-1-copy-2@2x.png 2x,
-                             img/step-arrow-1-copy-2@3x.png 3x" class="step-arrow1-copy-2">
+
+
+
+        <div class="text-center">
+            <a href="#cy" class="text-decoration-none"><img src="img/ellipse-525.png" srcset="img/ellipse-525@2x.png 2x,
+                 img/ellipse-525@3x.png 3x" class="Ellipse-525"></a>
         </div>
-        <div class="column pc">
-          <img src="img/forma-2.png" srcset="img/forma-2@2x.png 2x,
-                             img/forma-2@3x.png 3x" class="Forma-2">
-          <span class="Enjoy-amazing-service">
-            Enjoy amazing service
-          </span>
-
+        <div class="text-center">
+            <a href="#cy" class="text-decoration-none"><img src="img/shape-1.png" srcset="img/shape-1@2x.png 2x,
+                 img/shape-1@3x.png 3x" class="Shape-1"></a>
         </div>
-      </div>
-
-    </div>
-
-    <div class="text-center">
-      <img src="img/ellipse-525.png" srcset="img/ellipse-525@2x.png 2x,
-             img/ellipse-525@3x.png 3x" class="Ellipse-525">
-    </div>
-    <div class="text-center">
-      <img src="img/shape-1.png" srcset="img/shape-1@2x.png 2x,
-             img/shape-1@3x.png 3x" class="Shape-1">
-    </div>
 
 
 
-  </header>
+    </header>
 
+    <section id="cy">
+        <span class="convince">
+            Convince yourself!
+        </span>
 
-  <!-- Why helperhand-->
-  <div class="why">
+        <div class="d-flex justify-content-between container cyrow">
 
-    <h1 class="Why-Helperland">
-      Why Helperland
-    </h1>
-
-    <div class="dedicated-helper section33 dh text-center">
-      <img src="img/group-21.png" srcset="img/group-21@2x.png 2x,
+            <div class="d-flex flex-column cy1">
+                <div class="text-center">
+                    <img src="img/group-21.png" srcset="img/group-21@2x.png 2x,
                              img/group-21@3x.png 3x" class="Group-21">
-      <center>
-        <p class="Experience-Vetted-Professionals">
-          Experience & Vetted
-          Professionals
-        </p>
-      </center>
-      <center>
-        <p class="dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext">
-          dominate the industry in scale and scope with an adaptable, extensive network that consistently delivers
-          exceptional results.
-        </p>
-      </center>
-    </div>
+                </div>
+                <div class=" d-flex justify-content-center">
+                    <span class="whytitle">
+                        Friendly & Certified Helpers
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <span class="whydesc">
+                        We want you to be completely satisfied with our service and feel comfortable at home. In order
+                        to
+                        guarantee this, our helpers go through a test procedure. Only when the cleaners meet our high
+                        standards, they may call themselves Helper.
+                    </span>
+                </div>
+            </div>
 
+            <div class="d-flex flex-column cy2">
+                <div class="text-center">
+                    <img src="img/group-23.png" srcset="img/group-23@2x.png 2x,
+                             img/group-23@3x.png 3x" class="Group-23">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <span class="whytitle">
+                        Transparent and secure payment
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <span class="whydesc">
+                        We have transparent prices, you do not have to scratch money or money on the sideboard Leave it:
+                        Pay
+                        your helper easily and securely via the online payment method. You will also receive an invoice
+                        for
+                        each completed cleaning.
+                    </span>
+                </div>
+            </div>
 
-    <div class="online-Payment section33">
-      <center><img src="img/group-23.png" srcset="img/group-23@2x.png 2x,
-                             img/group-23@3x.png 3x" class="Group-23"></center>
-      <center>
-        <p class="Secure-Online-Payment">
-          Secure Online Payment
-        </p>
-      </center>
-      <center>
-        <p class="Payment-is-processed-securely-online-Customers-pay-safely-onli">
-          Payment is processed securely online. Customers pay safely online and<br>
-          manage the booking.
-        </p>
-      </center>
-    </div>
+            <div class="d-flex flex-column cy3">
+                <div class="text-center">
+                    <img src="img/group-24.png" srcset="img/group-24@2x.png 2x,
+                             img/group-24@3x.png 3x" class="Group-24">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <span class="whytitle we">
+                        We're here for you
+                    </span>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <span class="whydesc">
+                        You have a question or need assistance with the booking process? Our customer service is happy
+                        to
+                        help and advise you. How you can reach us you will find out when you look under "Contact". We
+                        look
+                        forward to hearing from you or reading.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="customer-service section33">
-      <center><img src="img/group-24.png" srcset="img/group-24@2x.png 2x,
-                             img/group-24@3x.png 3x" class="Group-24"></center>
-      <center>
-        <p class="Dedicated-Customer-Service">
-          Dedicated Customer
-          Service
-        </p>
-      </center>
-      <center>
-        <p class="to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th">
-          to our customers and are guided in all we do by their needs. The team is always happy to support you and offer
-          all the information.
-        </p>
-      </center>
-    </div>
+    <section id="wdk">
+        <span id="sp1"><img src="img/sp1.png" class="i1home"></span>
+        <span id="sp2"><img src="img/sp2.png" class="i2home"></span>
+        <div class="d-flex justify-content-between container wdkrow">
+            <div class="wdkpara">
+                <span class="wdk-title">
+                    We do not know what makes you happy, but ...
+                </span>
 
-  </div>
+                <span class="wdk-desc">
+                    If it's not dusting off, our friendly helpers will free you from this burden - do not worry anymore
+                    about spending valuable time doing housework, but savor life, you're well worth your time with
+                    beautiful experiences. Free yourself and enjoy the gained time: Go celebrate, relax, play with your
+                    children, meet friends or dare to jump on the bungee.Other leisure ideas and exclusive events can be
+                    found in our blog - guaranteed free from dust and cleaning tips!
+                </span>
+            </div>
+            <div class="text-right grp36">
+                <img src="img/group-36.png" srcset="img/group-36@2x.png 2x,
+                       img/group-36@3x.png 3x" class="Group-36">
+            </div>
+        </div>
+        <span><img src="img/sp3.png" class="i3home"></span>
+        <span><img src="img/sp4.png" class="i4home"></span>
+        <span><img src="img/sp5.png" class="i5home"></span>
+        <span><img src="img/sp6.png" class="i6home"></span>
+    </section>
 
-
-  <!--Above blog-->
-
-  <div class="rowblog">
-    <div class="aboveblog">
-      <!-- <div class="col-lg-6"> -->
-      <span class="Lorem-ipsum-dolor-sit-amet-consectetur">
-        Lorem ipsum dolor sit amet,
-        consectetur
-      </span>
-      <br><br>
-      <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Donec">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sapien, suscipit ut accumsan vitae, pulvinar
-        ac libero. <br>
-        <br>
-        Aliquam erat volutpat. Nullam quis ex odio. Nam bibendum cursus purus, vel efficitur urna finibus vitae. Nullam
-        finibus aliquet pharetra. Morbi in sem dolor. Integer pretium hendrerit ante quis vehicula. <br>
-        <br>
-        Mauris consequat ornare enim, sed lobortis quam ultrices sed.
-      </p>
-    </div>
-
-    <!-- <div class="col-lg-6"> -->
-    <div class="aboveblog">
-      <img src="img/group-36.png" srcset="img/group-36@2x.png 2x,
-                       img/group-36@3x.png 3x" class="Group-36 aboveblog">
-    </div>
-
-
-
-  </div>
-
-  </div>
-
-
-  <!--Our Blog-->
-
-
-  <h1 class="Our-Blog text-center">
-    Our Blog
-  </h1>
-
-  <div class="row our-blog">
-
-    <div class="Rounded-Rectangle-583 section331 ob1">
-      <img src="img/group-28.png" srcset="img/group-28@2x.png 2x,
-                             img/group-28@3x.png 3x" class="Group-28 one">
-      <h1 class="Lorem-ipsum-dolor-sit-amet one">
-        Lorem ipsum dolor sit amet
-      </h1>
-      <p class="January-28-2019 one">
-        January 28, 2019
-      </p>
-      <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe1 one">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus pulvinar aliquet.
-      </p>
-      <p class="Read-the-Post one">
-        Read the Post
-
-        <img src="img/shape-2.png" srcset="img/shape-2@2x.png 2x,
-                             img/shape-2@3x.png 3x" class="Shape-2">
-      </p>
-    </div>
-
-
-
-    <div class="Rounded-Rectangle-583-copy section331 ob2">
-      <img src="img/group-29.png" srcset="img/group-29@2x.png 2x,
-                             img/group-29@3x.png 3x" class="Group-29 two">
-      <p class="Lorem-ipsum-dolor-sit-amet two">
-        Lorem ipsum dolor sit amet
-      </p>
-      <p class="January-28-2019 two">
-        January 28, 2019
-      </p>
-      <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe1 two">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus pulvinar aliquet.
-      </p>
-      <p class="Read-the-Post two">
-        Read the Post
-        <img src="img/shape-2.png" srcset="img/shape-2@2x.png 2x,
-                                         img/shape-2@3x.png 3x" class="Shape-2">
-      </p>
-
-    </div>
-
-
-
-    <div class="Rounded-Rectangle-583-copy-2 section331 ob3">
-      <img src="img/group-30.png" srcset="img/group-30@2x.png 2x,
-                             img/group-30@3x.png 3x" class="Group-30 three">
-      <p class="Lorem-ipsum-dolor-sit-amet three">
-        Lorem ipsum dolor sit amet
-      </p>
-      <p class="January-28-2019 three">
-        January 28, 2019
-      </p>
-      <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe1 three">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus pulvinar aliquet.
-      </p>
-      <p class="Read-the-Post three">
-        Read the Post
-
-        <img src="img/shape-2.png" srcset="img/shape-2@2x.png 2x,
-                                 img/shape-2@3x.png 3x" class="Shape-2">
-      </p>
-    </div>
-
-
-
-  </div>
-
-
-  <!-- Customers-->
-
-  <div class="customers" style="margin-top: 100px;">
-    <div class="text-center">
-      <h1 class="What-Our-Customers-Say text-center">
-        What Our Customers Say
-      </h1>
-    </div>
-
-
-
-    <div class="Rounded-Rectangle-506-copy1 section3311">
-
-      <div class="Rounded-Rectangle-506-copy-2">
-        <div class="message">
-          <img src="img/message.png" srcset="img/message@2x.png 2x,
-          
+    <section id="customers">
+        <span class="customers-title">
+            What Our Customers Say
+        </span>
+        <div class="d-flex container justify-content-between c-row">
+            <div class="box">
+                <div class="msgimg">
+                    <img src="img/message.png" srcset="img/message@2x.png 2x,
                        img/message@3x.png 3x" class="message">
+                </div>
+                <div class="d-flex">
+                    <img src="img/group-31.png" srcset="img/group-31@2x.png 2x,
+                                 img/group-31@3x.png 3x" class="c-img">
+                    <div class="d-flex flex-column">
+                        <p class="cname">
+                            Lary Watson
+                        </p>
+                        <p class="Manchester">
+                            Manchester
+                        </p>
+                    </div>
+                </div>
+                <p class="cdesc">
+                    Super Service!
+                </p>
+            </div>
+
+            <div class="box">
+                <div class="msgimg">
+                    <img src="img/message.png" srcset="img/message@2x.png 2x,
+                       img/message@3x.png 3x" class="message">
+                </div>
+                <div class="d-flex">
+                    <img src="img/group-32.png" srcset="img/group-32@2x.png 2x,
+           img/group-32@3x.png 3x" class="c-img">
+                    <div class="d-flex flex-column">
+                        <p class="cname">
+                            John Smith
+                        </p>
+                        <p class="Manchester">
+                            Manchester
+                        </p>
+                    </div>
+                </div>
+                <p class="cdesc">
+                    Very good..!
+                </p>
+            </div>
+
+            <div class="box b3">
+                <div class="msgimg">
+                    <img src="img/message.png" srcset="img/message@2x.png 2x,
+                       img/message@3x.png 3x" class="message">
+                </div>
+                <div class="d-flex">
+                    <img src="img/group-33.png" srcset="img/group-33@2x.png 2x,
+                             img/group-33@3x.png 3x" class="c-img">
+                    <div class="d-flex flex-column">
+                        <p class="cname">
+                            Lars Johnson
+                        </p>
+                        <p class="Manchester">
+                            Manchester
+                        </p>
+                    </div>
+                </div>
+                <p class="cdesc">
+                    Nice work.
+                </p>
+            </div>
         </div>
-        <div class="home_lawyer2_ourteam_2">
-          <img src="img/group-31.png" srcset="img/group-31@2x.png 2x,
-                                 img/group-31@3x.png 3x" class="Group-31">
-        </div>
-        <p class="Lary-Watson">
-          Lary Watson
-        </p>
-        <p class="Manchester">
-          Manchester
-        </p>
-        <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus pulvinar aliquet consequat.
-          Praesent nec malesuada nibh.<br><br>
+    </section>
 
-
-          Nullam et metus congue, auctor augue sit amet, consectetur tortor.
-        </p>
-        <p class="Read-More">
-          Read More
-          <img src="img/shape-2.png" srcset="img/shape-2@2x.png 2x,
-            img/shape-2@3x.png 3x" class="Shape-2">
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="Rounded-Rectangle-506-copy2 section3311">
-
-      <div class="Rounded-Rectangle-506-copy-2">
-        <div class="message">
-          <img src="img/message.png" srcset="img/message@2x.png 2x,
-                    
-           img/message@3x.png 3x" class="message">
-        </div>
-        <div class="home_lawyer2_ourteam_3">
-          <img src="img/group-32.png" srcset="img/group-32@2x.png 2x,
-           img/group-32@3x.png 3x" class="Group-32">
-        </div>
-        <p class="John-Smith">
-          John Smith
-        </p>
-        <p class="Manchester man">
-          Manchester
-        </p>
-        <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus pulvinar aliquet consequat.
-          Praesent nec malesuada nibh.<br><br>
-
-
-          Nullam et metus congue, auctor augue sit amet, consectetur tortor.
-        </p>
-        <p class="Read-More">
-          Read More
-          <img src="img/shape-2.png" srcset="img/shape-2@2x.png 2x,
-              img/shape-2@3x.png 3x" class="Shape-2">
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="Rounded-Rectangle-506-copy3 section3311">
-
-      <div class="Rounded-Rectangle-506-copy-2">
-        <div class="message">
-          <img src="img/message.png" srcset="img/message@2x.png 2x,
-                    
-                                 img/message@3x.png 3x" class="message">
-        </div>
-        <div class="home_lawyer2_ourteam_3">
-          <img src="img/group-33.png" srcset="img/group-33@2x.png 2x,
-                                 img/group-33@3x.png 3x" class="Group-33">
-        </div>
-        <p class="Lars-Johnson">
-          Lars-Johnson
-        </p>
-        <p class="Manchester man">
-          Manchester
-        </p>
-        <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-fe">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum metus pulvinar aliquet consequat.
-          Praesent nec malesuada nibh.<br><br>
-
-          Nullam et metus congue, auctor augue sit amet, consectetur tortor.
-        </p>
-        <p class="Read-More">
-          Read More
-          <img src="img/shape-2.png" srcset="img/shape-2@2x.png 2x,
-                                                     img/shape-2@3x.png 3x" class="Shape-2">
-        </p>
-
-      </div>
-
-    </div>
-
+    <section id="news">
+        <span class="text-center newsletter">
+            SUBSCRIBE TO NEWSLETTER
+        </span>
+        <form>
+            <div class="text-center">
+                <input type="text" placeholder="YOUR EMAIL" class="email" />
+                <button type="submit" class="submitbtn" disabled>SUBMIT</button>
+            </div>
+        </form>
+    </section>
 
     <footer>
-      <div class="text-center">
-        <h1 class="GET-OUR-NEWSLETTER text-center">
-          GET OUR NEWSLETTER
-        </h1>
+        <div class="Rectangle-12">
+            <div class="row justify-content-between align-items-center">
+                <div class="logo col-md-1 col-sm-1">
+                    <a href="#head" class="text-decoration-none"><img
+                            src="img/white-logo-transparent-background-copy-4.png" class="white-logo" alt="logo"></a>
+                </div>
+                <div class=" links col-md-3 col-lg-5 justify-content-between align-items-center">
+                    <ul class=" d-flex justify-content-between align-items-center">
+                        <li>
+                            <a href="#" class="text-decoration-none">HOME</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none ">ABOUT</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none ">TESTIMONIALS</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none ">FAQS</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none">INSURANCE POLICY</a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-decoration-none">IMPRESSUM</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="icons col-md-1">
+                    <a href="https://www.facebook.com/helperDE/" target="_blank" class="text-decoration-none "><img src="img/facebook.png" srcset="img/facebook@2x.png 2x,
+                                    img/facebook@3x.png 3x" class="facebook"></a>
+                    <a href="https://www.instagram.com/helperlandde/" target="_blank" class="text-decoration-none "><img src="img/instagram.png" srcset="img/instagram@2x.png 2x,
+                                    img/instagram@3x.png 3x" class="instagram"></a>
+                </div>
+                <div class="Rectangle-12-copy-2"></div>
 
-        <div class="d-flex justify-content-between">
-          <div class="Ellipse-649 text-center">
-
-            <img src="img/forma-1(1).png" srcset="img/forma-1@2x(1).png 2x,
-                      
-                                   img/forma-1@3x(1).png 3x" class="Forma-1">
-
-          </div>
-          <div class="text-center">
-            <form>
-              <input type="email" class="Rounded-Rectangle-649" placeholder="YOUR EMAIL">
-              <button type="submit" class="Rounded-Rectangle-649-copy">Submit</button>
-            </form>
-          </div>
-          <img src="img/layer-598.png" srcset="img/layer-598@2x.png 2x,
-              
-                           img/layer-598@3x.png 3x" class="Layer-598">
+                <span class="-Helperland-All-rights-reserved-Terms-and-Conditions">
+                    ©2018 Helperland<span class="text-style-1">.</span> All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;<a
+                        href="#" class="terms text-decoration-none"> Terms and
+                        Conditions </a>&nbsp; | &nbsp; <a href="#" class="terms text-decoration-none">Privacy Policy</a>
+                </span>
+            </div>
         </div>
-      </div>
-
-
-
-  </div>
-  <div class="Rectangle-12">
+    </footer>
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="Homepage.js"></script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
+        integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
-    <div class="row justify-content-between align-items-center">
-      <div class="logo col-md-1 col-sm-1">
-        <img src="img/white-logo-transparent-background-copy-4.png" class="white-logo" alt="logo">
-      </div>
-      <div class=" links col-md-3 col-lg-5 justify-content-between align-items-center">
-        <ul class=" d-flex justify-content-between align-items-center">
-          <li>
-            <a href="#" class="text-decoration-none">HOME</a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none ">ABOUT</a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none ">TESTIMONIALS</a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none ">FAQS</a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none">INSURANCE POLICY</a>
-          </li>
-          <li>
-            <a href="#" class="text-decoration-none">IMPRESSUM</a>
-          </li>
-        </ul>
-      </div>
-      <div class="icons col-md-1">
-        <a href="#" class="text-decoration-none "><img src="img/facebook.png" srcset="img/facebook@2x.png 2x,
-                        img/facebook@3x.png 3x" class="facebook"></a>
-        <a href="#" class="text-decoration-none "><img src="img/instagram.png" srcset="img/instagram@2x.png 2x,
-                        img/instagram@3x.png 3x" class="instagram"></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="Rectangle-12-copy">
-    <div class="row">
-      <p class="Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Ut-feu">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut feugiat nunc libero, ac malesuada ligula aliquam
-        ac. <span class="text-style-1">Privacy Policy</span>
-      </p>
-      <div class="Rounded-Rectangle-649-copy-ok">
-        <span class="OK">
-          OK!
-        </span>
-      </div>
-    </div>
-  </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-
-  <script>
-    /* When the user clicks on the button, 
-    toggle between hiding and showing the dropdown content */
-    function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function (event) {
-      if (!event.target.matches('.dropbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-          var openDropdown = dropdowns[i];
-          if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-          }
-        }
-      }
-    }
-  </script>
-
 </body>
 
 </html>

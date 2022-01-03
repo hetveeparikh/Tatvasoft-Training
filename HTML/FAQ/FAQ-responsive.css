@@ -1,115 +1,4 @@
-@media only screen and (max-width:760px) {
-    
-    .Rectangle-21-copy-3 {
-        width: 150px;
-        height: auto;
-        padding: 0px;
-        margin: 0px;
-    }
-    .For-Customer {
-        width: auto;
-        height: auto;
-        font-family: Roboto;
-        font-size: 14px;
-        padding-top: 10px;
-        padding-bottom: 5px;
-    }
-    .Rectangle-21 {
-        width: 150px;
-        height: auto;
-        margin: 0px;
-        padding: 0px;
-    }
-    .For-Service-Provider {
-        width: auto;
-        height: 17px;
-        font-family: Roboto;
-        font-size: 14px;
-        margin: 0px;
-        display: inline-block;
-        padding-top: 10px;
-        padding-bottom: 5px;
-    }
-
-    img.Vector-Smart-Object, img.Vector-Smart-Object1,.Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
-        width: auto;
-        height: auto;
-        padding-left: 30px;
-    }
-    .logo{
-        text-align: center;
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-    }
-    .links ul{
-        flex-direction: column;
-        padding-left: 0px;
-    }
-    .links li{
-        margin-top: 20px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
-        padding-right: 30px;
-    }
-    
-    .icons{
-        padding-bottom: 20px;
-        text-align: center;
-    }
-    .Rounded-Rectangle-5{
-        margin-left: 0px;
-      }
-      .Warranty,.Blog,.Contact{
-        margin-left: 10px;
-      }
-}
-
-@media screen and (max-width: 1300px) and (min-width: 761px) {
-    .Rounded-Rectangle-5{
-        margin-left: 0px;
-      }
-      .Warranty,.Blog,.Contact{
-        margin-left: 10px;
-      }
-    .Rectangle-21-copy-3 {
-        width: 350px;
-        height: auto;
-        padding: 0px;
-        margin: 0px;
-    }
-    .For-Customer {
-        width: auto;
-        height: auto;
-        font-family: Roboto;
-        font-size: 18px;
-        padding-top: 10px;
-        text-align: center;
-        padding-bottom: 5px;
-    }
-    .Rectangle-21 {
-        width: 350px;
-        height: auto;
-        margin: 0px;
-        padding: 0px;
-    }
-    .For-Service-Provider {
-        width: auto;
-        height: 17px;
-        font-family: Roboto;
-        font-size: 18px;
-        margin: 0px;
-        display: inline-block;
-        padding-top: 10px;
-        padding-bottom: 5px;
-        text-align: center;
-    }
-
-    img.Vector-Smart-Object, img.Vector-Smart-Object1{
-        width: auto;
-        height: auto;
-        padding-left: 30px;
-    }
+@media only screen and (min-width: 767px) and (max-width: 1220px) {
     .logo{
         text-align: center;
         width: 100%;
@@ -127,15 +16,9 @@
         margin-left: 20px;
         justify-content: center;
     }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
-        padding-right: 50px;
-        padding-left: 70px;
-        margin-left: 20px;
-    }
     .icons{
         padding-bottom: 20px;
         text-align: center;
-        display: flex;
         margin: 0px;
     }
     .Rectangle-12 .row{
@@ -145,3 +28,69 @@
         margin-left:0px;
     }
 }
+@media only screen and (max-width:780px){
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links ul{
+        flex-direction: column;
+        padding-left: 0px;
+    }
+    .links li{
+        margin-top: 20px;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+    }
+    .forcust{
+        padding: 10px 50px;
+      }
+      .forsp{
+        padding: 10px 20px;
+      }
+      .custrect,.sprect{
+          font-size: 16px;
+      }
+      .tabs{
+          flex-wrap: nowrap;
+      }
+}
+@media only screen and (min-width: 780px) and (max-width: 1100px){
+    .forcust{
+        padding: 20px 50px;
+      }
+      .forsp{
+        padding: 20px 20px;
+      }
+      .custrect,.sprect{
+          font-size: 20px;
+      }
+      .tabs{
+          flex-wrap: nowrap;
+      }
+}
+@media only screen and (min-width: 768px) and (max-width: 904px) {
+    .icons{
+        width:auto !important;
+    }
+}
+@media screen and (max-width: 1310px) and (min-width: 1200px){
+    .links a{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        display: block;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .Warranty,.Blog,.Contact{
+        margin-left:3px;
+    }
+    .Rounded-Rectangle-5{
+        margin-left: 0px;
+    }
+  }

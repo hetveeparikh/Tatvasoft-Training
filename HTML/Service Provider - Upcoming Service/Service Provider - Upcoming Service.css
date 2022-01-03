@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+body{
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+.bg-dark{
+  background-color: #525252 !important;
+  opacity: 0.8 !important;
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.custom-toggler.navbar-toggler {
+  border-color:black;
+}
+.navbar{
+    padding: 0px;
+}
+.nav-link a{
+  color: white;
+}
+
+.navbar-toggler{
+  display: flex;
+}
+.navbar-collapse{
+    flex-grow: inherit;
+}
+.white_logo_transparent_background {
+  width: 73px;
+  height: 54px;
+  margin: 0 0px 0 0;
+}
+.Prices-services {
+  width: 100%;
+  height: 13px;
+  font-family: Roboto;
+  font-size: 17px;
+  margin-top: 5px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: left;
+  align-items: center;
+  color: white;
+}
+.Prices-services:hover,.Warranty:hover,.Blog:hover,.Contact:hover{
+  color:rgb(63, 185, 226);
+  cursor: pointer;
+}
+.Warranty{
+  width:100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: Roboto;
+  font-size: 17px;
+  margin-top: 5px;
+  font-weight: normal;
+  margin-left: 20px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: right;
+}
+.Blog{
+  width:100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-family: Roboto;
+  font-size: 17px;
+  margin-top: 5px;
+  font-weight: normal;
+  margin-left: 20px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: right; 
+}
+.Contact{
+  width:100%;
+  display: flex;
+  align-items: center;
+  color: white;
+  font-family: Roboto;
+  margin-left: 24px;
+  font-size: 17px;
+  margin-top: 5px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: right; 
+}
+
+.ver-line {
+    width: 1px;
+    height: 48px;
+    margin: 2px 16px 0px 10px;
+    background-color: #e1e1e1;
+    display: block;
+    text-align: right;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: transparent;
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: sticky;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {
+    background-color: #ddd;
+  }
+  
+  .show {
+    display: block;
+  }
+
+  .Welcome-Sandip {
+    width: 100%;
+    height: auto;
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.8;
+    display: block;
+    letter-spacing: normal;
+    text-align: center;
+    color: #4f4f4f;
+  }
+  .Sandip{
+    font-weight: bold;
+  }
+  #welcome{
+    width: auto;
+    height: auto;
+    background-color: #f9f9f9;
+    padding-top: 45px;
+  }
+  .l1{
+    width: 100%;
+    height: 1px;
+    margin-top:45px;
+    background-color:#e1e1e1;
+  }
+  .sidebar {
+    margin-top: 30px;
+    padding: 0;
+    margin-right: 14px;
+    width: 200px;
+    background-color: #1d7a8c;
+    height: auto;
+    overflow: auto;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: white;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #146371;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #146371;
+    color: white;
+  }
+.data{
+    height: auto;
+    margin-top:30px;
+    margin-bottom: 30px;
+    padding: 1px 0 0;
+    border: solid 1px #e1e1e1;
+    background-color: white;
+}
+#firstrow{
+    margin: 0 1px;
+    padding: 16px 34px 19px 14px;
+    opacity: 0.5;
+    background-color:#f1f1f1;
+}
+.sort{
+    margin-left:10px;
+    width:14px;
+    height: 14px;
+    margin-top:5px;
+}
+.heading{
+    color: black;
+    font-family: Roboto;
+    font-size: 16px;
+    width: 100%;
+}
+img.calendar {
+    width: 16px;
+    height: 19px;
+    margin: 2px 10px 0px 0px;
+    object-fit: contain;
+}
+img.ghadi{
+    width: 20px;
+    height: 20px;
+    margin: 0px 7px 0px 0px;
+}
+img.ghar{
+    width: 22px;
+    height: 22px;
+    margin: 2px 10px 11px 0px;
+}
+.date,.time,.add,.dist,.sid{
+    margin-bottom: 0px;
+    color:#646464;
+}
+.david,.ghar{
+    width: 100%;
+    height: auto;
+    margin: 0px 0px 0px 0px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.63;
+    letter-spacing: normal;
+    text-align: left;
+    color:#646464;
+}
+.cancel{
+    width: 80px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #ff6b6b;
+}
+.cancel:hover{
+    background-color: #1d7a8c;
+    cursor: pointer;
+}
+
+  /* footer */
+
+  .Rectangle-12 {
+    width: auto;
+    height: auto;
+    margin: 0px 0 0;
+    padding: 27px 0px 0px;
+    background-color: #111;
+  }
+  
+  .links ul{
+    list-style: none;
+  }
+  .links a{
+    color: #f1f1f1;
+  }
+  .links a:hover{
+    color: #1d7a8c;
+  }
+  .logo {
+    width: 106px;
+    height: 78px;
+    margin: 0px 0px 26px 0px;
+    margin-left: 7%;
+    object-fit: contain;
+  }
+  .logo:hover{
+    cursor: pointer;
+  }
+  .icons{
+    margin-right: 4%;
+  }
+  .facebook{
+    margin-right: 20px;
+  }
+  
+  .Rectangle-12-copy-2 {
+    width: 85%;
+    height: 1px;
+    margin: 0px 0px 0px 7%;
+    text-align: center;
+    background-color: #424242;
+  }
+  .-Helperland-All-rights-reserved-Terms-and-Conditions {
+    width: 100%;
+    height: auto;
+    margin: 20px 0px 22px 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.71;
+    letter-spacing: normal;
+    display: block;
+    text-align: center;
+    color: #9ba0a3;
+  }
+
+  .terms{
+    color: #9ba0a3;
+  }
+  .terms:hover{
+    cursor: pointer;
+    color:#1d7a8c;
+  }
