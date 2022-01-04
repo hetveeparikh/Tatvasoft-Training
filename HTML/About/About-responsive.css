@@ -1,4 +1,13 @@
 @media only screen and (max-width:760px) {
+    .Rounded-Rectangle-5{
+        margin-left: 0px;
+    }
+    .Warranty,.Blog,.Contact{
+        margin-left: 10px;
+    }
+    .aboutpara{
+        width:80%;
+    }
     .logo{
         text-align: center;
         width: 100%;
@@ -16,23 +25,22 @@
         padding-bottom: 20px;
         text-align: center;
     }
-    .Rounded-Rectangle-5{
-        margin-left: 0px;
-    }
-    .Warranty,.Blog,.Contact{
-        margin-left: 10px;
-    }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Aenea{
-        width:80%;
-    }
 }
 @media screen and (max-width: 1300px) and (min-width: 761px) {
     .Rounded-Rectangle-5{
         margin-left: 0px;
     }
+    .Contact{
+        margin-right: 20px;
+    }
     .Warranty,.Blog,.Contact{
         margin-left: 10px;
     }
+    .aboutpara{
+        width:80%;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 1220px) {
     .logo{
         text-align: center;
         width: 100%;
@@ -53,7 +61,6 @@
     .icons{
         padding-bottom: 20px;
         text-align: center;
-        display: flex;
         margin: 0px;
     }
     .Rectangle-12 .row{
@@ -62,7 +69,17 @@
     .Rectangle-12-copy-2 {
         margin-left:0px;
     }
-    .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Aenea{
-        width:80%;
+}
+@media only screen and (min-width: 768px) and (max-width: 904px) {
+    .icons{
+        width:auto !important;
     }
 }
+@media screen and (max-width: 1310px) and (min-width: 1200px){
+    .links a{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        display: block;
+    }
+  }

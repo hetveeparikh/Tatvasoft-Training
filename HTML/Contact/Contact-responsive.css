@@ -1,21 +1,4 @@
 @media only screen and (max-width:760px) {
-    .logo{
-        text-align: center;
-        width: 100%;
-        padding: 0px;
-        margin: 0px;
-    }
-    .links ul{
-        flex-direction: column;
-        padding-left: 0px;
-    }
-    .links li{
-        margin-top: 20px;
-    }
-    .icons{
-        padding-bottom: 20px;
-        text-align: center;
-    }
     .Rounded-Rectangle-5{
         margin-left: 0px;
     }
@@ -55,15 +38,45 @@
     .Rectangle-21{
         margin-top: 20px;
     }
+    .logo{
+        text-align: center;
+        width: 100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    .links ul{
+        flex-direction: column;
+        padding-left: 0px;
+    }
+    .links li{
+        margin-top: 20px;
+    }
+    .icons{
+        padding-bottom: 20px;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 1300px) and (min-width: 761px) {
     .Rounded-Rectangle-5{
         margin-left: 0px;
     }
+    .Contact{
+        margin-right: 20px;
+    }
     .Warranty,.Blog,.Contact{
         margin-left: 10px;
     }
+}
+@media only screen and (min-width: 624px) and (max-width: 760px) {
+    .Rounded-Rectangle-2,.Rounded-Rectangle-2-copy-2,.Rounded-Rectangle-2-copy-7,.Rounded-Rectangle-2-copy-10,.Rounded-Rectangle-2-copy-12,.Rounded-Rectangle-2-copy-11{
+        width: 80%;
+    }
+    .Rounded-Rectangle-2-copy-10{
+        width: 72.2%;
+    }
+}
+@media only screen and (min-width: 767px) and (max-width: 1220px) {
     .logo{
         text-align: center;
         width: 100%;
@@ -84,7 +97,6 @@
     .icons{
         padding-bottom: 20px;
         text-align: center;
-        display: flex;
         margin: 0px;
     }
     .Rectangle-12 .row{
@@ -94,3 +106,16 @@
         margin-left:0px;
     }
 }
+@media only screen and (min-width: 768px) and (max-width: 904px) {
+    .icons{
+        width:auto !important;
+    }
+}
+@media screen and (max-width: 1310px) and (min-width: 1200px){
+    .links a{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 100%;
+        display: block;
+    }
+  }
