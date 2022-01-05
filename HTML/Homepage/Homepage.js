@@ -44,3 +44,11 @@ g36.fromTo('.grp36', { scale: 0, rotation: '-45deg', y: 300 }, { scale: 1, rotat
 
 const wdktl = gsap.timeline({ scrollTrigger: '.wdkrow' }, { defaults: { duration: 2 } });
 wdktl.fromTo('.wdkpara', { x: 500, opacity: 0, duration: 4 }, { x: 0, opacity: 1 });
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}

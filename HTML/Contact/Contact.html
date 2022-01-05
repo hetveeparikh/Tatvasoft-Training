@@ -42,28 +42,132 @@
                         </li>
                         <li class="nav-item">
                             <div class="Rounded-Rectangle-5-copy-4">
-                                <a class="nav-link Prices-services " href="#" >Prices &
+                                <a class="nav-link Prices-services " href="#">Prices &
                                     services</a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class="nav-btn">
-                                <a class="nav-link Warranty" href="#" >Warranty</a>
+                                <a class="nav-link Warranty" href="#">Warranty</a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class="nav-btn">
-                                <a class="nav-link Blog" href="#" >Blog</a>
+                                <a class="nav-link Blog" href="#">Blog</a>
                             </div>
                         </li>
                         <li class="nav-item">
                             <div class="nav-btn">
-                                <a class="nav-link Contact" href="#" >Contact</a>
+                                <a class="nav-link Contact" href="#">Contact</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div class="Rounded-Rectangle-5">
-                                <a class="nav-link" href="#" >Login</a>
+                            <div class="Rounded-Rectangle-5" data-bs-toggle="modal" href="#login">
+                                <a class="nav-link" href="#">Login</a>
+                            </div>
+                            <div class="modal fade" id="login" aria-hidden="true" aria-labelledby="log" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="lmodal">Login to your account</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <div>
+                                                <input type="email" placeholder="Email" class="emailmodal" />
+                                            </div>
+                                            <div>
+                                                <input type="password" placeholder="Password" class="passmodal" />
+                                            </div>
+                                            <div>
+                                                <input type="checkbox" value="Remember me" id="rem" />
+                                                <label for="rem" class="remmodal">Remember me</label>
+                                            </div>
+                                            <div class="text-center">
+                                                <button type="submit" class="loginbtnmodal">
+                                                    Login
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="text-decoration-none fpassmodal" data-bs-target="#passm"
+                                                data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a>
+                                        </div>
+                                        <div class=" text-center">
+                                            <a class="accmodal" data-bs-target="#signupmodal" data-bs-toggle="modal"
+                                                data-bs-dismiss="modal">Don't have an account?
+                                                <span class="create"> Create an account </span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="passm" aria-hidden="true" aria-labelledby="pass" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="pass">Forgot Password</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <input type="email" placeholder="Email Address" class="emailmodal">
+                                                <button type="submit" class="sendemail">Send</button>
+                                            </form>
+                                        </div>
+                                        <a class="text-decoration-none text-center loginnowmodal"
+                                            data-bs-target="#login" data-bs-toggle="modal" data-bs-dismiss="modal">Login
+                                            Now</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="signupmodal" aria-hidden="true" aria-labelledby="signup"
+                                tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered ">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="signup">Create an account</h4>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div>
+                                                    <input type="text" placeholder="First name" class="fnamemodal">
+                                                    <input type="text" placeholder="Last name" class="lnamemodal">
+                                                </div>
+                                                <div>
+                                                    <input type="email" placeholder="E-mail Address"
+                                                        class="signupemailmodal">
+                                                    <input type="text" placeholder="+49" class="pinmodal">
+                                                    <input type="text" placeholder="Mobile Number" class="mnomodal">
+                                                </div>
+                                                <div>
+                                                    <input type="password" placeholder="Password" class="signuppass">
+                                                    <input type="password" placeholder="Confirm Password"
+                                                        class="confirmsignuppass">
+                                                </div>
+                                                <div>
+                                                    <input type="checkbox" value="privacy" id="ppcheckbox" />
+                                                    <label for="ppcheckbox" class="signuppolicy">I have read the
+                                                        <a>Privacy Policy</a></label>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit" class="signupreg">Register</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="text-center">
+                                            <p class="alreadyreg">Already registered? <a class="text-decoration-none "
+                                                    data-bs-target="#login" data-bs-toggle="modal"
+                                                    data-bs-dismiss="modal"> Login Now
+                                                </a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -76,6 +180,129 @@
             </div>
 
         </nav>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Book Now</a>
+            <a href="#">Prices & Services</a>
+            <a href="#">Warranty</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+            <div data-bs-toggle="modal" href="#loginnn">
+                <a>Login</a>
+            </div>
+            <div class="modal fade" id="loginnn" aria-hidden="true" aria-labelledby="log" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="lmodal">Login to your account</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div>
+                                <input type="email" placeholder="Email" class="emailmodal" />
+                            </div>
+                            <div>
+                                <input type="password" placeholder="Password" class="passmodal" />
+                            </div>
+                            <div>
+                                <input type="checkbox" value="Remember me" id="rem" />
+                                <label for="rem" class="remmodal">Remember me</label>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="loginbtnmodal">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <a class="text-decoration-none fpassmodal" data-bs-target="#passm1"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a>
+                        </div>
+                        <div class=" text-center">
+                            <a class="accmodal" data-bs-target="#signupmodal1" data-bs-toggle="modal"
+                                data-bs-dismiss="modal">Don't have an account?
+                                <span class="create"> Create an account </span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="passm1" aria-hidden="true" aria-labelledby="pass" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="pass">Forgot Password</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <input type="email" placeholder="Email Address" class="emailmodal">
+                                <button type="submit" class="sendemail">Send</button>
+                            </form>
+                        </div>
+                        <a class="text-decoration-none text-center loginnowmodal"
+                            data-bs-target="#loginnn" data-bs-toggle="modal" data-bs-dismiss="modal">Login
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="signupmodal1" aria-hidden="true" aria-labelledby="signup"
+                tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="signup">Create an account</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div>
+                                    <input type="text" placeholder="First name" class="fnamemodal">
+                                    <input type="text" placeholder="Last name" class="lnamemodal">
+                                </div>
+                                <div>
+                                    <input type="email" placeholder="E-mail Address"
+                                        class="signupemailmodal">
+                                    <input type="text" placeholder="+49" class="pinmodal">
+                                    <input type="text" placeholder="Mobile Number" class="mnomodal">
+                                </div>
+                                <div>
+                                    <input type="password" placeholder="Password" class="signuppass">
+                                    <input type="password" placeholder="Confirm Password"
+                                        class="confirmsignuppass">
+                                </div>
+                                <div>
+                                    <input type="checkbox" value="privacy" id="ppcheckbox" />
+                                    <label for="ppcheckbox" class="signuppolicy">I have read the
+                                        <a>Privacy Policy</a></label>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="signupreg">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="text-center">
+                            <p class="alreadyreg">Already registered? <a class="text-decoration-none "
+                                    data-bs-target="#loginnn" data-bs-toggle="modal"
+                                    data-bs-dismiss="modal"> Login Now
+                                </a></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <a href="#">Become a Helper</a>
+        </div>
+    
+        <div onclick="openNav()" class="sideham">&#9776; </div>
 
     </header>
 
@@ -99,7 +326,8 @@
                     class="Forma-1 text-center align-items-center justify-content-center">
 
                 <span class="-Lorem-ipsum-text-100-Lorem-ipsum-AB flex-column">
-                    1111 Lorem ipsum text 100, Lorem ipsum AB
+                    Königswinterer Str. 116
+                    53227 Bonn
                 </span>
             </div>
 
@@ -147,18 +375,17 @@
 
 
                 <div class="f2">
-                    <input type="text" placeholder="+49" class="Rounded-Rectangle-2-copy-20">
+                    <input type="text" placeholder="+49" class="Rounded-Rectangle-2-copy-20" disabled>
                     <input type="text" placeholder="Mobile number" class="Rounded-Rectangle-2-copy-10">
                     <input type="email" placeholder="Email address" class="Rounded-Rectangle-2-copy-7">
                 </div>
 
                 <div>
                     <select title="Subject" class="Rounded-Rectangle-2-copy-12">
-                        <option value="">&nbsp;&nbsp;&nbsp;Subject</option>
-                        <option value="A">A</option>
-                        <option value="B">B</option>
-                        <option value="C">C</option>
-                        <option value="D">D</option>
+                        <option value="">&nbsp;&nbsp;General</option>
+                        <option value="A">Inquiry</option>
+                        <option value="B">Renewal</option>
+                        <option value="C">Revocation</option>
                     </select>
                 </div>
 
@@ -220,9 +447,11 @@
                     </ul>
                 </div>
                 <div class="icons col-md-1">
-                    <a href="https://www.facebook.com/helperDE/" target="_blank" class="text-decoration-none "><img src="img/facebook.png" srcset="img/facebook@2x.png 2x,
+                    <a href="https://www.facebook.com/helperDE/" target="_blank" class="text-decoration-none "><img
+                            src="img/facebook.png" srcset="img/facebook@2x.png 2x,
                                     img/facebook@3x.png 3x" class="facebook"></a>
-                    <a href="https://www.instagram.com/helperlandde/" target="_blank" class="text-decoration-none "><img src="img/instagram.png" srcset="img/instagram@2x.png 2x,
+                    <a href="https://www.instagram.com/helperlandde/" target="_blank" class="text-decoration-none "><img
+                            src="img/instagram.png" srcset="img/instagram@2x.png 2x,
                                     img/instagram@3x.png 3x" class="instagram"></a>
                 </div>
                 <div class="Rectangle-12-copy-2"></div>
