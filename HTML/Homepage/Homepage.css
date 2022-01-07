@@ -63,13 +63,7 @@ body {
 .helper {
   text-align: center;
 }
-.custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  color: rgb(255, 255, 255);
-}
-.custom-toggler .navbar-toggler:focus {
-  box-shadow: none;
-}
+
 img.white_logo_transparent_background {
   width: 175px;
   height: 130px;
@@ -696,7 +690,7 @@ img.Forma-1 {
   box-shadow: none;
 }
 .accmodal{
-  color: black;
+  color: black !important;
   margin-top: 20px;
   display: block;
 }
@@ -712,6 +706,7 @@ img.Forma-1 {
 }
 .loginnowmodal{
   margin-bottom: 20px;
+  color: #1d7a8c !important;
 }
 .pinmodal:focus{
   background-color: transparent;
@@ -797,6 +792,15 @@ img.Forma-1 {
 
 .sidenav a:hover {
   color: #1d7a8c;
+  cursor: pointer;
+}
+.pp{
+  display: inline !important;
+  padding: 0px !important;
+  text-decoration: none;
+}
+.lm:hover{
+  color: #1d7a8c;
 }
 
 .sidenav .closebtn {
@@ -805,9 +809,6 @@ img.Forma-1 {
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
-}
-.navbar-toggler {
-  display: none;
 }
 .navbar-toggler {
   display: none;

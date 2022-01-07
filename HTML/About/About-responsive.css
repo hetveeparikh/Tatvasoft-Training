@@ -83,3 +83,30 @@
         display: block;
     }
   }
+  @media screen and (max-width: 576px) and (min-width: 498px){
+    .mnomodal{
+        width: 183px;
+    }
+    .pinmodal{
+        width: 45px;
+    }
+}
+@media screen and (max-width: 498px){
+    .signupemailmodal{
+        margin-right: 41%;
+    }
+    .mnomodal{
+        width: 183px;
+    }
+    .pinmodal{
+        width: 45px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .sideham{
+        display: none;
+    }
+    .sidenav{
+        display: none;
+    }
+}

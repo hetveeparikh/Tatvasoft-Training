@@ -1,905 +1,688 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
-body{
-    margin: 0px;
-    padding: 0px;
-    overflow-x: hidden;
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
-.bg-dark{
-    background-color: #525252 !important;
-    opacity: 0.8 !important;
+.pricesnav {
+  background-color: rgb(82,82,82,0.8) !important;
+  /*opacity: 0.8 !important;*/
 }
-  .custom-toggler .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  }
-  .custom-toggler.navbar-toggler {
-    border-color:black;
-  }
-  .navbar{
-      padding: 0px;
-  }
-  .navbar-toggler{
-    display: flex;
-  }
-  .navbar-collapse{
-      flex-grow: inherit;
-  }
-  .white_logo_transparent_background {
-    width: 73px;
-    height: 54px;
-    margin: 0 0px 0 0;
-  }
-  .Rounded-Rectangle-5-copy-5 {
-    width: 111px;
-    height: 40px;
-    margin: 6px 10px 8px 0px;
-    padding: 0px 19px 15px 10px;
-    border-radius: 20px;
-    border: solid 1px rgba(255, 255, 255, 0.5);
-    background-color:#29626d;
-  }
-  .Book-now {
-    width: 92px;
-    height: 13px;
-    font-family: Roboto;
-    font-size: 17px;
-    display: block;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    text-align:  center;
-    color: white;
-  }
-  .Rounded-Rectangle-5-copy-4 {
-    width: 161px;
-    height: 40px;
-    margin: 6px 0px 8px 0px;
-    padding: 0px 14px 15px 10px;
-    border-radius: 20px;
-    border: solid 1px rgba(255, 255, 255, 0.5);
-    background-color: transparent;
-  }
-  .Prices-services {
-    width: 145px;
-    height: 13px;
-    font-family: Roboto;
-    font-size: 17px;
-    display: block;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    text-align: center;
-    color: white;
-  }
-  .Warranty{
-    width:65px;
-    display: block;
-    color: white;
-    font-family: Roboto;
-    font-size: 17px;
-    margin-top: 8px;
-    font-weight: normal;
-    margin-left: 28px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    text-align: right;
-  }
-  .Blog{
-    width:30px;
-    display: block;
-    color: white;
-    font-family: Roboto;
-    font-size: 17px;
-    margin-top: 8px;
-    font-weight: normal;
-    margin-left: 28px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    text-align: right; 
-  }
-  .Contact{
-    width:59px;
-    display: block;
-    color: white;
-    font-family: Roboto;
-    font-size: 17px;
-    margin-top: 8px;
-    font-weight: normal;
-    margin-left: 28px;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.41;
-    letter-spacing: normal;
-    text-align: right; 
-  }
-  .Rounded-Rectangle-5 {
-    width: 83px;
-    height: 40px;
-    margin: 5px 10px 8px 35px;
-    padding: 0px 0px 0px 14px;
-    border-radius: 20px;
-    border: solid 1px rgba(255, 255, 255, 0.5);
-    background-color: #29626d;
-  }
-  .Rounded-Rectangle-5-copy {
-    width: 161px;
-    height: 40px;
-    margin: 6px 0 8px 0px;
-    padding: 0px 0px 13px 10px;
-    border-radius: 20px;
-    border: solid 1px rgba(255, 255, 255, 0.5);
-    background-color:#29626d;
-  }
-  .Login {
-    width: 39px;
-    height: 15px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: right;
-  }
-  .Become-a-Helper {
-    width: 163px;
-    height: 15px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    display: block;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: right;
-  }
-
-  .Prices {
-    width: 98px;
-    height: 27px;
-    margin: 38px 0px 18px 0px;
-    font-family: Roboto;
-    font-size: 36px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.67;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
-  .line1 img{
-    padding-top:0px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  
-  .line1::before,.line1::after{
-    content: "";
-    width: 62px;
-    height: 1px;
-    background-color: #cccccc;
-    display: block;
-  }
-
-  
-  /* Box */
-
-  .Rectangle-20 {
-    width: 553px;
-    height: 304px;
-    margin: 42px 0px 0px;
-    padding: 0 0 32px;
-    border: solid 1px #b0c9ce;
-    background-color: white;
-  }
-
-  .Rectangle-20-copy {
-    width: 553px;
-    height: 59px;
-    margin: 0 0 0px;
-    padding: 18px 0px 20px;
-    background-color: #1d7a8c;
-  }
-  .One-Time {
-    width: 100%;
-    height: 21px;
-    font-family: Roboto;
-    font-size: 28px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.86;
-    letter-spacing: normal;
-    text-align: center;
-    color: white;
-  }
-  .hr {
-    width: 93px;
-    height: 36px;
-    margin: 30px 211px 37px 0px;
-    font-family: Roboto;
-    font-size: 30px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.8;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-  .hr .text-style-1 {
-    font-size: 48px;
-    font-weight: bold;
-  }
-  .rate{
-      display: flex;
-  }
-  img.Forma-11 {
-    width: 25px;
-    height: 24px;
-    margin: 0px 0px 19px 151px;
-    object-fit: contain;
-    background-color: transparent;
-  }
-  .euro {
-    width: 31px;
-    height: 36px;
-    margin: 32px 9px 38px 209px;
-    background-color: #646464;
-  }
-  .Lower-prices {
-    width: 190px;
-    height: 15px;
-    margin: 0px 0px 22px 7px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
-  .firstline,.secondline,.thirdline {
-      display: flex;
-  }
-  .Easy-online-secure-payment {
-    width: 250px;
-    height: 15px;
-    margin: 0px 0px 22px 6px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
-  .Easy-amendment {
-    width: 160px;
-    height: 15px;
-    margin: 0px 0px 3px 7px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
-
-  /* partition */
-
-  .Rectangle-21 {
-    width: 1140px;
-    height: 1px;
-    margin: 51px 0px 47px 0px;
-    background-color: #dcdcdc;
-  }
-
-  /* Extra Services */
-
-  .Extra-services {
-    width: 100%;
-    height: 27px;
-    margin: 0px 0px 18px 0px;
-    font-family: Roboto;
-    font-size: 36px;
-    display: block;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.67;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
-
-  .first-667 {
-    width: 108px;
-    height: 108px;
-    margin: 39px 0px 17px 50px;
-    padding: 30px 36px 30px 36px;
-    border: solid 1px #b0c9ce;
-    background: transparent;
-    border-radius:50%;
-    text-align: center;
-    gap: 1rem;
-  }
-  .second-667 {
-    width: 108px;
-    height: 108px;
-    margin: 39px 0px 17px 0px;
-    padding: 24px 40px 28px;
-    border: solid 1px #b0c9ce;
-    background: transparent;
-    border-radius:50%;
-  }
-  .third-667 {
-    width: 108px;
-    height: 108px;
-    margin: 39px 0px 17px 0px;
-    padding: 37px 28px 38px;
-    border: solid 1px #b0c9ce;
-    background: transparent;
-    border-radius:50%;
-  }
-  .fourth-667 {
-    width: 108px;
-    height: 108px;
-    margin: 39px 0px 17px 0px;
-    padding: 31px 34px 31px 35px;
-    border: solid 1px #b0c9ce;
-    background: transparent;
-    border-radius:50%;
-  }
-  .fifth-667 {
-    width: 108px;
-    height: 108px;
-    margin: 39px 0px 17px 0px;
-    padding: 31px 30px 30px 31px;
-    border: solid 1px #b0c9ce;
-    background: transparent;
-    border-radius:50%;
-  }
-
-  .first{
-    margin-left: 10%;
-  }
-  .second{
-    margin-left:-60px;
-  }
-  .fifth{
-    margin-right: 10%;
-  }
-
-
-  img.firstimg {
-    width: 37px;
-    height: 48px;
-    text-align:center;
-    object-fit: contain;
-    background-color:transparent;
-  }
-  img.secondimg {
-    width: 28px;
-    height: 56px;
-    object-fit: contain;
-    background-color: transparent;
-  }
-  img.thirdimg {
-    width: 52px;
-    height: 33px;
-    object-fit: contain;
-    background-color: transparent;
-  }
-  img.fourthimg {
-    width: 39px;
-    height: 46px;
-    object-fit: contain;
-    background-color: transparent;
-  }
-  img.fifthimg {
-    width: 47px;
-    height: 47px;
-    object-fit: contain;
-    background-color: transparent;
-  }
-
-  .Inside-cabinets {
-    width: 100%;
-    height: 12px;
-    margin: 0px 0px 12px 0px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-  .Inside-fridge {
-    width: 90px;
-    height: 15px;
-    margin: 0px 0px 9px 10px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-  .Inside-oven {
-    width: 82px;
-    height: 12px;
-    margin: 0px 0px 12px 10px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-  .Laundry-wash-dry {
-    width: 140px;
-    height: 15px;
-    margin: 0px 0px 9px -12px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-  .Interior-windows {
-    width: 119px;
-    height: 12px;
-    margin: 0px 0px 12px -5px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    text-align: center;
-    color: #646464;
-  }
-
-
-  .first30 {
-    width: 100%;
-    height: 14px;
-    margin: 0px 117px 61px 0px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.44;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1d7a8c;
-  }
-  .second30{
-    width: 95px;
-    height: 14px;
-    margin: 0px 0px 61px 8px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.44;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1d7a8c;
-  }
-  .third30{
-    width: 95px;
-    height: 14px;
-    margin: 0px 0px 61px 3px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.44;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1d7a8c;
-  }
-  .fourth30{
-    width: 95px;
-    height: 14px;
-    margin: 0px 0px 61px 3px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.44;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1d7a8c;
-  }
-  .fifth30{
-    width: 95px;
-    height: 14px;
-    margin: 0px 0px 61px 3px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.44;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1d7a8c;
-  }
-  .first,.second,.third,.fourth,.fifth {
-    display: flex;
-    flex-direction:column;
+.navbar {
+  padding: 0px;
+}
+.navbar-toggler {
+  display: flex;
+}
+.navbar-collapse {
+  flex-grow: inherit;
+}
+.nav-item .nav-btn a{
+  color: white;
+}
+.nav-item .nav-btn a:hover{
+  color: #f1f1f1;
+  cursor: pointer;
+}
+.white_logo_transparent_background {
+  width: 73px;
+  height: 54px;
+  margin: 0 0px 0 0;
+}
+.Rounded-Rectangle-5-copy-5 {
+  width: 111px;
+  height: 40px;
+  margin: 6px 0px 8px 0px;
+  padding: 0px 19px 15px 10px;
+  border-radius: 20px;
+  border: solid 1px rgba(255, 255, 255);
+  background-color: #29626d;
+}
+.Book-now {
+  width: 92px;
+  height: 13px;
+  font-family: Roboto;
+  font-size: 17px;
+  display: block;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+}
+.Rounded-Rectangle-5-copy-4 {
+  height: 40px;
+  margin: 6px 0px 8px 0px;
+  padding: 0px 0px 15px 10px;
+  border-radius: 20px;
+  background-color: transparent;
+}
+.Prices-services {
+  width: auto;
+  height: auto;
+  font-family: Roboto;
+  font-size: 17px;
+  display: block;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+}
+.Warranty {
+  width: 65px;
+  display: block;
+  color: white;
+  font-family: Roboto;
+  font-size: 17px;
+  margin-top: 8px;
+  font-weight: normal;
+  margin-left: 20px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: right;
+}
+.Blog {
+  width: 30px;
+  display: block;
+  color: white;
+  font-family: Roboto;
+  font-size: 17px;
+  margin-top: 8px;
+  font-weight: normal;
+  margin-left: 28px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: right;
+}
+.Contact {
+  width: 59px;
+  display: block;
+  color: white;
+  font-family: Roboto;
+  font-size: 17px;
+  margin-top: 8px;
+  font-weight: normal;
+  margin-left: 28px;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.41;
+  letter-spacing: normal;
+  text-align: right;
+}
+.Rounded-Rectangle-5 {
+  width: 83px;
+  height: 40px;
+  margin: 5px 10px 8px 35px;
+  padding: 0px 0px 0px 14px;
+  border-radius: 20px;
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  background-color: #29626d;
+}
+.Rounded-Rectangle-5-copy {
+  width: 161px;
+  height: 40px;
+  margin: 6px 0 8px 0px;
+  padding: 0px 0px 13px 10px;
+  border-radius: 20px;
+  border: solid 1px rgba(255, 255, 255, 0.5);
+  background-color: #29626d;
+}
+.Login {
+  width: 39px;
+  height: 15px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: right;
+}
+.Become-a-Helper {
+  width: 163px;
+  height: 15px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: right;
+}
+.Prices {
+  width: auto;
+  height: auto;
+  margin: 38px 0px 18px 0px;
+  font-family: Roboto;
+  font-size: 36px;
+  font-weight: 500;
+  font-stretch: normal;
+  display: block;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.pricesbanner{
+  width:5120px;
+}
+.line1 img {
+  padding-top: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
-  /* What we ... */
+.line1::before,
+.line1::after {
+  content: "";
+  width: 62px;
+  height: 1px;
+  background-color: #cccccc;
+  display: block;
+}
 
-  .Rectangle-21-copy {
-    width: inherit;
-    height: auto;
-    margin: 0px 0 78px;
-    padding: 80px 0px 82px 0px;
-    background-color: #f6f6f6;
-  } 
-  .card-body{
-    padding:0px !important;
-    padding-top:24px !important;
-  }
-  .What-we-include-in-cleaning {
-    width: 100%;
-    height: 34px;
-    margin: 0 0px 10px 0px;
-    font-family: Roboto;
-    font-size: 36px;
-    font-weight: 500;
-    display: block;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.67;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
-  .Bedroom-and-Living-Room {
-    width: 245px;
-    height: 19px;
-    margin: 24px 112px 0px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
-  .card{
-    margin-top:42px;
-  }
-  .dust{
-    width: 284px;
-    height: auto;
-    margin: 14px 0px 0px 0px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #4f4f4f;
-  }
+/* Box */
 
-  /* second */
+.Rectangle-20 {
+  width: 40%;
+  height: auto;
+  margin: 42px 0px 0px;
+  padding: 0 0 32px;
+  border: solid 1px #b0c9ce;
+  background-color: white;
+}
 
-  .Bathrooms {
-    width: 105px;
-    height: 15px;
-    margin: 24px 70px 0px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
-  .wash{
-    width: 330px;
-    height: auto;
-    margin: 14px 0px 0px 0px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    display: block;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #4f4f4f;
-  }
-  .Kitchen {
-    width: 72px;
-    height: 15px;
-    margin: 21px 293px 0px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
-  .kit{
-    width: 317px;
-    height: auto;
-    margin: 14px 0px 0px 0px;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #4f4f4f;
-  }
+.Rectangle-20-copy {
+  width: 100%;
+  height: auto;
+  margin: 0 0 0px;
+  padding: 18px 0px 18px;
+  background-color: #1d7a8c;
+}
+.One-Time {
+  width: 100%;
+  height: auto;
+  font-family: Roboto;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: white;
+}
+.hr {
+  width: auto;
+  height: auto;
+  margin: 30px 0px 37px 0px;
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.8;
+  letter-spacing: normal;
+  text-align: center;
+  color: #646464;
+}
+.hr .text-style-1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+.rate {
+  display: flex;
+  justify-content: center;
+}
+img.Forma-11 {
+  width: 25px;
+  height: 24px;
+  margin: 0px 0px 19px 0px;
+  object-fit: contain;
+  background-color: transparent;
+}
+.euro {
+  width: 31px;
+  height: 36px;
+  margin: 32px 9px 38px 0px;
+  background-color: #646464;
+}
+.Lower-prices {
+  width: auto;
+  height: auto;
+  margin: 0px 0px 22px 7px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+.firstline,
+.secondline,
+.thirdline {
+  display: flex;
+  margin-left: 25%;
+}
+.Easy-online-secure-payment {
+  width: auto;
+  height: auto;
+  margin: 0px 0px 22px 6px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+.Easy-amendment {
+  width: auto;
+  height: auto;
+  margin: 0px 0px 3px 7px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
 
-  
-  /* Why Helperland */
+/* partition */
 
-  .Why-Helperland {
-    width: 100%;
-    height: 34px;
-    margin: 0px 0px 10px 0px;
-    font-family: Roboto;
-    display: block;
-    font-size: 36px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 0.67;
-    letter-spacing: normal;
-    text-align: center;
-    color: #4f4f4f;
-  }
+.pricesline {
+  width: 80%;
+  height: 1px;
+  margin: 51px 0px 47px 10%;
+  background-color: #dcdcdc;
+}
 
-  
-  .Experienced-and-vetted-professionals {
-    width: 100%;
-    height: 19px;
-    margin: 42px 0px 0px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: right;
-    color: #646464;
-  }
-  .dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext {
-    width: 100%;
-    height: 54px;
-    margin: 13px 0px 0px 0px;
-    font-family: Roboto;
-    font-size: 14px;
-    justify-content:right;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: right;
-    color: #646464;
-  }
-  .Dedicated-customer-service {
-    width: 100%;
-    height: 15px;
-    margin: 47px 0px 17px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: right;
-    color: #646464;
-  }
-  .to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th {
-    width: 100%;
-    height: 54px;
-    margin: 0px 0px 81px 0px;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: right;
-    color: #646464;
-  }
+/* Extra Services */
 
-  .Every-cleaning-is-insured {
-    width: 230px;
-    height: 19px;
-    margin: 42px 0px 13px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
-  img.the-best-img-1{
-    margin-top:42px;
-  }
-  .and-seek-to-provide-exceptional-service-and-engage-in-proactive {
-    width: 275px;
-    height: 54px;
-    margin: 0px 0px 47px 0px;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
-  .Secure-online-payment {
-    width: 215px;
-    height: 19px;
-    margin: 0px 0px 13px 0px;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
-  .Payment-is-processed-securely-online-Customers-pay-safely-onli {
-    width: 256px;
-    height: 54px;
-    margin: 0px 0px 81px 0px;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: left;
-    color: #646464;
-  }
+ .Extra-services {
+  width: 100%;
+  height: 27px;
+  margin: 0px 0px 18px 0px;
+  font-family: Roboto;
+  font-size: 36px;
+  display: block;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.esellipse {
+  width: 108px;
+  height: 108px;
+  margin: 39px 0px 17px 0px;
+  padding: 30px 35px 30px 36px;
+  border: solid 1px #b0c9ce;
+  border-radius: 108px;
+}
+.esimg{
+  width: 37px;
+  height: 48px;
+  object-fit: contain;
+}
+.esinside{
+  width: auto;
+  height: auto;
+  margin: 17px 0px 12px 0px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: center;
+  color:#646464;
+}
+.esminutes {
+  width: auto;
+  height: auto;
+  margin: 0px 0px 61px 0px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.44;
+  letter-spacing: normal;
+  text-align: center;
+  color: #1d7a8c;
+}
 
+/* What we ... */
 
-  /* Newsletter */
+.Rectangle-21-copy {
+  width: inherit;
+  height: auto;
+  margin: 0px 0 78px;
+  padding: 80px 0px 82px 0px;
+  background-color: #f6f6f6;
+}
+.card-body {
+  padding: 0px !important;
+  padding-top: 24px !important;
+}
+.What-we-include-in-cleaning {
+  width: 100%;
+  height: auto;
+  margin: 0 0px 10px 0px;
+  font-family: Roboto;
+  font-size: 36px;
+  font-weight: 500;
+  display: block;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.Bedroom-and-Living-Room {
+  width: auto;
+  height: auto;
+  margin: 24px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.card {
+  margin-top: 42px;
+}
+.dust {
+  width: auto;
+  height: auto;
+  margin: 14px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
 
-  .GET-OUR-NEWSLETTER {
-    width: 300px;
-    height: 13px;
-    margin: 0px 0px 20px 0px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: 500;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.22;
-    letter-spacing: normal;
-    text-align: center;
-    color: #353548;
-  }
-  .Ellipse-649 {
-    width: 48px;
-    height: 48px;
-    margin-left: 90px;
-    padding: 18px 14px 20px;
-    border-radius: 50%;
-    background-color: #525252;
-  }
-  img.Forma-1 {
-    width: 20px;
-    height: 10px;
-    margin-left: 0px;
-    margin-top: -20px;
-    object-fit: contain;
-    background-color: transparent;
-    position: relative;
-  }
-  .Rounded-Rectangle-649 {
-    width: 233px;
-    height: 40px;
-    padding: 14px 0px 16px 22px;
-    margin-bottom: 53px;
-    border-radius: 20px;
-    border: solid 1px #565656;
-    background-color: #f4f5f8;
-  }
-  .Your-Email {
-    width: 100px;
-    height: 10px;
-    display: block;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: normal;
-    text-align: left;
-    color: #565656;
-  }
-  .Rounded-Rectangle-649-copy {
-    width: 88px;
-    height: 40px;
-    border-radius: 20px;
-    margin-bottom: 53px;
-    padding: 5px 0px 20px 0px;
-    color: white;
-    background-color: salmon;
-  }
-  
-  img.Layer-598 {
-    width: 63px;
-    height: 63px;
-    margin: 0px 70px 76px 0px;
-    object-fit: contain;
-  }
-  
+/* second */
+
+.Bathrooms {
+  width: auto;
+  height: auto;
+  margin: 24px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.wash {
+  width: auto;
+  height: auto;
+  margin: 14px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  display: block;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+.Kitchen {
+  width: auto;
+  height: auto;
+  margin: 21px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.kit {
+  width: auto;
+  height: auto;
+  margin: 14px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #4f4f4f;
+}
+.card{
+  width: 385px;
+  border: none;
+}
+.Vector-smart-object{
+  width: 22px;  
+  height: 22px;  
+  margin: 16px 9px 0px 0px;
+  background-color: transparent;
+}
+
+/* Why Helperland */
+
+.Why-Helperland {
+  width: 100%;
+  height: 34px;
+  margin: 0px 0px 10px 0px;
+  font-family: Roboto;
+  display: block;
+  font-size: 36px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.67;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+
+.Experienced-and-vetted-professionals {
+  width: 100%;
+  height: auto;
+  margin: 42px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  display: block;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: right;
+  color: #646464;
+}
+.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext {
+  width: 100%;
+  height: auto;
+  margin: 13px 0px 0px 0px;
+  font-family: Roboto;
+  font-size: 14px;
+  justify-content: right;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: right;
+  color: #646464;
+}
+.Dedicated-customer-service {
+  width: 100%;
+  height: auto;
+  margin: 47px 0px 17px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: right;
+  color: #646464;
+}
+.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th {
+  width: 100%;
+  height: auto;
+  margin: 0px 0px 81px 0px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: right;
+  color: #646464;
+}
+
+.Every-cleaning-is-insured {
+  width: 100%;
+  height: auto;
+  margin: 42px 0px 13px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+
+.and-seek-to-provide-exceptional-service-and-engage-in-proactive {
+  width: 100%;
+  height: auto;
+  margin: 0px 0px 47px 0px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+.Secure-online-payment {
+  width: 100%;
+  height: auto;
+  margin: 0px 0px 13px 0px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+.Payment-is-processed-securely-online-Customers-pay-safely-onli {
+  width: 100%;
+  height: auto;
+  margin: 0px 0px 81px 0px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+/* Newsletter */
+
+#news {
+  padding-top: 85px;
+  padding-bottom: 53px;
+}
+.newsletter {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  font-family: Roboto;
+  font-size: 19px;
+  font-weight: 500;
+  display: block;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.22;
+  letter-spacing: normal;
+  text-align: center;
+  color: #353548;
+}
+.email {
+  width: 233px;
+  height: 40px;
+  padding: 14px 0px 16px 22px;
+  border-radius: 20px;
+  border: solid 1px #565656;
+  background-color: #f4f5f8;
+}
+.submitbtn {
+  width: 88px;
+  height: 40px;
+  border-radius: 20px;
+  color: white;
+  background-color: #ff7b6d;
+}
+.submitbtn:hover {
+  background-color: #1d7a8c;
+}
+/* footer */
 .Rectangle-12 {
   width: auto;
   height: auto;
@@ -908,11 +691,14 @@ body{
   background-color: #111;
 }
 
-.links ul{
+.links ul {
   list-style: none;
 }
-.links a{
+.links a {
   color: #f1f1f1;
+}
+.links a:hover {
+  color: #1d7a8c;
 }
 .logo {
   width: 106px;
@@ -921,22 +707,25 @@ body{
   margin-left: 7%;
   object-fit: contain;
 }
-.icons{
+.logo:hover {
+  cursor: pointer;
+}
+.icons {
   margin-right: 4%;
 }
-
-.facebook{
+.facebook {
   margin-right: 20px;
 }
 
 .Rectangle-12-copy-2 {
   width: 85%;
   height: 1px;
-  margin: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 7%;
+  text-align: center;
   background-color: #424242;
 }
 .-Helperland-All-rights-reserved-Terms-and-Conditions {
-  width: auto;
+  width: 100%;
   height: auto;
   margin: 20px 0px 22px 0px;
   padding-left: 20px;
@@ -953,6 +742,215 @@ body{
   color: #9ba0a3;
 }
 
-.-Helperland-All-rights-reserved-Terms-and-Conditions .text-style-1 {
-  color: #737381;
+.terms {
+  color: #9ba0a3;
+}
+.terms:hover {
+  cursor: pointer;
+  color: #1d7a8c;
+}
+.Ellipse-649 {
+  width: 55px;
+  height: 55px;
+  padding: 13px 14px 0px;
+  background-color: #2e2c2c;
+  border-radius: 48px;
+}
+#topbtn {
+  border-radius: 48px;
+  position: fixed;
+  bottom: 100px;
+  left: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.Ellipse-649:hover {
+  background-color: #1d7a8c;
+}
+.emailmodal,
+.passmodal {
+  width: 100%;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  border: solid 1px #8e8e8e;
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: #2e2c2c;
+}
+.modal-title,
+.remmodal,
+.fpassmodal,
+.accmodal,
+.signuppolicy,
+.alreadyreg {
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  margin-bottom: 10px;
+  width: auto;
+  text-decoration: none;
+  color: #424242;
+}
+.loginbtnmodal,
+.sendemail {
+  font-family: Roboto;
+  font-weight: normal;
+  height: 40px;
+  width: 100%;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  padding: 5px 22px;
+  background-color: #1d7a8c;
+  border-radius: 40px;
+  color: white;
+  margin-bottom: 10px;
+}
+.btn-close:focus {
+  box-shadow: none;
+}
+.accmodal {
+  color: black !important;
+  margin-top: 20px;
+  display: block;
+}
+.accmodal:hover,
+.fpassmodal:hover,
+.remmodal:hover {
+  color: #111;
+  cursor: pointer;
+}
+.create,
+.fpassmodal,
+.signuppolicy a,
+.alreadyreg a {
+  color: #1d7a8c !important;
+}
+.create {
+  display: block;
+}
+.loginnowmodal {
+  margin-bottom: 20px;
+  color: #1d7a8c !important;
+}
+.pinmodal:focus {
+  background-color: transparent;
+  box-shadow: none;
+}
+.loginnowmodal:hover,
+.signuppolicy a:hover {
+  cursor: pointer;
+}
+.sendemail {
+  margin-top: 10px;
+}
+.fnamemodal,
+.lnamemodal,
+.signupemailmodal,
+.mnomodal,
+.signuppass,
+.confirmsignuppass {
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  border: solid 1px #8e8e8e;
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: #2e2c2c;
+}
+.signupreg {
+  font-family: Roboto;
+  font-weight: normal;
+  height: 40px;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  padding: 5px 22px;
+  background-color: #1d7a8c;
+  border-radius: 40px;
+  color: white;
+}
+.pinmodal {
+  padding: 5px 2px;
+  width: 9%;
+  margin-bottom: 10px;
+  border: solid 1px #8e8e8e;
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: #2e2c2c;
+}
+.mnomodal {
+  width: 40%;
+  margin-left: -11px;
+}
+.alreadyreg a:hover {
+  cursor: pointer;
+}
+
+/* sidebar */
+.sideham {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 15px;
+  right: 28px;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #f1f1f1;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 0px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #1d7a8c;
+  cursor: pointer;
+}
+.pp{
+  display: inline !important;
+  padding: 0px !important;
+  text-decoration: none;
+}
+.lm:hover{
+  color: #1d7a8c;
+}
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.navbar-toggler {
+  display: none;
+}
+.navbar-toggler {
+  display: none;
+}
+.modal-backdrop {
+  position: inherit;
 }

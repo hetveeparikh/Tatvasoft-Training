@@ -21,131 +21,121 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
 }
-.nav-link{
-  display: inline;
+.bahrect:hover,
+.bookrect:hover,
+.loginrect:hover {
+  background-color: white;
+  color: rgba(0, 95, 113);
+  cursor: pointer;
 }
-.front {
-  margin-top: 10px;
-}
-.see a {
-  text-align: center;
+.prices:hover,
+.blog:hover,
+.warranty:hover,
+.contact:hover {
+  cursor: pointer;
+  width: auto;
+  height: 40px;
+  border-radius: 20px;
+  border: solid 1px white;
+  background-color: transparent;
   color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.book,
+.prices,
+.blog,
+.loginbtn,
+.helper,
+.contact,
+.warranty {
+  color: white;
+}
+.prices,
+.warranty,
+.blog,
+.contact {
+  text-align: left;
   margin-left: 10px;
   margin-right: 10px;
 }
-.icons a {
-  color: white;
+.book,
+.loginbtn,
+.helper {
+  text-align: center;
 }
-.custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-.custom-toggler.navbar-toggler {
-  border-color:transparent;
-}
+
 img.white_logo_transparent_background {
   width: 175px;
   height: 130px;
   object-fit: contain;
 }
-.book:hover,.prices:hover{
-  color: rgba(230, 213, 213, 0.931);
-  cursor: pointer;
-}
-.Rounded-Rectangle-5-copy-4 {
+.bookrect {
   width: 161px;
   height: 40px;
   border-radius: 20px;
   border: solid 1px white;
-  margin-top: -10px;
   background-color: transparent;
 }
-.Rounded-Rectangle-5 {
+.loginrect {
   width: 97px;
   height: 40px;
   border-radius: 20px;
-  margin-top: -10px;
+  margin-right: 11px;
   border: solid 1px white;
   background-color: transparent;
 }
-.loginbtn{
-  display: inline-block;
-}
-.Rounded-Rectangle-5-copy {
+.bahrect {
   width: 161px;
   height: 40px;
   border-radius: 20px;
-  margin-left: 11px;
-  margin-top: -10px;
   border: solid 1px white;
   background-color: transparent;
 }
-.helper{
-  display: inline-block;
+.housework {
+  width: 420px;
+  height: auto;
+  display: block;
+  margin: 80px 120px 22px 45px;
+  font-family: "Roboto", sans-serif;
+  font-size: 50px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
 }
-.book{
-  margin-top:0px;
-  display: inline-block;
+.newlist ul {
+  list-style: none;
 }
-img.flag {
-  margin-left: 20px;
-  margin-top: -10px;
-  width: 25px;
-  height: 16px;
-  object-fit: contain;
-}
-img.keyboard-right-arrow-button {
-  margin-left: 10px;
-  width: 12px;
-  margin-top: -40px;
-  height: 7px;
-  object-fit: contain;
-  background-color: transparent;
-}
-.dropbtn {
-    background-color: transparent;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .dropbtn:hover, .dropbtn:focus {
-    background-color: transparent;
-  }
-  
-  .dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  .dropdown-content {
-    display: none;
-    position: sticky;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  .dropdown a:hover {
-    background-color: #ddd;
-  }
-  .show {
-    display: block;
-  }
 
+.newlist ul li:before {
+  content: "✓ ";
+  margin-right: 3px;
+}
+.newlist ul li {
+  width: 400px;
+  height: 15px;
+  margin: 12px 119px 12px 13px;
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: #fff;
+}
   /* form */
 
   .formRect {
     width: 430px;
     height: auto;
-    margin: 38px 0px 0px 0px;
+    margin: 38px 0px 0px -20px;
     padding: 23px 35px 19px 36px;
     border-radius: 4px;
     box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.15);
@@ -225,11 +215,15 @@ img.keyboard-right-arrow-button {
   .cpass {
     width: 359px;
     height: 46px;
-    margin: 0px 0 0px;
+    margin: 0px 0 20px;
     padding: 16px 0px 18px 15px;
     border: solid 1px #c8c8c8;
     background-color: white;
     color:  #a0a0a0;
+  }
+  .ppbap{
+    text-decoration: none;
+    color: #1d7a8c;
   }
   .started{
     width: 166px;
@@ -254,7 +248,6 @@ img.keyboard-right-arrow-button {
     padding: 10px 12px;
     object-fit: contain;
     text-align: center;
-    /* border: solid 1px white; */
     background-color: transparent;
   }
   img.Shape-1 {
@@ -273,7 +266,8 @@ img.keyboard-right-arrow-button {
   .How-it-works {
     width: 100%;
     height: 31px;
-    margin: 48px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    padding-top: 60px;
     font-family: Roboto;
     font-size: 40px;
     display: block;
@@ -302,7 +296,7 @@ img.keyboard-right-arrow-button {
   }
   .Provide-your-basic-information-to-register-yourself-as-a-servic {
     width: 330px;
-    height: 42px;
+    height: auto;
     margin: 13px 57px 48px 0px;
     font-family: Roboto;
     font-size: 18px;
@@ -310,20 +304,6 @@ img.keyboard-right-arrow-button {
     font-stretch: normal;
     font-style: normal;
     line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #4f4f4f;
-  }
-  .Read-more {
-    width: 100%;
-    height: 14px;
-    margin: 0px 10px 53px 0px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
     letter-spacing: normal;
     text-align: left;
     color: #4f4f4f;
@@ -350,7 +330,7 @@ img.keyboard-right-arrow-button {
   }
   .You-will-get-service-requests-from-customes-depend-on-service-a {
     width: 354px;
-    height: 42px;
+    height: auto;
     margin: 16px 0px 48px 24px;
     font-family: Roboto;
     font-size: 18px;
@@ -362,20 +342,7 @@ img.keyboard-right-arrow-button {
     text-align: left;
     color: #4f4f4f;
   }
-  .Read-more-copy-3 {
-    width: 100%;
-    height: 14px;
-    margin: 0px 10px 79px 24px;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: left;
-    color: #4f4f4f;
-  }
+
   img.sp8 {
     width: 260px;
     height: 260px;
@@ -439,15 +406,19 @@ img.keyboard-right-arrow-button {
   #sp6{
       margin-top:230px;
   }
-  /* Newsletter */
-
-.GET-OUR-NEWSLETTER {
+  #news {
+    background-color: #f4f5f8;
+    padding-top: 85px;
+    padding-bottom: 53px;
+  }
+  .newsletter {
     width: 100%;
-    height: 13px;
-    margin: 0px 0px 20px 0px;
+    height: auto;
+    margin-bottom: 20px;
     font-family: Roboto;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 500;
+    display: block;
     font-stretch: normal;
     font-style: normal;
     line-height: 1.22;
@@ -455,55 +426,25 @@ img.keyboard-right-arrow-button {
     text-align: center;
     color: #353548;
   }
-  
-  .Rounded-Rectangle-649 {
+  .email {
     width: 233px;
     height: 40px;
     padding: 14px 0px 16px 22px;
-    margin-bottom: 53px;
     border-radius: 20px;
     border: solid 1px #565656;
     background-color: #f4f5f8;
   }
-  .Your-Email {
-    width: 100px;
-    height: 10px;
-    display: block;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    letter-spacing: normal;
-    text-align: left;
-    color: #565656;
-  }
-  .Rounded-Rectangle-649-copy {
+  .submitbtn {
     width: 88px;
     height: 40px;
     border-radius: 20px;
-    margin-bottom: 53px;
-    padding: 5px 0px 20px 0px;
     color: white;
-    background-color: salmon;
+    background-color: #ff7b6d;
   }
-  .Submit {
-    width: 44px;
-    height: 11px;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 2.29;
-    letter-spacing: normal;
-    text-align: left;
-    color: white;
+  .submitbtn:hover {
+    background-color: #1d7a8c;
   }
-  
-  /* Footer */
-  
+  /* footer */
   .Rectangle-12 {
     width: auto;
     height: auto;
@@ -512,11 +453,14 @@ img.keyboard-right-arrow-button {
     background-color: #111;
   }
   
-  .links ul{
+  .links ul {
     list-style: none;
   }
-  .links a{
+  .links a {
     color: #f1f1f1;
+  }
+  .links a:hover {
+    color: #1d7a8c;
   }
   .logo {
     width: 106px;
@@ -525,12 +469,15 @@ img.keyboard-right-arrow-button {
     margin-left: 7%;
     object-fit: contain;
   }
-  .icons{
+  .logo:hover {
+    cursor: pointer;
+  }
+  .icons {
     margin-right: 4%;
   }
-  
-  .facebook{
+  .facebook {
     margin-right: 20px;
+  
   }
   
   .Rectangle-12-copy-2 {
@@ -558,6 +505,203 @@ img.keyboard-right-arrow-button {
     color: #9ba0a3;
   }
   
-  .-Helperland-All-rights-reserved-Terms-and-Conditions .text-style-1 {
-    color: #737381;
+  .terms {
+    color: #9ba0a3;
+  }
+  .terms:hover {
+    cursor: pointer;
+    color: #1d7a8c;
+  }
+  .Ellipse-649 {
+    width: 55px;
+    height: 55px;
+    padding: 13px 14px 0px;
+    background-color: #2e2c2c;
+    border-radius: 48px;
+  }
+  img.Forma-1 {
+    width: 20px;
+    height: 10px;
+    object-fit: contain;
+  }
+  #topbtn {
+    border-radius: 48px;
+    position: fixed;
+    bottom: 100px;
+    left: 30px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  .Ellipse-649:hover {
+    background-color: #1d7a8c;
+  }
+  /*login modal */
+  .emailmodal,.passmodal{
+    width: 100%;
+    padding: 5px 12px;
+    margin-bottom: 10px;
+    border: solid 1px #8e8e8e;
+    font-family: Roboto;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #2e2c2c;
+  }
+  .modal-title,.remmodal,.fpassmodal,.accmodal,.signuppolicy,.alreadyreg{
+    font-family: Roboto;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    margin-bottom: 10px;
+    width: auto;
+    text-decoration: none;
+    color: #424242;
+  }
+  .loginbtnmodal,.sendemail{
+    font-family: Roboto;
+    font-weight: normal;
+    height: 40px;
+    width: 100%;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: center;
+    padding: 5px 22px;
+    background-color: #1d7a8c;
+    border-radius: 40px;
+    color: white;
+    margin-bottom: 10px;
+  }
+  .btn-close:focus{
+    box-shadow: none;
+  }
+  .accmodal{
+    color: black;
+    margin-top: 20px;
+    display: block;
+  }
+  .accmodal:hover,.fpassmodal:hover,.remmodal:hover{
+    color: #111;
+    cursor: pointer;
+  }
+  .create,.fpassmodal,.signuppolicy a,.alreadyreg a{
+    color: #1d7a8c !important;
+  }
+  .create{
+    display: block;
+  }
+  .loginnowmodal{
+    margin-bottom: 20px;
+  }
+  .pinmodal:focus{
+    background-color: transparent;
+    box-shadow: none;
+  }
+  .loginnowmodal:hover,.signuppolicy a:hover{
+    cursor: pointer;
+  }
+  .sendemail{
+    margin-top: 10px;
+  }
+  .fnamemodal,.lnamemodal,.signupemailmodal,.mnomodal,.signuppass,.confirmsignuppass{
+    padding: 5px 12px;
+    margin-bottom: 10px;
+    border: solid 1px #8e8e8e;
+    font-family: Roboto;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #2e2c2c;
+  }
+  .signupreg{
+    font-family: Roboto;
+    font-weight: normal;
+    height: 40px;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: center;
+    padding: 5px 22px;
+    background-color: #1d7a8c;
+    border-radius: 40px;
+    color: white;
+  }
+  .pinmodal{
+    padding: 5px 2px;
+    width: 9%;
+    margin-bottom: 10px;
+    border: solid 1px #8e8e8e;
+    font-family: Roboto;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #2e2c2c;
+  }
+  .mnomodal{
+    width: 40%;
+    margin-left: -11px;
+  }
+  .alreadyreg a:hover{
+    cursor: pointer;
+  }
+  
+  /* sidebar */
+  .sideham{
+    font-size:30px;
+    cursor:pointer;
+    color: white;
+    position: absolute;
+    top: 43px;
+    right: 28px;
+  }
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #f1f1f1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 0px 20px;
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #1d7a8c;
+    cursor: pointer;
+  }
+  .pp{
+    display: inline !important;
+    padding: 0px !important;
+    text-decoration: none;
+  }
+  .lm:hover{
+    color: #1d7a8c;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  .navbar-toggler {
+    display: none;
+  }
+  .navbar-toggler {
+    display: none;
+  }
+  .modal-backdrop{
+    position: inherit ;
   }

@@ -6,19 +6,9 @@ body {
   padding: 0px;
   overflow-x: hidden;
 }
-.bg-dark {
-  background-color: #525252 !important;
-  opacity: 0.8 !important;
-}
-.custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  color: rgb(255, 255, 255);
-}
-.custom-toggler.navbar-toggler {
-  border-color: black;
-}
-.custom-toggler.navbar-toggler :focus {
-  box-shadow: none;
+.contactnav {
+  background-color: rgb(82, 82, 82,0.8) !important;
+  /*opacity: 0.8 !important;*/
 }
 .contactnav .nav-item a {
   color: white;
@@ -29,11 +19,15 @@ body {
 .navbar-toggler {
   display: flex;
 }
-.navbar-toggler:focus {
-  box-shadow: none;
-}
 .navbar-collapse {
   flex-grow: inherit;
+}
+.nav-item .nav-btn a{
+  color: white;
+}
+.nav-item .nav-btn a:hover{
+  color: #f1f1f1;
+  cursor: pointer;
 }
 .white_logo_transparent_background {
   width: 73px;
@@ -66,9 +60,8 @@ body {
 .Rounded-Rectangle-5-copy-4 {
   height: 40px;
   margin: 6px 0px 8px 0px;
-  padding: 0px 14px 15px 10px;
+  padding: 0px 0px 15px 10px;
   border-radius: 20px;
-  /* border: solid 1px rgba(255, 255, 255, 0.5); */
   background-color: transparent;
 }
 .Prices-services {
@@ -93,7 +86,7 @@ body {
   font-size: 17px;
   margin-top: 8px;
   font-weight: normal;
-  margin-left: 28px;
+  margin-left: 20px;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.41;
@@ -582,7 +575,7 @@ img.Vector-Smart-Object {
   box-shadow: none;
 }
 .accmodal {
-  color: black;
+  color: black !important;
   margin-top: 20px;
   display: block;
 }
@@ -603,6 +596,7 @@ img.Vector-Smart-Object {
 }
 .loginnowmodal {
   margin-bottom: 20px;
+  color: #1d7a8c !important;
 }
 .pinmodal:focus {
   background-color: transparent;
@@ -694,8 +688,16 @@ img.Vector-Smart-Object {
 
 .sidenav a:hover {
   color: #1d7a8c;
+  cursor: pointer;
 }
-
+.pp{
+  display: inline !important;
+  padding: 0px !important;
+  text-decoration: none;
+}
+.lm:hover{
+  color: #1d7a8c;
+}
 .sidenav .closebtn {
   position: absolute;
   top: 0;

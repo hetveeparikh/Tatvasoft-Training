@@ -1,235 +1,90 @@
-
-  @media screen and (max-width: 1310px) and (min-width: 992px){
-    .Warranty{
-        margin-top: 5px;
-        
-    }
-  }
-
-  @media only screen and (max-width:768px){
-    .Contact,.Blog,.Warranty,.Prices-Services{
-      margin-left:0px;
-      margin-top: 0px;
-    }
-
-    .ver-line{
-      display:none;
-    }
-  }
-  @media only screen and (min-width: 767px) and (max-width: 1220px) {
-    .Contact,.Blog,.Warranty,.Prices-Services{
-      margin-left:0px;
-      margin-top: 0px;
-    }
-    .ver-line{
-        display:none;
-    }
-    .logo{
-      text-align: center;
-      width: 100%;
-      padding: 0px;
-      margin: 0px;
-    }
-    .links{
-        display: flex !important;
-        width:auto !important;
-        justify-content: space-between;
-        margin-top: 20px;      
-    }
-    .links a{
-        margin-top: 10px;
-        margin-left: 20px;
-        justify-content: center;
-        display: block;
-    }
-    .icons{
-        padding-bottom: 20px;
-        text-align: center;
-        margin: 0px;
-        display: flex;
-    }
-    .Rectangle-12 .row{
-        flex-direction: column;
-    }
-    .Rectangle-12-copy-2 {
-        margin-left:0px;
-    }
-
-  }
-  @media only screen and (max-width:780px){
-    .logo{
-      text-align: center;
-      width: 100%;
-      padding: 0px;
-      margin: 0px;
-    }
-    .links ul{
-        flex-direction: column;
-        padding-left: 0px;
-    }
-    .links li{
-        margin-top: 20px;
-    }
-    .icons{
-        padding-bottom: 20px;
-        text-align: center;
-    }
-    .maindata{
-      display: block !important;
-    }
-    .heading,.cs-date,.cs-time,.cs-name,.num4,.cs-price,.euro,.history,.export,.sidebar a{
-      font-size: 14px;
-    }
-    img.gcal{
-      width: 14px;
-      height: 14px;
-    }
-    .topicircle{
-      width: 30px;
-      height: 30px;
-      padding-top: 1px;
-    }
-    img.topi{
-      width: 20px;
-      height: 15px;
-    }
-    .greenbtn,.pinkbtn,.rate{
-      font-size: 12px;
-    }
-  }
-  @media only screen and (min-width: 767px) and (max-width: 904px) {
-    .icons{
-        width:auto !important;
-    }
-  }
-  @media only screen and (min-width:780px) and (max-width:1000px) {
-    .heading,.cs-date,.cs-time,.cs-name,.num4,.cs-price,.euro{
-      font-size: 14px;
-    }
-    img.gcal{
-      width: 14px;
-      height: 14px;
-    }
-    .topicircle{
-      width: 30px;
-      height: 30px;
-      padding-top: 1px;
-    }
-    img.topi{
-      width: 20px;
-      height: 15px;
-    }
-    .greenbtn,.pinkbtn,.rate{
-      font-size: 12px;
-    }
-  }
-  @media screen and (max-width: 1310px) and (min-width: 1200px){
-    .links a{
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 100%;
-        display: block;
-    }
-    .Contact,.Warranty,.Blog{
-        margin-top: 5px;
-    }
-  }
-   @media only screen and (min-width: 780px) and (max-width: 992px) {
-    .Contact,.Warranty,.Blog{
-        margin-left: 0px;
-    }
-  }
-  @media screen and (max-width:650px) {
-    .lastrow{
-      display: block !important;
-      text-align: center !important;
-    }
-    .pagenav{
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-  }
-  @media only screen and (min-width: 1311px) and (max-width: 1570px) {
-    .links a{
-      margin-left: 5px;
-      margin-right: 5px;
-      display: block;
-      justify-content: center;
-    }
-  }
-
-  @media only screen and (min-width: 991px) and (max-width: 1310px){
-    .lr{
-      display: block;
-      justify-content: center;   
-    }
-  } 
-
-  @media screen and (max-width: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-
-    .sidenav a {
-        font-size: 16px;
-    }
-}
-@media screen and (min-width :700px) {
-  .ham{
-    display: none;
+@media screen and (min-width: 992px) {
+  .navham{
+      display: none;
   }
   .sidenav{
-    display:none;
+      display: none;
+  }
+  .offset-lg-2{
+      margin-left: 14%;
   }
 }
-@media screen and (max-width :700px) {
+@media only screen and (max-width:992px){
   .sidebar{
-    display: none;
-  }
-}
-@media screen and (max-width: 1310px) and (min-width: 700px){
-  .sidebar {
-    width: 100%;
-    height: auto;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-  .sidebar a {
-    float: left;
-  }
-
-}
-@media screen and (min-width :992px) {
-  .col-lg-8{
-    width: 70% !important;
+      display: none;
   }
   .col-lg-7{
-    width: auto !important;
+      width: 100%;
+  }
+  .container{
+      max-width: 100%;
   }
 }
-@media screen and (min-width :1309px) {
-  .offset-md-2{
-    margin-left: 0% !important;
+@media only screen and (min-width: 767px) and (max-width: 1220px) {
+  .logo{
+      text-align: center;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
   }
-  .offset-lg-1{
-    margin-left: 0% !important;
+  .links{
+      display: flex !important;
+      width:auto !important;
+      justify-content: space-between;
+      margin-top: 20px;      
   }
-  .all{
-    display: flex;
-    justify-content: center;
+  .links a{
+      margin-top: 10px;
+      margin-left: 20px;
+      justify-content: center;
+  }
+  .icons{
+      padding-bottom: 20px;
+      text-align: center;
+      margin: 0px;
+  }
+  .Rectangle-12 .row{
+      flex-direction: column;
+  }
+  .Rectangle-12-copy-2 {
+      margin-left:0px;
   }
 }
-@media screen and (max-width :1309px) and (min-width:767px){
-  .offset-md-2{
-    margin-left: 0% !important;
+@media only screen and (max-width:780px){
+  .logo{
+      text-align: center;
+      width: 100%;
+      padding: 0px;
+      margin: 0px;
   }
-  .col-md-8{
-    width: 100% !important;
+  .links ul{
+      flex-direction: column;
+      padding-left: 0px;
+  }
+  .links li{
+      margin-top: 20px;
+  }
+  .icons{
+      padding-bottom: 20px;
+      text-align: center;
   }
 }
-@media screen and (max-width :500px){
-  .sidenav{
-    padding-top: 70px;
-  } 
-} 
+@media only screen and (min-width: 768px) and (max-width: 904px) {
+  .icons{
+      width:auto !important;
+  }
+}
+@media screen and (max-width: 1310px) and (min-width: 1200px){
+  .links a{
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 100%;
+      display: block;
+  }
+}
+@media screen and (min-width: 612px) {
+  .bottom{
+      display: flex;
+      justify-content: space-between;
+  }
+}

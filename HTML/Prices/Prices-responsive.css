@@ -1,40 +1,72 @@
+@media screen and (max-width: 1400px) {
+  .card-img-top,.wash,.kit{
+    width: 80% ;
+    height: auto;
+  }
 
-  @media screen and (max-width: 1400px) and (min-width: 771px) {
-    .first{
-      margin-left:20px;
-    }
-    .fifth{
+}
+
+@media only screen and (max-width: 768px) {
+  .Rounded-Rectangle-5 {
+    margin-left: 0px;
+  }
+  .Warranty,
+  .Blog,
+  .Contact {
+    margin-left: 10px;
+  }
+  .logo {
+    text-align: center;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+  .links ul {
+    flex-direction: column;
+    padding-left: 0px;
+  }
+  .links li {
+    margin-top: 20px;
+  }
+  .icons {
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  .Ellipse-649 {
+    display: none;
+  }
+  .es{
+    display: block !important;
+  }
+  .whyrow{
+    display: block !important;
+  }
+  .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
+    text-align: left;
+  }
+  .Rectangle-20{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 1300px) and (min-width: 761px) {
+  .Rounded-Rectangle-5{
+      margin-left: 0px;
+  }
+  .Contact{
       margin-right: 20px;
-    }
-    .card-deck{
-     flex-direction: column !important;
-     align-items: center !important;
-     justify-content: center !important;
-    }
-    .Experienced-and-vetted-professionals,.Dedicated-customer-service,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
-      height:100% !important;
-      width:100% !important;
-    }
-    .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
-      text-align: center !important;
-      width:100%;
-    }
-    .col2{
-      margin-left: 50px !important;
-    }
-    .Every-cleaning-is-insured,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Secure-online-payment,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
-      text-align: center !important;
-      width: 100%;
-      height: auto;
-    }
-    .col1{
-      margin-left: 20px;
-      margin-right: -50px;
-    }
-    .col2{
-      margin-left:0px !important;
-    }
-    .logo{
+  }
+  .Warranty,.Blog,.Contact{
+      margin-left: 10px;
+  }
+  .Ellipse-649{
+      display: none;
+  }
+}
+@media only screen and (min-width: 767px) and (max-width: 1220px) {
+  .Rectangle-20{
+    width: 60%;
+  }
+  .logo{
       text-align: center;
       width: 100%;
       padding: 0px;
@@ -51,154 +83,55 @@
       margin-left: 20px;
       justify-content: center;
   }
-  .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
-      padding-right: 30px;
-      margin-left: 20px;
-  }
   .icons{
       padding-bottom: 20px;
       text-align: center;
-      display: flex;
       margin: 0px;
   }
   .Rectangle-12 .row{
       flex-direction: column;
   }
-  .Rounded-Rectangle-5{
-      margin-left: 0px;
-  }
-    .Warranty,.Blog,.Contact{
-      margin-left: 10px;
+  .Rectangle-12-copy-2 {
+      margin-left:0px;
   }
 }
-@media screen and (max-width:573px) and (min-width:340px){
-  .Rectangle-20 {
-    width: 500px !important;
-    height: inherit;
-    margin: 0px 40x 0px 40px;
-  }
-  .Rectangle-20-copy {
-    width: 500px;
-    height: 59px;
-  }
-  .abc{
-    display:block !important;
-  }
-  .first-667{
-    margin-left: 40%;
-  }
-  .first{
-    margin-left: 0px;
-  }
-  .second,.third,.fourth,.fifth{
-    margin-left: 0px;
-    margin-right: 0px;
-    position: relative;
-    left: 38%;
-    translate: transform(45%);
-  }
-  .euro{
-    margin-left:150px !important;
-  }
-  .hr{
-    margin-right: 0px !important;
-  }
-  .What-we-include-in-cleaning{
-    height:auto ;
-    line-height:1;
-  }
-  .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
-    text-align: center !important;
-    width:100% !important;
-    height:100% !important;
-    display: block;
-  }
- 
-  .Every-cleaning-is-insured,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Secure-online-payment,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
-    text-align: center !important;
-    width: 80%;
-    margin-left: 20% !important;
-    height: auto !important;
-  }
-  .Every-cleaning-is-insured{
-    margin-bottom: 10px;
-  }
-  .Ellipse-649{
-    margin-left: 10px;
-    display:none;
-  }
-  img.Layer-598{
-    display:none;
-  }
-  
-  .logo{
-    text-align: center;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-  }
-  .links ul{
-      flex-direction: column;
-      padding-left: 0px;
-  }
-  .links li{
-      margin-top: 20px;
-  }
-  .Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-Sed-id{
-      padding-right: 30px;
-  }
-
+@media only screen and (min-width: 768px) and (max-width: 904px) {
   .icons{
-      padding-bottom: 20px;
-      text-align: center;
-  }
-  .Rounded-Rectangle-5{
-    margin-left: 0px;
-  }
-  .Warranty,.Blog,.Contact{
-    margin-left: 10px;
-  }
-  .links ul{
-    padding-left: 0px;
+      width:auto !important;
   }
 }
-
-@media screen and (max-width:800px) and (min-width:574px){
-  .Experienced-and-vetted-professionals,.dominate-the-industry-in-scale-and-scope-with-an-adaptable-ext,.Dedicated-customer-service,.to-our-customers-and-are-guided-in-all-we-do-by-their-needs-Th{
-    text-align: center !important;
-    width:200% !important;
-    display:flex;
-    justify-content: center;
-    height:100% !important;
-    display: block;
-    position: relative;
-    left:60%;
-    translate: transform(50%);
+@media screen and (max-width: 1310px) and (min-width: 1200px){
+  .links a{
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 100%;
+      display: block;
   }
- 
-  .Every-cleaning-is-insured,.and-seek-to-provide-exceptional-service-and-engage-in-proactive,.Secure-online-payment,.Payment-is-processed-securely-online-Customers-pay-safely-onli{
-    text-align: center !important;
-    width: 80%;
-    margin-left: 20% !important;
-    height: auto !important;
+}
+@media screen and (max-width: 576px) and (min-width: 498px){
+  .mnomodal{
+      width: 183px;
   }
-  .abc{
-    display:block !important;
+  .pinmodal{
+      width: 45px;
   }
-  .first-667{
-    margin-left: 40%;
+}
+@media screen and (max-width: 498px){
+  .signupemailmodal{
+      margin-right: 41%;
   }
-  .first{
-    margin-left: 0px;
+  .mnomodal{
+      width: 183px;
   }
-  .second,.third,.fourth,.fifth{
-    margin-left: 0px;
-    margin-right: 0px;
-    position: relative;
-    left: 38%;
-    translate: transform(45%);
+  .pinmodal{
+      width: 45px;
   }
-  .Ellipse-649,img.Layer-598 {
-    display:none;
+}
+@media screen and (min-width: 992px) {
+  .sideham{
+      display: none;
+  }
+  .sidenav{
+      display: none;
   }
 }

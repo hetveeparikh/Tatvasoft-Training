@@ -16,7 +16,7 @@
 
 <body>
 
-    <header>
+    <header id="head">
         <button id="topbtn" title="Back to Top" onclick="topFunction()">
             <div class="Ellipse-649">
                 <img src="img/forma-1(1).png">
@@ -36,12 +36,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto ">
                         <li class="nav-item">
-                            <div class="Rounded-Rectangle-5-copy-5">
+                            <div class="nav-btn Rounded-Rectangle-5-copy-5">
                                 <a class="nav-link Book-now" href="#">Book now</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div class="Rounded-Rectangle-5-copy-4">
+                            <div class="nav-btn Rounded-Rectangle-5-copy-4">
                                 <a class="nav-link Prices-services " href="#">Prices &
                                     services</a>
                             </div>
@@ -62,7 +62,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div class="Rounded-Rectangle-5" data-bs-toggle="modal" href="#login">
+                            <div class="nav-btn Rounded-Rectangle-5" data-bs-toggle="modal" href="#login">
                                 <a class="nav-link" href="#">Login</a>
                             </div>
                             <div class="modal fade" id="login" aria-hidden="true" aria-labelledby="log" tabindex="-1">
@@ -141,7 +141,7 @@
                                                 <div>
                                                     <input type="email" placeholder="E-mail Address"
                                                         class="signupemailmodal">
-                                                    <input type="text" placeholder="+49" class="pinmodal">
+                                                    <input type="text" placeholder="+49" class="pinmodal" disabled>
                                                     <input type="text" placeholder="Mobile Number" class="mnomodal">
                                                 </div>
                                                 <div>
@@ -152,7 +152,7 @@
                                                 <div>
                                                     <input type="checkbox" value="privacy" id="ppcheckbox" />
                                                     <label for="ppcheckbox" class="signuppolicy">I have read the
-                                                        <a>Privacy Policy</a></label>
+                                                        <a class="pp">Privacy Policy</a></label>
                                                 </div>
                                                 <div class="text-center">
                                                     <button type="submit" class="signupreg">Register</button>
@@ -171,7 +171,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <div class="Rounded-Rectangle-5-copy">
+                            <div class="nav-btn Rounded-Rectangle-5-copy">
                                 <a class="nav-link" href="#">Become a Helper</a>
                             </div>
                         </li>
@@ -189,7 +189,7 @@
             <a href="#">Blog</a>
             <a href="#">Contact</a>
             <div data-bs-toggle="modal" href="#loginnn">
-                <a>Login</a>
+                <a class="lm">Login</a>
             </div>
             <div class="modal fade" id="loginnn" aria-hidden="true" aria-labelledby="log" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered modal-sm">
@@ -268,7 +268,7 @@
                                 <div>
                                     <input type="email" placeholder="E-mail Address"
                                         class="signupemailmodal">
-                                    <input type="text" placeholder="+49" class="pinmodal">
+                                    <input type="text" placeholder="+49" class="pinmodal" disabled>
                                     <input type="text" placeholder="Mobile Number" class="mnomodal">
                                 </div>
                                 <div>
@@ -279,7 +279,7 @@
                                 <div>
                                     <input type="checkbox" value="privacy" id="ppcheckbox" />
                                     <label for="ppcheckbox" class="signuppolicy">I have read the
-                                        <a>Privacy Policy</a></label>
+                                        <a class="pp">Privacy Policy</a></label>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="signupreg">Register</button>

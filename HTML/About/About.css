@@ -6,15 +6,9 @@ body{
   padding: 0px;
   overflow-x: hidden;
 }
-.bg-dark{
-  background-color: #525252 !important;
-  opacity: 0.8 !important;
-}
-.custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-.custom-toggler.navbar-toggler {
-  border-color:black;
+.aboutnav{
+  background-color: rgb(82, 82, 82, 0.8) !important;
+  /*opacity: 0.8 !important;*/
 }
 .navbar{
     padding: 0px;
@@ -22,8 +16,12 @@ body{
 .navbar-toggler{
   display: flex;
 }
-.navbar-toggler:focus{
-  box-shadow: none;
+.nav-item .nav-btn a{
+  color: white;
+}
+.nav-item .nav-btn a:hover{
+  color: #f1f1f1;
+  cursor: pointer;
 }
 .navbar-collapse{
     flex-grow: inherit;
@@ -61,8 +59,6 @@ body{
   height: 40px;
   margin: 6px 0px 8px 0px;
   padding: 0px 14px 15px 10px;
-  border-radius: 20px;
-  border: solid 1px rgba(255, 255, 255, 0.5);
   background-color: transparent;
 }
 .Prices-services {
@@ -80,7 +76,7 @@ body{
   color: white;
 }
 .Warranty{
-  width:65px;
+  width:auto;
   display: block;
   color: white;
   font-family: Roboto;
@@ -95,14 +91,14 @@ body{
   text-align: right;
 }
 .Blog{
-  width:30px;
+  width:auto;
   display: block;
   color: white;
   font-family: Roboto;
   font-size: 17px;
   margin-top: 8px;
   font-weight: normal;
-  margin-left: 28px;
+  margin-left: 32px;
   font-stretch: normal;
   font-style: normal;
   line-height: 1.41;
@@ -110,7 +106,7 @@ body{
   text-align: right; 
 }
 .Contact{
-  width:59px;
+  width:auto;
   display: block;
   color: white;
   font-family: Roboto;
@@ -358,4 +354,190 @@ body{
 }
 .Ellipse-649:hover{
   background-color: #1d7a8c;
+}
+.emailmodal,
+.passmodal {
+  width: 100%;
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  border: solid 1px #8e8e8e;
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: #2e2c2c;
+}
+.modal-title,
+.remmodal,
+.fpassmodal,
+.accmodal,
+.signuppolicy,
+.alreadyreg {
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  margin-bottom: 10px;
+  width: auto;
+  text-decoration: none;
+  color: #424242;
+}
+.loginbtnmodal,
+.sendemail {
+  font-family: Roboto;
+  font-weight: normal;
+  height: 40px;
+  width: 100%;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  padding: 5px 22px;
+  background-color: #1d7a8c;
+  border-radius: 40px;
+  color: white;
+  margin-bottom: 10px;
+}
+.btn-close:focus {
+  box-shadow: none;
+}
+.accmodal {
+  color: black !important;
+  margin-top: 20px;
+  display: block;
+}
+.accmodal:hover,
+.fpassmodal:hover,
+.remmodal:hover {
+  color: #111;
+  cursor: pointer;
+}
+.create,
+.fpassmodal,
+.signuppolicy a,
+.alreadyreg a {
+  color: #1d7a8c !important;
+}
+.create {
+  display: block;
+}
+.loginnowmodal {
+  margin-bottom: 20px;
+  color: #1d7a8c !important;
+}
+.pinmodal:focus {
+  background-color: transparent;
+  box-shadow: none;
+}
+.loginnowmodal:hover,
+.signuppolicy a:hover {
+  cursor: pointer;
+}
+.sendemail {
+  margin-top: 10px;
+}
+.fnamemodal,
+.lnamemodal,
+.signupemailmodal,
+.mnomodal,
+.signuppass,
+.confirmsignuppass {
+  padding: 5px 12px;
+  margin-bottom: 10px;
+  border: solid 1px #8e8e8e;
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: #2e2c2c;
+}
+.signupreg {
+  font-family: Roboto;
+  font-weight: normal;
+  height: 40px;
+  font-stretch: normal;
+  font-style: normal;
+  text-align: center;
+  padding: 5px 22px;
+  background-color: #1d7a8c;
+  border-radius: 40px;
+  color: white;
+}
+.pinmodal {
+  padding: 5px 2px;
+  width: 9%;
+  margin-bottom: 10px;
+  border: solid 1px #8e8e8e;
+  font-family: Roboto;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  color: #2e2c2c;
+}
+.mnomodal {
+  width: 40%;
+  margin-left: -11px;
+}
+.alreadyreg a:hover {
+  cursor: pointer;
+}
+
+/* sidebar */
+.sideham {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 15px;
+  right: 28px;
+}
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #f1f1f1;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 0px 20px;
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+.pp{
+  display: inline !important;
+  padding: 0px !important;
+  text-decoration: none;
+}
+
+.sidenav a:hover {
+  color: #1d7a8c;
+  cursor: pointer;
+}
+.lm:hover{
+  color: #1d7a8c;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+.navbar-toggler {
+  display: none;
+}
+.navbar-toggler {
+  display: none;
+}
+.modal-backdrop {
+  position: inherit;
 }
