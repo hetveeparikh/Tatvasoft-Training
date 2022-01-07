@@ -9,7 +9,7 @@ body {
   overflow-x: hidden;
 }
 .first {
-  background-image: url("img/SpBap.png");
+  /* background-image: url("img/SpBap.png"); */
   background-color: white;
   background-attachment: fixed;
   height: 100%;

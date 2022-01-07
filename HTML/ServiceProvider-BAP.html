@@ -1,36 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <link rel="stylesheet" href="Homepage.css" />
-    <link rel="stylesheet" href="Homepage-responsive.css" />
-    <title>Homepage</title>
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/ServiceProvider-BAP.css" type="text/css">
+    <link rel="stylesheet" href="css/ServiceProvider-BAP-responsive.css" type="text/css">
+    <title>Service Provider - Become A Pro</title>
+
+    <style>
+        .first{
+            background-image: url("img/img-BAP/SpBap.png");
+        }
+    </style>
 </head>
 
 <body>
+
     <header class="first" id="head">
         <button id="topbtn" title="Back to Top" onclick="topFunction()">
             <div class="Ellipse-649">
-                <img src="img/forma-1(1).png" />
+                <img src="img/img-BAP/forma-1(1).png" />
             </div>
         </button>
         <nav class="navbar navbar-expand-lg navbar-inverse bg-transparent see">
             <div class="container-fluid custom-toggler">
-                <img src="img\white-logo-transparent-background.png" srcset="img\white-logo-transparent-background@2x.png 2x,
-              img\white-logo-transparent-background@3x.png" class="white_logo_transparent_background" />
+                <img src="img/img-BAP/white-logo-transparent-background.png" srcset="img/img-BAP/white-logo-transparent-background@2x.png 2x,
+               img/img-BAP/white-logo-transparent-background@3x.png" class="white_logo_transparent_background">
 
                 <button class="navbar-toggler ml-auto" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -206,8 +214,8 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <a class="text-decoration-none fpassmodal" data-bs-target="#passm1"
-                                data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a>
+                            <a class="text-decoration-none fpassmodal" data-bs-target="#passm1" data-bs-toggle="modal"
+                                data-bs-dismiss="modal">Forgot Password?</a>
                         </div>
                         <div class=" text-center">
                             <a class="accmodal" data-bs-target="#signupmodal1" data-bs-toggle="modal"
@@ -223,8 +231,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="pass">Forgot Password</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form>
@@ -232,21 +239,19 @@
                                 <button type="submit" class="sendemail">Send</button>
                             </form>
                         </div>
-                        <a class="text-decoration-none text-center loginnowmodal"
-                            data-bs-target="#loginnn" data-bs-toggle="modal" data-bs-dismiss="modal">Login
+                        <a class="text-decoration-none text-center loginnowmodal" data-bs-target="#loginnn"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">Login
                             Now</a>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="signupmodal1" aria-hidden="true" aria-labelledby="signup"
-                tabindex="-1">
+            <div class="modal fade" id="signupmodal1" aria-hidden="true" aria-labelledby="signup" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="signup">Create an account</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form>
@@ -255,15 +260,13 @@
                                     <input type="text" placeholder="Last name" class="lnamemodal">
                                 </div>
                                 <div>
-                                    <input type="email" placeholder="E-mail Address"
-                                        class="signupemailmodal">
+                                    <input type="email" placeholder="E-mail Address" class="signupemailmodal">
                                     <input type="text" placeholder="+49" class="pinmodal" disabled>
                                     <input type="text" placeholder="Mobile Number" class="mnomodal">
                                 </div>
                                 <div>
                                     <input type="password" placeholder="Password" class="signuppass">
-                                    <input type="password" placeholder="Confirm Password"
-                                        class="confirmsignuppass">
+                                    <input type="password" placeholder="Confirm Password" class="confirmsignuppass">
                                 </div>
                                 <div>
                                     <input type="checkbox" value="privacy" id="ppcheckbox" />
@@ -277,234 +280,133 @@
                         </div>
                         <div class="text-center">
                             <p class="alreadyreg">Already registered? <a class="text-decoration-none "
-                                    data-bs-target="#loginnn" data-bs-toggle="modal"
-                                    data-bs-dismiss="modal"> Login Now
+                                    data-bs-target="#loginnn" data-bs-toggle="modal" data-bs-dismiss="modal"> Login Now
                                 </a></p>
                         </div>
 
                     </div>
                 </div>
             </div>
-
-
-
             <a href="#">Become a Helper</a>
         </div>
-    
+
         <div onclick="openNav()" class="sideham">&#9776; </div>
 
-        <div class="row points">
-            <div class="col-lg-4 col-md-5">
+        <div class="d-flex align-items-center formpoints row">
+            <div class="col-xl-4">
                 <div class="housework">Do not feel like housework?</div>
-                <p class="great">
-                    Great! Book now for Helperland and enjoy the benefits
-                </p>
                 <div class="newlist">
                     <ul>
-                        <li>certified & insured helper</li>
-                        <li>easy booking procedure</li>
-                        <li>friendly customer service</li>
-                        <li>secure online payment method</li>
+                        <li>open time-management</li>
+                        <li>only accept suitable requests</li>
+                        <li>fair and fixed hourly wage</li>
+                        <li>ideal part time job</li>
+                        <li>personal contact person</li>
                     </ul>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center">
-                <button class="letsbook Lets-Book-a-Cleaner-copy" type="button">
-                    Book a Helper!
-                </button>
+            <div class="col-xl-4 ms-xl-4">
+                <form class="d-flex justify-content-center">
+                    <div class="formRect">
+                        <span class="Register-Now text-center">
+                            Register Now!
+                        </span>
+                        <input type="text" class="fname" placeholder="First name">
+                        <input type="text" class="lname" placeholder="Last name">
+                        <input type="text" class="emailadd" placeholder="Email Address">
+                        <div class="num">
+                            <input type="text" placeholder="+46" class="code">
+                            <input type="text" placeholder="Phone number" class="number">
+                        </div>
+                        <input type="password" class="pass" placeholder="Password">
+                        <input type="password" class="cpass" placeholder="Confirm Password">
+                        <div>
+                            <input type="checkbox" value="privacy" id="ppcheckbox" />
+                            <label for="ppcheckbox" class="signuppolicybap">I have read the
+                                <a class="ppbap">Privacy Policy</a></label>
+                        </div>
+                        <button type="submit" class="started">Get Started &nbsp;<img src="img/img-BAP/getarrow.png"></button>
+                    </div>
+                </form>
             </div>
+
         </div>
 
-        <div class="d-flex justify-content-between arrowline container">
-            <div class="d-flex flex-column al1">
-                <div class="text-center">
-                    <img src="img/forma-1-copy.png" srcset="img/forma-1-copy@2x.png 2x, img/forma-1-copy@3x.png 3x"
-                        class="Forma-1-copy" />
-                </div>
-                <span class="Enter-your-postcode">Enter postal code</span>
-            </div>
 
-            <img src="img/step-arrow-1.png" srcset="img/step-arrow-1@2x.png 2x, img/step-arrow-1@3x.png 3x"
-                class="step-arrow1 a1" />
-
-            <div class="d-flex flex-column al2">
-                <div class="text-center">
-                    <img src="img/group-22.png" srcset="img/group-22@2x.png 2x, img/group-22@3x.png 3x"
-                        class="Group-22" />
-                </div>
-                <span class="Select-your-plan"> Select desired date </span>
-            </div>
-
-            <img src="img/step-arrow-1-copy.png" srcset="
-            img/step-arrow-1-copy@2x.png 2x,
-            img/step-arrow-1-copy@3x.png 3x
-          " class="step-arrow1-copy a2" />
-
-            <div class="d-flex flex-column al3">
-                <div class="text-center">
-                    <img src="img/forma-1.png" srcset="img/forma-1@2x.png 2x, img/forma-1@3x.png 3x" class="Forma-11" />
-                </div>
-                <span class="Pay-securely-online"> Secure online payment </span>
-            </div>
-
-            <img src="img/step-arrow-1-copy-2.png" srcset="
-            img/step-arrow-1-copy-2@2x.png 2x,
-            img/step-arrow-1-copy-2@3x.png 3x
-          " class="step-arrow1-copy-2 a3" />
-
-            <div class="d-flex flex-column al4">
-                <div class="text-center">
-                    <img src="img/forma-2.png" srcset="img/forma-2@2x.png 2x, img/forma-2@3x.png 3x" class="Forma-2" />
-                </div>
-                <span class="Enjoy-amazing-service"> Feel at home </span>
-            </div>
-        </div>
+        <!-- form -->
 
         <div class="text-center">
-            <a href="#cy" class="text-decoration-none"><img src="img/ellipse-525.png"
-                    srcset="img/ellipse-525@2x.png 2x, img/ellipse-525@3x.png 3x" class="Ellipse-525" /></a>
+            <a href="#how" class="text-decoration-none"><img src="img/img-BAP/ellipse-525.png"
+                    srcset="img/img-BAP/ellipse-525@2x.png 2x, img/img-BAP/ellipse-525@3x.png 3x"
+                    class="Ellipse-525" /></a>
         </div>
         <div class="text-center">
-            <a href="#cy" class="text-decoration-none"><img src="img/shape-1.png"
-                    srcset="img/shape-1@2x.png 2x, img/shape-1@3x.png 3x" class="Shape-1" /></a>
+            <a href="#how" class="text-decoration-none"><img src="img/img-BAP/shape-1.png"
+                    srcset="img/img-BAP/shape-1@2x.png 2x, img/img-BAP/shape-1@3x.png 3x" class="Shape-1" /></a>
         </div>
+
     </header>
 
-    <section id="cy">
-        <span class="convince"> Convince yourself! </span>
+    <section id="how">
+        <span class="How-it-works">
+            How it works
+        </span>
 
-        <div class="d-flex justify-content-between container cyrow">
-            <div class="d-flex flex-column cy1">
-                <div class="text-center">
-                    <img src="img/group-21.png" srcset="img/group-21@2x.png 2x, img/group-21@3x.png 3x"
-                        class="Group-21" />
-                </div>
-                <div class="d-flex justify-content-center">
-                    <span class="whytitle"> Friendly & Certified Helpers </span>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <span class="whydesc">
-                        We want you to be completely satisfied with our service and feel
-                        comfortable at home. In order to guarantee this, our helpers go
-                        through a test procedure. Only when the cleaners meet our high
-                        standards, they may call themselves Helper.
-                    </span>
-                </div>
-            </div>
+        <span id="sp1"><img src="img/img-BAP/sp1.png"></span>
+        <span id="sp2"><img src="img/img-BAP/sp2.png"></span>
 
-            <div class="d-flex flex-column cy2">
-                <div class="text-center">
-                    <img src="img/group-23.png" srcset="img/group-23@2x.png 2x, img/group-23@3x.png 3x"
-                        class="Group-23" />
-                </div>
-                <div class="d-flex justify-content-center">
-                    <span class="whytitle"> Transparent and secure payment </span>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <span class="whydesc">
-                        We have transparent prices, you do not have to scratch money or
-                        money on the sideboard Leave it: Pay your helper easily and
-                        securely via the online payment method. You will also receive an
-                        invoice for each completed cleaning.
-                    </span>
-                </div>
-            </div>
 
-            <div class="d-flex flex-column cy3">
-                <div class="text-center">
-                    <img src="img/group-24.png" srcset="img/group-24@2x.png 2x, img/group-24@3x.png 3x"
-                        class="Group-24" />
-                </div>
-                <div class="d-flex justify-content-center">
-                    <span class="whytitle we"> We're here for you </span>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <span class="whydesc">
-                        You have a question or need assistance with the booking process?
-                        Our customer service is happy to help and advise you. How you can
-                        reach us you will find out when you look under "Contact". We look
-                        forward to hearing from you or reading.
-                    </span>
-                </div>
+        <div class="sp11 d-flex justify-content-center spreg">
+            <div class="sp">
+                <p class="Register-yourself">
+                    Sign up
+                </p>
+                <p class="Provide-your-basic-information-to-register-yourself-as-a-servic">
+                    Answer us a few questions and identify yourself with us. You need a copy or photo of your passport,
+                    your certificate of good conduct and your business registration.
+                </p>
             </div>
+            <img src="img/img-BAP/sp7.png" class="sp7">
         </div>
-    </section>
 
-    <section id="wdk">
-        <span id="sp1"><img src="img/sp1.png" class="i1home" /></span>
-        <span id="sp2"><img src="img/sp2.png" class="i2home" /></span>
-        <div class="d-flex justify-content-between container wdkrow">
-            <div class="wdkpara">
-                <span class="wdk-title">
-                    We do not know what makes you happy, but ...
-                </span>
+        <span id="sp3"><img src="img/img-BAP/sp3.png" class="sp3"></span>
+        <span id="sp4"><img src="img/img-BAP/sp4.png"></span>
 
-                <span class="wdk-desc">
-                    If it's not dusting off, our friendly helpers will free you from
-                    this burden - do not worry anymore about spending valuable time
-                    doing housework, but savor life, you're well worth your time with
-                    beautiful experiences. Free yourself and enjoy the gained time: Go
-                    celebrate, relax, play with your children, meet friends or dare to
-                    jump on the bungee.Other leisure ideas and exclusive events can be
-                    found in our blog - guaranteed free from dust and cleaning tips!
-                </span>
+        <div class="sp11 d-flex justify-content-center spreg1">
+            <div class="psimg">
+                <img src="img/img-BAP/sp8.png" class="sp8 ">
             </div>
-            <div class="text-right grp36">
-                <img src="img/group-36.png" srcset="img/group-36@2x.png 2x, img/group-36@3x.png 3x" class="Group-36" />
+
+            <div class="ps">
+                <p class="Get-service-requests">
+                    Receive customer requests
+                </p>
+                <p class="You-will-get-service-requests-from-customes-depend-on-service-a">
+                    You decide which customer questions you would like to accept, and according to your settings, we
+                    suggest suitable orders from your region.
+                </p>
             </div>
+
         </div>
-        <span><img src="img/sp3.png" class="i3home" /></span>
-        <span><img src="img/sp4.png" class="i4home" /></span>
-        <span><img src="img/sp5.png" class="i5home" /></span>
-        <span><img src="img/sp6.png" class="i6home" /></span>
-    </section>
 
-    <section id="customers">
-        <span class="customers-title"> What Our Customers Say </span>
-        <div class="d-flex container justify-content-between c-row">
-            <div class="box">
-                <div class="msgimg">
-                    <img src="img/message.png" srcset="img/message@2x.png 2x, img/message@3x.png 3x" class="message" />
-                </div>
-                <div class="d-flex">
-                    <img src="img/group-31.png" srcset="img/group-31@2x.png 2x, img/group-31@3x.png 3x" class="c-img" />
-                    <div class="d-flex flex-column">
-                        <p class="cname">Lary Watson</p>
-                        <p class="Manchester">Manchester</p>
-                    </div>
-                </div>
-                <p class="cdesc">Super Service!</p>
-            </div>
+        <span id="sp5"><img src="img/img-BAP/sp5.png"></span>
+        <span id="sp6"><img src="img/img-BAP/sp6.png"></span>
 
-            <div class="box">
-                <div class="msgimg">
-                    <img src="img/message.png" srcset="img/message@2x.png 2x, img/message@3x.png 3x" class="message" />
-                </div>
-                <div class="d-flex">
-                    <img src="img/group-32.png" srcset="img/group-32@2x.png 2x, img/group-32@3x.png 3x" class="c-img" />
-                    <div class="d-flex flex-column">
-                        <p class="cname">John Smith</p>
-                        <p class="Manchester">Manchester</p>
-                    </div>
-                </div>
-                <p class="cdesc">Very good..!</p>
+        <div class="sp11 d-flex justify-content-center spreg2">
+            <div class=" sp">
+                <p class="Complete-service">
+                    Complete service
+                </p>
+                <p class="Accept-service-requests-from-your-customers-and-complete-your-w">
+                    Accept service requests from your customers
+                    and complete your work.
+                </p>
             </div>
-
-            <div class="box b3">
-                <div class="msgimg">
-                    <img src="img/message.png" srcset="img/message@2x.png 2x, img/message@3x.png 3x" class="message" />
-                </div>
-                <div class="d-flex">
-                    <img src="img/group-33.png" srcset="img/group-33@2x.png 2x, img/group-33@3x.png 3x" class="c-img" />
-                    <div class="d-flex flex-column">
-                        <p class="cname">Lars Johnson</p>
-                        <p class="Manchester">Manchester</p>
-                    </div>
-                </div>
-                <p class="cdesc">Nice work.</p>
-            </div>
+            <img src="img/img-BAP/sp9.png" class="sp9">
         </div>
+
+
+
     </section>
 
     <section id="news">
@@ -522,7 +424,8 @@
             <div class="row justify-content-between align-items-center">
                 <div class="logo col-md-1 col-sm-1">
                     <a href="#head" class="text-decoration-none"><img
-                            src="img/white-logo-transparent-background-copy-4.png" class="white-logo" alt="logo" /></a>
+                            src="img/img-BAP/white-logo-transparent-background-copy-4.png" class="white-logo"
+                            alt="logo" /></a>
                 </div>
                 <div class="links col-md-3 col-lg-5 justify-content-between align-items-center">
                     <ul class="d-flex justify-content-between align-items-center">
@@ -548,10 +451,12 @@
                 </div>
                 <div class="icons col-md-1">
                     <a href="https://www.facebook.com/helperDE/" target="_blank" class="text-decoration-none"><img
-                            src="img/facebook.png" srcset="img/facebook@2x.png 2x, img/facebook@3x.png 3x"
+                            src="img/img-BAP/facebook.png"
+                            srcset="img/img-BAP/facebook@2x.png 2x, img/img-BAP/facebook@3x.png 3x"
                             class="facebook" /></a>
                     <a href="https://www.instagram.com/helperlandde/" target="_blank" class="text-decoration-none"><img
-                            src="img/instagram.png" srcset="img/instagram@2x.png 2x, img/instagram@3x.png 3x"
+                            src="img/img-BAP/instagram.png"
+                            srcset="img/img-BAP/instagram@2x.png 2x, img/img-BAP/instagram@3x.png 3x"
                             class="instagram" /></a>
                 </div>
                 <div class="Rectangle-12-copy-2"></div>
@@ -566,16 +471,17 @@
         </div>
     </footer>
 
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script src="Homepage.js"></script>
-
+    <script src="js/ServiceProvider-BAP.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
         integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 
 </html>

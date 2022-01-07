@@ -9,9 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="About.css" type="text/css" rel="stylesheet">
-    <link href="About-responsive.css" type="text/css" rel="stylesheet">
-    <title>About Us</title>
+    <link href="css/Contact.css" type="text/css" rel="stylesheet">
+    <link href="css/Contact-responsive.css" type="text/css" rel="stylesheet">
+    <title>Contact</title>
 </head>
 
 <body>
@@ -19,13 +19,13 @@
     <header id="head">
         <button id="topbtn" title="Back to Top" onclick="topFunction()">
             <div class="Ellipse-649">
-                <img src="img/forma-1(1).png">
+                <img src="img/img-Contact/forma-1(1).png">
             </div>
         </button>
-        <nav class="navbar navbar-expand-lg navbar-inverse bg-dark aboutnav">
+        <nav class="navbar navbar-expand-lg navbar-inverse bg-dark contactnav">
             <div class="container-fluid custom-toggler">
                 <a class="navbar-brand" href="#">
-                    <img src="img/logo-small.png" class="white_logo_transparent_background">
+                    <img src="img/img-Contact/logo-small.png" class="white_logo_transparent_background">
                 </a>
                 <button class="navbar-toggler ml-auto " type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -191,8 +191,8 @@
             <div data-bs-toggle="modal" href="#loginnn">
                 <a class="lm">Login</a>
             </div>
-            <div class="modal fade " id="loginnn" aria-hidden="true" aria-labelledby="log" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered modal-sm ">
+            <div class="modal fade" id="loginnn" aria-hidden="true" aria-labelledby="log" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="lmodal">Login to your account</h4>
@@ -217,8 +217,8 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <a class="text-decoration-none fpassmodal" data-bs-target="#passm1" data-bs-toggle="modal"
-                                data-bs-dismiss="modal">Forgot Password?</a>
+                            <a class="text-decoration-none fpassmodal" data-bs-target="#passm1"
+                                data-bs-toggle="modal" data-bs-dismiss="modal">Forgot Password?</a>
                         </div>
                         <div class=" text-center">
                             <a class="accmodal" data-bs-target="#signupmodal1" data-bs-toggle="modal"
@@ -234,7 +234,8 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="pass">Forgot Password</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form>
@@ -242,19 +243,21 @@
                                 <button type="submit" class="sendemail">Send</button>
                             </form>
                         </div>
-                        <a class="text-decoration-none text-center loginnowmodal" data-bs-target="#loginnn"
-                            data-bs-toggle="modal" data-bs-dismiss="modal">Login
+                        <a class="text-decoration-none text-center loginnowmodal"
+                            data-bs-target="#loginnn" data-bs-toggle="modal" data-bs-dismiss="modal">Login
                             Now</a>
                     </div>
                 </div>
             </div>
 
-            <div class="modal fade" id="signupmodal1" aria-hidden="true" aria-labelledby="signup" tabindex="-1">
+            <div class="modal fade" id="signupmodal1" aria-hidden="true" aria-labelledby="signup"
+                tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title" id="signup">Create an account</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <form>
@@ -263,13 +266,15 @@
                                     <input type="text" placeholder="Last name" class="lnamemodal">
                                 </div>
                                 <div>
-                                    <input type="email" placeholder="E-mail Address" class="signupemailmodal">
+                                    <input type="email" placeholder="E-mail Address"
+                                        class="signupemailmodal">
                                     <input type="text" placeholder="+49" class="pinmodal" disabled>
                                     <input type="text" placeholder="Mobile Number" class="mnomodal">
                                 </div>
                                 <div>
                                     <input type="password" placeholder="Password" class="signuppass">
-                                    <input type="password" placeholder="Confirm Password" class="confirmsignuppass">
+                                    <input type="password" placeholder="Confirm Password"
+                                        class="confirmsignuppass">
                                 </div>
                                 <div>
                                     <input type="checkbox" value="privacy" id="ppcheckbox" />
@@ -283,7 +288,8 @@
                         </div>
                         <div class="text-center">
                             <p class="alreadyreg">Already registered? <a class="text-decoration-none "
-                                    data-bs-target="#loginnn" data-bs-toggle="modal" data-bs-dismiss="modal"> Login Now
+                                    data-bs-target="#loginnn" data-bs-toggle="modal"
+                                    data-bs-dismiss="modal"> Login Now
                                 </a></p>
                         </div>
 
@@ -295,49 +301,108 @@
 
             <a href="#">Become a Helper</a>
         </div>
-
+    
         <div onclick="openNav()" class="sideham">&#9776; </div>
-
 
     </header>
 
-    <section id="contact-body">
-        <img src="img/hero-banner-img.png" class="about-us-banner img-fluid img-responsive">
-        <span class="A-Few-words-about-us">
-            A Few words about us
+    <section>
+        <img src="img/img-Contact/group-16.png" srcset="img/img-Contact/group-16@2x.png 2x,
+        img/img-Contact/group-16@3x.png 3x" class="Group-16 img-responsive img-fluid">
+
+        <span class="Contact-us">
+            Contact us
         </span>
 
         <div class="text-center d-flex align-items-center justify-content-center line1">
-            <img src="img/forma-1-copy-5.png">
+            <img src="img/img-Contact/forma-1-copy-5.png">
         </div>
-        <div class="text-center">
-            <p class="aboutpara">
-                We are providers of professional home cleaning services, offering hourly based house cleaning options,
-                which mean that you don’t have to fret about getting your house cleaned anymore. We will handle
-                everything for you, so that you can focus on spending your precious time with your family
-                members.<br><br>
 
-                We have a number of experienced cleaners to help you make cleaning out or shifting your home an easy
-                affair.
-            </p>
+
+        <div class="c-row mx-auto container justify-content-between r12">
+            <div class="img1 text-center">
+                <img src="img/img-Contact/forma-1.png" srcset="img/img-Contact/forma-1@2x.png 2x,
+                img/img-Contact/forma-1@3x.png 3x"
+                    class="Forma-1 text-center align-items-center justify-content-center">
+
+                <span class="-Lorem-ipsum-text-100-Lorem-ipsum-AB flex-column">
+                    Königswinterer Str. 116
+                    53227 Bonn
+                </span>
+            </div>
+
+            <div class="text-center img2 align-center">
+                <img src="img/img-Contact/phone-call.png" srcset="img/img-Contact/phone-call@2x.png 2x,
+                img/img-Contact/phone-call@3x.png 3x" class="phone-call">
+                <span class="num1">
+                    +49 (40) 123 56 7890
+                </span>
+                <span class="num2">
+                    +49 (40) 987 56 0000
+                </span>
+            </div>
+
+            <div class="text-center img3">
+                <img src="img/img-Contact/vector-smart-object.png" srcset="img/img-Contact/vector-smart-object@2x.png 2x,
+                img/img-Contact/vector-smart-object@3x.png 3x" class="Vector-Smart-Object">
+
+                <span class="infohelperlandcom">
+                    info@helperland.com
+                </span>
+            </div>
+
         </div>
-        <span class="Our-Story">
-            Our Story
+
+        <div class="text-center">
+            <div class="Rectangle-21"></div>
+        </div>
+
+    </section>
+
+    <section id="getInTouch">
+        <span class="Get-in-touch-with-us">
+            Get in touch with us
         </span>
 
-        <div class="text-center d-flex align-items-center justify-content-center line1">
-            <img src="img/forma-1-copy-5.png">
-        </div>
         <div class="text-center">
-            <p class="aboutpara">
-                A cleaner is a type of industrial or domestic worker who cleans homes or commercial premises for
-                payment. Cleaners may specialise in cleaning particular things or places, such as window cleaners.
-                Cleaners often work when the people who otherwise occupy the space are not around. They may clean
-                offices at night or houses during the workday.
-            </p>
+            <form>
+                <div class="f1">
+
+                    <input type="text" placeholder="First Name" class="Rounded-Rectangle-2">
+                    <input type="text" placeholder="Last Name" class="Rounded-Rectangle-2-copy-2">
+
+                </div>
+
+
+                <div class="f2">
+                    <input type="text" placeholder="+49" class="Rounded-Rectangle-2-copy-20" disabled>
+                    <input type="text" placeholder="Mobile number" class="Rounded-Rectangle-2-copy-10">
+                    <input type="email" placeholder="Email address" class="Rounded-Rectangle-2-copy-7">
+                </div>
+
+                <div>
+                    <select title="Subject" class="Rounded-Rectangle-2-copy-12">
+                        <option value="">&nbsp;&nbsp;General</option>
+                        <option value="A">Inquiry</option>
+                        <option value="B">Renewal</option>
+                        <option value="C">Revocation</option>
+                    </select>
+                </div>
+
+                <div>
+                    <input type="text" placeholder="Message" class="Rounded-Rectangle-2-copy-11">
+                </div>
+
+                <button type="submit" class="Rounded-Rectangle-2-copy-6">Submit</button>
+            </form>
         </div>
 
+    </section>
 
+    <section id="maps">
+        <div style="width: 100%"><iframe width="100%" height="400" frameborder="0" scrolling="no" marginheight="0"
+                marginwidth="0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.6979157244114!2d72.49824711445191!3d23.034861321650208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e8352e403437b%3A0xdc9d4dae36889fb9!2sTatvaSoft!5e0!3m2!1sen!2sin!4v1640187081460!5m2!1sen!2sin"></iframe>
     </section>
 
     <section id="news">
@@ -357,7 +422,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="logo col-md-1 col-sm-1">
                     <a href="#head" class="text-decoration-none"><img
-                            src="img/white-logo-transparent-background-copy-4.png" class="white-logo" alt="logo"></a>
+                            src="img/img-Contact/white-logo-transparent-background-copy-4.png" class="white-logo" alt="logo"></a>
                 </div>
                 <div class=" links col-md-3 col-lg-5 justify-content-between align-items-center">
                     <ul class=" d-flex justify-content-between align-items-center">
@@ -383,11 +448,11 @@
                 </div>
                 <div class="icons col-md-1">
                     <a href="https://www.facebook.com/helperDE/" target="_blank" class="text-decoration-none "><img
-                            src="img/facebook.png" srcset="img/facebook@2x.png 2x,
-                                    img/facebook@3x.png 3x" class="facebook"></a>
+                            src="img/img-Contact/facebook.png" srcset="img/img-Contact/facebook@2x.png 2x,
+                            img/img-Contact/facebook@3x.png 3x" class="facebook"></a>
                     <a href="https://www.instagram.com/helperlandde/" target="_blank" class="text-decoration-none "><img
-                            src="img/instagram.png" srcset="img/instagram@2x.png 2x,
-                                    img/instagram@3x.png 3x" class="instagram"></a>
+                            src="img/img-Contact/instagram.png" srcset="img/img-Contact/instagram@2x.png 2x,
+                            img/img-Contact/instagram@3x.png 3x" class="instagram"></a>
                 </div>
                 <div class="Rectangle-12-copy-2"></div>
 
@@ -400,11 +465,11 @@
         </div>
     </footer>
 
-
+    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script src="About.js"></script>
+    <script src="js/Contact.js"></script>
 </body>
 
 </html>
