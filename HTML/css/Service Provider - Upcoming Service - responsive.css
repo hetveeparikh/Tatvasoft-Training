@@ -71,6 +71,9 @@
       padding-bottom: 20px;
       text-align: center;
   }
+  .blockbox{
+      margin-left: 0px;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 904px) {
   .icons{

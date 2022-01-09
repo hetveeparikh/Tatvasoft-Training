@@ -319,6 +319,12 @@ img.ghar{
     background-color: #1d7a8c;
     cursor: pointer;
 }
+.accept{
+  background-color: #1d7a8c;
+}
+.accept:hover{
+  background-color: #146371;
+}
 .paginate_button {
   background-color: #1d7a8c;
   padding: 7px 10px;
@@ -373,6 +379,82 @@ img.ghar{
   background-color: #146371;
   color: white;
 }
+.sidenav a.active {
+  color: #146371;
+}
+
+.sidenav a:hover:not(.active) {
+  color: #146371;
+}
 .col-lg-8{
   width: 67%;
+}
+.blocktopi{
+  width: 70px;
+  height: 50px;
+
+}
+.blocktopicircle{
+  width: 100px;
+  height: 90px;
+  padding: 7px 0px;
+  border: solid 1px #aaa;
+  border-radius: 90px;
+  background-color: transparent;
+}
+.blockname{
+  margin-top: 20px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  color: #646464;
+}
+.unblockbtn{
+  font-family: Roboto;
+  width: auto;
+  height: 40px;
+  margin-top: 20px;
+  align-items: center;
+  border-radius: 40px;
+  padding: 0px 25px;
+  font-size: 20px;
+  background-color: #1d7a8c;
+  color: white;
+}
+.unblockbtn:hover{
+  background-color: #146371;
+}
+.blockbox{
+  padding: 30px 20px;
+  margin-top: 30px;
+  border: solid 1px #928b8b;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.blockbtn{
+  font-family: Roboto;
+  width: auto;
+  height: 40px;
+  margin-top: 20px;
+  align-items: center;
+  border-radius: 40px;
+  padding: 0px 25px;
+  font-size: 20px;
+  background-color: #ff6b6b;
+  color: white;
+}
+.blockbtn:hover{
+  background-color: #c84040;
+}
+#dashboard_paginate{
+  margin-top: 10px;
+  text-align: center;
+}
+.dataTables_length,.dataTables_info{
+  display: flex;
+  justify-content: center;
+}
+#upcoming_paginate{
+  margin-top: 10px;
+  text-align: center;
 }

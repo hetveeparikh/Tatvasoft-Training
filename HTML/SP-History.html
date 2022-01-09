@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/Service Provider - Upcoming Service - responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
-    <title>Service Provider - Upcoming Service</title>
+    <title>Service Provider - History</title>
     <link rel="shortcut icon" href="img/img-homepage/favicon_img.png" type="image/x-icon">
 </head>
 
@@ -42,7 +42,7 @@
                             <a class="nav-link prices" href="Prices.html">Prices</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link warranty" href="Warranty.html">Warranty</a>
+                            <a class="nav-link warranty" href="#">Warranty</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link blog">Blog</a>
@@ -82,14 +82,14 @@
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="SP - Dashboard.html">Dashboard</a>
-            <a href="Service Provider - Upcoming Service.html" class="active">Upcoming Services</a>
+            <a href="Service Provider - Upcoming Service.html">Upcoming Services</a>
             <a href="#">Service Schedule</a>
-            <a href="SP-History.html">Service History</a>
+            <a href="SP-History.html" class="active">Service History</a>
             <a href="#">My Ratings </a>
             <a href="SP-Block.html">Block Customer</a>
             <a href="#">Book a Cleaner</a>
             <a href="Prices.html">Prices</a>
-            <a href="Warranty.html">Warranty</a>
+            <a href="#">Warranty</a>
             <a href="#">Blog</a>
             <a href="Contact.html">Contact</a>
             <li class="dropdown">
@@ -118,10 +118,10 @@
 
     <section id="maincs" class="row">
         <div class="sidebar col-lg-2 offset-lg-1 container">
-            <a href="SP - Dashboard.html" id="dash1">Dashboard</a>
-            <a href="Service Provider - Upcoming Service.html" class="active">Upcoming Services</a>
+            <a href="SP - Dashboard.html">Dashboard</a>
+            <a href="Service Provider - Upcoming Service.html">Upcoming Services</a>
             <a href="#">Service Schedule</a>
-            <a href="SP-History.html">Service History</a>
+            <a href="SP-History.html" class="active">Service History</a>
             <a href="#">My Ratings </a>
             <a href="SP-Block.html">Block Customer</a>
         </div>
@@ -129,7 +129,7 @@
         <div class="container col-lg-8 sptable">
             <div class="row">
                 <div class="col-lg-12">
-                    <table class="table display nowrap" id="upcoming" colspacing="0" style="width: 100%;">
+                    <table class="table display nowrap" id="historysp" colspacing="0" style="width: 100%;">
                         <thead>
                             <tr id="firstrow">
                                 <th>
@@ -146,14 +146,6 @@
                                     <div class="d-flex">
                                         <span class="heading">Customer details</span>
                                     </div>
-                                </th>
-                                <th>
-                                    <div class="d-flex">
-                                        <span class="heading">Distance</span>
-                                    </div>
-                                </th>
-                                <th>
-                                    <span class="heading">&nbsp;Actions</span>
                                 </th>
                             </tr>
                         </thead>
@@ -181,14 +173,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="dist">15 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
                             </tr>
-                
+
                             <tr>
                                 <td height="5" class="sid">323437</td>
                                 <td height="5">
@@ -212,14 +198,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="dist">10 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
                             </tr>
-                
+
                             <tr>
                                 <td height="5" class="sid">323445</td>
                                 <td height="5">
@@ -243,262 +223,8 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="dist">10 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
                             </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323446</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">10 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323438</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">15 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323439</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">15 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323440</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">10 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323441</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">25 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323442</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">15 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323443</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">05 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
-                            <tr>
-                                <td height="5" class="sid">323444</td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <div class="d-flex">
-                                            <img src="img/img-US/calendar.png" class="calendar">
-                                            <p class="date">09/04/2018</p>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/img-US/ghadi.png" class="ghadi">
-                                            <p class="time">12:00-18:00</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td height="5">
-                                    <div class="d-flex flex-column">
-                                        <span class="david">David Bough</span>
-                                        <div class="d-flex">
-                                            <img class="ghar" src="img/img-US/ghar.png">
-                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="dist">15 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
-                                </td>
-                            </tr>
-                
+
                             <tr>
                                 <td height="5" class="sid">323445</td>
                                 <td height="5">
@@ -522,20 +248,67 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="dist">05 km</td>
-                                <td>
-                                    <form>
-                                        <button type="submit" class="cancel text-white">Cancel</button>
-                                    </form>
+                            </tr>
+
+                            <tr>
+                                <td height="5" class="sid">323445</td>
+                                <td height="5">
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex">
+                                            <img src="img/img-US/calendar.png" class="calendar">
+                                            <p class="date">09/04/2018</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <img src="img/img-US/ghadi.png" class="ghadi">
+                                            <p class="time">12:00-18:00</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td height="5">
+                                    <div class="d-flex flex-column">
+                                        <span class="david">David Bough</span>
+                                        <div class="d-flex">
+                                            <img class="ghar" src="img/img-US/ghar.png">
+                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td height="5" class="sid">323445</td>
+                                <td height="5">
+                                    <div class="d-flex flex-column">
+                                        <div class="d-flex">
+                                            <img src="img/img-US/calendar.png" class="calendar">
+                                            <p class="date">09/04/2018</p>
+                                        </div>
+                                        <div class="d-flex">
+                                            <img src="img/img-US/ghadi.png" class="ghadi">
+                                            <p class="time">12:00-18:00</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td height="5">
+                                    <div class="d-flex flex-column">
+                                        <span class="david">David Bough</span>
+                                        <div class="d-flex">
+                                            <img class="ghar" src="img/img-US/ghar.png">
+                                            <p class="add">Musterstrabe 5,12345 Bonn</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+
                         </tbody>
                     </table>
                 </div>
-                </div>
+            </div>
         </div>
 
-           
+
+
     </section>
 
     <footer>
@@ -543,7 +316,8 @@
             <div class="row justify-content-between align-items-center">
                 <div class="logo col-md-1 col-sm-1">
                     <a href="Homepage.html" class="text-decoration-none"><img
-                            src="img/img-US/white-logo-transparent-background-copy-4.png" class="white-logo" alt="logo" /></a>
+                            src="img/img-US/white-logo-transparent-background-copy-4.png" class="white-logo"
+                            alt="logo" /></a>
                 </div>
                 <div class="links col-md-3 col-lg-5 justify-content-between align-items-center">
                     <ul class="d-flex justify-content-between align-items-center">
@@ -592,7 +366,7 @@
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="js/Service Provider - Upcoming Service.js"></script>
+    <script src="js/SP-History.js"></script>
 
 </body>
 
