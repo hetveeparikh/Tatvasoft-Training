@@ -258,8 +258,8 @@ body {
   color: #646464;
 }
 .export {
-  width: 70px;
-  height: 34px;
+  width: auto;
+  height: auto;
   margin: 46px 10px 5px 13px;
   padding: 0px 11px 0px 11px;
   border-radius: 17px;
@@ -471,4 +471,74 @@ img.topi {
 .sidebar a:hover:not(.active) {
   background-color: #146371;
   color: white;
+}
+.csid,.newdate{
+  width: 100%;
+  height: auto;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #646464;
+}
+.csreschedule{
+  width: auto;
+  height: auto;
+  margin: 0px 10px 0px 0px;
+  padding: 10px 9px 10px 13px;
+  border-radius: 25px;
+  background-color: #1d7a8c;
+  color: white;
+}
+.csreschedule:hover{
+  background-color: #146371;
+}
+.cscancel{
+  width: auto;
+  height: auto;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 9px 10px 13px;
+  border-radius: 25px;
+  background-color: #ff6b6b;
+  color: white;
+}
+.cscancel:hover{
+  background-color: #e75454;
+}
+.csupdate{
+  width: 90%;
+  height: auto;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 9px 10px 13px;
+  border-radius: 25px;
+  background-color: #1d7a8c;
+  color: white;
+  margin-top: 0px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+.timerect{
+  width: auto;
+  height: auto;
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+.daterect{
+  width: auto;
+  height: auto;
+  border: solid 1px #646464;
+  margin: 10px;
+  padding: 10px;
+}
+th:hover{
+  cursor: pointer;
+  color: #1d7a8c;
 }

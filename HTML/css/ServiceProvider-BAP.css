@@ -9,7 +9,6 @@ body {
   overflow-x: hidden;
 }
 .first {
-  /* background-image: url("img/SpBap.png"); */
   background-color: white;
   background-attachment: fixed;
   height: 100%;
@@ -72,11 +71,12 @@ img.white_logo_transparent_background {
   object-fit: contain;
 }
 .bookrect {
-  width: 161px;
+  width: auto;
   height: 40px;
   border-radius: 20px;
   border: solid 1px white;
   background-color: transparent;
+  padding: 0px 10px;
 }
 .loginrect {
   width: 97px;

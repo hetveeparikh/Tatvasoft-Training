@@ -8,7 +8,7 @@ body {
   scroll-behavior: smooth;
 }
 .first {
-  background-image: url("img/img-Homepage/group-35.png");
+  /* background-image: url("img/img-Homepage/group-35.png"); */
   background-color: white;
   background-attachment: fixed;
   height: 100%;
@@ -70,10 +70,11 @@ img.white_logo_transparent_background {
   object-fit: contain;
 }
 .bookrect {
-  width: 161px;
+  width: auto;
   height: 40px;
   border-radius: 20px;
   border: solid 1px white;
+  padding: 0px 10px;
   background-color: transparent;
 }
 .loginrect {
