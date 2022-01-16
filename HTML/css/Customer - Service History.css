@@ -66,11 +66,12 @@ body {
   text-align: center;
 }
 .bookrect {
-  width: 161px;
+  width: auto;
   height: 40px;
   border-radius: 20px;
   border: solid 1px white;
   background-color: transparent;
+  padding: 0px 10px;
 }
 .ver-line {
   width: 1px;
