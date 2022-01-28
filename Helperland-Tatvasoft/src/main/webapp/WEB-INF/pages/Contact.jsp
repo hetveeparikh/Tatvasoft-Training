@@ -421,6 +421,9 @@
 						class="Rounded-Rectangle-2-copy-11">
 				</div>
 
+				<label class="attachment">Attachment</label><br> 
+				<input type="file" class="upload"><br>
+
 				<button type="submit" class="Rounded-Rectangle-2-copy-6">Submit</button>
 			</form>
 		</div>

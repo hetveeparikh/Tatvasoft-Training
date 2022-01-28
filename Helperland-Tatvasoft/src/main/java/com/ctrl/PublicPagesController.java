@@ -49,14 +49,14 @@ public class PublicPagesController {
 		return "ServiceProvider-BAP";
 	}
 	
-	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
-	public RedirectView addcust(@ModelAttribute Customer customer) {
-		System.out.println(customer);
-		this.customerDao.createCustomer(customer);
-		RedirectView redirectView = new RedirectView();
-//		redirectView.setUrl(null)
-		return redirectView;
-	}
+//	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
+//	public RedirectView addcust(@ModelAttribute Customer customer) {
+//		System.out.println(customer);
+//		this.customerDao.createCustomer(customer);
+//		RedirectView redirectView = new RedirectView();
+////		redirectView.setUrl(null)
+//		return redirectView;
+//	}
 	
 //	@RequestMapping("/addCustomer")
 //	public String addcust(@ModelAttribute Customer customer) {

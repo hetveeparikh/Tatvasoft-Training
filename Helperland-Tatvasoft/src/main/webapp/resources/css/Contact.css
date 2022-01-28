@@ -402,6 +402,35 @@ img.Vector-Smart-Object {
   line-height: 1.6;
   letter-spacing: normal;
 }
+.attachment{
+  width: 100%;
+  height: auto;
+  margin: 20px 0px 0px;
+  font-family: Roboto;
+  font-size: 22px;
+  font-stretch: normal;
+  font-weight: bold;
+  display: block;
+  font-style: normal;
+  line-height: 0.86;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+}
+.upload{
+  font-stretch: normal;
+  display: block;
+  font-style: normal;
+  line-height: 0.86;
+  letter-spacing: normal;
+  text-align: center;
+  color: #4f4f4f;
+  width: 100%;
+  height: auto;
+  font-size: 20px;
+  margin: 0px 0px 0px;
+  font-family: Roboto;
+}
 
 /* Newsletter */
 
