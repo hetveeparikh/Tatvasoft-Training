@@ -17,6 +17,7 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/Contact-responsive.css"
 	type="text/css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <title>Contact</title>
 <link rel="shortcut icon"
 	href="<%=request.getContextPath()%>/resources/img/img-Homepage/favicon_img.png"
@@ -49,7 +50,7 @@
 					<ul class="navbar-nav ml-auto ">
 						<li class="nav-item">
 							<div class="nav-btn Rounded-Rectangle-5-copy-5">
-								<a class="nav-link Book-now" href="BookNow.jsp">Book now</a>
+								<a class="nav-link Book-now" href="BookNow">Book now</a>
 							</div>
 						</li>
 						<li class="nav-item">
@@ -90,20 +91,30 @@
 										</div>
 
 										<div class="modal-body">
-											<div>
-												<input type="email" placeholder="Email" class="emailmodal" />
-											</div>
-											<div>
-												<input type="password" placeholder="Password"
-													class="passmodal" />
-											</div>
-											<div>
-												<input type="checkbox" value="Remember me" id="rem" /> <label
-													for="rem" class="remmodal">Remember me</label>
-											</div>
-											<div class="text-center">
-												<button type="submit" class="loginbtnmodal">Login</button>
-											</div>
+											<form action="loginprocess" method="post">
+												<div>
+													<input type="email" placeholder="Email" class="emailmodal"
+														name="Email" />
+												</div>
+												<div>
+													<input type="password" placeholder="Password"
+														class="passmodal" name="Password" />
+												</div>
+												<div>
+													<input type="checkbox" value="Remember me" id="rem" /> <label
+														for="rem" class="remmodal">Remember me</label>
+												</div>
+												<div class="text-center">
+													<button type="submit" class="loginbtnmodal">Login</button>
+												</div>
+
+												<!-- 
+												<table align="center">
+													<tr>
+														<td style="font-style: italic; color: red;">${message}</td>
+													</tr>
+												</table> -->
+											</form>
 										</div>
 										<div class="text-center">
 											<a class="text-decoration-none fpassmodal"
@@ -130,9 +141,9 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form>
+											<form action="forgotpassword" method="post">
 												<input type="email" placeholder="Email Address"
-													class="emailmodal">
+													class="emailmodal" name="Email" />
 												<button type="submit" class="sendemail">Send</button>
 											</form>
 										</div>
@@ -153,27 +164,34 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form>
+											<form action="addCustomer" method="post">
 												<div>
 													<input type="text" placeholder="First name"
-														class="fnamemodal"> <input type="text"
-														placeholder="Last name" class="lnamemodal">
+														class="fnamemodal" name="FirstName" required /> <input
+														type="text" placeholder="Last name" name="LastName"
+														class="lnamemodal" required />
 												</div>
 												<div>
 													<input type="email" placeholder="E-mail Address"
-														class="signupemailmodal"> <input type="text"
-														placeholder="+49" class="pinmodal" disabled> <input
-														type="text" placeholder="Mobile Number" class="mnomodal">
+														class="signupemailmodal" name="Email" required /> <input
+														type="text" placeholder="+49" class="pinmodal"
+														name="pincode" disabled /> <input type="text"
+														placeholder="Mobile Number" class="mnomodal" name="Mobile"
+														required />
 												</div>
 												<div>
 													<input type="password" placeholder="Password"
-														class="signuppass"> <input type="password"
-														placeholder="Confirm Password" class="confirmsignuppass">
+														class="signuppass" name="Password" id="Password" required />
+													<input type="password" placeholder="Confirm Password"
+														id="ConfirmPassword" name="cpass"
+														class="confirmsignuppass" required />
 												</div>
+												<div style="margin-top: 7px;" class="text-center mb-2"
+													id="CheckPasswordMatch"></div>
 												<div>
-													<input type="checkbox" value="privacy" id="ppcheckbox" />
-													<label for="ppcheckbox" class="signuppolicy">I have
-														read the <a class="pp">Privacy Policy</a>
+													<input type="checkbox" value="privacy" id="ppcheckbox"
+														required /> <label for="ppcheckbox" class="signuppolicy">I
+														have read the <a class="pp">Privacy Policy</a>
 													</label>
 												</div>
 												<div class="text-center">
@@ -206,7 +224,7 @@
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="BookNow.jsp">Book Now</a> <a href="prices">Prices &
+			<a href="BookNow">Book Now</a> <a href="prices">Prices &
 				Services</a> <a href="warranty">Warranty</a> <a href="#">Blog</a> <a
 				href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
@@ -222,19 +240,30 @@
 						</div>
 
 						<div class="modal-body">
-							<div>
-								<input type="email" placeholder="Email" class="emailmodal" />
-							</div>
-							<div>
-								<input type="password" placeholder="Password" class="passmodal" />
-							</div>
-							<div>
-								<input type="checkbox" value="Remember me" id="rem" /> <label
-									for="rem" class="remmodal">Remember me</label>
-							</div>
-							<div class="text-center">
-								<button type="submit" class="loginbtnmodal">Login</button>
-							</div>
+							<form action="loginprocess" method="post">
+								<div>
+									<input type="email" placeholder="Email" class="emailmodal"
+										name="Email" />
+								</div>
+								<div>
+									<input type="password" placeholder="Password" class="passmodal"
+										name="Password" />
+								</div>
+								<div>
+									<input type="checkbox" value="Remember me" id="rem" /> <label
+										for="rem" class="remmodal">Remember me</label>
+								</div>
+								<div class="text-center">
+									<button type="submit" class="loginbtnmodal">Login</button>
+								</div>
+
+								<!-- 
+												<table align="center">
+													<tr>
+														<td style="font-style: italic; color: red;">${message}</td>
+													</tr>
+												</table> -->
+							</form>
 						</div>
 						<div class="text-center">
 							<a class="text-decoration-none fpassmodal"
@@ -261,9 +290,9 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form>
+							<form action="forgotpassword" method="post">
 								<input type="email" placeholder="Email Address"
-									class="emailmodal">
+									class="emailmodal" name="Email" />
 								<button type="submit" class="sendemail">Send</button>
 							</form>
 						</div>
@@ -284,26 +313,33 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form>
+							<form action="addCustomer" method="post">
 								<div>
-									<input type="text" placeholder="First name" class="fnamemodal">
-									<input type="text" placeholder="Last name" class="lnamemodal">
+									<input type="text" placeholder="First name" class="fnamemodal"
+										name="FirstName" required /> <input type="text"
+										placeholder="Last name" name="LastName" class="lnamemodal"
+										required />
 								</div>
 								<div>
 									<input type="email" placeholder="E-mail Address"
-										class="signupemailmodal"> <input type="text"
-										placeholder="+49" class="pinmodal" disabled> <input
-										type="text" placeholder="Mobile Number" class="mnomodal">
+										class="signupemailmodal" name="Email" required /> <input
+										type="text" placeholder="+49" class="pinmodal" name="pincode"
+										disabled /> <input type="text" placeholder="Mobile Number"
+										class="mnomodal" name="Mobile" required />
 								</div>
 								<div>
 									<input type="password" placeholder="Password"
-										class="signuppass"> <input type="password"
-										placeholder="Confirm Password" class="confirmsignuppass">
+										class="signuppass" name="Password" id="Password1" required />
+									<input type="password" placeholder="Confirm Password"
+										id="ConfirmPassword1" name="cpass" class="confirmsignuppass"
+										required />
 								</div>
+								<div style="margin-top: 7px;" class="text-center mb-2"
+									id="CheckPasswordMatch1"></div>
 								<div>
-									<input type="checkbox" value="privacy" id="ppcheckbox" /> <label
-										for="ppcheckbox" class="signuppolicy">I have read the
-										<a class="pp">Privacy Policy</a>
+									<input type="checkbox" value="privacy" id="ppcheckbox" required />
+									<label for="ppcheckbox" class="signuppolicy">I have
+										read the <a class="pp">Privacy Policy</a>
 									</label>
 								</div>
 								<div class="text-center">
@@ -389,12 +425,13 @@
 		<span class="Get-in-touch-with-us"> Get in touch with us </span>
 
 		<div class="text-center">
-			<form>
+			<form action="savecontact" method="post">
 				<div class="f1">
 
-					<input type="text" placeholder="First Name"
-						class="Rounded-Rectangle-2"> <input type="text"
-						placeholder="Last Name" class="Rounded-Rectangle-2-copy-2">
+					<input type="text" placeholder="First Name" name="FName"
+						class="Rounded-Rectangle-2" required> <input type="text"
+						placeholder="Last Name" class="Rounded-Rectangle-2-copy-2"
+						name="LName" required>
 
 				</div>
 
@@ -402,13 +439,15 @@
 				<div class="f2">
 					<input type="text" placeholder="+49"
 						class="Rounded-Rectangle-2-copy-20" disabled> <input
-						type="text" placeholder="Mobile number"
-						class="Rounded-Rectangle-2-copy-10"> <input type="email"
-						placeholder="Email address" class="Rounded-Rectangle-2-copy-7">
+						type="text" placeholder="Mobile number" name="PhoneNumber"
+						class="Rounded-Rectangle-2-copy-10" required> <input
+						type="email" name="Email" placeholder="Email address"
+						class="Rounded-Rectangle-2-copy-7" required>
 				</div>
 
 				<div>
-					<select title="Subject" class="Rounded-Rectangle-2-copy-12">
+					<select title="Subject" name="Subject"
+						class="Rounded-Rectangle-2-copy-12" required>
 						<option value="">&nbsp;&nbsp;General</option>
 						<option value="A">Inquiry</option>
 						<option value="B">Renewal</option>
@@ -417,12 +456,17 @@
 				</div>
 
 				<div>
-					<input type="text" placeholder="Message"
-						class="Rounded-Rectangle-2-copy-11">
+					<input type="text" placeholder="Message" name="Message"
+						class="Rounded-Rectangle-2-copy-11" required>
 				</div>
 
-				<label class="attachment">Attachment</label><br> 
-				<input type="file" class="upload"><br>
+				<label class="attachment">Attachment</label><br>
+				<div class="d-flex justify-content-center">
+					<div class="input-group mb-3 Rounded-Rectangle-2-copy-12"
+						style="height: auto">
+						<input type="file" class="form-control" id="inputGroupFile02">
+					</div>
+				</div>
 
 				<button type="submit" class="Rounded-Rectangle-2-copy-6">Submit</button>
 			</form>

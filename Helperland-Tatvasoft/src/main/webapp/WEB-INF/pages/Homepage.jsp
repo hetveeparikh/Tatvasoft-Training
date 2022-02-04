@@ -1,3 +1,6 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +60,7 @@
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 						<li class="nav-item">
 							<div class="bookrect text-center">
-								<a class="nav-link book align-items-center" href="BookNow.jsp">Book
+								<a class="nav-link book align-items-center" href="BookNow">Book
 									Now</a>
 							</div>
 						</li>
@@ -85,20 +88,31 @@
 										</div>
 
 										<div class="modal-body">
-											<div>
-												<input type="email" placeholder="Email" class="emailmodal" />
-											</div>
-											<div>
-												<input type="password" placeholder="Password"
-													class="passmodal" />
-											</div>
-											<div>
-												<input type="checkbox" value="Remember me" id="rem" /> <label
-													for="rem" class="remmodal">Remember me</label>
-											</div>
-											<div class="text-center">
-												<button type="submit" class="loginbtnmodal">Login</button>
-											</div>
+
+											<form action="loginprocess" method="post">
+												<div>
+													<input type="email" placeholder="Email" class="emailmodal"
+														name="Email" required/>
+												</div>
+												<div>
+													<input type="password" placeholder="Password"
+														class="passmodal" name="Password" required/>
+												</div>
+												<div>
+													<input type="checkbox" value="Remember me" id="rem" /> <label
+														for="rem" class="remmodal">Remember me</label>
+												</div>
+												<div class="text-center">
+													<button type="submit" class="loginbtnmodal">Login</button>
+												</div>
+
+												<!-- 
+												<table align="center">
+													<tr>
+														<td style="font-style: italic; color: red;">${message}</td>
+													</tr>
+												</table> -->
+											</form>
 										</div>
 										<div class="text-center">
 											<a class="text-decoration-none fpassmodal"
@@ -125,9 +139,9 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form>
+											<form action="forgotpassword" method="post">
 												<input type="email" placeholder="Email Address"
-													class="emailmodal" />
+													class="emailmodal" name="Email" required/>
 												<button type="submit" class="sendemail">Send</button>
 											</form>
 										</div>
@@ -148,29 +162,34 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form action="addCustomer">
+											<form action="addCustomer" method="post">
 												<div>
 													<input type="text" placeholder="First name"
-														class="fnamemodal" name="fname" /> <input type="text"
-														placeholder="Last name" name="lname" class="lnamemodal" />
+														class="fnamemodal" name="FirstName" required /> <input
+														type="text" placeholder="Last name" name="LastName"
+														class="lnamemodal" required />
 												</div>
 												<div>
 													<input type="email" placeholder="E-mail Address"
-														class="signupemailmodal" name="email" /> <input
+														class="signupemailmodal" name="Email" required /> <input
 														type="text" placeholder="+49" class="pinmodal"
-														name="pincode" /> <input type="text"
-														placeholder="Mobile Number" class="mnomodal" name="mno" />
+														name="pincode" disabled /> <input type="text"
+														placeholder="Mobile Number" class="mnomodal" name="Mobile"
+														required />
 												</div>
 												<div>
 													<input type="password" placeholder="Password"
-														class="signuppass" name="pass" /> <input type="password"
-														placeholder="Confirm Password" name="cpass"
-														class="confirmsignuppass" />
+														class="signuppass" name="Password" id="Password" required />
+													<input type="password" placeholder="Confirm Password"
+														id="ConfirmPassword" name="cpass"
+														class="confirmsignuppass" required />
 												</div>
+												<div style="margin-top: 7px;" class="text-center mb-2"
+													id="CheckPasswordMatch"></div>
 												<div>
-													<input type="checkbox" value="privacy" id="ppcheckbox" />
-													<label for="ppcheckbox" class="signuppolicy">I have
-														read the <a class="pp">Privacy Policy</a>
+													<input type="checkbox" value="privacy" id="ppcheckbox"
+														required /> <label for="ppcheckbox" class="signuppolicy">I
+														have read the <a class="pp">Privacy Policy</a>
 													</label>
 												</div>
 												<div class="text-center">
@@ -201,7 +220,7 @@
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="BookNow.jsp">Book Now</a> <a href="prices">Prices</a> <a
+			<a href="BookNow">Book Now</a> <a href="prices">Prices</a> <a
 				href="warranty">Warranty</a> <a href="#">Blog</a> <a href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
 				<a class="lm">Login</a>
@@ -216,19 +235,30 @@
 						</div>
 
 						<div class="modal-body">
-							<div>
-								<input type="email" placeholder="Email" class="emailmodal" />
-							</div>
-							<div>
-								<input type="password" placeholder="Password" class="passmodal" />
-							</div>
-							<div>
-								<input type="checkbox" value="Remember me" id="rem" /> <label
-									for="rem" class="remmodal">Remember me</label>
-							</div>
-							<div class="text-center">
-								<button type="submit" class="loginbtnmodal">Login</button>
-							</div>
+							<form action="loginprocess" method="post">
+								<div>
+									<input type="email" placeholder="Email" class="emailmodal"
+										name="Email" />
+								</div>
+								<div>
+									<input type="password" placeholder="Password" class="passmodal"
+										name="Password" />
+								</div>
+								<div>
+									<input type="checkbox" value="Remember me" id="rem" /> <label
+										for="rem" class="remmodal">Remember me</label>
+								</div>
+								<div class="text-center">
+									<button type="submit" class="loginbtnmodal">Login</button>
+								</div>
+
+								<!-- 
+												<table align="center">
+													<tr>
+														<td style="font-style: italic; color: red;">${message}</td>
+													</tr>
+												</table> -->
+							</form>
 						</div>
 						<div class="text-center">
 							<a class="text-decoration-none fpassmodal"
@@ -255,9 +285,9 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form>
+							<form action="forgotpassword" method="post">
 								<input type="email" placeholder="Email Address"
-									class="emailmodal" />
+									class="emailmodal" name="Email" />
 								<button type="submit" class="sendemail">Send</button>
 							</form>
 						</div>
@@ -278,26 +308,33 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form>
+							<form action="addCustomer" method="post">
 								<div>
-									<input type="text" placeholder="First name" class="fnamemodal" />
-									<input type="text" placeholder="Last name" class="lnamemodal" />
+									<input type="text" placeholder="First name" class="fnamemodal"
+										name="FirstName" required /> <input type="text"
+										placeholder="Last name" name="LastName" class="lnamemodal"
+										required />
 								</div>
 								<div>
 									<input type="email" placeholder="E-mail Address"
-										class="signupemailmodal" /> <input type="text"
-										placeholder="+49" class="pinmodal" disabled /> <input
-										type="text" placeholder="Mobile Number" class="mnomodal" />
+										class="signupemailmodal" name="Email" required /> <input
+										type="text" placeholder="+49" class="pinmodal" name="pincode"
+										disabled /> <input type="text" placeholder="Mobile Number"
+										class="mnomodal" name="Mobile" required />
 								</div>
 								<div>
 									<input type="password" placeholder="Password"
-										class="signuppass" /> <input type="password"
-										placeholder="Confirm Password" class="confirmsignuppass" />
+										class="signuppass" name="Password" id="Password1" required />
+									<input type="password" placeholder="Confirm Password"
+										id="ConfirmPassword1" name="cpass" class="confirmsignuppass"
+										required />
 								</div>
+								<div style="margin-top: 7px;" class="text-center mb-2"
+									id="CheckPasswordMatch1"></div>
 								<div>
-									<input type="checkbox" value="privacy" id="ppcheckbox" /> <label
-										for="ppcheckbox" class="signuppolicy">I have read the
-										<a class="pp">Privacy Policy</a>
+									<input type="checkbox" value="privacy" id="ppcheckbox" required />
+									<label for="ppcheckbox" class="signuppolicy">I have
+										read the <a class="pp">Privacy Policy</a>
 									</label>
 								</div>
 								<div class="text-center">
@@ -339,7 +376,7 @@
 			<div
 				class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center">
 				<a class="letsbook Lets-Book-a-Cleaner-copy text-decoration-none"
-					href="BookNow.jsp" type="button"> Book a Helper! </a>
+					href="BookNow" type="button"> Book a Helper! </a>
 			</div>
 		</div>
 
@@ -644,6 +681,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/Homepage.js"></script>
 
 	<script
@@ -654,6 +692,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
 		integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 
 </html>

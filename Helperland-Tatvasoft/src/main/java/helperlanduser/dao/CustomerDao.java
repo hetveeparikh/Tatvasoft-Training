@@ -1,42 +1,77 @@
 package helperlanduser.dao;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate5.HibernateTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import helperlanduser.model.Customer;
+import helperlanduser.model.Login;
 
-@Component
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+
 public class CustomerDao {
-	
-	@Autowired
-	private HibernateTemplate hibernateTemplate;
-	
-	//create customer
-	@Transactional
-	public void createCustomer(Customer customer) {
-		this.hibernateTemplate.save(customer);
+	JdbcTemplate template;
+
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+	}
+
+	public void save(Customer c) {
+
+		Random random = new Random();
+		Date date=new Date();
+		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId) values(?,?,?,?,?,?,?,?)";
+		template.update(sql, new Object[] { random.nextInt(1000), c.getFirstName(), c.getLastName(), c.getEmail(),
+				c.getPassword(), c.getMobile(), date, c.getUserTypeId()});
 	}
 	
-	//get all customers
-	public List<Customer> getCustomers(){
-		List<Customer> customers = this.hibernateTemplate.loadAll(Customer.class);
-		return customers;
+	public Customer validEmail(Customer c) {
+		
+		String sql = "select * from user where Email='" + c.getEmail() + "'";
+
+		List<Customer> customers = template.query(sql, new UserMapper());
+
+		return customers.size() > 0 ? customers.get(0) : null;		
+		
 	}
 	
-	//delete customer
-	@Transactional
-	public void deleteCustomer(int id) {
-		Customer c = this.hibernateTemplate.load(Customer.class,id);
-		this.hibernateTemplate.delete(c);
-	}
+	public Customer updatePassword(Customer c){  
+		System.out.println(c.getPassword()+c.getEmail());
+		
+	    String query="update user set Password='"+c.getPassword()+"' where Email='"+c.getEmail()+"' ";  
+	    template.update(query);
+		return c;  
+	}  
+
 	
-	//get single product
-	public Customer getCustomer(int id) {
-		return this.hibernateTemplate.get(Customer.class,id);
+	public Customer validateUser(Login login) {
+		
+		String sql = "select * from user where Email='" + login.getEmail() + "' and Password='" + login.getPassword()
+				+ "'";
+
+		List<Customer> customers = template.query(sql, new UserMapper());
+
+		return customers.size() > 0 ? customers.get(0) : null;
 	}
+}
+
+class UserMapper implements RowMapper<Customer> {
+
+	public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
+	    Customer customer=new Customer();
+
+	    customer.setFirstName(rs.getString("FirstName"));
+	    customer.setPassword(rs.getString("Password"));
+	    customer.setLastName(rs.getString("Lastname"));
+	    customer.setEmail(rs.getString("Email"));
+	    customer.setMobile(rs.getString("Mobile"));
+	    customer.setUserTypeId(rs.getInt("UserTypeId"));
+	    customer.setUserId(rs.getInt("UserId"));
+	    customer.setCreatedDate(rs.getDate("CreatedDate"));
+
+	    return customer;
+	  }
 }
