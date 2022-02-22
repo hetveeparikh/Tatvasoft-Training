@@ -18,6 +18,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -129,18 +130,23 @@ public class PublicPagesController {
 	}
 	
 	@RequestMapping("/BookNow")
-	public String booknow() {
-		return "BookNow";
+	public String booknow(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("userid"));
+		System.out.println(session.getAttribute("usertypeid"));
+		
+		if(session.getAttribute("userid") != null) {
+			System.out.println("booknowwww");
+			return "BookNow";
+		}
+		
+		else {
+			request.setAttribute("notloggedin", "attr");
+			return "Homepage";
+		}
+		
 	}
-
-//	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
-//	public RedirectView addcust(@ModelAttribute Customer customer) {
-//		System.out.println(customer);
-//		this.customerDao.createCustomer(customer);
-//		RedirectView redirectView = new RedirectView();
-////		redirectView.setUrl(null)
-//		return redirectView;
-//	}
 
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	public String addcustomer(@ModelAttribute("customer") Customer customer) {
@@ -170,7 +176,12 @@ public class PublicPagesController {
 		ModelAndView mav = null;
 
 		Customer customer = customerDao.validateUser(login);
-
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("userid", customer.getUserId());
+		session.setAttribute("usertypeid", customer.getUserTypeId());
+		
+		session.setMaxInactiveInterval(15*60);
 
 		if (null != customer) {
 			int type = customer.getUserTypeId();
@@ -277,6 +288,17 @@ public class PublicPagesController {
 		System.out.println("----------------");
 		return mav;
 		
+	}
+	
+	@RequestMapping(value = "/logout")
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session=request.getSession(false);
+		if(session!=null) {
+			session.invalidate();
+		}
+		
+		return "Homepage";
 	}
 
 }

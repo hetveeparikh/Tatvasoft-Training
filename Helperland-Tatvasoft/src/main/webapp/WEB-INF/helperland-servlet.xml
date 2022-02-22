@@ -5,6 +5,7 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -14,11 +15,13 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/tx
    		http://www.springframework.org/schema/tx/spring-tx.xsd   
+   		http://www.springframework.org/schema/security
+  	 	http://www.springframework.org/schema/security/spring-security-5.6.xsd
         ">
 
 	<tx:annotation-driven />
 
-	<context:component-scan base-package="com.ctrl"></context:component-scan>
+	<context:component-scan base-package="com.*"></context:component-scan>
 
 	<context:component-scan
 		base-package="helperlanduser.*"></context:component-scan>
@@ -48,7 +51,7 @@
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/help" />
 		<property name="username" value="root" />
-		<property name="password" value="hetu2207" />
+		<property name="password" value="" />
 
 	</bean>
 
@@ -73,7 +76,7 @@
 		</property>
 
 		<!-- annotated classes -->
-		
+
 
 	</bean>
 
@@ -100,8 +103,24 @@
 	<bean id="dao" class="helperlanduser.dao.ContactDao">
 		<property name="template" ref="jt"></property>
 	</bean>
-	
+
 	<bean id="dao2" class="helperlanduser.dao.CustomerDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+
+	<bean id="dao3" class="helperlanduser.dao.BookPincodeDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="dao4" class="helperlanduser.dao.BookingAddressDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="dao5" class="helperlanduser.dao.ServiceRequestDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="dao6" class="helperlanduser.dao.ServiceRequestAddressDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 

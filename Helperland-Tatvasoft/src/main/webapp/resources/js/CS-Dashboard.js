@@ -14,3 +14,7 @@ $(document).ready(function () {
         }]
     });
 });
+
+function logout(){
+	alert("You are successfully logged out!");
+}

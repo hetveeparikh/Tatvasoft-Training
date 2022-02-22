@@ -24,7 +24,7 @@ public class CustomerDao {
 		Random random = new Random();
 		Date date=new Date();
 		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId) values(?,?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] { random.nextInt(1000), c.getFirstName(), c.getLastName(), c.getEmail(),
+		template.update(sql, new Object[] { random.nextInt(10000), c.getFirstName(), c.getLastName(), c.getEmail(),
 				c.getPassword(), c.getMobile(), date, c.getUserTypeId()});
 	}
 	
@@ -32,7 +32,7 @@ public class CustomerDao {
 		
 		String sql = "select * from user where Email='" + c.getEmail() + "'";
 
-		List<Customer> customers = template.query(sql, new UserMapper());
+		List<Customer> customers = template.query(sql, new CustomerUserMapper());
 
 		return customers.size() > 0 ? customers.get(0) : null;		
 		
@@ -52,13 +52,13 @@ public class CustomerDao {
 		String sql = "select * from user where Email='" + login.getEmail() + "' and Password='" + login.getPassword()
 				+ "'";
 
-		List<Customer> customers = template.query(sql, new UserMapper());
+		List<Customer> customers = template.query(sql, new CustomerUserMapper());
 
 		return customers.size() > 0 ? customers.get(0) : null;
 	}
 }
 
-class UserMapper implements RowMapper<Customer> {
+class CustomerUserMapper implements RowMapper<Customer> {
 
 	public Customer mapRow(ResultSet rs, int arg1) throws SQLException {
 	    Customer customer=new Customer();

@@ -172,6 +172,14 @@ img.white_logo_transparent_background {
   cursor: pointer;
   color: rgba(0, 95, 113);
 }
+
+.loginmsg{
+	padding:20px;
+	font-size:35px;
+	font-weight:600;
+	color:black;
+	display:none;
+}
 .arrowline {
   margin-top: 159px;
 }

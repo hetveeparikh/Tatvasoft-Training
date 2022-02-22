@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>	
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +21,7 @@
 	href="<%=request.getContextPath()%>/resources/css/Homepage-responsive.css" />
 <title>Helperland</title>
 <link rel="shortcut icon"
-	href="<%=request.getContextPath()%>/resources/img/img-Homepage//favicon_img.png"
+	href="<%=request.getContextPath()%>/resources/img/img-Homepage/favicon_img.png"
 	type="image/x-icon">
 <style>
 .first {
@@ -378,6 +378,8 @@
 				<a class="letsbook Lets-Book-a-Cleaner-copy text-decoration-none"
 					href="BookNow" type="button"> Book a Helper! </a>
 			</div>
+			
+			<div class="text-center loginmsg">Please login first!</div>
 		</div>
 
 		<div class="d-flex justify-content-between arrowline container">
@@ -681,8 +683,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/Homepage.js"></script>	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/Homepage.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -692,6 +694,40 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
 		integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+		<script>
+		
+		let loginerror= <%=request.getAttribute("notloggedin") %>
+		if(loginerror !== null){
+			document.getElementsByClassName("loginmsg").style.display="block";
+		}
+		
+		
+		$(document).ready(function () {
+			   $("#ConfirmPassword").on('keyup', function(){
+			    var password = $("#Password").val();
+			    var confirmPassword = $("#ConfirmPassword").val();
+			    if (password != confirmPassword)
+			        $("#CheckPasswordMatch").html("Password does not match !").css("color","red");
+			    else
+			        $("#CheckPasswordMatch").html("Password match !").css("color","green");
+			   });
+			});
+
+			$(document).ready(function () {
+			   $("#ConfirmPassword1").on('keyup', function(){
+			    var password1 = $("#Password1").val();
+			    var confirmPassword1 = $("#ConfirmPassword1").val();
+			    if (password1 != confirmPassword1)
+			        $("#CheckPasswordMatch1").html("Password does not match !").css("color","red");
+			    else
+			        $("#CheckPasswordMatch1").html("Password match !").css("color","green");
+			   });
+			});
+			
+			
+			
+		</script>
 
 </body>
 

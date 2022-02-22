@@ -448,10 +448,10 @@
 				<div>
 					<select title="Subject" name="Subject"
 						class="Rounded-Rectangle-2-copy-12" required>
-						<option value="">&nbsp;&nbsp;General</option>
-						<option value="A">Inquiry</option>
-						<option value="B">Renewal</option>
-						<option value="C">Revocation</option>
+						<option value="General">&nbsp;&nbsp;General</option>
+						<option value="Inquiry">&nbsp;&nbsp;Inquiry</option>
+						<option value="Renewal">&nbsp;&nbsp;Renewal</option>
+						<option value="Revocation">&nbsp;&nbsp;Revocation</option>
 					</select>
 				</div>
 

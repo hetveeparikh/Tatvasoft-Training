@@ -567,6 +567,44 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
 		integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		
+	<script type="text/javascript">
+	
+
+	$(document).ready(function () {
+	   $("#cpass").on('keyup', function(){
+	    var pass = $("#pass").val();
+	    var cpass = $("#cpass").val();
+	    if (pass != cpass)
+	        $("#check").html("Password does not match !").css("color","red");
+	    else
+	        $("#check").html("Password match !").css("color","green");
+	   });
+	});
+
+	$(document).ready(function () {
+	   $("#ConfirmPassword").on('keyup', function(){
+	    var password = $("#Password").val();
+	    var confirmPassword = $("#ConfirmPassword").val();
+	    if (password != confirmPassword)
+	        $("#CheckPasswordMatch").html("Password does not match !").css("color","red");
+	    else
+	        $("#CheckPasswordMatch").html("Password match !").css("color","green");
+	   });
+	});
+
+	$(document).ready(function () {
+	   $("#ConfirmPassword1").on('keyup', function(){
+	    var password1 = $("#Password1").val();
+	    var confirmPassword1 = $("#ConfirmPassword1").val();
+	    if (password1 != confirmPassword1)
+	        $("#CheckPasswordMatch1").html("Password does not match !").css("color","red");
+	    else
+	        $("#CheckPasswordMatch1").html("Password match !").css("color","green");
+	   });
+	});
+
+	</script>
 
 </body>
 

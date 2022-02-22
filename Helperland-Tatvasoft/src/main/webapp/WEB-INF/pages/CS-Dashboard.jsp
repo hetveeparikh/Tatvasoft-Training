@@ -68,7 +68,7 @@
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
                                 <li><a class="dropdown-item" href="Settings-customer">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Log out</a></li>
+                                <li><a class="dropdown-item" href="logout" onclick="logout()">Log out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -97,7 +97,7 @@
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
                     <li><a class="dropdown-item" href="Settings-customer">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                    <li><a class="dropdown-item" href="logout">Log out</a></li>
                 </ul>
             </li>
         </div>
@@ -719,7 +719,6 @@
             </div>
         </div>
     </footer>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

@@ -1,260 +1,238 @@
 topbtnn = document.getElementById("topbtn");
-window.onscroll = function () {
-  scrollFunction();
+window.onscroll = function() {
+	scrollFunction();
 };
 function scrollFunction() {
-  if (
-    document.body.scrollTop > 150 ||
-    document.documentElement.scrollTop > 150
-  ) {
-    topbtnn.style.display = "block";
-  } else {
-    topbtnn.style.display = "none";
-  }
+	if (
+		document.body.scrollTop > 150 ||
+		document.documentElement.scrollTop > 150
+	) {
+		topbtnn.style.display = "block";
+	} else {
+		topbtnn.style.display = "none";
+	}
 }
 function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+	document.body.scrollTop = 0;
+	document.documentElement.scrollTop = 0;
 }
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+	document.getElementById("mySidenav").style.width = "250px";
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+	document.getElementById("mySidenav").style.width = "0";
 }
 
-const serv = `
-<span class="posttitle">Enter Your Postal Code</span>
-<form >
-    <div class="servform">
-        <input type="text" placeholder="Postal Code" class="postaltext">
-        <button type="submit" class="checkpostal">Check Availability</button>
-    </div>
-</form>
-`;
-const ins = document.querySelector(".contenthere");
-const bookser = document.getElementById("service");
-bookser.addEventListener("click", function () {
-  ins.innerHTML = serv;
+var first = document.getElementById("firsttab");
+var second = document.getElementById("secondtab");
+var third = document.getElementById("thirdtab");
+var fourth = document.getElementById("fourthtab");
+
+var serv = document.getElementById("service");
+var sche = document.getElementById("schedule");
+var det = document.getElementById("details");
+var pay = document.getElementById("payment");
+
+
+window.onload = function() {
+	first.style.display = "block";
+	serv.style.color = "#fff";
+	serv.style.backgroundColor = "#1d7a8c";
+}
+
+function secondtab() {
+	first.style.display = "none";
+	second.style.display = "block";
+	third.style.display = "none";
+	fourth.style.display = "none";
+
+	serv.style.color = "#646464";
+	serv.style.backgroundColor = "#f3f3f3";
+
+	sche.style.color = "#fff";
+	sche.style.backgroundColor = "#1d7a8c";
+
+}
+
+function thirdtab() {
+	first.style.display = "none";
+	second.style.display = "none";
+	third.style.display = "block";
+	fourth.style.display = "none";
+
+	det.style.color = "#fff";
+	det.style.backgroundColor = "#1d7a8c";
+
+	sche.style.color = "#646464";
+	sche.style.backgroundColor = "#f3f3f3";
+
+	$.ajax({
+		type: "GET",
+		contentType: "application/json",
+		url: "/Helperland-Tatvasoft/readaddress/",
+		success: function(response) {
+			console.log("SUCCESS: ", response);
+			//document.getElementById("showadd").innerHTML=;
+			//$("showadd").html(obj.AddressLine1+obj.AddressLine2	+obj.PostalCode+obj.Mobile);
+
+			var result = "<thead><tr><th></th><th></th><th></th></tr></thead>"
+			result += "<tbody>";
+			$.each(response, function(k, v) {
+				//console.log(v.state);
+				//document.getElementById("showadd").innerHTML = document.getElementById("showadd").innerHTML + v.addressLine1;
+				result += "<tr>";
+				result += "<td>";
+				result += '<div class="form-check"><input class="form-check-input position-static addressradio" type="radio" name="addressradio" id="addressradio" value=' + v.addressId + ' aria-label="..."></div>';
+				result += "</td>";
+				result += "<td>";
+				result += "</td>";
+				result += "<td>";
+				result += '<div class="row"><span><strong>Address:  </strong>' + v.addressLine1 + ', ' + v.addressLine2 + '</span> <span><strong>Phone number:  </strong>' + v.mobile + '</span></div>';
+				result += "</td>";
+				result += "</tr>";
+			});
+			result += "</tbody>";
+			$("#showadd").html(result);
+		},
+		error: function(e) {
+			console.log("ERROR: ", e);
+		},
+		done: function(e) {
+			console.log("DONE");
+		}
+	});
+
+}
+
+var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+var day = currentDate.getDate()
+var month = currentDate.getMonth() + 1
+var year = currentDate.getFullYear()
+var finaldate = document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;
+
+
+/*$("#thirdcontinue").click(function() {
+	console.log($('#addressradio:checked').val());
+	console.log($('#tomorrowdate').val());
+	console.log($('#starttime').val());
+	console.log( $('#petsathome').is(':checked'));
+});*/
+
+/*jQuery(document).ready(function($) {
+	$("#finaltab").submit(function(event) {
+		event.preventDefault();
+		servicerequestaddress();
+	});
 });
-window.addEventListener("load", function () {
-  ins.innerHTML = serv;
+function servicerequestaddress() {
+	$.ajax({
+		type: "GET",
+		url: "/Helperland-Tatvasoft/servicerequestaddress/" + $('#addressradio:checked').val() + "," + $('#totalpay').text().replace(",00", "")
+			+ "," + $('#timeneeded').val() + "," + finaldate.replace(/ \/ /g, '.')
+			+ "," + $('#totaltime').text().replace(" Hrs", "") + "," + $('#perclean').text().replace(",00", "") + "," + $('#secondcomments').text()
+			+ "," + $('#starttime').val().replace(":", ".") + "," +  $('#petsathome').is(':checked'),
+		success: function(data) {
+			console.log("SUCCESS: ", data);
+		},
+		error: function(e) {
+			console.log("ERROR: ", e);
+		},
+		done: function(e) {
+			console.log("DONE");
+		}
+	});
+}*/
+
+
+
+function fourthtab() {
+	first.style.display = "none";
+	second.style.display = "none";
+	third.style.display = "none";
+	fourth.style.display = "block";
+
+	pay.style.color = "#fff";
+	pay.style.backgroundColor = "#1d7a8c";
+
+	det.style.color = "#646464";
+	det.style.backgroundColor = "#f3f3f3";
+
+
+}
+
+function firstvalid() {
+	var x = document.forms["firstform"]["PostalCode"].value;
+	if (x == "" || x == null) {
+		//document.getElementById("firstdiv").insertAdjacentHTML("Please enter postal code");
+		alert("Please enter postal code");
+		return false;
+	}
+}
+
+
+// -------------------------------------------------
+
+jQuery(document).ready(function($) {
+	$("#firstform").submit(function(event) {
+		event.preventDefault();
+		searchpincode();
+	});
 });
+function searchpincode() {
+	var search = {}
+	search["pincode"] = $("#pincode").val();
 
-const sche = `
-<div class="d-flex scheque">
-<div class="sche1">
-    <span class="posttitle">When do you need the cleaner?</span>
-    <div class="d-flex when">
-        <div class="d-flex daterect">
-            <img src="img/img-BookNow/calendar-book-service.png" class="cal">
-            <span class="cs-date">31/03/2018</span>
-        </div>
-        <div>
-            <select title="Time" class="timerect">
-                <option value="">8:00 </option>
-                <option value="A">8:30</option>
-                <option value="B">9:00</option>
-                <option value="C">9:30</option>
-            </select>
-        </div>
-    </div>
-</div>
-<div class="">
-    <span class="posttitle">When do you need the cleaner?</span>
-
-    <div>
-        <select title="Time" class="timerect">
-            <option value="">3.0 Hrs </option>
-            <option value="A">4.0 Hrs</option>
-            <option value="B">5.0 Hrs</option>
-            <option value="C">6.0 Hrs</option>
-        </select>
-    </div>
-</div>
-</div>
+	$.ajax({
+		type: "POST",
+		contentType: "application/json",
+		url: "/Helperland-Tatvasoft/bookpincode",
+		data: $("#pincode").val(),
+		success: function(data) {
+			console.log("SUCCESS: ", data);
+			if (data == "true") {
+				secondtab();
+			}
+			else {
+				$('#firstdiv').html("We do not provide service in this pincode yet.");
+			}
+		},
+		error: function(e) {
+			console.log("ERROR: ", e);
+		},
+		done: function(e) {
+			console.log("DONE");
+		}
+	});
+}
 
 
-<div class="divider3"></div>
+/*addresssss*/
 
-<span class="posttitle">Extra Services</span>
-
-<div class=" d-flex justify-content-between es row">
-
-
-<div class=" d-flex flex-column align-items-center es1 col-lg-2 col-md-4">
-    <div class="esellipse">
-        <img src="img/img-Prices/firstimg.png" srcset="img/img-Prices/firstimg.png 2x,
-                        img/img-Prices/firstimg.png 3x" class="esimg">
-    </div>
-
-    <span class="esinside">
-        Inside cabinets
-    </span>
-</div>
-
-<div class="d-flex flex-column align-items-center es1 col-lg-2 col-md-4">
-    <div class="esellipse">
-        <img src="img/img-Prices/secondimg.png" srcset="img/img-Prices/secondimg.png 2x,
-                        img/img-Prices/secondimg.png 3x" class="esimg">
-    </div>
-
-    <span class="esinside">
-        Inside fridge
-    </span>
-</div>
-
-<div class=" d-flex flex-column align-items-center es1 col-lg-2 col-md-4">
-    <div class="esellipse">
-        <img src="img/img-Prices/thirdimg.png" srcset="img/img-Prices/thirdimg.png 2x,
-                        img/img-Prices/thirdimg.png 3x" class="esimg">
-    </div>
-
-    <span class="esinside">
-        Inside oven
-    </span>
-</div>
-
-<div class=" d-flex flex-column align-items-center es1 col-lg-2 col-md-6">
-    <div class="esellipse">
-        <img src="img/img-Prices/fourthimg.png" srcset="img/img-Prices/fourthimg.png 2x,
-                    img/img-Prices/fourthimg.png 3x" class="esimg">
-    </div>
-
-    <span class="esinside">
-        Laundry wash & dry
-</div>
-
-<div class=" d-flex flex-column align-items-center es1 col-lg-2 col-md-6">
-    <div class="esellipse">
-        <img src="img/img-Prices/fifthimg.png" srcset="img/img-Prices/fifthimg.png 2x,
-                    img/img-Prices/fifthimg.png 3x" class="esimg">
-    </div>
-
-    <span class="esinside">
-        Interior windows
-    </span>
-</div>
-
-</div>
-
-<div class="divider3"></div>
-
-<span class="posttitle">Comments</span>
-
-<form>
-<input type="text" placeholder="Comments" class="comments">
-
-<div>
-    <input type="checkbox" id="petsathome" />
-    <label for="petsathome" class="pets">I have pets at home</label>
-</div>
-</form>
-
-<div class="divider3"></div>
-
-<div class="cbtn">
-<button class="schecontinue">Continue</button>
-</div>
- `;
-const booksche = document.getElementById("schedule");
-booksche.addEventListener("click", function () {
-ins.innerHTML = sche;
+jQuery(document).ready(function($) {
+	$("#addAddressForm").submit(function(event) {
+		event.preventDefault();
+		addAddress();
+	});
 });
+function addAddress() {
+	var search = {}
+	search["addline1"] = $("#addline1").val();
 
-const detail = `
-<form>
-    <span class="posttitle">Enter your contact details, so we can serve you in better
-        way!</span>
-
-    <div>
-        <ul class="address-picker">
-            <li>
-                <label>
-                    <input formcontrolname="address" name="address" type="radio">
-                    <span class="address-block">
-                        <b> Address</b>: Second Street 23, Bonn 53225 <br>
-                    </span>
-                    <span>
-                        <b>Phone number</b>: 9988556644<br>
-                    </span>
-                    <span class="radio-pointer"></span>
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input formcontrolname="address" name="address" type="radio">
-                    <span class="address-block">
-                        <b> Address</b>: Test 65, Bonn 53225<br>
-                    </span>
-                    <span>
-                        <b>Phone number</b>: 9988556644<br>
-                    </span>
-                    <span class="radio-pointer"></span>
-                </label>
-            </li>
-        </ul>
-    </div>
-
-    <input type="button" value="+ Add new Address" class="addbtn">
-
-    <div>
-        <input type="checkbox" id="invoice" />
-        <label for="invoice" class="invoice">Send invoice on this address</label>
-    </div>
-
-    <div class="divider3"></div>
-
-    <div class="cbtn">
-        <button class="schecontinue">Continue</button>
-    </div>
-
-</form>
- `;
-const bookdetail = document.getElementById("details");
-bookdetail.addEventListener("click", function () {
-ins.innerHTML = detail;
-});
-
-const payment = `
-<form>
-    <span class="posttitle">Pay securely with Helperland payment gateway!</span>
-    <div>
-        <span class="pcodetitle">Promo code (optional)</span>
-        <div>
-            <input type="text" placeholder="Promo code (optional)" class="pcode">
-            <button class="apply">Apply</button>
-        </div>
-    </div>
-
-    <div class="divider3"></div>
-    <div class="d-flex booklabel">
-        <input type="checkbox" id="payment" />
-        <label for="payment" class="bookpayment">I accepted terms and conditions, the
-            cancellation policy and the privacy policy.
-        </label>
-    </div>
-    <div class="divider3"></div>
-    <div class="cbtn">
-        <button class="bookbtn">Complete Booking</button>
-    </div>
-
-</form>
- `;
-const bookpayment = document.getElementById("payment");
-bookpayment.addEventListener("click", function () {
-ins.innerHTML = payment;
-});
+	$.ajax({
+		type: "GET",
+		url: "/Helperland-Tatvasoft/addAddress/" + $("#addline1").val() + "," + $("#addline2").val() + "," + $("#addpostalcode").val() + "," + $("#addcity").val() + "," + $("#addmobile").val(),
+		success: function(data) {
+			console.log("SUCCESS: ", data);
+			thirdtab();
+		},
+		error: function(e) {
+			console.log("ERROR: ", e);
+		},
+		done: function(e) {
+			console.log("DONE");
+		}
+	});
+}
 
 
-// function changeimg(){
-//     var simg = document.querySelector('#servimg');
-//     if(simg.src="img/img-BookNow/setup-service.png")
-//     {
-//         simg.src="img/img-BookNow/setup-service-white.png";
-//     }
-//     else{
-//         simg.src="img/img-BookNow/setup-service.png";
-//     }
-// }
