@@ -73,7 +73,7 @@
 						<li class="nav-item"><a class="nav-link blog">Blog</a></li>
 						<li class="nav-item"><a class="nav-link contact"
 							href="contact">Contact</a></li>
-						<li class="nav-item">
+						<li class="nav-item linklogin">
 							<div class="loginrect text-center" data-bs-toggle="modal"
 								href="#login">
 								<a class="nav-link loginbtn">Login</a>
@@ -163,7 +163,7 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form action="addCustomer" method="post">
+											<form action="addCustomer" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 												<div>
 													<input type="text" placeholder="First name"
 														class="fnamemodal" name="FirstName" required /> <input
@@ -173,7 +173,7 @@
 												<div>
 													<input type="email" placeholder="E-mail Address"
 														class="signupemailmodal" name="Email" required /> <input
-														type="text" placeholder="+49" class="pinmodal"
+														type="text" placeholder="+91" class="pinmodal"
 														name="pincode" disabled /> <input type="text"
 														placeholder="Mobile Number" class="mnomodal" name="Mobile"
 														required />
@@ -212,8 +212,33 @@
 						</li>
 						<li class="nav-item">
 							<div class="bahrect text-center">
-								<a class="nav-link helper" href="bap">Become A Helper!</a>
+								<a class="nav-link helper linkhelper" href="bap">Become A Helper!</a>
 							</div>
+						</li>
+						<li class="nav-item verline" >
+							<div class="ver-line"></div>
+						</li>
+						<li class="nav-item notiflink">
+							<div class="nav-btn">
+								<a class="nav-link noti" href="#"><img
+									src="<%=request.getContextPath()%>/resources/img/img-CS/icon-notification.png"></a>
+							</div>
+						</li>
+						<li class="nav-item verline" >
+							<div class="ver-line" ></div>
+						</li>
+						<li class="nav-item dropdown melink"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img
+								src="<%=request.getContextPath()%>/resources/img/img-CS/me.png">
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="logout"
+									onclick="logout()">Log out</a></li>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -225,7 +250,7 @@
 			<a href="BookNow">Book Now</a> <a href="prices">Prices</a> <a
 				href="warranty">Warranty</a> <a href="#">Blog</a> <a href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
-				<a class="lm">Login</a>
+				<a class="lm linklogin">Login</a>
 			</div>
 			<div class="modal fade" id="loginnn" aria-hidden="true"
 				aria-labelledby="log" tabindex="-1">
@@ -310,7 +335,7 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form action="addCustomer" method="post">
+							<form action="addCustomer" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 								<div>
 									<input type="text" placeholder="First name" class="fnamemodal"
 										name="FirstName" required /> <input type="text"
@@ -355,7 +380,21 @@
 					</div>
 				</div>
 			</div>
-			<a href="bap">Become a Helper</a>
+			<a href="bap linkhelper">Become a Helper</a>
+			<a class="nav-link noti notiflink" href="#">
+				<span>Notifications</span></a>
+			<li class="nav-item dropdown melink">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<span>My Account</span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-end"
+					aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					<li><a class="dropdown-item" href="logout"
+						onclick="logout()">Log out</a></li>
+				</ul>
+			</li>
 		</div>
 
 		<div onclick="openNav()" class="sideham">&#9776;</div>
@@ -375,7 +414,7 @@
 			</div>
 			<div class="col-xl-4 ms-xl-4">
 				<form class="d-flex justify-content-center"
-					action="addServiceProvider" method="post">
+					action="addServiceProvider" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 					<div class="formRect">
 						<span class="Register-Now text-center"> Register Now! </span> <input
 							type="text" class="fname" name="FirstName"
@@ -389,11 +428,10 @@
 								class="number" required>
 						</div>
 						<input type="password" class="pass" placeholder="Password"
-							name="Password" required id="pass"> <input
+							name="Password" required id="pass"> <input name="cpass"
 							type="password" class="cpass" placeholder="Confirm Password"
 							id="cpass" required>
-						<div style="margin-top: 7px;" class="text-center mb-2"
-									id="check"></div>
+						
 						<div>
 							<input type="checkbox" value="privacy" id="ppcheckbox" required />
 							<label for="ppcheckbox" class="signuppolicybap">I have
@@ -604,6 +642,21 @@
 	   });
 	});
 
+	</script>
+
+<script>
+		let name =
+	<%=request.getAttribute("hideshow")%>
+		if (name == null) {
+			$(".notiflink").css("display", "none");
+			$(".melink").css("display", "none");
+			$(".verline").css("display", "none");
+		}
+		
+		if (name != null) {
+			$(".linklogin").css("display", "none");
+			$(".linkhelper").css("display", "none");
+		}
 	</script>
 
 </body>

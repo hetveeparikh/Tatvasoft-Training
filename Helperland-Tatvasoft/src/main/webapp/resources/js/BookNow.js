@@ -73,14 +73,10 @@ function thirdtab() {
 		url: "/Helperland-Tatvasoft/readaddress/",
 		success: function(response) {
 			console.log("SUCCESS: ", response);
-			//document.getElementById("showadd").innerHTML=;
-			//$("showadd").html(obj.AddressLine1+obj.AddressLine2	+obj.PostalCode+obj.Mobile);
-
+		
 			var result = "<thead><tr><th></th><th></th><th></th></tr></thead>"
 			result += "<tbody>";
 			$.each(response, function(k, v) {
-				//console.log(v.state);
-				//document.getElementById("showadd").innerHTML = document.getElementById("showadd").innerHTML + v.addressLine1;
 				result += "<tr>";
 				result += "<td>";
 				result += '<div class="form-check"><input class="form-check-input position-static addressradio" type="radio" name="addressradio" id="addressradio" value=' + v.addressId + ' aria-label="..."></div>';
@@ -112,12 +108,12 @@ var year = currentDate.getFullYear()
 var finaldate = document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;
 
 
-/*$("#thirdcontinue").click(function() {
+$("#thirdcontinue").click(function() {
 	console.log($('#addressradio:checked').val());
 	console.log($('#tomorrowdate').val());
 	console.log($('#starttime').val());
 	console.log( $('#petsathome').is(':checked'));
-});*/
+});
 
 /*jQuery(document).ready(function($) {
 	$("#finaltab").submit(function(event) {

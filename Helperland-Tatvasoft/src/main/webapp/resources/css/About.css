@@ -57,12 +57,12 @@ body{
 .Rounded-Rectangle-5-copy-4 {
   width: 161px;
   height: 40px;
-  margin: 6px 0px 8px 0px;
+  margin: 0px 0px 8px 0px;
   padding: 0px 14px 15px 10px;
   background-color: transparent;
 }
 .Prices-services {
-  width: 145px;
+  width: 160px;
   height: 13px;
   font-family: Roboto;
   font-size: 17px;
@@ -73,6 +73,7 @@ body{
   line-height: 1.41;
   letter-spacing: normal;
   text-align: center;
+  margin-top:8px;
   color: white;
 }
 .Warranty{
@@ -541,3 +542,16 @@ body{
 .modal-backdrop {
   position: inherit;
 }
+.ver-line {
+	width: 1px;
+	height: 48px;
+	margin: 2px 16px 0px 10px;
+	background-color: #e1e1e1;
+	display: block;
+	text-align: right;
+}
+
+.dropdown-menu a {
+	color: #111 !important;
+}
+

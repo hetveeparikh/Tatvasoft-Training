@@ -74,7 +74,7 @@
 								<a class="nav-link Contact" href="contact">Contact</a>
 							</div>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item linklogin">
 							<div class="nav-btn Rounded-Rectangle-5" data-bs-toggle="modal"
 								href="#login">
 								<a class="nav-link" href="#">Login</a>
@@ -164,7 +164,8 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form action="addCustomer" method="post">
+											<form action="addCustomer" method="post"
+											oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 												<div>
 													<input type="text" placeholder="First name"
 														class="fnamemodal" name="FirstName" required /> <input
@@ -174,7 +175,7 @@
 												<div>
 													<input type="email" placeholder="E-mail Address"
 														class="signupemailmodal" name="Email" required /> <input
-														type="text" placeholder="+49" class="pinmodal"
+														type="text" placeholder="+91" class="pinmodal"
 														name="pincode" disabled /> <input type="text"
 														placeholder="Mobile Number" class="mnomodal" name="Mobile"
 														required />
@@ -211,11 +212,37 @@
 								</div>
 							</div>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item linkhelper">
 							<div class="nav-btn Rounded-Rectangle-5-copy">
-								<a class="nav-link" href="bap">Become a Helper</a>
+								<a class="nav-link " href="bap">Become a Helper</a>
 							</div>
 						</li>
+						<li class="nav-item verline" >
+							<div class="ver-line"></div>
+						</li>
+						<li class="nav-item notiflink">
+							<div class="nav-btn">
+								<a class="nav-link noti" href="#"><img
+									src="<%=request.getContextPath()%>/resources/img/img-CS/icon-notification.png"></a>
+							</div>
+						</li>
+						<li class="nav-item verline" >
+							<div class="ver-line" ></div>
+						</li>
+						<li class="nav-item dropdown melink"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img
+								src="<%=request.getContextPath()%>/resources/img/img-CS/me.png">
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="logout"
+									onclick="logout()">Log out</a></li>
+							</ul>
+						</li>
+						
 					</ul>
 				</div>
 			</div>
@@ -228,7 +255,7 @@
 				Services</a> <a href="warranty">Warranty</a> <a href="#">Blog</a> <a
 				href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
-				<a class="lm">Login</a>
+				<a class="lm linklogin">Login</a>
 			</div>
 			<div class="modal fade " id="loginnn" aria-hidden="true"
 				aria-labelledby="log" tabindex="-1">
@@ -313,7 +340,7 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form action="addCustomer" method="post">
+							<form action="addCustomer" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 								<div>
 									<input type="text" placeholder="First name" class="fnamemodal"
 										name="FirstName" required /> <input type="text"
@@ -361,7 +388,21 @@
 
 
 
-			<a href="bap">Become a Helper</a>
+			<a href="bap linkhelper">Become a Helper</a>
+			<a class="nav-link noti notiflink" href="#">
+				<span>Notifications</span></a>
+			<li class="nav-item dropdown melink">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<span>My Account</span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-end"
+					aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					<li><a class="dropdown-item" href="logout"
+						onclick="logout()">Log out</a></li>
+				</ul>
+			</li>
 		</div>
 
 		<div onclick="openNav()" class="sideham">&#9776;</div>
@@ -475,6 +516,22 @@
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/About.js"></script>
+	
+	<script>
+		let name =
+	<%=request.getAttribute("hideshow")%>
+		if (name == null) {
+			$(".notiflink").css("display", "none");
+			$(".melink").css("display", "none");
+			$(".verline").css("display", "none");
+		}
+		
+		if (name != null) {
+			$(".linklogin").css("display", "none");
+			$(".linkhelper").css("display", "none");
+		}
+	</script>
+	
 	
 </body>
 

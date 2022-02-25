@@ -3,7 +3,7 @@ package helperlanduser.model;
 public class ServiceRequestExtra {
 	private int ServiceRequestExtraId;
 	private int ServiceRequestId;
-	private int ServiceExtraId;
+	private String ServiceExtra;
 	
 	public int getServiceRequestExtraId() {
 		return ServiceRequestExtraId;
@@ -17,11 +17,11 @@ public class ServiceRequestExtra {
 	public void setServiceRequestId(int serviceRequestId) {
 		ServiceRequestId = serviceRequestId;
 	}
-	public int getServiceExtraId() {
-		return ServiceExtraId;
+	public String getServiceExtra() {
+		return ServiceExtra;
 	}
-	public void setServiceExtraId(int serviceExtraId) {
-		ServiceExtraId = serviceExtraId;
+	public void setServiceExtra(String serviceExtra) {
+		ServiceExtra = serviceExtra;
 	}
 	
 	

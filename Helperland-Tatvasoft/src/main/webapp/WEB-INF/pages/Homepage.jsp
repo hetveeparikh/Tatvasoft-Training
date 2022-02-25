@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>	
+	pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,7 +72,7 @@
 						<li class="nav-item"><a class="nav-link blog">Blog</a></li>
 						<li class="nav-item"><a class="nav-link contact"
 							href="contact">Contact</a></li>
-						<li class="nav-item">
+						<li class="nav-item linklogin">
 							<div class="loginrect text-center" data-bs-toggle="modal"
 								href="#login">
 								<a class="nav-link loginbtn">Login</a>
@@ -92,11 +93,11 @@
 											<form action="loginprocess" method="post">
 												<div>
 													<input type="email" placeholder="Email" class="emailmodal"
-														name="Email" required/>
+														name="Email" required />
 												</div>
 												<div>
 													<input type="password" placeholder="Password"
-														class="passmodal" name="Password" required/>
+														class="passmodal" name="Password" required />
 												</div>
 												<div>
 													<input type="checkbox" value="Remember me" id="rem" /> <label
@@ -141,7 +142,7 @@
 										<div class="modal-body">
 											<form action="forgotpassword" method="post">
 												<input type="email" placeholder="Email Address"
-													class="emailmodal" name="Email" required/>
+													class="emailmodal" name="Email" required />
 												<button type="submit" class="sendemail">Send</button>
 											</form>
 										</div>
@@ -162,7 +163,8 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form action="addCustomer" method="post">
+											<form action="addCustomer" method="post" 
+											oninput='ConfirmPassword.setCustomValidity(ConfirmPassword.value != Password.value ? "Passwords do not match." : "")'>
 												<div>
 													<input type="text" placeholder="First name"
 														class="fnamemodal" name="FirstName" required /> <input
@@ -172,7 +174,7 @@
 												<div>
 													<input type="email" placeholder="E-mail Address"
 														class="signupemailmodal" name="Email" required /> <input
-														type="text" placeholder="+49" class="pinmodal"
+														type="text" placeholder="+91" class="pinmodal"
 														name="pincode" disabled /> <input type="text"
 														placeholder="Mobile Number" class="mnomodal" name="Mobile"
 														required />
@@ -181,7 +183,7 @@
 													<input type="password" placeholder="Password"
 														class="signuppass" name="Password" id="Password" required />
 													<input type="password" placeholder="Confirm Password"
-														id="ConfirmPassword" name="cpass"
+														id="ConfirmPassword" name="ConfirmPassword"
 														class="confirmsignuppass" required />
 												</div>
 												<div style="margin-top: 7px;" class="text-center mb-2"
@@ -208,10 +210,35 @@
 								</div>
 							</div>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item linkhelper">
 							<div class="bahrect text-center">
 								<a class="nav-link helper" href="bap">Become A Helper!</a>
 							</div>
+						</li>
+						<li class="nav-item verline" >
+							<div class="ver-line"></div>
+						</li>
+						<li class="nav-item notiflink">
+							<div class="nav-btn">
+								<a class="nav-link noti" href="#"><img
+									src="<%=request.getContextPath()%>/resources/img/img-CS/icon-notification.png"></a>
+							</div>
+						</li>
+						<li class="nav-item verline" >
+							<div class="ver-line" ></div>
+						</li>
+						<li class="nav-item dropdown melink"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img
+								src="<%=request.getContextPath()%>/resources/img/img-CS/me.png">
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="logout"
+									onclick="logout()">Log out</a></li>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -223,7 +250,7 @@
 			<a href="BookNow">Book Now</a> <a href="prices">Prices</a> <a
 				href="warranty">Warranty</a> <a href="#">Blog</a> <a href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
-				<a class="lm">Login</a>
+				<a class="lm linklogin">Login</a>
 			</div>
 			<div class="modal fade" id="loginnn" aria-hidden="true"
 				aria-labelledby="log" tabindex="-1">
@@ -308,7 +335,7 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form action="addCustomer" method="post">
+							<form action="addCustomer" method="post" oninput='ConfirmPassword.setCustomValidity(ConfirmPassword.value != Password.value ? "Passwords do not match." : "")'>
 								<div>
 									<input type="text" placeholder="First name" class="fnamemodal"
 										name="FirstName" required /> <input type="text"
@@ -326,7 +353,7 @@
 									<input type="password" placeholder="Password"
 										class="signuppass" name="Password" id="Password1" required />
 									<input type="password" placeholder="Confirm Password"
-										id="ConfirmPassword1" name="cpass" class="confirmsignuppass"
+										id="ConfirmPassword1" name="ConfirmPassword" class="confirmsignuppass"
 										required />
 								</div>
 								<div style="margin-top: 7px;" class="text-center mb-2"
@@ -353,7 +380,21 @@
 				</div>
 			</div>
 
-			<a href="bap">Become a Helper</a>
+			<a href="bap" class="linkhelper">Become a Helper</a>
+			<a class="nav-link noti notiflink" href="#">
+				<span>Notifications</span></a>
+			<li class="nav-item dropdown melink">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<span>My Account</span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-end"
+					aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					<li><a class="dropdown-item" href="logout"
+						onclick="logout()">Log out</a></li>
+				</ul>
+			</li>
 		</div>
 
 		<div onclick="openNav()" class="sideham">&#9776;</div>
@@ -378,7 +419,7 @@
 				<a class="letsbook Lets-Book-a-Cleaner-copy text-decoration-none"
 					href="BookNow" type="button"> Book a Helper! </a>
 			</div>
-			
+
 			<div class="text-center loginmsg">Please login first!</div>
 		</div>
 
@@ -683,7 +724,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/Homepage.js"></script>	
+	<script src="<%=request.getContextPath()%>/resources/js/Homepage.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 	<script
@@ -694,40 +735,68 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
 		integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		
-		<script>
-		
-		let loginerror= <%=request.getAttribute("notloggedin") %>
-		if(loginerror !== null){
-			document.getElementsByClassName("loginmsg").style.display="block";
+
+	<script>
+		let loginerror =
+	<%=request.getAttribute("notloggedin")%>
+		if (loginerror !== null) {
+			document.getElementsByClassName("loginmsg").style.display = "block";
+			alert("Please login first!");
+		}
+
+		$(document).ready(
+				function() {
+					$("#ConfirmPassword").on(
+							'keyup',
+							function() {
+								var password = $("#Password").val();
+								var confirmPassword = $("#ConfirmPassword")
+										.val();
+								if (password != confirmPassword)
+									$("#CheckPasswordMatch").html(
+											"Password does not match !").css(
+											"color", "red");
+								else
+									$("#CheckPasswordMatch").html(
+											"Password match !").css("color",
+											"green");
+							});
+				});
+
+		$(document).ready(
+				function() {
+					$("#ConfirmPassword1").on(
+							'keyup',
+							function() {
+								var password1 = $("#Password1").val();
+								var confirmPassword1 = $("#ConfirmPassword1")
+										.val();
+								if (password1 != confirmPassword1)
+									$("#CheckPasswordMatch1").html(
+											"Password does not match !").css(
+											"color", "red");
+								else
+									$("#CheckPasswordMatch1").html(
+											"Password match !").css("color",
+											"green");
+							});
+				});
+	</script>
+
+	<script>
+		let name =
+	<%=request.getAttribute("hideshow")%>
+		if (name == null) {
+			$(".notiflink").css("display", "none");
+			$(".melink").css("display", "none");
+			$(".verline").css("display", "none");
 		}
 		
-		
-		$(document).ready(function () {
-			   $("#ConfirmPassword").on('keyup', function(){
-			    var password = $("#Password").val();
-			    var confirmPassword = $("#ConfirmPassword").val();
-			    if (password != confirmPassword)
-			        $("#CheckPasswordMatch").html("Password does not match !").css("color","red");
-			    else
-			        $("#CheckPasswordMatch").html("Password match !").css("color","green");
-			   });
-			});
-
-			$(document).ready(function () {
-			   $("#ConfirmPassword1").on('keyup', function(){
-			    var password1 = $("#Password1").val();
-			    var confirmPassword1 = $("#ConfirmPassword1").val();
-			    if (password1 != confirmPassword1)
-			        $("#CheckPasswordMatch1").html("Password does not match !").css("color","red");
-			    else
-			        $("#CheckPasswordMatch1").html("Password match !").css("color","green");
-			   });
-			});
-			
-			
-			
-		</script>
+		if (name != null) {
+			$(".linklogin").css("display", "none");
+			$(".linkhelper").css("display", "none");
+		}
+	</script>
 
 </body>
 

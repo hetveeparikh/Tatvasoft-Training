@@ -21,10 +21,9 @@ public class CustomerDao {
 
 	public void save(Customer c) {
 
-		Random random = new Random();
 		Date date=new Date();
 		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId) values(?,?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] { random.nextInt(10000), c.getFirstName(), c.getLastName(), c.getEmail(),
+		template.update(sql, new Object[] { c.getUserId(), c.getFirstName(), c.getLastName(), c.getEmail(),
 				c.getPassword(), c.getMobile(), date, c.getUserTypeId()});
 	}
 	

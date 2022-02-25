@@ -1,5 +1,6 @@
 package com.ctrl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +23,7 @@ import helperlanduser.dao.ServiceRequestAddressDao;
 import helperlanduser.dao.ServiceRequestDao;
 import helperlanduser.model.ServiceRequest;
 import helperlanduser.model.ServiceRequestAddress;
+import helperlanduser.model.ServiceRequestExtra;
 import helperlanduser.model.UserAddress;
 
 @Controller
@@ -60,7 +62,10 @@ public class BookNowController {
 		String str = "" + session.getAttribute("userid");
 		int temp = Integer.parseInt(str);
 		userAddress.setUserId(temp);
-		int add = this.addressDao.addAddress(userAddress);
+		String email = "" + session.getAttribute("custemail");
+		userAddress.setEmail(email);
+		
+		this.addressDao.addAddress(userAddress);
 	}
 
 	@RequestMapping(value = "/readaddress")
@@ -82,7 +87,7 @@ public class BookNowController {
 		return "CS-Dashboard";
 	}
 
-	@RequestMapping(value = "/servicerequestaddress/{AddressId},{TotalCost},{ServiceHours},{ServiceStartDate},{ExtraHours},{SubTotal},{Comments},{ServiceStartTime},{HasPets}", method = RequestMethod.GET)
+	@RequestMapping(value = "/servicerequestaddress/{AddressId},{TotalCost},{ServiceHours},{ServiceStartDate},{ExtraHours},{SubTotal},{Comments},{ServiceStartTime},{HasPets},{Extras}", method = RequestMethod.GET)
 	public @ResponseBody String addrequestaddress(@PathVariable("AddressId") int AddressId,
 												  @PathVariable("TotalCost") float TotalCost, 
 												  @PathVariable("ServiceHours") float ServiceHours,
@@ -92,8 +97,21 @@ public class BookNowController {
 												  @PathVariable("Comments") String Comments,
 												  @PathVariable("ServiceStartTime") String ServiceStartTime,
 												  @PathVariable("HasPets") String HasPets,
+												  @PathVariable("Extras") String Extras,
 			HttpServletRequest req) {
 
+		
+		ServiceRequest serviceRequest = new ServiceRequest();
+		serviceRequest.setTotalCost(TotalCost);
+		serviceRequest.setServiceHours(ServiceHours);
+		serviceRequest.setComments(Comments);
+		serviceRequest.setServiceStartTime(ServiceStartTime);
+		serviceRequest.setServiceStartDate(ServiceStartDate);
+		serviceRequest.setSubTotal(SubTotal);
+		serviceRequest.setExtraHours(ExtraHours);
+		serviceRequest.setHasPets(HasPets);
+		
+		int servicereq = serviceRequestDao.addrequest(serviceRequest, req);
 		
 		UserAddress getaddress = serviceRequestAddressDao.getserviceaddress(AddressId);
 
@@ -111,18 +129,20 @@ public class BookNowController {
 
 		serviceRequestAddressDao.saveserviceaddress(serviceRequestAddress);
 
-		ServiceRequest serviceRequest = new ServiceRequest();
-		serviceRequest.setTotalCost(TotalCost);
-		serviceRequest.setServiceHours(ServiceHours);
-		serviceRequest.setComments(Comments);
-		serviceRequest.setServiceStartTime(ServiceStartTime);
-		serviceRequest.setServiceStartDate(ServiceStartDate);
-		serviceRequest.setSubTotal(SubTotal);
-		serviceRequest.setExtraHours(ExtraHours);
-		serviceRequest.setHasPets(HasPets);
+		String[] extras = Extras.split(" ",0);
 		
-		serviceRequestDao.addrequest(serviceRequest, req);
-
+		List<ServiceRequestExtra> serviceRequestExtrasList = new ArrayList<ServiceRequestExtra>();
+		
+		for(int i=0;i<extras.length;i++) {
+			System.out.println(extras[i]);
+			ServiceRequestExtra serviceRequestExtra=new ServiceRequestExtra(); 
+			serviceRequestExtra.setServiceRequestId(servicereq);
+			serviceRequestExtra.setServiceExtra(extras[i]);
+			serviceRequestExtrasList.add(serviceRequestExtra);
+			this.serviceRequestDao.saveExtraServices(serviceRequestExtrasList, serviceRequestExtra);
+		}
+		
+		
 		return null;
 
 	}

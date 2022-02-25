@@ -76,130 +76,31 @@
 								<a class="nav-link Contact" href="contact">Contact</a>
 							</div>
 						</li>
-						<li class="nav-item">
-							<div class="nav-btn Rounded-Rectangle-5" data-bs-toggle="modal"
-								href="#login">
-								<a class="nav-link" href="#">Login</a>
-							</div>
-							<div class="modal fade" id="login" aria-hidden="true"
-								aria-labelledby="log" tabindex="-1">
-								<div class="modal-dialog modal-dialog-centered modal-sm">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="modal-title" id="lmodal">Login to your
-												account</h4>
-											<button type="button" class="btn-close"
-												data-bs-dismiss="modal"></button>
-										</div>
-
-										<div class="modal-body">
-											<div>
-												<input type="email" placeholder="Email" class="emailmodal" />
-											</div>
-											<div>
-												<input type="password" placeholder="Password"
-													class="passmodal" />
-											</div>
-											<div>
-												<input type="checkbox" value="Remember me" id="rem" /> <label
-													for="rem" class="remmodal">Remember me</label>
-											</div>
-											<div class="text-center">
-												<button type="submit" class="loginbtnmodal">Login</button>
-											</div>
-										</div>
-										<div class="text-center">
-											<a class="text-decoration-none fpassmodal"
-												data-bs-target="#passm" data-bs-toggle="modal"
-												data-bs-dismiss="modal">Forgot Password?</a>
-										</div>
-										<div class=" text-center">
-											<a class="accmodal" data-bs-target="#signupmodal"
-												data-bs-toggle="modal" data-bs-dismiss="modal">Don't
-												have an account? <span class="create"> Create an
-													account </span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="modal fade" id="passm" aria-hidden="true"
-								aria-labelledby="pass" tabindex="-1">
-								<div class="modal-dialog modal-dialog-centered modal-sm">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="modal-title" id="pass">Forgot Password</h4>
-											<button type="button" class="btn-close"
-												data-bs-dismiss="modal" aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											<form>
-												<input type="email" placeholder="Email Address"
-													class="emailmodal">
-												<button type="submit" class="sendemail">Send</button>
-											</form>
-										</div>
-										<a class="text-decoration-none text-center loginnowmodal"
-											data-bs-target="#login" data-bs-toggle="modal"
-											data-bs-dismiss="modal">Login Now</a>
-									</div>
-								</div>
-							</div>
-
-							<div class="modal fade" id="signupmodal" aria-hidden="true"
-								aria-labelledby="signup" tabindex="-1">
-								<div class="modal-dialog modal-dialog-centered ">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="modal-title" id="signup">Create an account</h4>
-											<button type="button" class="btn-close"
-												data-bs-dismiss="modal" aria-label="Close"></button>
-										</div>
-										<div class="modal-body">
-											<form>
-												<div>
-													<input type="text" placeholder="First name"
-														class="fnamemodal"> <input type="text"
-														placeholder="Last name" class="lnamemodal">
-												</div>
-												<div>
-													<input type="email" placeholder="E-mail Address"
-														class="signupemailmodal"> <input type="text"
-														placeholder="+49" class="pinmodal" disabled> <input
-														type="text" placeholder="Mobile Number" class="mnomodal">
-												</div>
-												<div>
-													<input type="password" placeholder="Password"
-														class="signuppass"> <input type="password"
-														placeholder="Confirm Password" class="confirmsignuppass">
-												</div>
-												<div>
-													<input type="checkbox" value="privacy" id="ppcheckbox" />
-													<label for="ppcheckbox" class="signuppolicy">I have
-														read the <a class="pp">Privacy Policy</a>
-													</label>
-												</div>
-												<div class="text-center">
-													<button type="submit" class="signupreg">Register</button>
-												</div>
-											</form>
-										</div>
-										<div class="text-center">
-											<p class="alreadyreg">
-												Already registered? <a class="text-decoration-none "
-													data-bs-target="#login" data-bs-toggle="modal"
-													data-bs-dismiss="modal"> Login Now </a>
-											</p>
-										</div>
-
-									</div>
-								</div>
+						
+						<li class="nav-item verline" >
+							<div class="ver-line"></div>
+						</li>
+						<li class="nav-item notiflink">
+							<div class="nav-btn">
+								<a class="nav-link noti" href="#"><img
+									src="<%=request.getContextPath()%>/resources/img/img-CS/icon-notification.png"></a>
 							</div>
 						</li>
-						<li class="nav-item">
-							<div class="nav-btn Rounded-Rectangle-5-copy">
-								<a class="nav-link" href="bap">Become a Helper</a>
-							</div>
+						<li class="nav-item verline" >
+							<div class="ver-line" ></div>
+						</li>
+						<li class="nav-item dropdown melink"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								<img
+								src="<%=request.getContextPath()%>/resources/img/img-CS/me.png">
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end"
+								aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="logout"
+									onclick="logout()">Log out</a></li>
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -212,123 +113,21 @@
 			<a href="BookNow">Book Now</a> <a href="prices">Prices & Services</a>
 			<a href="warranty">Warranty</a> <a href="#">Blog</a> <a
 				href="contact">Contact</a>
-			<div data-bs-toggle="modal" href="#loginnn">
-				<a class="lm">Login</a>
-			</div>
-			<div class="modal fade" id="loginnn" aria-hidden="true"
-				aria-labelledby="log" tabindex="-1">
-				<div class="modal-dialog modal-dialog-centered modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="lmodal">Login to your account</h4>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-						</div>
-
-						<div class="modal-body">
-							<div>
-								<input type="email" placeholder="Email" class="emailmodal" />
-							</div>
-							<div>
-								<input type="password" placeholder="Password" class="passmodal" />
-							</div>
-							<div>
-								<input type="checkbox" value="Remember me" id="rem" /> <label
-									for="rem" class="remmodal">Remember me</label>
-							</div>
-							<div class="text-center">
-								<button type="submit" class="loginbtnmodal">Login</button>
-							</div>
-						</div>
-						<div class="text-center">
-							<a class="text-decoration-none fpassmodal"
-								data-bs-target="#passm1" data-bs-toggle="modal"
-								data-bs-dismiss="modal">Forgot Password?</a>
-						</div>
-						<div class=" text-center">
-							<a class="accmodal" data-bs-target="#signupmodal1"
-								data-bs-toggle="modal" data-bs-dismiss="modal">Don't have an
-								account? <span class="create"> Create an account </span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="modal fade" id="passm1" aria-hidden="true"
-				aria-labelledby="pass" tabindex="-1">
-				<div class="modal-dialog modal-dialog-centered modal-sm">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="pass">Forgot Password</h4>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<form>
-								<input type="email" placeholder="Email Address"
-									class="emailmodal">
-								<button type="submit" class="sendemail">Send</button>
-							</form>
-						</div>
-						<a class="text-decoration-none text-center loginnowmodal"
-							data-bs-target="#loginnn" data-bs-toggle="modal"
-							data-bs-dismiss="modal">Login Now</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="modal fade" id="signupmodal1" aria-hidden="true"
-				aria-labelledby="signup" tabindex="-1">
-				<div class="modal-dialog modal-dialog-centered ">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4 class="modal-title" id="signup">Create an account</h4>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"
-								aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-							<form>
-								<div>
-									<input type="text" placeholder="First name" class="fnamemodal">
-									<input type="text" placeholder="Last name" class="lnamemodal">
-								</div>
-								<div>
-									<input type="email" placeholder="E-mail Address"
-										class="signupemailmodal"> <input type="text"
-										placeholder="+49" class="pinmodal" disabled> <input
-										type="text" placeholder="Mobile Number" class="mnomodal">
-								</div>
-								<div>
-									<input type="password" placeholder="Password"
-										class="signuppass"> <input type="password"
-										placeholder="Confirm Password" class="confirmsignuppass">
-								</div>
-								<div>
-									<input type="checkbox" value="privacy" id="ppcheckbox" /> <label
-										for="ppcheckbox" class="signuppolicy">I have read the
-										<a class="pp">Privacy Policy</a>
-									</label>
-								</div>
-								<div class="text-center">
-									<button type="submit" class="signupreg">Register</button>
-								</div>
-							</form>
-						</div>
-						<div class="text-center">
-							<p class="alreadyreg">
-								Already registered? <a class="text-decoration-none "
-									data-bs-target="#loginnn" data-bs-toggle="modal"
-									data-bs-dismiss="modal"> Login Now </a>
-							</p>
-						</div>
-
-					</div>
-				</div>
-			</div>
-
-
-
-			<a href="bap">Become a Helper</a>
+			
+			<a class="nav-link noti notiflink" href="#">
+				<span>Notifications</span></a>
+			<li class="nav-item dropdown melink">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<span>My Account</span>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-end"
+					aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					<li><a class="dropdown-item" href="logout"
+						onclick="logout()">Log out</a></li>
+				</ul>
+			</li>
 		</div>
 
 		<div onclick="openNav()" class="sideham">&#9776;</div>
@@ -590,7 +389,7 @@
 											<button type="button" class="btn-close"
 												data-bs-dismiss="modal"></button>
 										</div>
-										<form id="addAddressForm" method="post" name="addAddressForm">
+										<form id="addAddressForm" name="addAddressForm">
 											<div class="modal-body">
 
 												<div>
@@ -621,7 +420,7 @@
 											<div class="text-center">
 												<button type="submit" class="saveadd"
 													data-bs-dismiss="modal">Save</button>
-												<input type="button" class="canceladd" value="Close" />
+												<input type="button" class="canceladd" value="Close" data-bs-dismiss="modal"/>
 											</div>
 
 										</form>
@@ -1014,7 +813,7 @@
 				image1.src = "<%=request.getContextPath()%>/resources/img/img-BookNow/assets/3-green.png";
 				document.getElementById('extras').innerHTML="<b>Extras</b>";
 				
-				array.push("| Inside Cabinets | ");
+				array.push("Inside-Cabinets...");
 				var items=document.getElementById('extrahere');
 				var html='';
 				for(var i=0; i<array.length; i++){
@@ -1029,7 +828,7 @@
 			} else {
 				image1.src = "<%=request.getContextPath()%>/resources/img/img-Prices/firstimg.png";
 				
-				var myIndex = array.indexOf("| Inside Cabinets | ");
+				var myIndex = array.indexOf("Inside-Cabinets...");
 				if (myIndex !== -1) {
 				    array.splice(myIndex, 1);
 				}
@@ -1061,7 +860,7 @@
 				image2.src = "<%=request.getContextPath()%>/resources/img/img-BookNow/assets/5-green.png";
 				document.getElementById('extras').innerHTML="<b>Extras</b>"
 				
-				array.push("| Inside fridge | ");
+				array.push("Inside-fridge...");
 				var items=document.getElementById('extrahere');
 				var html='';
 				for(var i=0; i<array.length; i++) html += array[i];
@@ -1074,7 +873,7 @@
 			} else {
 				image2.src = "<%=request.getContextPath()%>/resources/img/img-Prices/secondimg.png";
 				
-				var myIndex = array.indexOf('| Inside fridge | ');
+				var myIndex = array.indexOf('Inside-fridge...');
 				if (myIndex !== -1) {
 				    array.splice(myIndex, 1);
 				}
@@ -1101,7 +900,7 @@
 				image3.src = "<%=request.getContextPath()%>/resources/img/img-BookNow/assets/4-green.png";
 				document.getElementById('extras').innerHTML="<b>Extras</b>"
 				
-				array.push("| Inside oven | ");
+				array.push("Inside-oven...");
 				var items=document.getElementById('extrahere');
 				var html='';
 				for(var i=0; i<array.length; i++) html += array[i];
@@ -1114,7 +913,7 @@
 			} else {
 				image3.src = "<%=request.getContextPath()%>/resources/img/img-Prices/thirdimg.png";
 
-				var myIndex = array.indexOf('| Inside oven | ');
+				var myIndex = array.indexOf('Inside-oven...');
 				if (myIndex !== -1) {
 				    array.splice(myIndex, 1);
 				}
@@ -1141,7 +940,7 @@
 				image4.src = "<%=request.getContextPath()%>/resources/img/img-BookNow/assets/2-green.png";
 				document.getElementById('extras').innerHTML="<b>Extras</b>"
 				
-				array.push("| Laundry wash & dry | ");
+				array.push("Laundry-wash-dry...");
 				var items=document.getElementById('extrahere');
 				var html='';
 				for(var i=0; i<array.length; i++) html += array[i];
@@ -1154,7 +953,7 @@
 			} else {
 				image4.src = "<%=request.getContextPath()%>/resources/img/img-Prices/fourthimg.png";
 				
-				var myIndex = array.indexOf('| Laundry wash & dry | ');
+				var myIndex = array.indexOf('Laundry-wash-dry...');
 				if (myIndex !== -1) {
 				    array.splice(myIndex, 1);
 				}
@@ -1181,7 +980,7 @@
 				image5.src = "<%=request.getContextPath()%>/resources/img/img-BookNow/assets/1-green.png";
 				document.getElementById('extras').innerHTML="<b>Extras</b>"
 				
-				array.push("| Interior windows | ");
+				array.push("Interior-windows...");
 				var items=document.getElementById('extrahere');
 				var html='';
 				for(var i=0; i<array.length; i++) html += array[i];
@@ -1194,7 +993,7 @@
 			} else {
 				image5.src = "<%=request.getContextPath()%>/resources/img/img-Prices/fifthimg.png";
 
-				var myIndex = array.indexOf('| Interior windows | ');
+				var myIndex = array.indexOf('Interior-windows...');
 				if (myIndex !== -1) {
 					array.splice(myIndex, 1);
 				}
@@ -1357,12 +1156,23 @@
 			});
 		});
 		function servicerequestaddress() {
+			
+			var finalarray="";
+			//console.log(finalarray.replace("|", "")+"ajaxxxxx");
+			
+			array.map(e => {
+				finalarray += e+" ";
+			});
+			
+			console.log(finalarray);
+			
 			$.ajax({
 				type: "GET",
 				url: "/Helperland-Tatvasoft/servicerequestaddress/" + $('#addressradio:checked').val() + "," + $('#totalpay').text().replace(",00", "")
 					+ "," + $('#timeneeded').val() + "," + finaldate.replace(/ \/ /g, '.')
 					+ "," + $('#totaltime').text().replace(" Hrs", "") + "," + $('#perclean').text().replace(",00", "") + "," + $('#secondcomments').text()
-					+ "," + $('#starttime').val().replace(":", ".") + "," +  $('#petsathome').is(':checked'),
+					+ "," + $('#starttime').val().replace(":", ".") + "," +  $('#petsathome').is(':checked') 
+					+ "," + finalarray,
 				success: function(data) {
 					console.log("SUCCESS: ", data);
 				},
@@ -1377,6 +1187,8 @@
 		
 		
 	</script>
+	
+	
 
 </body>
 

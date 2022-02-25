@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,53 +46,78 @@ public class PublicPagesController {
 	ContactDao contactdao;
 
 	@RequestMapping("/homepage")
-	public String home() {
+	public String home(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "Homepage";
 	}
 
 	@RequestMapping("/faq")
-	public String faq() {
+	public String faq(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "FAQ";
 	}
 
 	@RequestMapping("/contact")
-	public String contact() {
+	public String contact(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "Contact";
 	}
 
 	@RequestMapping("/about")
-	public String about() {
+	public String about(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "About";
 	}
 
 	@RequestMapping("/warranty")
-	public String warranty() {
+	public String warranty(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "Warranty";
 	}
 
 	@RequestMapping("/prices")
-	public String prices() {
+	public String prices(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "Prices";
 	}
 
 	@RequestMapping("/bap")
-	public String bap() {
+	public String bap(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "ServiceProvider-BAP";
 	}
 
 	@RequestMapping("/customerDashboard")
-	public String cdash() {
-		return "CS-Dashboard";
-	}
-
-	@RequestMapping("/ServiceHistory-customer")
-	public String chist() {
-		return "Customer - Service History";
-	}
-
-	@RequestMapping("/Settings-customer")
-	public String csettings() {
-		return "SettingsCust";
+	public String cdash(HttpServletRequest request,Model model) {
+		
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("userid"));
+		System.out.println(session.getAttribute("usertypeid"));
+		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
+		model.addAttribute("settingslastname", session.getAttribute("lastname"));
+		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
+		model.addAttribute("settingsemail", session.getAttribute("custemail"));
+		
+		Object temp = session.getAttribute("usertypeid");
+		String str=temp.toString();
+		
+		if(session.getAttribute("userid") != null && str.equals("2") ) {
+			System.out.println("dashboarddd");
+			return "CS-Dashboard";		
+		}
+		
+		else {
+			request.setAttribute("notloggedin", "alertlogin");
+			return "Homepage";
+		}
+		
 	}
 
 	@RequestMapping("/Settings-ServiceProvider")
@@ -142,7 +168,7 @@ public class PublicPagesController {
 		}
 		
 		else {
-			request.setAttribute("notloggedin", "attr");
+			request.setAttribute("notloggedin", "alertlogin");
 			return "Homepage";
 		}
 		
@@ -150,9 +176,13 @@ public class PublicPagesController {
 
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	public String addcustomer(@ModelAttribute("customer") Customer customer) {
-		System.out.println(customer);
+		
+
+		Random random = new Random();
+		customer.setUserId(random.nextInt(10000));
 		customer.setUserTypeId(2);
 		customerDao.save(customer);
+		System.out.println(customer);
 		return "Homepage";
 	}
 
@@ -172,7 +202,7 @@ public class PublicPagesController {
 
 	@RequestMapping(value = "/loginprocess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("login") Login login) {
+			@ModelAttribute("login") Login login, Model model) {
 		ModelAndView mav = null;
 
 		Customer customer = customerDao.validateUser(login);
@@ -180,6 +210,14 @@ public class PublicPagesController {
 		HttpSession session = request.getSession();
 		session.setAttribute("userid", customer.getUserId());
 		session.setAttribute("usertypeid", customer.getUserTypeId());
+		session.setAttribute("firstname", customer.getFirstName());
+		session.setAttribute("lastname", customer.getLastName());
+		session.setAttribute("custmobile", customer.getMobile());
+		session.setAttribute("custemail", customer.getEmail());
+		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
+		model.addAttribute("settingslastname", session.getAttribute("lastname"));
+		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
+		model.addAttribute("settingsemail", session.getAttribute("custemail"));
 		
 		session.setMaxInactiveInterval(15*60);
 
@@ -188,6 +226,7 @@ public class PublicPagesController {
 			System.out.println(type);
 			if (type == 2) {
 				mav = new ModelAndView("CS-Dashboard");
+				
 			} else if (type == 3) {
 				mav = new ModelAndView("SP - Dashboard");
 			}

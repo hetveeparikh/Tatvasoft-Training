@@ -12,7 +12,8 @@ public class Customer {
 	private String Mobile;
 	private int UserTypeId;
 	private Date CreatedDate;
-	
+	private String DateOfBirth;
+	private String Language;
 	
 	public String getFirstName() {
 		return FirstName;
@@ -56,16 +57,29 @@ public class Customer {
 	public void setCreatedDate(Date createdDate) {
 		CreatedDate = createdDate;
 	}
-	@Override
-	public String toString() {
-		return "Customer [FirstName=" + FirstName + ", LastName=" + LastName + ", Email=" + Email + ", Password="
-				+ Password + ", Mobile=" + Mobile + ", UserTypeId=" + UserTypeId + ", CreatedDate=" + CreatedDate + "]";
-	}
 	public int getUserId() {
 		return UserId;
 	}
 	public void setUserId(int userId) {
 		UserId = userId;
+	}
+	public String getDateOfBirth() {
+		return DateOfBirth;
+	}
+	public void setDateOfBirth(String dateOfBirth) {
+		DateOfBirth = dateOfBirth;
+	}
+	public String getLanguage() {
+		return Language;
+	}
+	public void setLanguage(String language) {
+		Language = language;
+	}
+	@Override
+	public String toString() {
+		return "Customer [UserId=" + UserId + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Email=" + Email
+				+ ", Password=" + Password + ", Mobile=" + Mobile + ", UserTypeId=" + UserTypeId + ", CreatedDate="
+				+ CreatedDate + ", DateOfBirth=" + DateOfBirth + ", Language=" + Language + "]";
 	}
 	
 	

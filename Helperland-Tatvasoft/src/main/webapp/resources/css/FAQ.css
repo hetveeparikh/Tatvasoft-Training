@@ -19,6 +19,19 @@ body{
 .navbar-collapse{
     flex-grow: inherit;
 }
+.ver-line {
+	width: 1px;
+	height: 48px;
+	margin: 2px 16px 0px 20px;
+	background-color: #e1e1e1;
+	display: block;
+	text-align: right;
+}
+
+.dropdown-menu a {
+	color: #111 !important;
+}
+
 .nav-item .nav-btn a{
   color: white;
 }

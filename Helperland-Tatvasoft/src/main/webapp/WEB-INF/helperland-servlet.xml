@@ -51,7 +51,7 @@
 			value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/help" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="hetu2207" />
 
 	</bean>
 
@@ -121,6 +121,10 @@
 	</bean>
 	
 	<bean id="dao6" class="helperlanduser.dao.ServiceRequestAddressDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="dao7" class="helperlanduser.dao.CustomerSettingsDetailsDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 

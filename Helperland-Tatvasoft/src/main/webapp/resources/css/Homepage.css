@@ -824,3 +824,16 @@ img.Forma-1 {
 .modal-backdrop{
   position: inherit ;
 }
+
+.ver-line {
+	width: 1px;
+	height: 48px;
+	margin: 2px 16px 0px 10px;
+	background-color: #e1e1e1;
+	display: block;
+	text-align: right;
+}
+
+.dropdown-menu a {
+	color: #111 !important;
+}

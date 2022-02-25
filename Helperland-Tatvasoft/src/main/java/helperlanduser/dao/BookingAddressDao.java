@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+import helperlanduser.model.Customer;
 import helperlanduser.model.UserAddress;
 
 public class BookingAddressDao {
@@ -21,12 +22,11 @@ public class BookingAddressDao {
 
 	public int addAddress(UserAddress address) {
 		
-		String sql = "insert into useraddress(AddressLine1,AddressLine2,PostalCode,City,Mobile,UserId,IsDefault,IsDeleted) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into useraddress(AddressLine1,AddressLine2,PostalCode,City,Mobile,UserId,IsDefault,IsDeleted,Email) values(?,?,?,?,?,?,?,?,?)";
 		int add = template.update(sql, new Object[] { address.getAddressLine1(), address.getAddressLine2(),
-				address.getPostalCode(), address.getCity(), address.getMobile(),address.getUserId(),1,1 });
-
+				address.getPostalCode(), address.getCity(), address.getMobile(),address.getUserId(),1,1,address.getEmail() });
 	
-	return add;
+		return add;
 
 	}
 
@@ -59,4 +59,14 @@ public class BookingAddressDao {
 		System.out.println(addressList.toString() + "  ->  dao");
 		return addressList;
 	}
+	
+	public int updateAddressSettings(UserAddress userAddress, String addressid){
+	    String query="update useraddress set AddressLine1='"+ userAddress.getAddressLine1() +"',AddressLine2='"+ userAddress.getAddressLine2() +"',City='"+ userAddress.getCity() +"',PostalCode='"+ userAddress.getPostalCode() +"',Mobile='"+ userAddress.getMobile() +"' where UserId='"+ userAddress.getUserId() +"'and AddressId='" + addressid + "' ";  
+		return template.update(query);  
+	}  
+	
+	public int deleteAddress(UserAddress userAddress, String addressid){  
+	    String query="delete from useraddress where UserId='"+ userAddress.getUserId() +"'and AddressId='" + addressid + "' ";  
+	    return template.update(query);  
+	}  
 }
