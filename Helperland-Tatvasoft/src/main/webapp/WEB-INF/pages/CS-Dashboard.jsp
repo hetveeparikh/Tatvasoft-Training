@@ -16,19 +16,18 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
 <link
-	href="<%=request.getContextPath()%>/resources/css/Customer - Service History.css"
+	href="<%=request.getContextPath()%>/resources/css/Customer-Page.css"
 	rel="stylesheet">
 <link
-	href="<%=request.getContextPath()%>/resources/css/Customer - Service History - responsive.css"
+	href="<%=request.getContextPath()%>/resources/css/Customer-Page-responsive.css"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
-
-<title>Customer - Dashboard</title>
+<title>Customer Page | Helperland</title>
 <link rel="shortcut icon"
-	href="<%=request.getContextPath()%>/resources/img/img-homepage/favicon_img.png"
+	href="<%=request.getContextPath()%>/resources/img/img-Homepage/favicon_img.png"
 	type="image/x-icon">
 
 </head>
@@ -98,8 +97,8 @@
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<a class="active tablinks"
-				onclick="clickcust(event, 'custdashboard')">Dashboard</a> <a
-				class="tablinks" onclick="clickcust(event, 'custrequests')">Service
+				onclick="clickcust(event, 'custdashboard')" id="dashnav">Dashboard</a> <a
+				class="tablinks" onclick="clickcust(event, 'custrequests')" id="historynav">Service
 				History</a> <a href="#">Service Schedule</a> <a href="#">Favourite
 				Pros</a> <a href="#">Invoices</a> <a href="BookNow">Book Now</a> <a
 				href="prices">Prices</a> <a href="warranty">Warranty</a> <a href="#">Blog</a>
@@ -133,7 +132,7 @@
 		<div class="sidebar col-lg-3 offset-lg-2 ">
 			<a href="#" class="tablinks active" id="defaultOpen"
 				onclick="clickcust(event, 'custdashboard')">Dashboard</a> <a
-				href="#" class="tablinks "
+				href="#" class="tablinks " id="historytab"
 				onclick="clickcust(event, 'custrequests')">Service History</a> <a
 				href="#">Service Schedule</a> <a href="#">Favourite Pros</a> <a
 				href="#">Invoices</a> <a href="#">Notifications</a>
@@ -149,164 +148,56 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
-							<table class="table display nowrap" id="exampledash"
-								colspacing="0" style="width: 100%;">
-								<thead>
-									<tr id="firstrow">
-										<th>
-											<div class="d-flex">
-												<span class="heading">Service ID</span>
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading">Service Date</span>
-
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading ">Service Provider</span>
-
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading">Payment</span>
-
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading">Actions</span>
-
-											</div>
-										</th>
-									</tr>
-								</thead>
-
-								<tbody>
-
-									<tr>
-										<td class="align-middle"><span class="csid">8507</span></td>
-										<td class="align-middle">
-											<div class="d-flex flex-column justify-content-center">
-												<div class="d-flex ">
-													<img
-														src="<%=request.getContextPath()%>/resources/img/img-CS/greycalendar.png"
-														class="gcal"> <span class="cs-date">31/03/2018</span>
+							<div id="showrequests">
+								<table class="table display nowrap" id="exampledash"
+									colspacing="0" style="width: 100%;">
+									<thead>
+										<tr id="firstrow">
+											<th>
+												<div class="d-flex">
+													<span class="heading">Service ID</span>
 												</div>
-												<span class="cs-time">12:00 - 18:00</span>
-											</div>
-										</td>
-										<td class="align-middle">
-											<div class="d-flex">
-												<div class="topicircle text-center">
-													<img
-														src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png"
-														class="topi">
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Service Date</span>
+	
 												</div>
-												<div class="d-flex flex-column">
-													<span class="csname">Lyum Watson</span>
-													<div class="d-flex">
-														<span class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star unchecked"></span> <span class="num4">4</span>
-													</div>
-
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading ">Service Provider</span>
+	
 												</div>
-											</div>
-										</td>
-
-										<td class="align-middle"><span class="cs-price ">
-												<img
-												src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png"
-												class="totaleuro"><span>63</span>
-										</span></td>
-
-										<td class="align-middle d-flex">
-											<div>
-												<button class="csreschedule" data-bs-toggle="modal"
-													data-bs-target="#reschedulemodal">Reschedule</button>
-												<div class="modal fade" id="reschedulemodal">
-													<div class="modal-dialog modal-dialog-centered">
-														<div class="modal-content">
-
-															<!-- Modal Header -->
-															<div class="modal-header">
-																<h4 class="modal-title">Reschedule Service Request</h4>
-																<button type="button" class="btn-close"
-																	data-bs-dismiss="modal"></button>
-															</div>
-
-															<!-- Modal body -->
-															<div class="modal-body">
-																<span class="newdate">Select new date and time</span>
-																<div class="d-flex justify-content-center">
-																	<div class="d-flex daterect">
-																		<img
-																			src="<%=request.getContextPath()%>/resources/img/img-CS/greycalendar.png"
-																			class="gcal"> <span class="cs-date">31/03/2018</span>
-																	</div>
-																	<div>
-																		<select title="Time" class="timerect">
-																			<option value="">&nbsp;8:00</option>
-																			<option value="A">8:30</option>
-																			<option value="B">9:00</option>
-																			<option value="C">9:30</option>
-																		</select>
-																	</div>
-
-																</div>
-															</div>
-															<div class="d-flex justify-content-center">
-																<button class="csupdate">Update</button>
-															</div>
-
-														</div>
-													</div>
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Payment</span>
+	
 												</div>
-											</div>
-											<button class="cscancel" data-bs-toggle="modal"
-												data-bs-target="#cancelmodal">Cancel</button>
-											<div class="modal fade" id="cancelmodal">
-												<div class="modal-dialog modal-dialog-centered">
-													<div class="modal-content">
-
-														<!-- Modal Header -->
-														<div class="modal-header">
-															<h4 class="modal-title">Cancel Service Request</h4>
-															<button type="button" class="btn-close"
-																data-bs-dismiss="modal"></button>
-														</div>
-
-														<!-- Modal body -->
-														<div class="modal-body">
-															<span class="newdate">Are you sure you want to
-																cancel this service request?</span>
-
-														</div>
-														<div class="d-flex justify-content-center">
-															<button type="submit" class="csupdate">Cancel
-																Request</button>
-														</div>
-
-													</div>
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Actions</span>
+	
 												</div>
-											</div>
-										</td>
-									</tr>
-
-								</tbody>
-							</table>
+											</th>
+										</tr>
+									</thead>
+	
+									<tbody>
+	
+										
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		
+		
 		<!-- requestsssssssssssss -->
 
 
@@ -314,133 +205,63 @@
 			<div class="d-flex flex-column justify-content-center datamain ">
 				<div class="d-flex justify-content-between container">
 					<p class="history">Service History</p>
-					<button class="export">Export</button>
+					<a class="exportt text-decoration-none">Export</a>
 				</div>
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
-							<table class="table display nowrap" id="example" colspacing="0"
-								style="width: 100%;">
-								<thead>
-									<tr id="firstrow">
-										<th>
-											<div class="d-flex">
-												<span class="heading">Service Details</span>
-
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading ">Service Provider</span>
-
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading">Payment</span>
-
-											</div>
-										</th>
-										<th>
-											<div class="d-flex">
-												<span class="heading">Status</span>
-
-											</div>
-										</th>
-										<th><span class="heading ">Rate SP</span></th>
-									</tr>
-								</thead>
-
-								<tbody>
-
-
-									<tr>
-										<td class="align-middle">
-											<div class="d-flex flex-column">
+							<div id="showhistory">
+								<table class="table display nowrap" id="example" colspacing="0"
+									style="width: 100%;">
+									<thead>
+										<tr id="firstrow">
+											<th>
 												<div class="d-flex">
-													<img
-														src="<%=request.getContextPath()%>/resources/img/img-CS/greycalendar.png"
-														class="gcal"> <span class="cs-date">01/01/2018</span>
+													<span class="heading">Service ID</span>
 												</div>
-												<span class="cs-time">12:00 - 18:00</span>
-											</div>
-										</td>
-										<td class="align-middle">
-											<div class="d-flex">
-												<div class="topicircle text-center">
-													<img
-														src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png"
-														class="topi">
-												</div>
-												<div class="d-flex flex-column">
-													<span class="csname">Lyum Watson</span>
-													<div class="d-flex">
-														<span class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star unchecked"></span> <span class="num4">4</span>
-													</div>
-
-												</div>
-											</div>
-										</td>
-										<td class="align-middle"><span class="cs-price ">
-												<span class="euro">€</span>63
-										</span></td>
-										<td class="align-middle">
-											<button class="pinkbtn">Cancelled</button>
-										</td>
-										<td class="align-middle">
-											<button class="rate">Rate SP</button>
-										</td>
-									</tr>
-
-									<tr>
-										<td class="align-middle">
-											<div class="d-flex flex-column">
+											</th>
+											<th>
 												<div class="d-flex">
-													<img
-														src="<%=request.getContextPath()%>/resources/img/img-CS/greycalendar.png"
-														class="gcal"> <span class="cs-date">01/01/2018</span>
+													<span class="heading">Service Details</span>
+	
 												</div>
-												<span class="cs-time">12:00 - 18:00</span>
-											</div>
-										</td>
-										<td class="align-middle">
-											<div class="d-flex">
-												<div class="topicircle text-center">
-													<img
-														src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png"
-														class="topi">
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading ">Service Provider</span>
+	
 												</div>
-												<div class="d-flex flex-column">
-													<span class="csname">Lyum Watson</span>
-													<div class="d-flex">
-														<span class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star checked"></span> <span
-															class="fa fa-star unchecked"></span> <span class="num4">4</span>
-													</div>
-
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Payment</span>
+	
 												</div>
-											</div>
-										</td>
-										<td class="align-middle"><span class="cs-price ">
-												<span class="euro">€</span>63
-										</span></td>
-										<td class="align-middle">
-											<button class="pinkbtn">Cancelled</button>
-										</td>
-										<td class="align-middle">
-											<button class="rate">Rate SP</button>
-										</td>
-									</tr>
-
-
-								</tbody>
-							</table>
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Report</span>
+												</div>
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Status</span>
+												</div>
+											</th>
+											<th>
+												<div class="d-flex">
+													<span class="heading">Rate SP</span>
+												</div>
+											</th>
+										</tr>
+									</thead>
+	
+									<tbody>
+	
+	
+									</tbody>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -633,15 +454,15 @@
 
 									<div>
 										<input type="text" placeholder="Street Name" class="street"
-											name="AddressLine1" id="addline1" /> <input type="text"
+											name="AddressLine1" id="addline1"  required/> <input type="text"
 											placeholder="House Number" class="houseno"
-											name="AddressLine2" id="addline2" />
+											name="AddressLine2" id="addline2" required />
 									</div>
 
 									<div>
 										<input type="text" placeholder="Postal Code" class="postal"
-											name="PostalCode" id="addpostalcode" /> <select title="City"
-											class="city" name="City" id="addcity">
+											name="PostalCode" id="addpostalcode" required /> <select title="City"
+											class="city" name="City" id="addcity" required>
 											<option value="">Choose your city</option>
 											<option value="A">A</option>
 											<option value="B">B</option>
@@ -652,12 +473,12 @@
 
 									<div>
 										<input type="text" placeholder="Phone Number" class="number"
-											name="Mobile" id="addmobile" />
+											name="Mobile" id="addmobile" required />
 
 									</div>
 								</div>
 								<div class="text-center">
-									<button type="submit" class="saveadd" data-bs-dismiss="modal">Save</button>
+									<button type="submit" class="saveadd">Save</button>
 									<input type="button" class="canceladd" value="Close"
 										data-bs-dismiss="modal" />
 								</div>
@@ -693,6 +514,8 @@
 						</div>
 					</div>
 				</div>
+				
+				
 
 				<!-- ////// -->
 
@@ -713,15 +536,15 @@
 
 									<div>
 										<input type="text" placeholder="Street Name" class="street"
-											name="AddressLine1" id="addlinee1" /> <input type="text"
+											name="AddressLine1" id="addlinee1" required/> <input type="text"
 											placeholder="House Number" class="houseno"
-											name="AddressLine2" id="addlinee2" />
+											name="AddressLine2" id="addlinee2" required />
 									</div>
 
 									<div>
 										<input type="text" placeholder="Postal Code" class="postal"
-											name="PostalCode" id="addpostalcodee" /> <select
-											title="City" class="city" name="City" id="addcityy">
+											name="PostalCode" id="addpostalcodee"  required/> <select
+											title="City" class="city" name="City" id="addcityy"  required>
 											<option value="">Choose your city</option>
 											<option value="A">A</option>
 											<option value="B">B</option>
@@ -732,12 +555,12 @@
 
 									<div>
 										<input type="text" placeholder="Phone Number" class="number"
-											name="Mobile" id="addmobilee" />
+											name="Mobile" id="addmobilee"  required/>
 
 									</div>
 								</div>
 								<div class="text-center">
-									<button type="submit" class="saveadd" data-bs-dismiss="modal">Save</button>
+									<button type="submit" class="saveadd">Save</button>
 									<input type="button" class="canceladd" value="Close"
 										data-bs-dismiss="modal" />
 								</div>
@@ -765,6 +588,111 @@
 			</div>
 
 		</div>
+		
+		<!-- request modal -->
+		
+		<div class="modal fade" id="reschedulemodal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Reschedule Service Request</h4>
+						<button type="button" class="btn-close"
+							data-bs-dismiss="modal"></button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<span class="newdate">Select new date and time</span>
+						<div class="d-flex justify-content-center">
+							<form id="rescheduleform" name="rescheduleform">
+								<div class="d-flex">
+									<div class="d-flex">
+										<input type="date" id="tomorrowdate" name="TomorrowDate" >
+									</div>
+									<div>
+										<select title="Time" class="timerect" id="updatedtime">
+											<option disabled>Time</option>
+											<option value="8:00" selected>8:00</option>
+											<option value="8:30">8:30</option>
+											<option value="9:00">9:00</option>
+											<option value="9:30">9:30</option>
+										</select>
+										
+									</div>
+								</div>
+								<div class="text-center">
+									<button type="submit" class="saveadd" data-bs-dismiss="modal"> Reschedule</button>
+									<input type="button" class="canceladd" value="Close"
+										data-bs-dismiss="modal" />
+								</div>
+							</form>
+						</div>
+					</div>
+					
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="cancelmodal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Cancel Service Request</h4>
+						<button type="button" class="btn-close"
+							data-bs-dismiss="modal"></button>
+					</div>
+					
+					<form id="cancelform">
+						<!-- Modal body -->
+						<div class="modal-body">
+							<span class="newdate">Are you sure you want to
+								cancel this service request?</span>
+	
+						</div>
+						<div class="d-flex justify-content-center">
+							<button type="submit" class="csupdate" data-bs-dismiss="modal" >Cancel
+								Request</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="DetailsModal">
+			<div class="modal-dialog  modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title"><strong>Service Details</strong></h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+	
+						<h3></h3>
+						<p><strong>Duration: </strong><span id="detailsduration"></span> </p>
+						<hr>
+						<p><strong>Service Id: </strong>27<span id="detailsid"></span>  </p>
+						<p><strong>Extras: </strong><span id="detailsextras"></span>  </p>
+						<p><strong>Net Amount: </strong><span id="detailsamount"></span>  </p>
+						<hr>
+						<p><strong>Service Address: </strong><span id="detailsaddress"></span>  </p>
+						<p><strong>Billing Address: </strong><span> Same as Service Address</span> </p>
+						<p><strong>Phone: </strong> <span id="detailsphone"></span> </p>
+						<p><strong>Email: </strong> <span id="detailsemail"></span> </p>
+						<hr>
+						<span><strong>Comments </strong> <br></span><span id="detailscomments"></span><br>
+						<div class="detailsdiv"><span id="detailspets"></span> </div>
+					</div>
+	
+				</div>
+			</div>
+		</div>
+		
 
 	</section>
 
@@ -826,15 +754,41 @@
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" charset="utf8"
 		src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/CS-Dashboard.js"></script>
-
-	<script type="text/javascript" charset="utf8"
+		
+		<script type="text/javascript" charset="utf8"
 		src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 	<script
 		src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+		
+	<script
+		src="<%=request.getContextPath()%>/resources/js/CS-Dashboard.js"></script>
 
+	
 	<script>
+	
+	function dashdt(){
+		$(document).ready(function() {
+			$('#exampledash').DataTable({
+				"dom": '<"top">rt<"bottom"lip><"clear">', responsive: true, "aaSorting": [],
+				columnDefs: [{
+					orderable: false,
+					targets: 4
+				}]
+			});
+		});
+	}
+	
+	function historydt(){
+		$(document).ready(function() {
+			$('#historytable').DataTable({
+				"dom": '<"top">rt<"bottom"lip><"clear">', responsive: true, "aaSorting": [],
+				columnDefs: [{
+					orderable: false,
+					targets: 4
+				}]
+			});
+		});
+	}
 	
 	/*Settings Add Address*/
  
@@ -963,6 +917,272 @@
 		});
 	}
 	
+
+	/* Show Requests */
+
+	function custdashboard(){
+		$.ajax({
+			type: "GET",
+			contentType: "application/json",
+			url: "/Helperland-Tatvasoft/custDashboard/",
+			success: function(response) {
+				console.log("SUCCESS: ", response);
+
+				var result = '<table class="table display nowrap" id="exampledash" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Service Provider</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Actions</span></div></th></tr></thead>'
+				result += "<tbody>";
+				$.each(response, function(k, v) {
+					result += "<tr>";
+					result += '<td class="align-middle"><span class="csid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
+					result += '<td class="align-middle">';
+					result += '<div class="d-flex flex-column justify-content-center calghadi">';
+					result += '<div class="d-flex modalcursor"  data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
+					result += '</div>';
+					result += '<div class="d-flex ">';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ' ) </span>';
+					result += '</div>';
+					result += '</div>';
+					result += "</td>";
+					result += '<td class="align-middle">';
+					result += '<div class="d-flex topidiv">';
+					result += '<div class="topicircle text-center">';
+					result += '<img src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png" class="topi">';
+					result += '</div>';
+					result += '<div class="d-flex flex-column">';
+					result += '<span class="csname">Lyum Watson</span>';
+					result += '<div class="d-flex">';
+					result += '<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star unchecked"></span> <span class="num4">4</span>';
+					result += '</div>';
+					result += '</div>';
+					result += '</div>';
+					result += '</td>';
+					result += '<td class="align-middle"><span class="cs-price ">';
+					result += '<img src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png" class="totaleuro">';
+					result += '<span>'+v.subTotal+'</span>';
+					result += '</span></td>';
+					result += '<td class="align-middle">';
+					result += '<div class="d-flex schecancel">';
+					result += '<button class="csreschedule" data-bs-toggle="modal" data-bs-target="#reschedulemodal" onclick="reschedule('+ v.serviceId +')">Reschedule</button>';
+					result += '<button class="cscancel" data-bs-toggle="modal"	data-bs-target="#cancelmodal" onclick="cancelreq('+ v.serviceId +')">Cancel</button>';
+					result += '</div>';
+					result += '</td>';
+					result += "</tr>";
+				});
+				result += "</tbody>";
+				result += "</table>";
+				$("#showrequests").html(result);
+				dashdt();
+
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+	}
+	
+	window.onload = custdashboard();
+	
+	$(document).on('click','#defaultOpen', function(){
+		custdashboard();
+	});
+	
+	/* Reschedule Request */
+		
+		function reschedule(v){
+			
+			jQuery(document).ready(function($) {
+				$("#rescheduleform").submit(function(event) {
+					event.preventDefault();
+					reschedulerequest(v);
+					console.log(v);
+				});
+			});
+		}
+		function reschedulerequest(v) {
+			console.log(document.getElementById("updatedtime").value);
+			$.ajax({
+				type: "GET",
+				url: "/Helperland-Tatvasoft/rescheduleRequests/" +$("#tomorrowdate").val() + "," + $("#updatedtime").val() + "," + v,
+				success: function(data) {
+					console.log("SUCCESS: resch", data);
+					
+					if(data==0){
+						alert("Not rescheduled!");
+					}
+					else{
+						custdashboard();
+						alert("Rescheduled successfully! \n\nServiceId : 27" + v);
+					}
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
+		
+
+		/* Cancel request */
+		
+		function cancelreq(v){
+			jQuery(document).ready(function($) {
+				$("#cancelform").submit(function(event) {
+					event.preventDefault();
+					cancelrequest(v);
+					console.log(v);
+				});
+			});
+		}
+		function cancelrequest(v) {
+			$.ajax({
+				type: "GET",
+				url: "/Helperland-Tatvasoft/cancelrequest/"  + v,
+				success: function(data) {
+					console.log("SUCCESS: request cancelled", data);
+
+					if(data==0){
+						alert("Not cancelled!");
+					}
+					else{
+						custdashboard();
+						alert("Cancelled successfully! \n\nServiceId : 27" + v);
+					}
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
+		
+		/* Details Modal */
+		
+		function detailsmodal(v) {
+			$.ajax({
+				type: "GET",
+				contentType: "application/json",
+				url: "/Helperland-Tatvasoft/detailsmodal/"  + v,
+				success: function(data) {
+					var petsbool="";
+					if(data.servicerequest.hasPets=="true"){
+						petsbool='<img src="<%=request.getContextPath()%>/resources/img/img-CS/haspets.png">  I have pets at home';
+					}
+					else{
+						petsbool=`<img src="<%=request.getContextPath()%>/resources/img/img-CS/notpets.png">  I don't have pets at home`;
+					}
+					
+					console.log("SUCCESS: modal", data);
+					
+					$("#detailsduration").html(data.servicerequest.serviceStartTime);
+					$("#detailsextras").html(data.servicerequestextra);
+					$("#detailsid").html(data.servicerequest.serviceId);
+					$("#detailsamount").html(data.servicerequest.subTotal + " &euro;");
+					$("#detailsaddress").html(data.servicerequestaddress.addressLine1 + ", " + data.servicerequestaddress.addressLine2);
+					$("#detailsphone").html(data.servicerequestaddress.mobile);
+					$("#detailsemail").html(data.servicerequestaddress.email);
+					$("#detailscomments").html(data.servicerequest.comments);
+					$("#detailspets").html(petsbool);
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
+		
+		/* Service History */
+		
+		function custhistory(){
+			$.ajax({
+				type: "GET",
+				contentType: "application/json",
+				url: "/Helperland-Tatvasoft/customerServiceHistory/",
+				success: function(response) {
+					console.log("SUCCESS: ", response);
+	
+					var result = '<table class="table display nowrap" id="historytable" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Details</span></div></th><th><div class="d-flex"><span class="heading">Service Provider</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Report</span></div></th><th><div class="d-flex"><span class="heading">Status</span></div></th><th><div class="d-flex"><span class="heading">Rate SP</span></div></th></tr></thead>'
+					result += "<tbody>";
+					$.each(response, function(k, v) {
+						
+						var status="";
+						if(v.status=="Completed"){
+							status='<button class="greenbtn">Completed</button>';
+							//$("#statusbtn").css("background-color","pink");
+						}
+						else{
+							status='<button class="pinkbtn">Cancelled</button>';
+							//$("#statusbtn").css("background-color","green");
+						}
+												
+						result += "<tr>";
+						result += '<td class="align-middle"><span class="csid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
+						result += '<td class="align-middle">';
+						result += '<div class="d-flex flex-column justify-content-center calghadi">';
+						result += '<div class="d-flex modalcursor"  data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">';
+						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
+						result += '</div>';
+						result += '<div class="d-flex ">';
+						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ' ) </span>';
+						result += '</div>';
+						result += '</div>';
+						result += "</td>";
+						result += '<td class="align-middle">';
+						result += '<div class="d-flex ">';
+						result += '<div class="topicircle text-center">';
+						result += '<img src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png" class="topi">';
+						result += '</div>';
+						result += '<div class="d-flex flex-column">';
+						result += '<span class="csname">Lyum Watson</span>';
+						result += '<div class="d-flex">';
+						result += '<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star unchecked"></span> <span class="num4">4</span>';
+						result += '</div>';
+						result += '</div>';
+						result += '</div>';
+						result += '</td>';
+						result += '<td class="align-middle"><span class="cs-price ">';
+						result += '<img src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png" class="totaleuro">';
+						result += '<span>'+v.subTotal+'</span>';
+						result += '</span></td>';
+						result += '<td class="align-middle">';
+						result += '<div class="reportimg"><a href="contact"><img src="<%=request.getContextPath()%>/resources/img/img-CS/inquiry.png"></a></div>';
+						result += '</td>';
+						result += '<td class="align-middle">';
+						result += '<div class="statusdiv">'+status+'</div>';
+						result += '</td>';
+						result += '<td class="align-middle">';
+						result += '<button class="rate">Rate SP</button>';
+						result += '</td>';
+						result += "</tr>";
+					});
+					result += "</tbody>";
+					result += "</table>";
+					$("#showhistory").html(result);
+					historydt();
+
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
+		
+		$(document).on('click','#historytab', function(){
+			custhistory();
+		});
+		
+		
 	</script>
 
 

@@ -1,8 +1,17 @@
 package com.ctrl;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,6 +30,8 @@ import helperlanduser.dao.BookPincodeDao;
 import helperlanduser.dao.BookingAddressDao;
 import helperlanduser.dao.ServiceRequestAddressDao;
 import helperlanduser.dao.ServiceRequestDao;
+import helperlanduser.model.BookPincode;
+import helperlanduser.model.Customer;
 import helperlanduser.model.ServiceRequest;
 import helperlanduser.model.ServiceRequestAddress;
 import helperlanduser.model.ServiceRequestExtra;
@@ -41,20 +52,39 @@ public class BookNowController {
 	@Autowired
 	ServiceRequestAddressDao serviceRequestAddressDao;
 
+	@RequestMapping("/BookNow")
+	public String booknow(HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		System.out.println(session.getAttribute("userid"));
+		System.out.println(session.getAttribute("usertypeid"));
+
+		if (session.getAttribute("userid") != null) {
+			System.out.println("booknowwww");
+			return "BookNow";
+		}
+
+		else {
+			request.setAttribute("notloggedin", "alertlogin");
+			return "Homepage";
+		}
+
+	}
+
 	@RequestMapping(value = "/bookpincode")
 	public @ResponseBody String ajaxSearch(HttpServletRequest req, HttpServletResponse res,
 			@RequestBody String pincode) {
 		System.out.println("Pincode ajax");
-		Boolean pin = bookPincodeDao.validatepin(new Integer(pincode), req);
+		BookPincode bookPincode = new BookPincode();
+		bookPincode.setPostalCode(Integer.parseInt(pincode));
+		Boolean pin = bookPincodeDao.validatepin(new Integer(pincode));
 		return pin.toString();
 	}
 
 	@RequestMapping(value = "/addAddress/{AddressLine1},{AddressLine2},{PostalCode},{City},{Mobile}", method = RequestMethod.GET)
 	public @ResponseBody void ajaxAddAddress(@PathVariable("AddressLine1") String AddressLine1,
-											 @PathVariable("AddressLine2") String AddressLine2, 
-											 @PathVariable("PostalCode") String postalcode,
-											 @PathVariable("City") String City, 
-											 @PathVariable("Mobile") String Mobile,
+			@PathVariable("AddressLine2") String AddressLine2, @PathVariable("PostalCode") String postalcode,
+			@PathVariable("City") String City, @PathVariable("Mobile") String Mobile,
 			@ModelAttribute UserAddress userAddress, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
 		System.out.println("Address added");
@@ -64,7 +94,7 @@ public class BookNowController {
 		userAddress.setUserId(temp);
 		String email = "" + session.getAttribute("custemail");
 		userAddress.setEmail(email);
-		
+
 		this.addressDao.addAddress(userAddress);
 	}
 
@@ -87,21 +117,18 @@ public class BookNowController {
 		return "CS-Dashboard";
 	}
 
-	@RequestMapping(value = "/servicerequestaddress/{AddressId},{TotalCost},{ServiceHours},{ServiceStartDate},{ExtraHours},{SubTotal},{Comments},{ServiceStartTime},{HasPets},{Extras}", method = RequestMethod.GET)
-	public @ResponseBody String addrequestaddress(@PathVariable("AddressId") int AddressId,
-												  @PathVariable("TotalCost") float TotalCost, 
-												  @PathVariable("ServiceHours") float ServiceHours,
-												  @PathVariable("ServiceStartDate") String ServiceStartDate,
-												  @PathVariable("ExtraHours") float ExtraHours,
-												  @PathVariable("SubTotal") float SubTotal,
-												  @PathVariable("Comments") String Comments,
-												  @PathVariable("ServiceStartTime") String ServiceStartTime,
-												  @PathVariable("HasPets") String HasPets,
-												  @PathVariable("Extras") String Extras,
-			HttpServletRequest req) {
+	@RequestMapping(value = "/servicerequest/{ZipCode},{AddressId},{TotalCost},{ServiceHours},{ServiceStartDate},{ExtraHours},{SubTotal},{Comments},{ServiceStartTime},{HasPets},{Extras}", method = RequestMethod.GET)
+	public @ResponseBody String addrequestaddress(@PathVariable("ZipCode") String ZipCode,
+			@PathVariable("AddressId") int AddressId, @PathVariable("TotalCost") float TotalCost,
+			@PathVariable("ServiceHours") float ServiceHours, @PathVariable("ServiceStartDate") String ServiceStartDate,
+			@PathVariable("ExtraHours") float ExtraHours, @PathVariable("SubTotal") float SubTotal,
+			@PathVariable("Comments") String Comments, @PathVariable("ServiceStartTime") String ServiceStartTime,
+			@PathVariable("HasPets") String HasPets, @PathVariable("Extras") String Extras, HttpServletRequest req) {
 
-		
+		HttpSession session = req.getSession();
+
 		ServiceRequest serviceRequest = new ServiceRequest();
+		serviceRequest.setZipCode(ZipCode);
 		serviceRequest.setTotalCost(TotalCost);
 		serviceRequest.setServiceHours(ServiceHours);
 		serviceRequest.setComments(Comments);
@@ -110,9 +137,12 @@ public class BookNowController {
 		serviceRequest.setSubTotal(SubTotal);
 		serviceRequest.setExtraHours(ExtraHours);
 		serviceRequest.setHasPets(HasPets);
-		
+
+		System.out.println(ZipCode + "pinnnn");
+		System.out.println(Comments);
+
 		int servicereq = serviceRequestDao.addrequest(serviceRequest, req);
-		
+
 		UserAddress getaddress = serviceRequestAddressDao.getserviceaddress(AddressId);
 
 		ServiceRequestAddress serviceRequestAddress = new ServiceRequestAddress();
@@ -120,31 +150,93 @@ public class BookNowController {
 		serviceRequestAddress.setAddressLine1(getaddress.getAddressLine1());
 		serviceRequestAddress.setAddressLine2(getaddress.getAddressLine2());
 		serviceRequestAddress.setCity(getaddress.getCity());
-		serviceRequestAddress.setEmail(getaddress.getEmail());
+		serviceRequestAddress.setEmail(session.getAttribute("custemail") + "");
 		serviceRequestAddress.setMobile(getaddress.getMobile());
 		serviceRequestAddress.setPostalCode(getaddress.getPostalCode());
 		serviceRequestAddress.setState(getaddress.getState());
+		serviceRequestAddress.setServiceRequestId(servicereq);
 
 		System.out.println("addresss controller" + getaddress);
 
-		serviceRequestAddressDao.saveserviceaddress(serviceRequestAddress);
+		int address = serviceRequestAddressDao.saveserviceaddress(serviceRequestAddress);
 
-		String[] extras = Extras.split(" ",0);
-		
+		String[] extras = Extras.split(" ", 0);
+
 		List<ServiceRequestExtra> serviceRequestExtrasList = new ArrayList<ServiceRequestExtra>();
-		
-		for(int i=0;i<extras.length;i++) {
+
+		for (int i = 0; i < extras.length; i++) {
 			System.out.println(extras[i]);
-			ServiceRequestExtra serviceRequestExtra=new ServiceRequestExtra(); 
+			ServiceRequestExtra serviceRequestExtra = new ServiceRequestExtra();
 			serviceRequestExtra.setServiceRequestId(servicereq);
 			serviceRequestExtra.setServiceExtra(extras[i]);
 			serviceRequestExtrasList.add(serviceRequestExtra);
 			this.serviceRequestDao.saveExtraServices(serviceRequestExtrasList, serviceRequestExtra);
 		}
-		
-		
+
+		if (servicereq != 0 && address != 0) {
+			String subject = "New Service Request!";
+			String from = "helperland.hetvee@gmail.com";
+			String message = "Service Request Details: " + "\n\n" + "Service Request Id: " + servicereq + "\n"
+					+ "Service Request Date: " + ServiceStartDate + "\n" + "Service Request Time: " + ServiceStartTime + "\n"
+					+ "Total Hours: " + ExtraHours + "\n" + "Comments: " + Comments + "\n"
+					+ "Address: " + getaddress.getAddressLine1() + ", " + getaddress.getAddressLine2() + ", " + getaddress.getCity()
+					+ "\n" + "Postalcode: " + ZipCode + "\n" + "Mobile Number: " + getaddress.getMobile() + "\n"
+					+ "Extra Services: " + Extras + "\n" + "Pet Status: " + HasPets + "\n" + "Total Payment: "
+					+ TotalCost;
+			List<Customer> emaillist = this.bookPincodeDao.getAllEmail();
+			Iterator<Customer> iterator = emaillist.iterator();
+			while (iterator.hasNext()) {
+				String to = iterator.next().getEmail();
+				sendServiceRequestEmail(message, subject, to, from);
+			}
+
+		}
+
 		return null;
 
+	}
+
+	public void sendServiceRequestEmail(String message, String subject, String to, String from) {
+
+		String host = "smtp.gmail.com";
+
+		Properties properties = System.getProperties();
+		System.out.println("PROPERTIES " + properties);
+
+		properties.put("mail.smtp.host", host);
+		properties.put("mail.smtp.port", "465");
+		properties.put("mail.smtp.ssl.enable", "true");
+		properties.put("mail.smtp.auth", "true");
+
+		Session session = Session.getInstance(properties, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("helperland.hetvee@gmail.com", "helperland-22");
+			}
+
+		});
+
+		session.setDebug(true);
+
+		MimeMessage m = new MimeMessage(session);
+
+		try {
+
+			m.setFrom(from);
+
+			m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+
+			m.setSubject(subject);
+
+			m.setText(message);
+
+			Transport.send(m);
+
+			System.out.println("Sent success...................");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

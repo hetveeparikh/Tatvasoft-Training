@@ -23,7 +23,9 @@ function openNav() {
 function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
 }
-
+function logout() {
+	alert("You are successfully logged out!");
+}
 var first = document.getElementById("firsttab");
 var second = document.getElementById("secondtab");
 var third = document.getElementById("thirdtab");
@@ -56,6 +58,13 @@ function secondtab() {
 }
 
 function thirdtab() {
+	
+	var x = document.forms["secondform"]["TomorrowDate"].value;
+	if (x == "" || x == null) {
+		alert("Please select date!");
+		return false;
+	}
+	
 	first.style.display = "none";
 	second.style.display = "none";
 	third.style.display = "block";
@@ -79,7 +88,7 @@ function thirdtab() {
 			$.each(response, function(k, v) {
 				result += "<tr>";
 				result += "<td>";
-				result += '<div class="form-check"><input class="form-check-input position-static addressradio" type="radio" name="addressradio" id="addressradio" value=' + v.addressId + ' aria-label="..."></div>';
+				result += '<div class="form-check" id="radioid"><input class="form-check-input position-static addressradio" type="radio" name="addressradio" id="addressradio" value=' + v.addressId + ' aria-label="..."></div>';
 				result += "</td>";
 				result += "<td>";
 				result += "</td>";
@@ -101,11 +110,12 @@ function thirdtab() {
 
 }
 
-var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
+
+/*var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 var day = currentDate.getDate()
 var month = currentDate.getMonth() + 1
 var year = currentDate.getFullYear()
-var finaldate = document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;
+var finaldate = document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;*/
 
 
 $("#thirdcontinue").click(function() {
@@ -115,34 +125,9 @@ $("#thirdcontinue").click(function() {
 	console.log( $('#petsathome').is(':checked'));
 });
 
-/*jQuery(document).ready(function($) {
-	$("#finaltab").submit(function(event) {
-		event.preventDefault();
-		servicerequestaddress();
-	});
-});
-function servicerequestaddress() {
-	$.ajax({
-		type: "GET",
-		url: "/Helperland-Tatvasoft/servicerequestaddress/" + $('#addressradio:checked').val() + "," + $('#totalpay').text().replace(",00", "")
-			+ "," + $('#timeneeded').val() + "," + finaldate.replace(/ \/ /g, '.')
-			+ "," + $('#totaltime').text().replace(" Hrs", "") + "," + $('#perclean').text().replace(",00", "") + "," + $('#secondcomments').text()
-			+ "," + $('#starttime').val().replace(":", ".") + "," +  $('#petsathome').is(':checked'),
-		success: function(data) {
-			console.log("SUCCESS: ", data);
-		},
-		error: function(e) {
-			console.log("ERROR: ", e);
-		},
-		done: function(e) {
-			console.log("DONE");
-		}
-	});
-}*/
-
-
 
 function fourthtab() {
+	
 	first.style.display = "none";
 	second.style.display = "none";
 	third.style.display = "none";
@@ -160,7 +145,6 @@ function fourthtab() {
 function firstvalid() {
 	var x = document.forms["firstform"]["PostalCode"].value;
 	if (x == "" || x == null) {
-		//document.getElementById("firstdiv").insertAdjacentHTML("Please enter postal code");
 		alert("Please enter postal code");
 		return false;
 	}

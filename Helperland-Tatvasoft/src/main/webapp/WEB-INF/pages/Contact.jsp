@@ -236,7 +236,7 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end"
 								aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
 								<li><a class="dropdown-item" href="logout"
 									onclick="logout()">Log out</a></li>
 							</ul>
@@ -396,7 +396,7 @@
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
 					<li><a class="dropdown-item" href="logout"
 						onclick="logout()">Log out</a></li>
 				</ul>
@@ -464,7 +464,7 @@
 		<span class="Get-in-touch-with-us"> Get in touch with us </span>
 
 		<div class="text-center">
-			<form action="savecontact" method="post">
+			<form action="savecontact" method="post" id="contactform">
 				<div class="f1">
 
 					<input type="text" placeholder="First Name" name="FName"
@@ -476,7 +476,7 @@
 
 
 				<div class="f2">
-					<input type="text" placeholder="+49"
+					<input type="text" placeholder="+91"
 						class="Rounded-Rectangle-2-copy-20" disabled> <input
 						type="text" placeholder="Mobile number" name="PhoneNumber"
 						class="Rounded-Rectangle-2-copy-10" required> <input
@@ -499,15 +499,15 @@
 						class="Rounded-Rectangle-2-copy-11" required>
 				</div>
 
-				<label class="attachment">Attachment</label><br>
+				<!-- <label class="attachment">Attachment</label><br>
 				<div class="d-flex justify-content-center">
 					<div class="input-group mb-3 Rounded-Rectangle-2-copy-12"
 						style="height: auto">
 						<input type="file" class="form-control" id="inputGroupFile02">
 					</div>
-				</div>
+				</div> -->
 
-				<button type="submit" class="Rounded-Rectangle-2-copy-6">Submit</button>
+				<button type="submit" class="Rounded-Rectangle-2-copy-6" id="contactsubmit" onclick="contactvalid();">Submit</button>
 			</form>
 		</div>
 

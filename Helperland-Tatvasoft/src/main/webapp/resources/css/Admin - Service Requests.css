@@ -6,6 +6,10 @@ body {
   padding: 0px;
   overflow-x: hidden;
 }
+.modal-open{
+	padding: 0px;
+}
+
 .aumnav {
   background-color: #1fb6ff;
   padding: 0px;

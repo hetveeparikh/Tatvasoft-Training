@@ -14,11 +14,12 @@ public class ServiceRequestAddressDao {
 		this.template = template;
 	}
 
-	public void saveserviceaddress(ServiceRequestAddress address) {
+	public int saveserviceaddress(ServiceRequestAddress address) {
 		
-		String sql = "insert into servicerequestaddress(AddressLine1,AddressLine2,City,State,PostalCode,Mobile,Email) values(?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] {address.AddressLine1, address.AddressLine2, address.City, address.State,
-				address.PostalCode, address.Mobile, address.Email });
+		String sql = "insert into servicerequestaddress(AddressLine1,AddressLine2,City,State,PostalCode,Mobile,Email,ServiceRequestId) values(?,?,?,?,?,?,?,?)";
+		int add = template.update(sql, new Object[] {address.AddressLine1, address.AddressLine2, address.City, address.State,
+				address.PostalCode, address.Mobile, address.Email, address.getServiceRequestId() });
+		return add;
 	}
 
 	public UserAddress getserviceaddress(Integer addressId) {

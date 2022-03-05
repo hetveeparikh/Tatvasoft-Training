@@ -87,4 +87,13 @@
       display: flex;
       justify-content: space-between;
   }
+ 
+}
+@media screen and (max-width: 612px) {
+  #historytable_info,#exampledash_info {
+  margin: 15px 0px !important;
+  }
+  .bottom{
+  	text-align: center;
+  }
 }

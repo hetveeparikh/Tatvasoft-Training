@@ -15,8 +15,8 @@ public class ContactDao {
 
 	public void save(Contact p) {
 		Date date = new Date();
-		String sql = "insert into contactus(FName,LName,Email,Subject,PhoneNumber,Message,UploadFileName,CreatedOn) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into contactus(FName,LName,Email,Subject,PhoneNumber,Message,UploadFileName,CreatedOn,CreatedBy) values(?,?,?,?,?,?,?,?,?)";
 		template.update(sql, new Object[] { p.getFName(), p.getLName(), p.getEmail(), p.getSubject(),
-				p.getPhoneNumber(), p.getMessage(), p.getUploadFileName(), date });
+				p.getPhoneNumber(), p.getMessage(), p.getUploadFileName(), date, p.getCreatedBy() });
 	}
 }

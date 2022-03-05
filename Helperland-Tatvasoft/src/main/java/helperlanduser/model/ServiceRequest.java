@@ -21,7 +21,7 @@ public class ServiceRequest {
 	private int ServiceProviderId;
 	private Date SPAcceptedDate;
 	private String HasPets;
-	private int Status;
+	private String Status;
 	private Date CreatedDate;
 	private Date ModifiedDate;
 	private int ModifiedBy;
@@ -31,6 +31,11 @@ public class ServiceRequest {
 	private boolean PaymentDone;
 	private int RecordVersion;
 	private String ServiceStartTime;
+	
+	private ServiceRequestAddress serviceRequestAddress;
+	
+	private Customer customer;
+	
 	public String getComments() {
 		return Comments;
 	}
@@ -133,10 +138,10 @@ public class ServiceRequest {
 	public void setHasPets(String hasPets) {
 		HasPets = hasPets;
 	}
-	public int getStatus() {
+	public String getStatus() {
 		return Status;
 	}
-	public void setStatus(int status) {
+	public void setStatus(String status) {
 		Status = status;
 	}
 	public Date getCreatedDate() {
@@ -194,6 +199,18 @@ public class ServiceRequest {
 		ServiceStartTime = serviceStartTime;
 	}
 	
+	public ServiceRequestAddress getServiceRequestAddress() {
+		return serviceRequestAddress;
+	}
+	public void setServiceRequestAddress(ServiceRequestAddress serviceRequestAddress) {
+		this.serviceRequestAddress = serviceRequestAddress;
+	}
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	@Override
 	public String toString() {
 		return "ServiceRequest [Comments=" + Comments + ", ServiceRequestId=" + ServiceRequestId + ", UserId=" + UserId
@@ -205,7 +222,8 @@ public class ServiceRequest {
 				+ HasPets + ", Status=" + Status + ", CreatedDate=" + CreatedDate + ", ModifiedDate=" + ModifiedDate
 				+ ", ModifiedBy=" + ModifiedBy + ", RefundedAmount=" + RefundedAmount + ", Distance=" + Distance
 				+ ", HasIssue=" + HasIssue + ", PaymentDone=" + PaymentDone + ", RecordVersion=" + RecordVersion
-				+ ", ServiceStartTime=" + ServiceStartTime + "]";
+				+ ", ServiceStartTime=" + ServiceStartTime + ", serviceRequestAddress=" + serviceRequestAddress
+				+ ", customer=" + customer + "]";
 	}
 	
 	

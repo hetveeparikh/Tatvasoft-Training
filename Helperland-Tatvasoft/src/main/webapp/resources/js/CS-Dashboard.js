@@ -6,26 +6,6 @@ function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
 }
 
-$(document).ready(function() {
-	$('#exampledash').DataTable({
-		"dom": '<"top">rt<"bottom"lip><"clear">', responsive: true, "aaSorting": [],
-		columnDefs: [{
-			orderable: false,
-			targets: 4
-		}]
-	});
-});
-
-$(document).ready(function() {
-	$('#example').DataTable({
-		"dom": '<"top">rt<"bottom"lip><"clear">', responsive: true, "aaSorting": [],
-		columnDefs: [{
-			orderable: false,
-			targets: 4
-		}]
-	});
-});
-
 function logout() {
 	alert("You are successfully logged out!");
 }
@@ -48,9 +28,6 @@ document.getElementById("defaultOpen").click();
 $(function() {
 	$('#defaultOpen').addClass('active');
 });
-
-
-
 
 
 function clickSettings(evt, settingtab) {
@@ -128,10 +105,3 @@ function updatePassword() {
 		}
 	});
 }
-
-
-
-/*Settings Update Address*/
-
-
-

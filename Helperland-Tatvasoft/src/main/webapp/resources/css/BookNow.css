@@ -11,6 +11,10 @@ body {
 	padding: 0px;
 	overflow-x: hidden;
 }
+.modal-open{
+	padding: 0px;
+}
+
 
 .faqnav {
 	background-color: rgb(82, 82, 82, 0.8) !important;
@@ -431,7 +435,7 @@ img.Vector-Smart-Object1 {
 	width: auto;
 	height: auto;
 	margin: 0px 0px 0px 10px;
-	padding: 15px 16px 15px 16px;
+	padding: 10px 16px 10px 16px;
 	border-radius: 33px;
 	background-color: #1d7a8c;
 	color: white;
@@ -441,6 +445,7 @@ img.Vector-Smart-Object1 {
 	font-style: normal;
 	line-height: 1.6;
 	letter-spacing: normal;
+	border: 1px solid #1d7a8c;
 }
 
 .checkpostal:hover {
@@ -448,8 +453,9 @@ img.Vector-Smart-Object1 {
 }
 
 #tomorrowdate{
-	border:none;
+	border:1px solid #646464;;
 	font-size: 18px;
+	margin-right: 20px;
 }
 
 .timerect {
@@ -476,7 +482,7 @@ img.Vector-Smart-Object1 {
 }
 
 .sche1 {
-	margin-right: 10%;
+	margin-right: 8%;
 }
 
 .esellipse {
@@ -551,6 +557,7 @@ img.Vector-Smart-Object1 {
 	font-size: 20px;
 	font-family: Roboto;
 	font-weight: bold;
+	border: 1px solid #1d7a8c;
 }
 
 .bookbtn {
@@ -564,6 +571,7 @@ img.Vector-Smart-Object1 {
 	font-size: 20px;
 	font-family: Roboto;
 	font-weight: bold;
+	border: 1px solid #1d7a8c;
 }
 
 .booklabel {
@@ -846,10 +854,12 @@ img.Vector-Smart-Object1 {
 	border-radius: 20px;
 	color: white;
 	background-color: #ff7b6d;
+	border: 1px solid #ff7b6d;
 }
 
 .submitbtn:hover {
 	background-color: #1d7a8c;
+	border: 1px solid #1d7a8c;
 }
 /* footer */
 .Rectangle-12 {

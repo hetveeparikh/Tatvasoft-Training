@@ -1,7 +1,6 @@
 package helperlanduser.dao;
 
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -26,7 +25,6 @@ public class ServiceRequestDao {
 		int serviceReqId = random.nextInt(10000);
 
 		HttpSession session = request.getSession();
-		Object pincode = session.getAttribute("pincode");
 		Object userid = session.getAttribute("userid");
 		float totalcost = serviceRequest.getTotalCost();
 		float serviceHours = serviceRequest.getServiceHours();
@@ -36,14 +34,15 @@ public class ServiceRequestDao {
 		String startdate = serviceRequest.getServiceStartDate();
 		String comments = serviceRequest.getComments();
 		String pets = serviceRequest.getHasPets();
+		String pincode = serviceRequest.getZipCode();
 
 		String sql = "insert into servicerequest(HasPets,PaymentDue,RecordVersion,RefundedAmount,Distance, HasIssue,CreatedDate,ZipCode,"
-				+ "ServiceProviderId,ServiceRequestId,UserId,TotalCost,ServiceHours,SubTotal,ExtraHours,ServiceStartTime,ServiceStartDate,Comments,Discount) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] { pets, 0, "1.0", 0, 0, 0, date, pincode, 71,serviceReqId,
-				userid, totalcost, serviceHours, subtotal, extraHours, starttime, startdate, comments, 0 });
+				+ "ServiceProviderId,ServiceRequestId,UserId,TotalCost,ServiceHours,SubTotal,ExtraHours,ServiceStartTime,ServiceStartDate,Comments,Discount,ServiceId,Status) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		template.update(sql, new Object[] { pets, 0, "1.0", 0, 0, 0, date, pincode, 71, serviceReqId, userid, totalcost,
+				serviceHours, subtotal, extraHours, starttime, startdate, comments, 0, serviceReqId, "New" });
 
-		System.out.println("in request dao ");
+		System.out.println("in service request dao ");
 
 		return serviceReqId;
 
@@ -52,13 +51,8 @@ public class ServiceRequestDao {
 	public int saveExtraServices(List<ServiceRequestExtra> serviceRequestExtrasList,
 			ServiceRequestExtra serviceRequestExtra) {
 
-		/* for (int i = 0; i < serviceRequestExtrasList.size(); i++) { */
-			String sql = "insert into servicerequestextra(ServiceRequestId,ServiceExtra) values(?,?)";
-			template.update(sql,
-					new Object[] { serviceRequestExtra.getServiceRequestId(), serviceRequestExtra.getServiceExtra() });
-		
-			
-
+		String sql = "insert into servicerequestextra(ServiceRequestId,ServiceExtra) values(?,?)";
+		template.update(sql, new Object[] { serviceRequestExtra.getServiceRequestId(), serviceRequestExtra.getServiceExtra() });
 		return 1;
 
 	}

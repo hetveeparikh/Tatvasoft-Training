@@ -1,15 +1,18 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 body {
 	margin: 0px;
-	padding: 0px;
+	padding: 0px !important;
 	overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 }
-
+body.modal-open, #signupmodal.modal.fade.show, #login.modal.fade.show, #passm.modal.fade.show{
+	padding-right: 0px !important;
+}
 .bg-dark {
 	background-color: #525252 !important;
 	opacity: 0.8 !important;
@@ -284,15 +287,38 @@ body {
 }
 
 .export {
-	width: auto;
+	width: 300px;
+	height: fit-content;
+	margin: 46px 10px 5px 13px;
+	padding: 10px;
+	border-radius: 30px;
+	background-color: #1d7a8c;
+	text-align: center;
+	color: white;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+}
+.exportt {
+	width: 150px;
 	height: auto;
 	margin: 46px 10px 5px 13px;
 	padding: 0px 11px 0px 11px;
-	border-radius: 17px;
-	background-color: #146371;
+	border-radius: 30px;
+	background-color: #1d7a8c;
 	text-align: center;
+	font-size:18px;
 	color: white;
+	display:flex;
+	align-items: center;
+	justify-content: center;
 }
+.export:hover,.exportt:hover{
+	color: white;
+	background-color: #146371;
+}
+
 
 #custdashboard table, #custrequests table {
 	border: solid 1px #e1e1e1;
@@ -311,12 +337,21 @@ body {
 	font-size: 16px;
 	width: 100%;
 	margin-right: 10px;
+	text-align: center;
 }
 
 img.gcal {
-	width: 16px;
-	height: 16px;
+	width: 18px;
+	height: 18px;
 	margin: 5px 7px 5px 0px;
+	object-fit: contain;
+	background-color: transparent;
+}
+
+img.ghaditime {
+	width: 20px;
+	height: 20px;
+	margin: 0px 10px 5px 0px;
 	object-fit: contain;
 	background-color: transparent;
 }
@@ -439,6 +474,7 @@ img.topi {
 	padding: 5px 10px 4px 9px;
 	background-color: #67b644;
 	color: white;
+	border:1px solid #67b644;
 }
 
 .pinkbtn {
@@ -447,20 +483,23 @@ img.topi {
 	padding: 5px 12px 4px 12px;
 	background-color: #ff6b6b;
 	color: white;
+	border:1px solid #ff6b6b;
 }
 
 .rate {
 	width: auto;
 	height: auto;
 	margin: 0px 0px 0px 0px;
-	padding: 10px 9px 10px 13px;
+	padding: 5px 9px 5px 13px;
 	border-radius: 25px;
-	background-color: #6da9b5;
+	border: 1px solid #1d7a8c;
+	background-color: #1d7a8c;
 	color: white;
 }
 
 .rate:hover {
-	background-color: #29626d;
+	background-color: #146371;
+	border: 1px solid #146371;
 }
 
 .paginate_button {
@@ -539,11 +578,13 @@ img.topi {
 	padding: 10px 9px 10px 13px;
 	border-radius: 25px;
 	background-color: #1d7a8c;
+	border:1px solid #1d7a8c;
 	color: white;
 }
 
 .csreschedule:hover {
 	background-color: #146371;
+	border:1px solid #146371;
 }
 
 .cscancel {
@@ -553,11 +594,13 @@ img.topi {
 	padding: 10px 9px 10px 13px;
 	border-radius: 25px;
 	background-color: #ff6b6b;
+	border:1px solid #ff6b6b;
 	color: white;
 }
 
 .cscancel:hover {
 	background-color: #e75454;
+	border:1px solid #e75454;
 }
 
 .csupdate {
@@ -728,7 +771,7 @@ th:hover {
 	color: #fff;
 	width: min-content;
 	border-radius: 30px;
-	margin-top: 20px;
+	margin: 20px 10px;
 	padding: 11px 25px;
 }
 
@@ -789,11 +832,63 @@ footer{
   background-color: #29626d;
   color: white;
   font-size: 18px;
+  border-radius: 20px;
+  border: 1px solid #29626d;
 }
 .saveadd:hover,.canceladd:hover{
   background-color: #1d4c55;
+  border: 1px solid #1d4c55;
   cursor: pointer;
 }
 .nav-pills .nav-link .active{
 	background-color: transparent;
+}
+#tomorrowdate{
+	border:1px solid #646464;;
+	font-size: 18px;
+	margin: 10px;
+	height: 50px
+	
+}
+.daterect {
+	width: auto;
+	height: 60px;
+	border: solid 1px #c8c8c8;
+	padding: 10px;
+	padding-right:0px;
+	margin-right: 20px;
+	border-radius: 4px;
+}
+
+.cal {
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+}
+.detailsid{
+	color: #646464;
+}
+.detailsid:hover {
+	color: #646464;
+	cursor:pointer;
+}
+.detailsdiv{
+	padding-top: 10px;
+}
+.csid,.calghadi,.topidiv,.cs-price,.reportimg,.statusdiv,.rate,.schecancel{
+	display: flex !important;
+	justify-content: center !important;
+}
+.calghadi{
+	margin-left: 20%;
+}
+.modalcursor{
+	cursor: pointer;
+}
+.nav .nav-pills .tabs{
+  padding: 0px 0px;
+  margin: 0px 0px;
+  list-style: none;
+  text-align: center;
+  display: contents;
 }

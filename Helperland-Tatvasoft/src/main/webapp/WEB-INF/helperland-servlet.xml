@@ -55,76 +55,47 @@
 
 	</bean>
 
-
-	<!-- LocalSessionFactoryBean -->
-
-
-	<bean
-		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean"
-		name="factory">
-
-		<!-- data source -->
-		<property name="dataSource" ref="ds"></property>
-
-		<!-- hibernate properties -->
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-
-		<!-- annotated classes -->
-
-
-	</bean>
-
-	<bean class="org.springframework.orm.hibernate5.HibernateTemplate"
-		name="hibernateTemplate">
-		<property name="sessionFactory" ref="factory"></property>
-
-	</bean>
-
-
-	<bean
-		class="org.springframework.orm.hibernate5.HibernateTransactionManager"
-		name="transactionManager">
-		<property name="sessionFactory" ref="factory"></property>
-	</bean>
-
-	<!-- ///////////// -->
-
-
 	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="ds"></property>
 	</bean>
 
-	<bean id="dao" class="helperlanduser.dao.ContactDao">
+	<bean id="ContactDao" class="helperlanduser.dao.ContactDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 
-	<bean id="dao2" class="helperlanduser.dao.CustomerDao">
+	<bean id="CustomerDao" class="helperlanduser.dao.CustomerDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 
-	<bean id="dao3" class="helperlanduser.dao.BookPincodeDao">
+	<bean id="BookPincodeDao" class="helperlanduser.dao.BookPincodeDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 	
-	<bean id="dao4" class="helperlanduser.dao.BookingAddressDao">
+	<bean id="BookingAddressDao" class="helperlanduser.dao.BookingAddressDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 	
-	<bean id="dao5" class="helperlanduser.dao.ServiceRequestDao">
+	<bean id="ServiceRequestDao" class="helperlanduser.dao.ServiceRequestDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 	
-	<bean id="dao6" class="helperlanduser.dao.ServiceRequestAddressDao">
+	<bean id="ServiceRequestAddressDao" class="helperlanduser.dao.ServiceRequestAddressDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 	
-	<bean id="dao7" class="helperlanduser.dao.CustomerSettingsDetailsDao">
+	<bean id="CustomerSettingsDetailsDao" class="helperlanduser.dao.CustomerSettingsDetailsDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="CustomerRequestsDao" class="helperlanduser.dao.CustomerRequestsDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="ServiceProviderDao" class="helperlanduser.dao.ServiceProviderDao">
+		<property name="template" ref="jt"></property>
+	</bean>
+	
+	<bean id="SPSettingsDao" class="helperlanduser.dao.SPSettingsDao">
 		<property name="template" ref="jt"></property>
 	</bean>
 

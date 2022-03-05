@@ -19,6 +19,9 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+function logout() {
+	alert("You are successfully logged out!");
+}
 
 $(document).ready(function () {
    $("#ConfirmPassword").on('keyup', function(){

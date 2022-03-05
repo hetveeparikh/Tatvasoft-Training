@@ -13,6 +13,10 @@ body {
 .navbar {
   padding: 0px;
 }
+.modal-open{
+	padding: 0px;
+}
+
 .navbar-toggler {
   display: flex;
 }
@@ -686,14 +690,17 @@ img.Forma-11 {
   background-color: #f4f5f8;
 }
 .submitbtn {
-  width: 88px;
-  height: 40px;
-  border-radius: 20px;
-  color: white;
-  background-color: #ff7b6d;
+	width: 88px;
+	height: 40px;
+	border-radius: 20px;
+	color: white;
+	background-color: #ff7b6d;
+	border: 1px solid #ff7b6d;
 }
+
 .submitbtn:hover {
-  background-color: #1d7a8c;
+	background-color: #1d7a8c;
+	border: 1px solid #1d7a8c;
 }
 /* footer */
 .Rectangle-12 {
@@ -823,6 +830,7 @@ img.Forma-11 {
   border-radius: 40px;
   color: white;
   margin-bottom: 10px;
+  border: solid 1px #1d7a8c;
 }
 .btn-close:focus {
   box-shadow: none;
@@ -888,6 +896,7 @@ img.Forma-11 {
   background-color: #1d7a8c;
   border-radius: 40px;
   color: white;
+  border: solid 1px #1d7a8c;
 }
 .pinmodal {
   padding: 5px 2px;

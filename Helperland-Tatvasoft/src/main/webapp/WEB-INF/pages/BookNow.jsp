@@ -20,6 +20,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/BookNow-responsive.css"
 	type="text/css">
+
 <title>Book Now | Helperland</title>
 <link rel="shortcut icon"
 	href="<%=request.getContextPath()%>/resources/img/img-Homepage/favicon_img.png"
@@ -186,8 +187,6 @@
 				<div class="contentdiv">
 					<div class="contenthere">
 					
-						<!-- <form method="post" action="servicerequest" name="mainform" id="mainform"></form> -->
-					
 						<!-- First tab -->
 
 						<div id="firsttab">
@@ -213,12 +212,8 @@
 									<div class="sche1">
 										<span class="posttitle">When do you need the cleaner?</span>
 										<div class="d-flex when">
-											<div class="d-flex daterect">
-												<img
-													src="<%=request.getContextPath()%>/resources/img/img-BookNow/calendar-book-service.png"
-													class="cal"> <input type="text" id="tomorrowdate"
-													disabled />
-													
+											<div class="d-flex">
+												<input type="date" id="tomorrowdate" name="TomorrowDate" >
 											</div>
 											<div>
 												<select title="Time" class="timerect"
@@ -231,7 +226,6 @@
 													<option value="11:30">11:30</option>
 												</select>
 											</div>
-											
 										</div>
 									</div>
 									
@@ -394,15 +388,15 @@
 
 												<div>
 													<input type="text" placeholder="Street Name" class="street"
-														name="AddressLine1" id="addline1" /> <input type="text"
+														name="AddressLine1" id="addline1" required/> <input type="text"
 														placeholder="House Number" class="houseno"
-														name="AddressLine2" id="addline2" />
+														name="AddressLine2" id="addline2" required/>
 												</div>
 
 												<div>
 													<input type="text" placeholder="Postal Code" class="postal"
-														name="PostalCode" id="addpostalcode" /> <select
-														title="City" class="city" name="City" id="addcity">
+														name="PostalCode" id="addpostalcode" required/> <select
+														title="City" class="city" name="City" id="addcity" required>
 														<option value="">Choose your city</option>
 														<option value="A">A</option>
 														<option value="B">B</option>
@@ -413,7 +407,7 @@
 
 												<div>
 													<input type="text" placeholder="Phone Number"
-														class="number" name="Mobile" id="addmobile" />
+														class="number" name="Mobile" id="addmobile" required/>
 
 												</div>
 											</div>
@@ -461,7 +455,7 @@
 
 								<div class="divider3"></div>
 								<div class="d-flex booklabel">
-									<input type="checkbox" id="payment" /> <label for="payment"
+									<input type="checkbox" id="payment" name="PaymentCheck" required/> <label for="payment"
 										class="bookpayment">I accepted terms and conditions,
 										the cancellation policy and the privacy policy. </label>
 								</div>
@@ -470,9 +464,7 @@
 									<button type="submit" class="bookbtn">Complete
 										Booking</button>
 								</div>
-
 							 </form>
-
 						</div>
 					</div>
 				</div>
@@ -796,12 +788,6 @@
 
 	<script type="text/javascript">
 	
-	var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-	var day = currentDate.getDate()
-	var month = currentDate.getMonth() + 1
-	var year = currentDate.getFullYear()
-	document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;
-
 		array=[];
 	
 		function chngimg1() {
@@ -1152,13 +1138,12 @@
 		jQuery(document).ready(function($) {
 			$("#finaltab").submit(function(event) {
 				event.preventDefault();
-				servicerequestaddress();
+				servicerequestajax();
 			});
 		});
-		function servicerequestaddress() {
+		function servicerequestajax() {
 			
 			var finalarray="";
-			//console.log(finalarray.replace("|", "")+"ajaxxxxx");
 			
 			array.map(e => {
 				finalarray += e+" ";
@@ -1167,14 +1152,16 @@
 			console.log(finalarray);
 			
 			$.ajax({
+				
 				type: "GET",
-				url: "/Helperland-Tatvasoft/servicerequestaddress/" + $('#addressradio:checked').val() + "," + $('#totalpay').text().replace(",00", "")
-					+ "," + $('#timeneeded').val() + "," + finaldate.replace(/ \/ /g, '.')
-					+ "," + $('#totaltime').text().replace(" Hrs", "") + "," + $('#perclean').text().replace(",00", "") + "," + $('#secondcomments').text()
+				url: "/Helperland-Tatvasoft/servicerequest/" + $('#pincode').val() + "," + $('#addressradio:checked').val() + "," + $('#totalpay').text().replace(",00", "")
+					+ "," + $('#timeneeded').val() + "," + $('#tomorrowdate').val()
+					+ "," + $('#totaltime').text().replace(" Hrs", "") + "," + $('#perclean').text().replace(",00", "") + "," + $('#secondcomments').val()
 					+ "," + $('#starttime').val().replace(":", ".") + "," +  $('#petsathome').is(':checked') 
 					+ "," + finalarray,
 				success: function(data) {
 					console.log("SUCCESS: ", data);
+					alert("Service Request Sent!!");
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);

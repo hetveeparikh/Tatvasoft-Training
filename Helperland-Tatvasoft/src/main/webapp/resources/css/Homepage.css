@@ -5,8 +5,14 @@ html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+  padding: 0px !important;
+  margin: 0px !important;
   scroll-behavior: smooth;
 }
+body.modal-open, #signupmodal.modal.fade.show, #login.modal.fade.show, #passm.modal.fade.show{
+	padding-right: 0px !important;
+}
+
 .first {
   background-color: white;
   background-attachment: fixed;
@@ -19,7 +25,6 @@ body {
   -o-background-size: cover;
 }
 .bahrect:hover,
-.bookrect:hover,
 .loginrect:hover {
   background-color: white;
   color: rgba(0, 95, 113);
@@ -40,7 +45,6 @@ body {
   padding-right: 20px;
 }
 
-.book,
 .prices,
 .blog,
 .loginbtn,
@@ -57,7 +61,7 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
-.book,
+
 .loginbtn,
 .helper {
   text-align: center;
@@ -68,14 +72,7 @@ img.white_logo_transparent_background {
   height: 130px;
   object-fit: contain;
 }
-.bookrect {
-  width: auto;
-  height: 40px;
-  border-radius: 20px;
-  border: solid 1px white;
-  padding: 0px 10px;
-  background-color: transparent;
-}
+
 .loginrect {
   width: 97px;
   height: 40px;
@@ -556,14 +553,17 @@ img.i6home {
   background-color: #f4f5f8;
 }
 .submitbtn {
-  width: 88px;
-  height: 40px;
-  border-radius: 20px;
-  color: white;
-  background-color: #ff7b6d;
+	width: 88px;
+	height: 40px;
+	border-radius: 20px;
+	color: white;
+	background-color: #ff7b6d;
+	border: 1px solid #ff7b6d;
 }
+
 .submitbtn:hover {
-  background-color: #1d7a8c;
+	background-color: #1d7a8c;
+	border: 1px solid #1d7a8c;
 }
 /* footer */
 .Rectangle-12 {
@@ -693,6 +693,7 @@ img.Forma-1 {
   border-radius: 40px;
   color: white;
   margin-bottom: 10px;
+  border: solid 1px #1d7a8c;
 }
 .btn-close:focus{
   box-shadow: none;
@@ -747,6 +748,7 @@ img.Forma-1 {
   background-color: #1d7a8c;
   border-radius: 40px;
   color: white;
+  border: solid 1px #1d7a8c;
 }
 .pinmodal{
   padding: 5px 2px;
@@ -836,4 +838,15 @@ img.Forma-1 {
 
 .dropdown-menu a {
 	color: #111 !important;
+}
+
+.book1{
+	color: white;
+	border: solid 1px white;
+	border-radius: 20px;
+	margin: 0px 10px;
+	padding: 8px 20px !important;
+}
+.book1:hover {
+	background: white;
 }

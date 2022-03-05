@@ -19,7 +19,9 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
-
+function logout() {
+	alert("You are successfully logged out!");
+}
 const spbap = gsap.timeline({
     scrollTrigger: {
         trigger: '.spreg',

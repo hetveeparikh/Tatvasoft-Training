@@ -19,6 +19,9 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+function logout() {
+	alert("You are successfully logged out!");
+}
 
 $(document).ready(function () {
    $("#ConfirmPassword").on('keyup', function(){
@@ -41,3 +44,20 @@ $(document).ready(function () {
         $("#CheckPasswordMatch1").html("Password match !").css("color","green");
    });
 });
+
+function contactvalid() {
+	var a = document.forms["contactform"]["FName"].value;
+	var b = document.forms["contactform"]["LName"].value;
+	var c = document.forms["contactform"]["PhoneNumber"].value;
+	var d = document.forms["contactform"]["Email"].value;
+	var e = document.forms["contactform"]["Subject"].value;
+	var f = document.forms["contactform"]["Message"].value;
+	if (a == "" || a == null || b == "" || b == null || c == "" || c == null || d == "" || d == null || e == "" || e == null || f == "" || f == null ) {
+		alert("Please enter all details!");
+		return false;
+	}
+	else{
+		alert("Your response has been submitted!");
+		return true;
+	}
+}

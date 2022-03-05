@@ -10,6 +10,10 @@ body {
   background-color: rgb(82, 82, 82,0.8) !important;
   /*opacity: 0.8 !important;*/
 }
+.modal-open{
+	padding: 0px;
+}
+
 .contactnav .nav-item a {
   color: white;
 }
@@ -379,7 +383,7 @@ img.Vector-Smart-Object {
   width: 301px;
   height: 46px;
   margin: 0px 11px 14px 14px;
-  padding: 17px 186px 17px 16px;
+  padding: 17px 0px 17px 16px;
   border: solid 1px #c8c8c8;
   background-color: white;
 }
@@ -415,6 +419,10 @@ img.Vector-Smart-Object {
   font-style: normal;
   line-height: 1.6;
   letter-spacing: normal;
+  border: 1px solid #1d7a8c;
+}
+.Rounded-Rectangle-2-copy-6:hover{
+	background-color: #146371;
 }
 .attachment{
   width: 100%;
@@ -462,14 +470,17 @@ img.Vector-Smart-Object {
   background-color: #f4f5f8;
 }
 .submitbtn {
-  width: 88px;
-  height: 40px;
-  border-radius: 20px;
-  color: white;
-  background-color: #ff7b6d;
+	width: 88px;
+	height: 40px;
+	border-radius: 20px;
+	color: white;
+	background-color: #ff7b6d;
+	border: 1px solid #ff7b6d;
 }
+
 .submitbtn:hover {
-  background-color: #1d7a8c;
+	background-color: #1d7a8c;
+	border: 1px solid #1d7a8c;
 }
 /* footer */
 .Rectangle-12 {
@@ -599,6 +610,7 @@ img.Vector-Smart-Object {
   border-radius: 40px;
   color: white;
   margin-bottom: 10px;
+  border: solid 1px #1d7a8c;
 }
 .btn-close:focus {
   box-shadow: none;
@@ -664,6 +676,7 @@ img.Vector-Smart-Object {
   background-color: #1d7a8c;
   border-radius: 40px;
   color: white;
+  border: solid 1px #1d7a8c;
 }
 .pinmodal {
   padding: 5px 2px;

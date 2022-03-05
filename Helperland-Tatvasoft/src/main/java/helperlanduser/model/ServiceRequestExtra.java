@@ -23,6 +23,11 @@ public class ServiceRequestExtra {
 	public void setServiceExtra(String serviceExtra) {
 		ServiceExtra = serviceExtra;
 	}
+	@Override
+	public String toString() {
+		return "ServiceRequestExtra [ServiceRequestExtraId=" + ServiceRequestExtraId + ", ServiceRequestId="
+				+ ServiceRequestId + ", ServiceExtra=" + ServiceExtra + "]";
+	}
 	
 	
 }
