@@ -1,5 +1,6 @@
 package com.ctrl;
 
+import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
@@ -29,68 +30,95 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import helperlanduser.dao.CustomerDao;
+import helperlanduser.dao.ServiceProviderDao;
 import helperlanduser.model.Customer;
 import helperlanduser.model.Login;
+import helperlanduser.model.UserAddress;
 
 @Controller
 public class LoginSignUpController {
 
 	@Autowired
 	private CustomerDao customerDao;
+	
+	@Autowired
+	private ServiceProviderDao serviceProviderDao;
 
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
 	public String addcustomer(@ModelAttribute("customer") Customer customer) {
 
 		Random random = new Random();
 		customer.setUserId(random.nextInt(10000));
+		Date date = new Date();
+		customer.setCreatedDate(date.toString());
+		customer.setUserProfilePicture("NA");
 		customer.setUserTypeId(2);
+		customer.setIsActive(1);
+		customer.setIsDeleted(0);
+		customer.setIsApproved(1);
 		customerDao.save(customer);
-		System.out.println(customer);
 		return "Homepage";
 	}
 
 	@RequestMapping(value = "/addServiceProvider", method = RequestMethod.POST)
-	public String addServiceProvider(@ModelAttribute("customer") Customer customer) {
-		System.out.println(customer);
+	public String addServiceProvider(@ModelAttribute("customer") Customer customer,@ModelAttribute("useraddress") UserAddress useraddress) {
+		Random random = new Random();
+		int randomno = random.nextInt(10000);
+		customer.setUserId(randomno);
+		
+		Date date = new Date();
+		customer.setCreatedDate(date.toString());
 		customer.setUserTypeId(3);
+		customer.setUserProfilePicture("car");
+		customer.setIsActive(1);
+		customer.setIsDeleted(0);
+		customer.setIsApproved(0);
 		customerDao.save(customer);
+		
+		useraddress.setUserId(randomno);
+		useraddress.setAddressLine1("AddressLine-1");
+		useraddress.setAddressLine2("AddressLine-2");
+		useraddress.setCity("City");
+		useraddress.setPostalCode("PostalCode");
+		serviceProviderDao.addspAddress(useraddress);
+		
 		return "ServiceProvider-BAP";
 	}
 
 	@RequestMapping(value = "/loginprocess", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
-			@ModelAttribute("login") Login login, Model model) {
+			@ModelAttribute("login") Login login) {
 		ModelAndView mav = null;
 
 		Customer customer = customerDao.validateUser(login);
 
-		HttpSession session = request.getSession();
-		session.setAttribute("userid", customer.getUserId());
-		session.setAttribute("usertypeid", customer.getUserTypeId());
-		session.setAttribute("firstname", customer.getFirstName());
-		session.setAttribute("lastname", customer.getLastName());
-		session.setAttribute("custmobile", customer.getMobile());
-		session.setAttribute("custemail", customer.getEmail());
-		
+		if (customer != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("userid", customer.getUserId());
+			session.setAttribute("usertypeid", customer.getUserTypeId());
+			session.setAttribute("firstname", customer.getFirstName());
+			session.setAttribute("lastname", customer.getLastName());
+			session.setAttribute("custmobile", customer.getMobile());
+			session.setAttribute("custemail", customer.getEmail());
+			session.setAttribute("spgender", customer.getGender());
+			session.setAttribute("spavatar", customer.getUserProfilePicture());
 
-		session.setMaxInactiveInterval(15 * 60);
+			session.setMaxInactiveInterval(15 * 60);
 
-		if (null != customer) {
 			int type = customer.getUserTypeId();
-			System.out.println(type);
 			if (type == 2) {
 				mav = new ModelAndView("redirect:customerDashboard");
-
-			} else if (type == 3) {
+			} 
+			else if (type == 3) {
 				mav = new ModelAndView("redirect:ServiceProviderDashboard");
-			} else {
-
 			}
-		}
-
-		else {
+			else {
+				mav = new ModelAndView("redirect:admin");
+			}
+		} else {
 			mav = new ModelAndView("Homepage");
-//			mav.addObject("message", "Username or Password is wrong!!");
+			mav.addObject("error", "Incorrect email or password!");
+			mav.addObject("errordiv", "style='display: block !important';");
 		}
 
 		return mav;
@@ -166,13 +194,10 @@ public class LoginSignUpController {
 		String email = cust.getEmail();
 		if (customer.getEmail().trim().equals(email.trim())) {
 			sendEmail( subject, email, from);
-			System.out.println("Email sent");
 			mav = new ModelAndView("Homepage");
 		} else {
 			mav = new ModelAndView("Homepage");
 		}
-
-		System.out.println("----------------");
 		return mav;
 	}
 
@@ -183,7 +208,6 @@ public class LoginSignUpController {
 		if (session != null) {
 			session.invalidate();
 		}
-
 		return "Homepage";
 	}
 

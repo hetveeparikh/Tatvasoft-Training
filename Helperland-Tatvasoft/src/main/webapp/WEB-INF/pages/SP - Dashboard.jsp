@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!doctype html>
 <html lang="en">
@@ -82,14 +83,15 @@
             </div>
 
         </nav>
+        
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#" class="active tablinks" onclick="clicksp(event, 'spdashboard')" id="dashnav">Dashboard</a>
             <a href="#" class="tablinks" onclick="clicksp(event, 'spupcoming')" id="upcomingnav">Upcoming Services</a>
             <a href="#">Service Schedule</a>
-            <a href="#" class="tablinks"  onclick="clicksp(event, 'sphistory')" id="historynav">Service History</a>
-            <a href="#" class="tablinks" >My Ratings </a>
+            <a href="#" class="tablinks" onclick="clicksp(event, 'sphistory')" id="historynav">Service History</a>
+            <a href="#" class="tablinks" onclick="clicksp(event, 'sprating')" id="ratingnav">My Ratings </a>
             <a href="#" class="tablinks">Block Customer</a>
             <a href="BookNow">Book Now</a>
             <a href="prices">Prices</a>
@@ -116,7 +118,7 @@
     <section id="welcome">
         <span class="Welcome-Sandip wc">
             Welcome,
-            <span class="Sandip">Sandip!</span>
+            <span class="Sandip" id="bannername">${settingsfirstname }</span>!
         </span>
         <div class="l1"></div>
     </section>
@@ -127,13 +129,13 @@
             <a href="#" onclick="clicksp(event, 'spupcoming')" class="tablinks " id="upcomingtab">Upcoming Services</a>
             <a href="#">Service Schedule</a>
             <a href="#" onclick="clicksp(event, 'sphistory')" class="tablinks " id="historytab" >Service History</a>
-            <a href="#"  class="tablinks ">My Ratings </a>
+            <a href="#"  class="tablinks " onclick="clicksp(event, 'sprating')" id="ratingtab">My Ratings </a>
             <a href="#" class="tablinks ">Block Customer</a>
         </div>
 
         <div class="col-lg-7 tabcontent" id="spdashboard">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="dashboardtable">
                     <table class="table display nowrap" id="dashboard" colspacing="0" style="width: 100%;">
                         <thead>
                             <tr id="firstrow">
@@ -168,44 +170,7 @@
                             </tr>
                         </thead>
                         <tbody>
-							<c:forEach var="sp" items="${sprequests}">
-	                            <tr>
-	                                <td height="5" class="sid align-middle" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal(${sp.serviceId })">27${sp.serviceId }</td>
-	                                <td height="5" class="align-middle">
-	                                    <div class="d-flex flex-column spmodal" onclick="detailsmodal(${sp.serviceId })" data-bs-toggle="modal" data-bs-target="#DetailsModal">
-	                                        <div class="d-flex">
-	                                            <img src="<%= request.getContextPath() %>/resources/img/img-US/calendar.png" class="calendar">
-	                                            <p class="date">${sp.serviceStartDate }</p>
-	                                        </div>
-	                                        <div class="d-flex">
-	                                            <img src="<%= request.getContextPath() %>/resources/img/img-US/ghadi.png" class="ghadi">
-	                                            <p class="time">${sp.serviceStartTime } (Total Hours: ${sp.extraHours })</p>
-	                                        </div>
-	                                    </div>
-	                                </td>
-	                                <td height="5" class="align-middle">
-	                                    <div class="d-flex flex-column" >
-	                                        <span class="david">${sp.customer.firstName } ${sp.customer.lastName }</span>
-	                                        <div class="d-flex">
-	                                            <img class="ghar" src="<%= request.getContextPath() %>/resources/img/img-US/ghar.png">
-	                                            <p class="add">${sp.serviceRequestAddress.addressLine1 }, ${sp.serviceRequestAddress.addressLine2 }</p>
-	                                        </div>
-	                                    </div>
-	                                </td>
-	                               	<td class="align-middle">
-	                               		<span class="cs-price ">
-											<img src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png" class="totaleuro">
-											<span>${sp.subTotal }</span>
-										</span>
-									</td>	
-	                                <td class="timecon"></td>
-	                                <td class="align-middle">
-	                                    <form>
-	                                        <button type="submit" class="cancel text-white accept" onclick="acceptRequest(${sp.serviceId })">Accept</button>
-	                                    </form>
-	                                </td>
-	                            </tr>
-                            </c:forEach>
+							
                         </tbody>
                     </table>
                 </div>
@@ -279,8 +244,43 @@
                                         <span class="heading">Customer details</span>
                                     </div>
                                 </th>
+                                <th>
+                                    <div class="d-flex">
+                                        <span class="heading">Payment</span>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="d-flex">
+                                        <span class="heading">Report</span>
+                                    </div>
+                                </th>
+                                <th>
+                                    <div class="d-flex">
+                                        <span class="heading">Payment Status</span>
+                                    </div>
+                                </th>
                                 
                             </tr>
+                        </thead>
+                        <tbody>
+                            
+                       
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Ratingss -->
+        
+		
+        <div class="col-lg-7 tabcontent" id="sprating">
+            <div class="row">
+                <div class="col-lg-12" id="ratingtable">
+                    <table class="table display nowrap" id="rating" colspacing="0" style="width: 100%;">
+                        <thead>
+                            
                         </thead>
                         <tbody>
                             
@@ -313,7 +313,7 @@
 
             <div class="settingshere d-flex flex-column">
 				<div  class="tabcontent1" id="SettingsDetails">
-					<form >
+					<form id="addDetailsForm">
 						<p class="status">Account Status:<span class="activestatus">Active</span></p>
 						
 						<div class="d-flex justify-content-between">
@@ -321,37 +321,38 @@
 						        <p class="basicdetails">Basic Details</p>
 						        <div class="divider2"></div>
 						    </div>
-						    <div>
-						        <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-iron.png">
-						    </div>
+							<div id="change">
+								<img
+									src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-${settingsavatar }.png">
+							</div>
 						</div>
 						
 						<div class="detailsform row">
 					
 						    <div class="col-lg-4">
 						        <label>First Name</label>
-						        <input type="text" placeholder="First Name" class="setinput">
+						        <input type="text" placeholder="First Name" class="setinput" name="FirstName" id="detailsFirstname" required value=${settingsfirstname } >
 						    </div>
 						    <div class="col-lg-4">
 						        <label>Last Name</label>
-						        <input type="text" placeholder="Last Name" class="setinput">
+						        <input type="text" placeholder="Last Name" class="setinput"  name="LastName" id="detailsLastname"  required value=${settingslastname }>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>Email Address</label>
-						        <input type="text" placeholder="Email Address" disabled class="setinput">
+						        <input type="email" placeholder="Email Address" disabled class="setinput" name="Email" id="detailsEmail" value=${settingsemail }>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>Mobile Number</label>
 						        <div class="d-flex">
-						            <span class="d-flex align-items-center numset">+49</span>
-						            <input type="text" placeholder="Mobile number" class="setinput">
+						            <span class="d-flex align-items-center numset" disabled>+91</span>
+						            <input type="text" placeholder="Mobile number" class="setinput" name="Mobile" id="detailsMobile" required value=${settingsmobile }>
 						        </div>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>Date of birth</label>
 						        <div>
-						            <select class="bdayset">
-						                <option value>Day</option>
+						            <select class="bdayset" id="detailsBdate" required>
+						                <option value="">Day</option>
 						                <option value="1">01</option>
 						                <option value="2">02</option>
 						                <option value="3">03</option>
@@ -384,60 +385,70 @@
 						                <option value="30">30</option>
 						                <option value="31">31</option>
 						            </select>
-						            <select class="bdayset">
-						                <option value>Month</option>
-						                <option value="1">January</option>
-						                <option value="2">February</option>
-						                <option value="3">March</option>
-						                <option value="4">April</option>
-						                <option value="5">May</option>
-						                <option value="6">June</option>
-						                <option value="7">July</option>
-						                <option value="8">August</option>
-						                <option value="9">September</option>
-						                <option value="10">October</option>
-						                <option value="11">November</option>
-						                <option value="12">December</option>
+						            <select class="bdayset"  id="detailsBMonth" required>
+						                <option value="">Month</option>
+										<option value="January">January</option>
+										<option value="February">February</option>
+										<option value="March">March</option>
+										<option value="April">April</option>
+										<option value="May">May</option>
+										<option value="June">June</option>
+										<option value="July">July</option>
+										<option value="August">August</option>
+										<option value="September">September</option>
+										<option value="October">October</option>
+										<option value="November">November</option>
+										<option value="December">December</option>
 						            </select>
-						            <select class="bdayset">
-						                <option value>Year</option>
-						                <option value="2012">2012</option>
-						                <option value="2">2011</option>
-						                <option value="3">2010</option>
-						                <option value="4">2009</option>
-						                <option value="5">2008</option>
-						                <option value="6">2007</option>
-						                <option value="7">2006</option>
-						                <option value="8">2005</option>
-						                <option value="9">2004</option>
-						                <option value="">2003</option>
-						                <option value="">2002</option>
-						                <option value="">2001</option>
-						                <option value="">2000</option>
-						                <option value="">1999</option>
-						                <option value="">1998</option>
-						                <option value="">1997</option>
-						                <option value="">1996</option>
-						                <option value="">1995</option>
-						                <option value="">1994</option>
-						                <option value="">1993</option>
-						                <option value="">1992</option>
-						                <option value="">1991</option>
-						                <option value="">1990</option>
-						                <option value="">1989</option>
-						                <option value="">1988</option>
-						                <option value="">1987</option>
-						                <option value="">1986</option>
-						                <option value="">1985</option>
-						                <option value="">1984</option>
-						                <option value="">1983</option>
-						                <option value="">1982</option>
+						            <select class="bdayset" id="detailsBYear" required>
+						                <option value="">Year</option>
+										<option value="2022">2022</option>
+										<option value="2021">2021</option>
+										<option value="2020">2020</option>
+										<option value="2019">2019</option>
+										<option value="2018">2018</option>
+										<option value="2017">2017</option>
+										<option value="2016">2016</option>
+										<option value="2015">2015</option>
+										<option value="2014">2014</option>
+										<option value="2013">2013</option>
+										<option value="2012">2012</option>
+										<option value="2011">2011</option>
+										<option value="2010">2010</option>
+										<option value="2009">2009</option>
+										<option value="2008">2008</option>
+										<option value="2007">2007</option>
+										<option value="2006">2006</option>
+										<option value="2005">2005</option>
+										<option value="2004">2004</option>
+										<option value="2003">2003</option>
+										<option value="2002">2002</option>
+										<option value="2001">2001</option>
+										<option value="2000">2000</option>
+										<option value="1999">1999</option>
+										<option value="1998">1998</option>
+										<option value="1997">1997</option>
+										<option value="1996">1996</option>
+										<option value="1995">1995</option>
+										<option value="1994">1994</option>
+										<option value="1993">1993</option>
+										<option value="1992">1992</option>
+										<option value="1991">1991</option>
+										<option value="1990">1990</option>
+										<option value="1989">1989</option>
+										<option value="1988">1988</option>
+										<option value="1987">1987</option>
+										<option value="1986">1986</option>
+										<option value="1985">1985</option>
+										<option value="1984">1984</option>
+										<option value="1983">1983</option>
+										<option value="1982">1982</option>
 						            </select>
 						        </div>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>Nationality</label>
-						        <select class="nationality">
+						        <select class="nationality" id="detailsNationality">
 						            <option>Indian</option>
 						            <option>German</option>
 						        </select>
@@ -446,32 +457,50 @@
 						    <div class="col-sm-12">
 						        <label>Gender</label>
 						        <div class="d-flex">
-						            <label class="gender"><input type="radio" name="gender">Male</label>
-						            <label class="gender"><input type="radio" name="gender">Female</label>
-						            <label class="gender"><input type="radio" name="gender">Rather not to say</label>
+						            <label class="gender"><input type="radio" name="gender" value="Male" checked="checked">Male</label>
+						            <label class="gender"><input type="radio" name="gender" value="Female">Female</label>
+						            <label class="gender"><input type="radio" name="gender" value="Not to say">Rather not to say</label>
 						        </div>
 						    </div>
 						
 						    <div class="col-sm-12">
 						        <label>Select avatar</label>
-						        <div class="row">
+						        <div class="row container">
 						            <div class="col-lg-2 col-md-4 d-flex justify-content-center ava">
-						                <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-car.png" class="avatarimg">
+						                <input type="radio" name="avatar" id="car" class="input-hidden" value="car"/>
+						                <label for="car">
+						                    <img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-car.png" alt="Car" class="avatarimg" />
+						                </label>
 						            </div>
 						            <div class="col-lg-2 col-md-4 d-flex justify-content-center ava">
-						                <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-female.png" class="avatarimg">
+						                <input type="radio" name="avatar" id="female" class="input-hidden" value="female" />
+						                <label for="female">
+						                    <img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-female.png" alt="female" class="avatarimg" />
+						                </label>
 						            </div>
 						            <div class="col-lg-2 col-md-4 d-flex justify-content-center ava">
-						                <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-hat.png" class="avatarimg">
+						                <input type="radio" name="avatar" id="hat" class="input-hidden" value="hat"/>
+						                <label for="hat">
+						                    <img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-hat.png" alt="hat" class="avatarimg" />
+						                </label>
 						            </div>
 						            <div class="col-lg-2 col-md-4 d-flex justify-content-center ava">
-						                <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-iron.png" class="avatarimg">
+						                <input type="radio" name="avatar" id="iron" class="input-hidden" value="iron"/>
+						                <label for="iron">
+						                    <img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-iron.png" alt="iron" class="avatarimg" />
+						                </label>
 						            </div>
 						            <div class="col-lg-2 col-md-4 d-flex justify-content-center ava">
-						                <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-male.png" class="avatarimg">
+						                <input type="radio" name="avatar" id="male" class="input-hidden" value="male"/>
+						                <label for="male">
+						                    <img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-male.png" alt="male" class="avatarimg" />
+						                </label>
 						            </div>
 						            <div class="col-lg-2 col-md-4 d-flex justify-content-center ava">
-						                <img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-ship.png" class="avatarimg">
+						                <input type="radio" name="avatar" id="ship" class="input-hidden" value="ship"/>
+						                <label for="ship">
+						                    <img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-ship.png" alt="ship" class="avatarimg" />
+						                </label>
 						            </div>
 						        </div>
 						    </div>
@@ -481,19 +510,19 @@
 						
 						    <div class="col-lg-4">
 						        <label>Street Name</label>
-						        <input type="text" placeholder="Street Name" class="setinput">
+						        <input type="text" placeholder="Street Name" class="setinput" id="addline1" name="AddressLine1" required value=${settingsaddline1 }>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>House Number</label>
-						        <input type="text" placeholder="House Number" class="setinput">
+						        <input type="text" placeholder="House Number" class="setinput"  id="addline2" name="AddressLine2" required value=${settingsaddline2 }>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>Postal Code</label>
-						        <input type="text" placeholder="Postal Code" class="setinput">
+						        <input type="text" placeholder="Postal Code" class="setinput" id="addpostalcode" name="PostalCode" required value=${settingspostalcode }>
 						    </div>
 						    <div class="col-lg-4">
 						        <label>City</label>
-						        <input type="text" placeholder="City" class="setinput">
+						        <input type="text" placeholder="City" class="setinput" id="addcity" name="City" required value=${settingscity }>
 						    </div>
 						</div>
 					
@@ -580,9 +609,35 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		<div class="modal fade" id="completedmodal">
+
+	<div class="modal fade" id="acceptmodal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Accept Service Request</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body">
+					<!-- Modal body -->
+
+					<span class="newdate">Are you sure you want to accept this
+						service request?</span>
+					<br><br>
+
+					<div class="d-flex justify-content-center">
+						<button type="button" class="csupdate" data-bs-dismiss="modal"
+							id="acceptbtn">Accept Request</button>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="completedmodal">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 
@@ -668,6 +723,22 @@
     
     <script>
     
+	function dashboarddt(){
+		$(document).ready(function() {
+			$("#dashboard").DataTable({
+				dom: '<"top">rt<"bottom"lip><"clear">',
+				responsive: true,
+				aaSorting: [],
+				columnDefs: [
+					{
+						orderable: false,
+						targets: 4,
+					},
+				],
+			});
+		});
+	}    
+    
     function upcomingdt() {
     	$(document).ready(function() {
     		$("#upcoming").DataTable({
@@ -689,8 +760,7 @@
     		});
     	});
     }
-
-
+    
    
     /* Details Modal */
 	
@@ -730,20 +800,59 @@
 		});
 	}
     
-    function acceptRequest(v){
-    	$.ajax({
+  
+    /* Dashboard */
+    
+    function dashboard(){
+		$.ajax({
 			type: "GET",
-			url: "/Helperland-Tatvasoft/acceptrequest/" + v,
-			success: function(data) {
-				console.log("SUCCESS: accepted", data);
-				
-				if(data==0){
-					alert("Not accepted!");
-				}
-				else{
-					alert("Accepted successfully! \n\nServiceId : 27" + v);
-					location.reload(true);
-				}
+			contentType: "application/json",
+			url: "/Helperland-Tatvasoft/spDashboard/",
+			success: function(response) {
+				console.log("SUCCESS: ", response);
+
+				var result = '<table class="table display nowrap" id="dashboard" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Customer Details</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Time Conflict</span></div></th><th><div class="d-flex"><span class="heading">Actions</span></div></th></tr></thead>'
+				result += "<tbody>";
+				$.each(response, function(k, v) {
+					console.log(v.serviceId);
+										
+					result += "<tr>";
+					result += '<td class="align-middle"><span class="sid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
+					result += '<td class="align-middle">';
+					result += '<div class="d-flex flex-column justify-content-center calghadi spmodal">';
+					result += '<div class="d-flex"  data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
+					result += '</div>';
+					result += '<div class="d-flex ">';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '</div>';
+					result += '</div>';
+					result += "</td>";
+					result += '<td class="align-middle">';
+					result += '<div class="">';
+					result += '<span class="david">'+ v.customer.firstName +' '+v.customer.lastName+'</span>';
+					result += '<div class="d-flex">';
+					result += '<img class="ghar" src="<%= request.getContextPath() %>/resources/img/img-US/ghar.png">';
+					result += '<p class="add">'+ v.serviceRequestAddress.addressLine1 +', '+ v.serviceRequestAddress.addressLine2 +'</p>';
+					result += '</div>';
+					result += '</div>';
+					result += '</td>';
+					result += '<td class="align-middle"><span class="cs-price ">';
+					result += '<img src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png" class="totaleuro">';
+					result += '<span>&nbsp;'+v.subTotal+'</span>';
+					result += '</span></td>';
+					result += '<td class="align-middle">';
+					result += ' ';
+					result += '</td>';
+					result += '<td class="align-middle">';
+					result += '<button class="accept text-white" data-bs-toggle="modal" data-bs-target="#acceptmodal" onclick="acceptreq('+ v.serviceId +')">Accept</button>';
+					result += '</td>';
+					result += "</tr>";
+				});
+				result += "</tbody>";
+				result += "</table>";
+				$("#dashboardtable").html(result);
+				dashboarddt();
 			},
 			error: function(e) {
 				console.log("ERROR: ", e);
@@ -752,9 +861,19 @@
 				console.log("DONE");
 			}
 		});
-    }
+	}
     
+    window.onload = dashboard();
     
+    $(document).on('click','#defaultOpen', function(){
+		dashboard();
+	});
+	
+	$(document).on('click','#dashnav', function(){
+		dashboard();
+	});
+    
+    /* Upcoming */
     
     function upcoming(){
 		$.ajax({
@@ -778,7 +897,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ' ) </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -796,10 +915,10 @@
 					result += '<span>&nbsp;'+v.subTotal+'</span>';
 					result += '</span></td>';
 					result += '<td class="align-middle">';
-					result += ' <form><button type="submit" class="cancel text-white" data-bs-toggle="modal" data-bs-target="#cancelmodal" onclick="cancelreq('+ v.serviceId +')">Cancel</button></form>';
+					result += ' <button type="submit" class="cancel text-white" data-bs-toggle="modal" data-bs-target="#cancelmodal" onclick="cancelreq('+ v.serviceId +')">Cancel</button>';
 					result += '</td>';
 					result += '<td class="align-middle">';
-					result += ' <form><button type="submit" class="completed text-white" data-bs-toggle="modal" data-bs-target="#completedmodal" onclick="completedreq('+ v.serviceId +')">Completed</button></form>';
+					result += ' <button type="submit" class="completed text-white" data-bs-toggle="modal" data-bs-target="#completedmodal" onclick="completedreq('+ v.serviceId +')">Completed</button>';
 					result += '</td>';
 					result += "</tr>";
 				});
@@ -825,10 +944,6 @@
 		upcoming();
 	});
 	
-	$(document).on('click','#dashnav', function(){
-		location.reload(true);
-	});
-	
 	function cancelreq(v){
 		jQuery(document).ready(function($) {
 			$("#cancelform").submit(function(event) {
@@ -851,6 +966,40 @@
 				else{
 					upcoming();
 					alert("Cancelled successfully! \n\nServiceId : 27" + v);
+				}
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+    }
+    
+    /* accept req */
+    
+    function acceptreq(v){
+		jQuery(document).ready(function($) {
+			$("#acceptbtn").click(function(event) {
+				acceptRequest(v);
+				console.log(v);
+			});
+		});
+	}
+    function acceptRequest(v){
+    	$.ajax({
+			type: "GET",
+			url: "/Helperland-Tatvasoft/acceptsprequest/" + v,
+			success: function(data) {
+				console.log("SUCCESS: accepted", data);
+				
+				if(data==0){
+					alert("Not accepted!");
+				}
+				else{
+					dashboard();
+					alert("Accepted successfully! \n\nServiceId : 27" + v);
 				}
 			},
 			error: function(e) {
@@ -909,10 +1058,18 @@
 			success: function(response) {
 				console.log("SUCCESS: ", response);
 
-				var result = '<table class="table display nowrap" id="history" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Customer Details</span></div></th></tr></thead>'
+				var result = '<table class="table display nowrap" id="history" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Customer Details</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Report</span></div></th><th><div class="d-flex"><span class="heading">Payment Status</span></div></th></tr></thead>'
 				result += "<tbody>";
 				$.each(response, function(k, v) {
 					console.log(v.serviceId);
+					
+					var status="";
+					if(v.status=="Completed"){
+						status='<button class="greenbtn">Completed</button>';
+					}
+					else{
+						status='<button class="pinkbtn">Cancelled</button>';
+					}
 
 										
 					result += "<tr>";
@@ -923,7 +1080,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ' ) </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -935,6 +1092,16 @@
 					result += '<p class="add">'+ v.serviceRequestAddress.addressLine1 +', '+ v.serviceRequestAddress.addressLine2 +'</p>';
 					result += '</div>';
 					result += '</div>';
+					result += '</td>';
+					result += '<td class="align-middle"><span class="cs-price ">';
+					result += '<img src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png" class="totaleuro">';
+					result += '<span>'+v.subTotal+'</span>';
+					result += '</span></td>';
+					result += '<td class="align-middle">';
+					result += '<div class="reportimg"><a href="contact"><img src="<%=request.getContextPath()%>/resources/img/img-CS/inquiry.png"></a></div>';
+					result += '</td>';
+					result += '<td class="align-middle">';
+					result += '<div class="statusdiv">'+status+'</div>';
 					result += '</td>';
 					result += "</tr>";
 				});
@@ -978,6 +1145,9 @@
 					alert("Please enter correct Old Password!");
 				}
 				else {
+					$("#settingsoldpassword").val('');
+					$("#settingsnewpassword").val('');
+					$("#settingsconfirmpassword").val('');
 					alert("Password Changed Successfully!");
 				}
 			},
@@ -989,8 +1159,130 @@
 			}
 		});
 	}
-
 	
+	/* SP settings details */
+	
+	jQuery(document).ready(function($) {
+		$("#addDetailsForm").submit(function(event) {
+			event.preventDefault();
+			updatespDetails();
+		});
+	});
+	function updatespDetails() {
+		$.ajax({
+			type: "GET",
+			url: "/Helperland-Tatvasoft/updateSPDetails/" + $("#detailsFirstname").val() + "," + $("#detailsLastname").val() + "," + $("#detailsEmail").val() + "," + $("#detailsMobile").val()
+				+ "," + $("#detailsBdate").val() + "," + $("#detailsBMonth").val() + "," + $("#detailsBYear").val() + "," + $("#detailsNationality").val()
+				+ "," +  $("input[type=radio][name=gender]:checked").val() + "," + $("#addline1").val() + "," + $("#addline2").val() + "," + $("#addpostalcode").val() 
+				+ "," + $("#addcity").val() + "," + $('input[name="avatar"]:checked').val(),
+			success: function(data) {
+				console.log("SUCCESS: ", data);
+				$("#bannername").html($("#detailsFirstname").val());
+				alert("Details Updated Successfully!");
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+	}
+	
+
+	/* Avatar img */
+
+	$(document).on('click', '.input-hidden', function() {
+		var changedimg = '<img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-' + $('input[name="avatar"]:checked').val() + '.png"/>';
+		$('#change').html(changedimg);
+	});
+	
+
+	$("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+		$("#success-alert").slideUp(500);
+	});
+	
+	/* Ratings modal */
+	
+	function sprating(){
+		$.ajax({
+			type: "GET",
+			contentType: "application/json",
+			url: "/Helperland-Tatvasoft/spratings/",
+			success: function(response) {
+				console.log("SUCCESS: ", response);
+
+				var result = '<table class="table display nowrap" id="rating" colspacing="0" style="width: 100%;">'
+				result += "<tbody>";
+				$.each(response, function(k, v) {
+					
+					var ratingcomment="";
+					if(v.ratings==5){
+						ratingcomment="Excellent!";
+					}
+					else if(v.ratings==4){
+						ratingcomment="Very Good!";
+					}
+					else if(v.ratings==3){
+						ratingcomment="Good!";
+					}
+					else if(v.ratings==2){
+						ratingcomment="Normal";
+					}
+					else{
+						ratingcomment="Poor";
+					}
+										
+					result += "<tr>";
+					result += '<td class="align-middle"><div class="sid">27'+ v.serviceRequest.serviceId +'</div><div>'+ v.customer.firstName +' '+ v.customer.lastName +'</div></td>';
+					result += '<td class="align-middle">';
+					result += '<div class="d-flex flex-column justify-content-center calghadi">';
+					result += '<div class="d-flex">';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceRequest.serviceStartDate+'</span>';
+					result += '</div>';
+					result += '<div class="d-flex ">';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceRequest.serviceStartTime + ' (Total Hours: '+ v.serviceRequest.extraHours + ') </span>';
+					result += '</div>';
+					result += '</div>';
+					result += "</td>";
+					result += "<td>";
+					result += "<div><strong style='color: #646464;'>Ratings</strong></div>";
+					result += v.ratings+"/5 &nbsp;"+ratingcomment;
+					result += "</td>";
+					result += "</tr>";
+					result += "<tr>";
+					result += '<td colspan="3">';
+					result += '<div><strong style="color: #646464;">Customer comment</strong></div>';
+					result += '<div>'+v.comments+'</div>';
+					result += "</td>";
+					result += "</tr>";
+					result += "<tr>";
+					result += '<td colspan="3">';
+					result += "</td>";
+					result += "</tr>";
+				});
+				result += "</tbody>";
+				result += "</table>";
+				$("#ratingtable").html(result);
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+	}
+    $(document).on('click','#ratingtab', function(){
+    	sprating();
+	});
+	
+	$(document).on('click','#ratingnav', function(){
+		sprating();
+	});
+	
+
+
     </script>
 
 </body>

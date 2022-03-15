@@ -19,83 +19,70 @@ public class PublicPagesController {
 	ContactDao contactdao;
 
 	@RequestMapping("/homepage")
-	public String home(HttpServletRequest request,Model model) {
+	public String home(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
-		model.addAttribute("user_type",session.getAttribute("usertypeid"));
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
 		return "Homepage";
 	}
 
 	@RequestMapping("/faq")
-	public String faq(HttpServletRequest request) {
+	public String faq(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		return "FAQ";
 	}
 
 	@RequestMapping("/contact")
-	public String contact(HttpServletRequest request) {
+	public String contact(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		return "Contact";
 	}
 
 	@RequestMapping("/about")
-	public String about(HttpServletRequest request) {
+	public String about(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		return "About";
 	}
 
 	@RequestMapping("/warranty")
-	public String warranty(HttpServletRequest request) {
+	public String warranty(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		return "Warranty";
 	}
 
 	@RequestMapping("/prices")
-	public String prices(HttpServletRequest request) {
+	public String prices(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		return "Prices";
 	}
 
 	@RequestMapping("/bap")
-	public String bap(HttpServletRequest request) {
+	public String bap(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
+		model.addAttribute("user_type", session.getAttribute("usertypeid"));
 		request.setAttribute("hideshow", session.getAttribute("userid"));
+		request.setAttribute("booknowbtn", session.getAttribute("usertypeid"));
 		return "ServiceProvider-BAP";
 	}
 
-	/*
-	 * @RequestMapping("/Settings-ServiceProvider") public String spsettings() {
-	 * return "SettingsSP"; }
-	 * 
-	 * @RequestMapping("/upcomingservice") public String spupcoming() { return
-	 * "Service Provider - Upcoming Service"; }
-	 * 
-	 * @RequestMapping("/blockcustomer") public String spblock() { return
-	 * "SP-Block"; }
-	 * 
-	 * @RequestMapping("/serviceproviderDashboard") public String spdash() { return
-	 * "SP - Dashboard"; }
-	 * 
-	 * @RequestMapping("/servicehistory") public String sphist() { return
-	 * "SP-History"; }
-	 * 
-	 * 
-	 * @RequestMapping("/AdminUserManagement") public String AUM() { return
-	 * "Admin - User Management"; }
-	 * 
-	 * @RequestMapping("/AdminServiceRequests") public String ASR() { return
-	 * "Admin - Service Requests"; }
-	 * 
-	 */
-	
 	@RequestMapping(value = "/savecontact", method = RequestMethod.POST)
-	public String saveContact(@ModelAttribute("con") Contact con) throws Exception{
-		
+	public String saveContact(@ModelAttribute("con") Contact con) throws Exception {
 		contactdao.save(con);
 		return "Contact";
 	}

@@ -39,10 +39,8 @@ public class ServiceRequestDao {
 		String sql = "insert into servicerequest(HasPets,PaymentDue,RecordVersion,RefundedAmount,Distance, HasIssue,CreatedDate,ZipCode,"
 				+ "ServiceProviderId,ServiceRequestId,UserId,TotalCost,ServiceHours,SubTotal,ExtraHours,ServiceStartTime,ServiceStartDate,Comments,Discount,ServiceId,Status) "
 				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] { pets, 0, "1.0", 0, 0, 0, date, pincode, 71, serviceReqId, userid, totalcost,
+		template.update(sql, new Object[] { pets, 0, "1.0", 0, 0, 0, date, pincode, 0, serviceReqId, userid, totalcost,
 				serviceHours, subtotal, extraHours, starttime, startdate, comments, 0, serviceReqId, "New" });
-
-		System.out.println("in service request dao ");
 
 		return serviceReqId;
 

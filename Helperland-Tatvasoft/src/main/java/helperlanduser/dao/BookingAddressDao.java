@@ -52,7 +52,6 @@ public class BookingAddressDao {
 
 		});
 		
-		System.out.println(addressList.toString() + "  ->  dao");
 		return addressList;
 	}
 	

@@ -98,6 +98,10 @@
 	<bean id="SPSettingsDao" class="helperlanduser.dao.SPSettingsDao">
 		<property name="template" ref="jt"></property>
 	</bean>
+	
+	<bean id="AdminDao" class="helperlanduser.dao.AdminDao">
+		<property name="template" ref="jt"></property>
+	</bean>
 
 </beans>
 

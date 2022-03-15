@@ -304,10 +304,12 @@ table {
 	cursor: pointer;
 	color: #146371;
 }
-.pay{
+
+.pay {
 	font-size: 20px;
 	font-weight: 500;
 }
+
 img.calendar {
 	width: 16px;
 	height: 19px;
@@ -331,21 +333,26 @@ img.ghar {
 	margin-bottom: 0px;
 	color: #646464;
 }
-.sid{
+
+.sid {
 	cursor: pointer;
 	color: #646464;
 	font-weight: 500;
 }
-.sid:hover{
+
+.sid:hover {
 	color: black;
 }
-.sid a{
+
+.sid a {
 	color: #646464;
 	font-weight: 500;
 }
-.sid a:hover{
+
+.sid a:hover {
 	color: black;
 }
+
 .david, .ghar {
 	width: 100%;
 	height: auto;
@@ -389,6 +396,23 @@ img.ghar {
 	cursor: pointer;
 }
 
+.greenbtn {
+	width: auto;
+	height: auto;
+	padding: 5px 10px 4px 9px;
+	background-color: #67b644;
+	color: white;
+	border: 1px solid #67b644;
+}
+
+.pinkbtn {
+	width: auto;
+	height: auto;
+	padding: 5px 12px 4px 12px;
+	background-color: #ff6b6b;
+	color: white;
+	border: 1px solid #ff6b6b;
+}
 
 .accept {
 	background-color: #1d7a8c;
@@ -402,6 +426,7 @@ img.ghar {
 	background-color: #146371;
 	border: 1px solid #146371;
 }
+
 .cs-price {
 	width: 100%;
 	height: auto;
@@ -416,10 +441,12 @@ img.ghar {
 	display: block;
 	color: #1d7a8c;
 }
-.totaleuro{
+
+.totaleuro {
 	width: 20px;
 	height: 22px;
 }
+
 .paginate_button {
 	background-color: #1d7a8c;
 	padding: 7px 10px;
@@ -780,9 +807,13 @@ footer {
 .dropdown-item.active {
 	background-color: transparent !important;
 }
-.spmodal{
+.dropdown-item:hover {
+  background-color: #e9ecef !important;
+}
+.spmodal {
 	cursor: pointer;
 }
+
 img.gcal {
 	width: 18px;
 	height: 18px;
@@ -840,6 +871,7 @@ img.ghaditime {
 	text-align: left;
 	color: #646464;
 }
+
 .csupdate {
 	width: 70%;
 	height: auto;
@@ -856,6 +888,17 @@ img.ghaditime {
 	justify-content: center;
 	border: solid 1px #1d7a8c;
 }
-.tabcontent row{
+
+.tabcontent row {
 	width: auto;
+}
+
+.input-hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+.input-hidden:checked+label>img {
+	border: 3.5px solid #1d7a8c;
+	border-radius: 50%;
 }

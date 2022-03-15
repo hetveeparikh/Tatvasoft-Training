@@ -1,7 +1,5 @@
 package helperlanduser.model;
 
-import java.util.Date;
-
 public class Customer {
 	
 	private int UserId;
@@ -11,11 +9,61 @@ public class Customer {
 	private String Password;
 	private String Mobile;
 	private int UserTypeId;
-	private Date CreatedDate;
+	private String CreatedDate;
 	private String DateOfBirth;
 	private String Language;
+	private String Nationality;
+	private String Gender;
+	private String UserProfilePicture;
+	private int IsActive;
+	private int IsApproved;
+	private int IsDeleted;
+	private int IsRegisteredUser;
 	
+	public int getIsActive() {
+		return IsActive;
+	}
+	public void setIsActive(int isActive) {
+		IsActive = isActive;
+	}
+	public int getIsApproved() {
+		return IsApproved;
+	}
+	public void setIsApproved(int isApproved) {
+		IsApproved = isApproved;
+	}
+	public int getIsDeleted() {
+		return IsDeleted;
+	}
+	public void setIsDeleted(int isDeleted) {
+		IsDeleted = isDeleted;
+	}
+	public int getIsRegisteredUser() {
+		return IsRegisteredUser;
+	}
+	public void setIsRegisteredUser(int isRegisteredUser) {
+		IsRegisteredUser = isRegisteredUser;
+	}
+	private UserAddress userAddress;
 	
+	public String getNationality() {
+		return Nationality;
+	}
+	public void setNationality(String nationality) {
+		Nationality = nationality;
+	}
+	public String getGender() {
+		return Gender;
+	}
+	public void setGender(String gender) {
+		Gender = gender;
+	}
+	public String getUserProfilePicture() {
+		return UserProfilePicture;
+	}
+	public void setUserProfilePicture(String userProfilePicture) {
+		UserProfilePicture = userProfilePicture;
+	}
 	public String getFirstName() {
 		return FirstName;
 	}
@@ -52,10 +100,10 @@ public class Customer {
 	public void setUserTypeId(int userTypeId) {
 		UserTypeId = userTypeId;
 	}
-	public Date getCreatedDate() {
+	public String getCreatedDate() {
 		return CreatedDate;
 	}
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(String createdDate) {
 		CreatedDate = createdDate;
 	}
 	public int getUserId() {
@@ -76,14 +124,19 @@ public class Customer {
 	public void setLanguage(String language) {
 		Language = language;
 	}
+	public UserAddress getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(UserAddress userAddress) {
+		this.userAddress = userAddress;
+	}
 	@Override
 	public String toString() {
 		return "Customer [UserId=" + UserId + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Email=" + Email
 				+ ", Password=" + Password + ", Mobile=" + Mobile + ", UserTypeId=" + UserTypeId + ", CreatedDate="
-				+ CreatedDate + ", DateOfBirth=" + DateOfBirth + ", Language=" + Language + "]";
+				+ CreatedDate + ", DateOfBirth=" + DateOfBirth + ", Language=" + Language + ", Nationality="
+				+ Nationality + ", Gender=" + Gender + ", UserProfilePicture=" + UserProfilePicture + ", IsActive="
+				+ IsActive + ", IsApproved=" + IsApproved + ", IsDeleted=" + IsDeleted + ", IsRegisteredUser="
+				+ IsRegisteredUser + ", userAddress=" + userAddress + "]";
 	}
-	
-	
-	
-	
 }

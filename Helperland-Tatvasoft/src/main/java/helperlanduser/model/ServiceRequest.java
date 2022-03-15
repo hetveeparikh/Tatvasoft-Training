@@ -17,25 +17,29 @@ public class ServiceRequest {
 	private float Discount;
 	private float TotalCost;
 	private String PaymentTransactionRefNo;
-	private boolean PaymentDue;
 	private int ServiceProviderId;
 	private Date SPAcceptedDate;
 	private String HasPets;
 	private String Status;
 	private Date CreatedDate;
-	private Date ModifiedDate;
+	private String ModifiedDate;
 	private int ModifiedBy;
 	private float RefundedAmount;
 	private float Distance;
 	private boolean HasIssue;
-	private boolean PaymentDone;
 	private int RecordVersion;
 	private String ServiceStartTime;
+	private int PaymentDone;
+	private int PaymentDue;
 	
 	private ServiceRequestAddress serviceRequestAddress;
 	
 	private Customer customer;
 	
+	private Customer sp;
+	
+	private Rating rating;
+			
 	public String getComments() {
 		return Comments;
 	}
@@ -114,12 +118,6 @@ public class ServiceRequest {
 	public void setPaymentTransactionRefNo(String paymentTransactionRefNo) {
 		PaymentTransactionRefNo = paymentTransactionRefNo;
 	}
-	public boolean isPaymentDue() {
-		return PaymentDue;
-	}
-	public void setPaymentDue(boolean paymentDue) {
-		PaymentDue = paymentDue;
-	}
 	public int getServiceProviderId() {
 		return ServiceProviderId;
 	}
@@ -150,10 +148,10 @@ public class ServiceRequest {
 	public void setCreatedDate(Date createdDate) {
 		CreatedDate = createdDate;
 	}
-	public Date getModifiedDate() {
+	public String getModifiedDate() {
 		return ModifiedDate;
 	}
-	public void setModifiedDate(Date modifiedDate) {
+	public void setModifiedDate(String modifiedDate) {
 		ModifiedDate = modifiedDate;
 	}
 	public int getModifiedBy() {
@@ -180,12 +178,6 @@ public class ServiceRequest {
 	public void setHasIssue(boolean hasIssue) {
 		HasIssue = hasIssue;
 	}
-	public boolean isPaymentDone() {
-		return PaymentDone;
-	}
-	public void setPaymentDone(boolean paymentDone) {
-		PaymentDone = paymentDone;
-	}
 	public int getRecordVersion() {
 		return RecordVersion;
 	}
@@ -211,19 +203,44 @@ public class ServiceRequest {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public Rating getRating() {
+		return rating;
+	}
+	public void setRating(Rating rating) {
+		this.rating = rating;
+	}
+	public int getPaymentDone() {
+		return PaymentDone;
+	}
+	public void setPaymentDone(int paymentDone) {
+		PaymentDone = paymentDone;
+	}
+	public int getPaymentDue() {
+		return PaymentDue;
+	}
+	public void setPaymentDue(int paymentDue) {
+		PaymentDue = paymentDue;
+	}
 	@Override
 	public String toString() {
 		return "ServiceRequest [Comments=" + Comments + ", ServiceRequestId=" + ServiceRequestId + ", UserId=" + UserId
 				+ ", ServiceId=" + ServiceId + ", ServiceStartDate=" + ServiceStartDate + ", ZipCode=" + ZipCode
 				+ ", ServiceHourlyRate=" + ServiceHourlyRate + ", ServiceHours=" + ServiceHours + ", ExtraHours="
 				+ ExtraHours + ", SubTotal=" + SubTotal + ", Discount=" + Discount + ", TotalCost=" + TotalCost
-				+ ", PaymentTransactionRefNo=" + PaymentTransactionRefNo + ", PaymentDue=" + PaymentDue
-				+ ", ServiceProviderId=" + ServiceProviderId + ", SPAcceptedDate=" + SPAcceptedDate + ", HasPets="
-				+ HasPets + ", Status=" + Status + ", CreatedDate=" + CreatedDate + ", ModifiedDate=" + ModifiedDate
-				+ ", ModifiedBy=" + ModifiedBy + ", RefundedAmount=" + RefundedAmount + ", Distance=" + Distance
-				+ ", HasIssue=" + HasIssue + ", PaymentDone=" + PaymentDone + ", RecordVersion=" + RecordVersion
-				+ ", ServiceStartTime=" + ServiceStartTime + ", serviceRequestAddress=" + serviceRequestAddress
-				+ ", customer=" + customer + "]";
+				+ ", PaymentTransactionRefNo=" + PaymentTransactionRefNo + ", ServiceProviderId=" + ServiceProviderId
+				+ ", SPAcceptedDate=" + SPAcceptedDate + ", HasPets=" + HasPets + ", Status=" + Status
+				+ ", CreatedDate=" + CreatedDate + ", ModifiedDate=" + ModifiedDate + ", ModifiedBy=" + ModifiedBy
+				+ ", RefundedAmount=" + RefundedAmount + ", Distance=" + Distance + ", HasIssue=" + HasIssue
+				+ ", RecordVersion=" + RecordVersion + ", ServiceStartTime=" + ServiceStartTime + ", PaymentDone="
+				+ PaymentDone + ", PaymentDue=" + PaymentDue + ", serviceRequestAddress=" + serviceRequestAddress
+				+ ", customer=" + customer + ", rating=" + rating + "]";
+	}
+	public Customer getSp() {
+		return sp;
+	}
+	public void setSp(Customer sp) {
+		this.sp = sp;
 	}
 	
 	

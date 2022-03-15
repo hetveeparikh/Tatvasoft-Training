@@ -1,3 +1,9 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!doctype html>
 <html lang="en">
 
@@ -48,7 +54,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto ">
-						<li class="nav-item">
+						<li class="nav-item linkbook">
 							<div class="nav-btn Rounded-Rectangle-5-copy-5">
 								<a class="nav-link Book-now" href="BookNow">Book now</a>
 							</div>
@@ -107,13 +113,6 @@
 												<div class="text-center">
 													<button type="submit" class="loginbtnmodal">Login</button>
 												</div>
-
-												<!-- 
-												<table align="center">
-													<tr>
-														<td style="font-style: italic; color: red;">${message}</td>
-													</tr>
-												</table> -->
 											</form>
 										</div>
 										<div class="text-center">
@@ -174,7 +173,7 @@
 												<div>
 													<input type="email" placeholder="E-mail Address"
 														class="signupemailmodal" name="Email" required /> <input
-														type="text" placeholder="+49" class="pinmodal"
+														type="text" placeholder="+91" class="pinmodal"
 														name="pincode" disabled /> <input type="text"
 														placeholder="Mobile Number" class="mnomodal" name="Mobile"
 														required />
@@ -236,7 +235,17 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end"
 								aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
+								<c:if test="${user_type == 2 }">
+									<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								</c:if>
+								
+								<c:if test="${user_type == 3 }">
+									<li><a class="dropdown-item" href="ServiceProviderDashboard">Dashboard</a></li>
+								</c:if>
+								
+								<c:if test="${user_type == 1 }">
+									<li><a class="dropdown-item" href="admin">Dashboard</a></li>
+								</c:if>
 								<li><a class="dropdown-item" href="logout"
 									onclick="logout()">Log out</a></li>
 							</ul>
@@ -249,7 +258,7 @@
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="BookNow">Book Now</a> <a href="prices">Prices &
+			<a href="BookNow" class="linkbook">Book Now</a> <a href="prices">Prices &
 				Services</a> <a href="warranty">Warranty</a> <a href="#">Blog</a> <a
 				href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
@@ -282,12 +291,6 @@
 									<button type="submit" class="loginbtnmodal">Login</button>
 								</div>
 
-								<!-- 
-												<table align="center">
-													<tr>
-														<td style="font-style: italic; color: red;">${message}</td>
-													</tr>
-												</table> -->
 							</form>
 						</div>
 						<div class="text-center">
@@ -396,7 +399,17 @@
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
+					<c:if test="${user_type == 2 }">
+						<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					</c:if>
+					
+					<c:if test="${user_type == 3 }">
+						<li><a class="dropdown-item" href="ServiceProviderDashboard">Dashboard</a></li>
+					</c:if>
+					
+					<c:if test="${user_type == 1 }">
+						<li><a class="dropdown-item" href="admin">Dashboard</a></li>
+					</c:if>
 					<li><a class="dropdown-item" href="logout"
 						onclick="logout()">Log out</a></li>
 				</ul>
@@ -457,8 +470,8 @@
 					satisfied with the quality of the service, we'll send another pro
 					at no extra charge for your next booking.</p>
 			</div>
-			<div class="d-flex align-items-center justify-content-center">
-				<a type="button" class="bookguarantee text-decoration-none"
+			<div class="d-flex align-items-center justify-content-center ">
+				<a type="button" class="bookguarantee text-decoration-none linkbook"
 					href="BookNow">Book a Cleaner</a>
 			</div>
 		</div>
@@ -542,6 +555,11 @@
 		if (name != null) {
 			$(".linklogin").css("display", "none");
 			$(".linkhelper").css("display", "none");
+		}
+		
+		let booknowsp = <%=request.getAttribute("booknowbtn")%>
+		if (booknowsp == 3 || booknowsp == 1) {
+			$(".linkbook").css("display", "none");
 		}
 	</script>
 	

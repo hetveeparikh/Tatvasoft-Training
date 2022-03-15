@@ -94,3 +94,9 @@
       justify-content: space-between;
   }
 }
+@media screen and (max-width: 612px) {
+  #history_paginate{
+  margin-top: 10px;
+  text-align: center;
+  }
+}

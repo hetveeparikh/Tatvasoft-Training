@@ -1,3 +1,8 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page isELIgnored="false"%>
 <!doctype html>
 <html lang="en">
 
@@ -48,7 +53,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto ">
-						<li class="nav-item">
+						<li class="nav-item linkbook">
 							<div class="nav-btn Rounded-Rectangle-5-copy-5">
 								<a class="nav-link Book-now" href="BookNow">Book now</a>
 							</div>
@@ -236,7 +241,18 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end"
 								aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
+								<c:if test="${user_type == 2 }">
+									<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								</c:if>
+								
+								<c:if test="${user_type == 3 }">
+									<li><a class="dropdown-item" href="ServiceProviderDashboard">Dashboard</a></li>
+								</c:if>
+								
+								<c:if test="${user_type == 1 }">
+									<li><a class="dropdown-item" href="admin">Dashboard</a></li>
+								</c:if>
+							
 								<li><a class="dropdown-item" href="logout"
 									onclick="logout()">Log out</a></li>
 							</ul>
@@ -249,7 +265,7 @@
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="BookNow">Book Now</a> <a href="prices">Prices &
+			<a href="BookNow" class="linkbook">Book Now</a> <a href="prices">Prices &
 				Services</a> <a href="warranty">Warranty</a> <a href="#">Blog</a> <a
 				href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
@@ -282,12 +298,6 @@
 									<button type="submit" class="loginbtnmodal">Login</button>
 								</div>
 
-								<!-- 
-												<table align="center">
-													<tr>
-														<td style="font-style: italic; color: red;">${message}</td>
-													</tr>
-												</table> -->
 							</form>
 						</div>
 						<div class="text-center">
@@ -396,7 +406,17 @@
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
+					<c:if test="${user_type == 2 }">
+						<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					</c:if>
+					
+					<c:if test="${user_type == 3 }">
+						<li><a class="dropdown-item" href="ServiceProviderDashboard">Dashboard</a></li>
+					</c:if>
+					
+					<c:if test="${user_type == 1 }">
+						<li><a class="dropdown-item" href="admin">Dashboard</a></li>
+					</c:if>
 					<li><a class="dropdown-item" href="logout"
 						onclick="logout()">Log out</a></li>
 				</ul>
@@ -599,6 +619,11 @@
 		if (name != null) {
 			$(".linklogin").css("display", "none");
 			$(".linkhelper").css("display", "none");
+		}
+		
+		let booknowsp = <%=request.getAttribute("booknowbtn")%>
+		if (booknowsp == 3 || booknowsp == 1) {
+			$(".linkbook").css("display", "none");
 		}
 	</script>
 	

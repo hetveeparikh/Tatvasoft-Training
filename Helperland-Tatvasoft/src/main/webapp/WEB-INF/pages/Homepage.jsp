@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +60,7 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-						<li class="nav-item">
+						<li class="nav-item linkbook">
 							<div class="text-center">
 								<a class="nav-link book1 align-items-center" href="BookNow">Book
 									Now</a>
@@ -106,13 +107,6 @@
 												<div class="text-center">
 													<button type="submit" class="loginbtnmodal">Login</button>
 												</div>
-
-												<!-- 
-												<table align="center">
-													<tr>
-														<td style="font-style: italic; color: red;">${message}</td>
-													</tr>
-												</table> -->
 											</form>
 										</div>
 										<div class="text-center">
@@ -235,7 +229,20 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end"
 								aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
+								<%-- <li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li> --%>
+								
+								<c:if test="${user_type == 2 }">
+									<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								</c:if>
+								
+								<c:if test="${user_type == 3 }">
+									<li><a class="dropdown-item" href="ServiceProviderDashboard">Dashboard</a></li>
+								</c:if>
+								
+								<c:if test="${user_type == 1 }">
+									<li><a class="dropdown-item" href="admin">Dashboard</a></li>
+								</c:if>
+								
 								<li><a class="dropdown-item" href="logout"
 									onclick="logout()">Log out</a></li>
 							</ul>
@@ -244,10 +251,28 @@
 				</div>
 			</div>
 		</nav>
+		
+		<div class="position-absolute w-100  d-flex justify-content-center" style="top:140px; z-index:100;">
+			<div class="alert alert-danger d-none w-75 h-25 fade show" ${errordiv } role="alert" id="error-alert">
+				<div class="d-flex justify-content-between">
+				<h5>${error }</h5>
+			  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  	</div>
+			</div>
+		</div>
+		
+		<div class="position-absolute w-100  d-flex justify-content-center" style="top:140px; z-index:100;">
+			<div class="alert alert-danger d-none w-75 h-25 fade show" ${plsbookdiv } role="alert" id="login-alert">
+				<div class="d-flex justify-content-between">
+				<h5>${plsbook }</h5>
+			  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  	</div>
+			</div>
+		</div>
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-			<a href="BookNow">Book Now</a> <a href="prices">Prices</a> <a
+			<a href="BookNow" class="linkbook">Book Now</a> <a href="prices">Prices</a> <a
 				href="warranty">Warranty</a> <a href="#">Blog</a> <a href="contact">Contact</a>
 			<div data-bs-toggle="modal" href="#loginnn">
 				<a class="lm linklogin">Login</a>
@@ -278,13 +303,6 @@
 								<div class="text-center">
 									<button type="submit" class="loginbtnmodal">Login</button>
 								</div>
-
-								<!-- 
-												<table align="center">
-													<tr>
-														<td style="font-style: italic; color: red;">${message}</td>
-													</tr>
-												</table> -->
 							</form>
 						</div>
 						<div class="text-center">
@@ -390,7 +408,17 @@
 				</a>
 				<ul class="dropdown-menu dropdown-menu-end"
 					aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="${user_type == 2 ? 'customerDashboard' :  'ServiceProviderDashboard'}">Dashboard</a></li>
+					<c:if test="${user_type == 2 }">
+						<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+					</c:if>
+					
+					<c:if test="${user_type == 3 }">
+						<li><a class="dropdown-item" href="ServiceProviderDashboard">Dashboard</a></li>
+					</c:if>
+					
+					<c:if test="${user_type == 1 }">
+						<li><a class="dropdown-item" href="admin">Dashboard</a></li>
+					</c:if>
 					<li><a class="dropdown-item" href="logout"
 						onclick="logout()">Log out</a></li>
 				</ul>
@@ -416,7 +444,7 @@
 
 			<div
 				class="col-lg-4 col-md-6 d-flex justify-content-center align-items-center">
-				<a class="letsbook Lets-Book-a-Cleaner-copy text-decoration-none"
+				<a class="letsbook Lets-Book-a-Cleaner-copy text-decoration-none linkbook"
 					href="BookNow" type="button"> Book a Helper! </a>
 			</div>
 
@@ -737,13 +765,7 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 	<script>
-		let loginerror =
-	<%=request.getAttribute("notloggedin")%>
-		if (loginerror !== null) {
-			document.getElementsByClassName("loginmsg").style.display = "block";
-			alert("Please login first!");
-		}
-
+	
 		$(document).ready(
 				function() {
 					$("#ConfirmPassword").on(
@@ -796,8 +818,45 @@
 			$(".linklogin").css("display", "none");
 			$(".linkhelper").css("display", "none");
 		}
+		
+		let booknowsp = <%=request.getAttribute("booknowbtn")%>
+		if (booknowsp == 3 || booknowsp == 1) {
+			$(".linkbook").css("display", "none");
+		}
+		
+		$("#error-alert").fadeTo(2000, 500).slideUp(500, function(){
+		    $("#error-alert").slideUp(500);
+		});
+		
+		$("#login-alert").fadeTo(2000, 500).slideUp(500, function(){
+		    $("#login-alert").slideUp(500);
+		});
 	</script>
 
+	<script>
+		$(document).ready(function() {
+			$("#ConfirmPassword").on('keyup', function() {
+				var password = $("#Password").val();
+				var confirmPassword = $("#ConfirmPassword").val();
+				if (password != confirmPassword)
+					$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+				else
+					$("#CheckPasswordMatch").html("Password match !").css("color", "green");
+			});
+		});
+	
+		$(document).ready(function() {
+			$("#ConfirmPassword1").on('keyup', function() {
+				var password1 = $("#Password1").val();
+				var confirmPassword1 = $("#ConfirmPassword1").val();
+				if (password1 != confirmPassword1)
+					$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
+				else
+					$("#CheckPasswordMatch1").html("Password match !").css("color", "green");
+			});
+		});
+	</script>
+	
 </body>
 
 </html>

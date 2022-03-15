@@ -53,19 +53,17 @@ public class BookNowController {
 	ServiceRequestAddressDao serviceRequestAddressDao;
 
 	@RequestMapping("/BookNow")
-	public String booknow(HttpServletRequest request) {
+	public String booknow(HttpServletRequest request, Model model) {
 
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("userid"));
-		System.out.println(session.getAttribute("usertypeid"));
-
-		if (session.getAttribute("userid") != null) {
-			System.out.println("booknowwww");
+		
+		if (session.getAttribute("userid") != null && (session.getAttribute("usertypeid")+"").equals("2")) {
 			return "BookNow";
 		}
 
 		else {
-			request.setAttribute("notloggedin", "alertlogin");
+			model.addAttribute("plsbook", "Please Login First!");
+			model.addAttribute("plsbookdiv", "style='display: block !important';");
 			return "Homepage";
 		}
 
@@ -74,7 +72,6 @@ public class BookNowController {
 	@RequestMapping(value = "/bookpincode")
 	public @ResponseBody String ajaxSearch(HttpServletRequest req, HttpServletResponse res,
 			@RequestBody String pincode) {
-		System.out.println("Pincode ajax");
 		BookPincode bookPincode = new BookPincode();
 		bookPincode.setPostalCode(Integer.parseInt(pincode));
 		Boolean pin = bookPincodeDao.validatepin(new Integer(pincode));
@@ -87,14 +84,12 @@ public class BookNowController {
 			@PathVariable("City") String City, @PathVariable("Mobile") String Mobile,
 			@ModelAttribute UserAddress userAddress, Model model, HttpServletRequest req, HttpServletResponse res)
 			throws Exception {
-		System.out.println("Address added");
 		HttpSession session = req.getSession();
 		String str = "" + session.getAttribute("userid");
 		int temp = Integer.parseInt(str);
 		userAddress.setUserId(temp);
 		String email = "" + session.getAttribute("custemail");
 		userAddress.setEmail(email);
-
 		this.addressDao.addAddress(userAddress);
 	}
 
@@ -105,7 +100,6 @@ public class BookNowController {
 		HttpSession session = req.getSession();
 		Object id = session.getAttribute("userid");
 		List<UserAddress> userAddress = addressDao.readAddress(id);
-		System.out.println("address controller");
 		return userAddress;
 	}
 
@@ -113,7 +107,6 @@ public class BookNowController {
 	public String addrequest(@ModelAttribute("serviceRequest") ServiceRequest serviceRequest,
 			HttpServletRequest request) {
 		serviceRequestDao.addrequest(serviceRequest, request);
-		System.out.println("in req controllerr");
 		return "CS-Dashboard";
 	}
 
@@ -123,7 +116,7 @@ public class BookNowController {
 			@PathVariable("ServiceHours") float ServiceHours, @PathVariable("ServiceStartDate") String ServiceStartDate,
 			@PathVariable("ExtraHours") float ExtraHours, @PathVariable("SubTotal") float SubTotal,
 			@PathVariable("Comments") String Comments, @PathVariable("ServiceStartTime") String ServiceStartTime,
-			@PathVariable("HasPets") String HasPets, @PathVariable("Extras") String Extras, HttpServletRequest req) {
+			@PathVariable("HasPets") String HasPets, @PathVariable("Extras") String Extras, HttpServletRequest req, Model model) {
 
 		HttpSession session = req.getSession();
 
@@ -137,9 +130,6 @@ public class BookNowController {
 		serviceRequest.setSubTotal(SubTotal);
 		serviceRequest.setExtraHours(ExtraHours);
 		serviceRequest.setHasPets(HasPets);
-
-		System.out.println(ZipCode + "pinnnn");
-		System.out.println(Comments);
 
 		int servicereq = serviceRequestDao.addrequest(serviceRequest, req);
 
@@ -156,8 +146,6 @@ public class BookNowController {
 		serviceRequestAddress.setState(getaddress.getState());
 		serviceRequestAddress.setServiceRequestId(servicereq);
 
-		System.out.println("addresss controller" + getaddress);
-
 		int address = serviceRequestAddressDao.saveserviceaddress(serviceRequestAddress);
 
 		String[] extras = Extras.split(" ", 0);
@@ -165,7 +153,6 @@ public class BookNowController {
 		List<ServiceRequestExtra> serviceRequestExtrasList = new ArrayList<ServiceRequestExtra>();
 
 		for (int i = 0; i < extras.length; i++) {
-			System.out.println(extras[i]);
 			ServiceRequestExtra serviceRequestExtra = new ServiceRequestExtra();
 			serviceRequestExtra.setServiceRequestId(servicereq);
 			serviceRequestExtra.setServiceExtra(extras[i]);
@@ -174,9 +161,10 @@ public class BookNowController {
 		}
 
 		if (servicereq != 0 && address != 0) {
+			
 			String subject = "New Service Request!";
 			String from = "helperland.hetvee@gmail.com";
-			String message = "Service Request Details: " + "\n\n" + "Service Request Id: " + servicereq + "\n"
+			String message = "Service Request Details: " + "\n\n" + "Service Request Id: 27" + servicereq + "\n"
 					+ "Service Request Date: " + ServiceStartDate + "\n" + "Service Request Time: " + ServiceStartTime + "\n"
 					+ "Total Hours: " + ExtraHours + "\n" + "Comments: " + Comments + "\n"
 					+ "Address: " + getaddress.getAddressLine1() + ", " + getaddress.getAddressLine2() + ", " + getaddress.getCity()

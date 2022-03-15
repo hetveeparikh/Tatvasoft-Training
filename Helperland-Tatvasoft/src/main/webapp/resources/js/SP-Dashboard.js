@@ -9,20 +9,6 @@ function logout() {
 	alert("You are successfully logged out!");
 }
 
-$(document).ready(function() {
-	$("#dashboard").DataTable({
-		dom: '<"top">rt<"bottom"lip><"clear">',
-		responsive: true,
-		aaSorting: [],
-		columnDefs: [
-			{
-				orderable: false,
-				targets: 4,
-			},
-		],
-	});
-});
-
 function clicksp(evt, tabName) {
 	var i, tabcontent, tablinks;
 	tabcontent = document.getElementsByClassName("tabcontent");

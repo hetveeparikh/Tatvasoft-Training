@@ -26,7 +26,6 @@ public class ServiceRequestAddressDao {
 
 		String sql = "select * from useraddress where AddressId=?";
 		UserAddress userAddress = template.queryForObject(sql, new UserAddressMapper(), new Object[] { addressId });
-		System.out.println(userAddress + " addresss");
 		return userAddress;
 	}
 }

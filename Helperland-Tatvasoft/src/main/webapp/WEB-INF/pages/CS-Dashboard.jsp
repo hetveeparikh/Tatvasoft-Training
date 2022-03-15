@@ -49,9 +49,9 @@
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto">
-						<li class="nav-item">
-							<div class="bookrect text-center">
-								<a class="nav-link book align-items-center" href="BookNow">Book
+						<li class="nav-item linkbook">
+							<div class="text-center">
+								<a class="nav-link book1 align-items-center" href="BookNow">Book
 									Now</a>
 							</div>
 						</li>
@@ -82,7 +82,7 @@
 						</a>
 							<ul class="dropdown-menu dropdown-menu-end"
 								aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="#" onclick="clickcust(event, 'custdashboard')">Dashboard</a></li>
 								<li><a class="dropdown-item" href="#"
 									onclick="clickcust(event, 'custsettings')">Settings</a></li>
 								<li><a class="dropdown-item" href="logout"
@@ -93,7 +93,7 @@
 			</div>
 
 		</nav>
-
+		
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<a class="active tablinks"
@@ -113,7 +113,7 @@
 						onclick="clickcust(event, 'custdashboard')">Dashboard</a></li>
 					<li><a class="dropdown-item tablinks" href="#"
 						onclick="clickcust(event, 'custsettings')">Settings</a></li>
-					<li><a class="dropdown-item" href="logout">Log out</a></li>
+					<li><a class="dropdown-item" href="logout" onclick="logout()"> Log out</a></li>
 				</ul></li>
 		</div>
 
@@ -122,7 +122,7 @@
 	</header>
 
 	<section id="welcomecs">
-		<span class="Welcome-Gaurang wc"> Welcome <span class="Gaurang">${settingsfirstname }!</span>
+		<span class="Welcome-Gaurang wc"> Welcome <span class="Gaurang" id="bannername">${settingsfirstname }</span>!
 		</span>
 		<div class="l1"></div>
 	</section>
@@ -131,11 +131,12 @@
 
 		<div class="sidebar col-lg-3 offset-lg-2 ">
 			<a href="#" class="tablinks active" id="defaultOpen"
-				onclick="clickcust(event, 'custdashboard')">Dashboard</a> <a
-				href="#" class="tablinks " id="historytab"
-				onclick="clickcust(event, 'custrequests')">Service History</a> <a
-				href="#">Service Schedule</a> <a href="#">Favourite Pros</a> <a
-				href="#">Invoices</a> <a href="#">Notifications</a>
+				onclick="clickcust(event, 'custdashboard')">Dashboard</a> 
+			<a href="#" class="tablinks " id="historytab"
+				onclick="clickcust(event, 'custrequests')">Service History</a> 
+			<a href="#">Service Schedule</a> <a href="#">Favourite Pros</a> 
+			<a href="#">Invoices</a> 
+			<a href="#">Notifications</a>
 		</div>
 
 		<div id="custdashboard" class="tabcontent col-lg-7">
@@ -301,13 +302,13 @@
 							id="detailsLastname" required value=${settingslastname }>
 					</div>
 					<div class="col-sm-4">
-						<label>Email Address</label> <input type="text" disabled
+						<label>Email Address</label> <input type="email" disabled
 							class="setinput" id="detailsEmail" value=${settingsemail }>
 					</div>
 					<div class="col-sm-4">
 						<label>Mobile Number</label>
 						<div class="d-flex">
-							<span class="d-flex align-items-center numset">+91</span> <input
+							<span class="d-flex align-items-center numset" disabled>+91</span> <input
 								type="text" class="setinput" id="detailsMobile" required
 								value=${settingsmobile }>
 						</div>
@@ -589,7 +590,7 @@
 
 		</div>
 		
-		<!-- request modal -->
+		<!-- reschedule modal -->
 		
 		<div class="modal fade" id="reschedulemodal">
 			<div class="modal-dialog modal-dialog-centered">
@@ -636,6 +637,8 @@
 			</div>
 		</div>
 		
+		<!-- Cancel Modal -->
+		
 		<div class="modal fade" id="cancelmodal">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
@@ -663,6 +666,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Details Modal -->
 
 		<div class="modal fade" id="DetailsModal">
 			<div class="modal-dialog  modal-dialog-centered">
@@ -692,6 +697,87 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- Rating Modal -->
+		
+		<div class="modal fade" id="ratingmodal">
+	        <div class="modal-dialog modal-dialog-centered">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                	 <h4>Rate your Service Provider</h4>
+	                    <!-- <div class="d-flex">
+	                        <img src="avatar-hat.png">
+	                        <div>
+	                            <h5 class="modal-title" id="ratingspname"></h5>
+	                            <div id="rating-form" id="ratingsp"></div>
+	                        </div>
+	                    </div> -->
+	                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	                </div>
+	                <div class="modal-body" >
+	                    
+	                    <form id="ratingform">
+		                    <div>
+		                        <h5 class="d-flex align-items-center">On time arrival</h5>
+		                        <div id="rating-form3">
+		                            <span class="rating-star3">
+		                                <input type="radio" name="rating3" value="5"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating3" value="4"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating3" value="3"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating3" value="2"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating3" value="1"><span class="star"></span>
+		                            </span>
+		                        </div>
+		                    </div>
+		                    <br>
+		                    <div>
+		                        <h5 class="d-flex align-items-center">Friendly</h5>
+		                        <div id="rating-form1">
+		                            <span class="rating-star1">
+		                                <input type="radio" name="rating1" value="5"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating1" value="4"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating1" value="3"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating1" value="2"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating1" value="1"><span class="star"></span>
+		                            </span>
+		                        </div>
+		                    </div>
+		                    <br>
+		                    <div>
+		                        <h5 class="d-flex align-items-center">Quality Of Service</h5>
+		                        <div id="rating-form2">
+		                            <span class="rating-star2">
+		                                <input type="radio" name="rating2" value="5"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating2" value="4"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating2" value="3"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating2" value="2"><span class="star"></span>
+		    
+		                                <input type="radio" name="rating2" value="1"><span class="star"></span>
+		                            </span>
+		                        </div>
+		                    </div>
+		                    <br>
+		                    <h5>Feedback on service provider</h5>
+		                    <textarea rows="2" style="width: 100%;" id="ratingcomments"></textarea>
+		                    
+		                    <button type="submit" class="saveadd" data-bs-dismiss="modal"> Submit</button>
+							<input type="button" class="canceladd" value="Close" data-bs-dismiss="modal" />
+		            	</form>
+		            </div>
+	            </div>
+	        </div>
+	    </div>
 		
 
 	</section>
@@ -733,7 +819,7 @@
 				<div class="Rectangle-12-copy-2"></div>
 
 				<span class="-Helperland-All-rights-reserved-Terms-and-Conditions">
-					Â©2022 Helperland<span class="text-style-1">.</span> All rights
+					©2022 Helperland<span class="text-style-1">.</span> All rights
 					reserved.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
 					class="terms text-decoration-none"> Terms and Conditions </a>&nbsp;
 					| &nbsp; <a href="#" class="terms text-decoration-none">Privacy
@@ -742,11 +828,6 @@
 			</div>
 		</div>
 	</footer>
-
-
-	<script type="text/javascript">
-		
-	</script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -928,9 +1009,36 @@
 			success: function(response) {
 				console.log("SUCCESS: ", response);
 
-				var result = '<table class="table display nowrap" id="exampledash" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Service Provider</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Actions</span></div></th></tr></thead>'
+				var result = '<table class="table display nowrap" id="exampledash" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Service Provider</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Actions</span></div></th></tr></thead>';
 				result += "<tbody>";
 				$.each(response, function(k, v) {
+					
+					var fname="";
+					var lname="";
+					var profile="";
+					
+					if(v.serviceProviderId==0){
+						fname="";
+						lname="";
+						profile="";
+					}
+					else{
+						fname=v.customer.firstName;
+						lname=v.customer.lastName;
+						profile='<img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-'+v.customer.userProfilePicture+'.png" class="topi">';
+					}
+					
+					var rate="";
+					if(v.serviceProviderId!=0){
+						avgrate = Math.round((v.rating.avgrating) * 100) / 100;
+						rate = "Ratings: "+ avgrate +"/5";
+					}
+					else{
+						rate = "";
+					}
+					
+					//var ratingavg = Math.round(rate);
+					
 					result += "<tr>";
 					result += '<td class="align-middle"><span class="csid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 					result += '<td class="align-middle">';
@@ -939,19 +1047,19 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ' ) </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
 					result += '<td class="align-middle">';
 					result += '<div class="d-flex topidiv">';
 					result += '<div class="topicircle text-center">';
-					result += '<img src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png" class="topi">';
+					result += profile;
 					result += '</div>';
 					result += '<div class="d-flex flex-column">';
-					result += '<span class="csname">Lyum Watson</span>';
+					result += '<span class="csname">'+fname+' '+lname+'</span>';
 					result += '<div class="d-flex">';
-					result += '<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star unchecked"></span> <span class="num4">4</span>';
+					result += '<span class="csname">'+rate+'</span>';
 					result += '</div>';
 					result += '</div>';
 					result += '</div>';
@@ -1008,14 +1116,14 @@
 				url: "/Helperland-Tatvasoft/rescheduleRequests/" +$("#tomorrowdate").val() + "," + $("#updatedtime").val() + "," + v,
 				success: function(data) {
 					console.log("SUCCESS: resch", data);
-					
-					if(data==0){
+					custdashboard();
+					/* if(data==0){
 						alert("Not rescheduled!");
 					}
 					else{
-						custdashboard();
+						
 						alert("Rescheduled successfully! \n\nServiceId : 27" + v);
-					}
+					} */
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);
@@ -1114,15 +1222,41 @@
 					$.each(response, function(k, v) {
 						
 						var status="";
+						var disabledRate="";
 						if(v.status=="Completed"){
 							status='<button class="greenbtn">Completed</button>';
-							//$("#statusbtn").css("background-color","pink");
+							disabledRate="";
 						}
 						else{
 							status='<button class="pinkbtn">Cancelled</button>';
-							//$("#statusbtn").css("background-color","green");
+							disabledRate="disabled";
 						}
-												
+						
+						
+						var fname="";
+						var lname="";
+						var profile="";
+						
+						if(v.serviceProviderId==0){
+							fname="";
+							lname="";
+							profile="";
+						}
+						else{
+							fname=v.customer.firstName;
+							lname=v.customer.lastName;
+							profile='<img src="<%=request.getContextPath()%>/resources/img/img-Settings/avatar-'+v.customer.userProfilePicture+'.png" class="topi">';
+						}
+						
+						var rate="";
+						if(v.serviceProviderId!=0){
+							avgrate = Math.round((v.rating.avgrating) * 100) / 100;
+							rate = "Ratings: "+ avgrate +"/5";
+						}
+						else{
+							rate = "";
+						}
+						
 						result += "<tr>";
 						result += '<td class="align-middle"><span class="csid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 						result += '<td class="align-middle">';
@@ -1131,19 +1265,19 @@
 						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 						result += '</div>';
 						result += '<div class="d-flex ">';
-						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ' ) </span>';
+						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
 						result += '</div>';
 						result += '</div>';
 						result += "</td>";
 						result += '<td class="align-middle">';
 						result += '<div class="d-flex ">';
 						result += '<div class="topicircle text-center">';
-						result += '<img src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png" class="topi">';
+						result += profile;
 						result += '</div>';
 						result += '<div class="d-flex flex-column">';
-						result += '<span class="csname">Lyum Watson</span>';
+						result += '<span class="csname">'+fname+' '+lname+'</span>';
 						result += '<div class="d-flex">';
-						result += '<span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span> <span class="fa fa-star unchecked"></span> <span class="num4">4</span>';
+						result += '<span class="csname">'+rate+'</span>';
 						result += '</div>';
 						result += '</div>';
 						result += '</div>';
@@ -1159,7 +1293,7 @@
 						result += '<div class="statusdiv">'+status+'</div>';
 						result += '</td>';
 						result += '<td class="align-middle">';
-						result += '<button class="rate">Rate SP</button>';
+						result += '<button class="rate" '+ disabledRate +' data-bs-toggle="modal" data-bs-target="#ratingmodal" onclick="ratingsmodal('+ v.serviceId +','+ v.serviceProviderId +')">Rate SP</button>';
 						result += '</td>';
 						result += "</tr>";
 					});
@@ -1181,6 +1315,54 @@
 		$(document).on('click','#historytab', function(){
 			custhistory();
 		});
+		
+		$(document).on('click','#historynav', function(){
+			custhistory();
+		});
+		
+		/* Ratingsss */
+		
+		var r1="";
+        $('#rating-form1').on('change', '[name="rating1"]', function () {
+            r1 = $('[name="rating1"]:checked').val();
+        });
+
+        var r2="";
+        $('#rating-form2').on('change', '[name="rating2"]', function () {
+            r2 = $('[name="rating2"]:checked').val();
+        });
+
+        var r3="";
+        $('#rating-form3').on('change', '[name="rating3"]', function () {
+            r3 = $('[name="rating3"]:checked').val();
+        });
+		
+		function ratingsmodal(v,k){
+			jQuery(document).ready(function($) {
+				$("#ratingform").submit(function(event) {
+					event.preventDefault();
+					ratings(v,k);
+					console.log(v + k);
+				});
+			});
+		}
+		function ratings(v,k) {
+			$.ajax({
+				type: "GET",
+				url: "/Helperland-Tatvasoft/ratingsp/"  + r2 + "," + r3 + "," + r1 + "," + v + "," + k +"," + $('#ratingcomments').val() ,
+				success: function(data) {
+					console.log("SUCCESS: ratings given", data);
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
+		
+		
 		
 		
 	</script>

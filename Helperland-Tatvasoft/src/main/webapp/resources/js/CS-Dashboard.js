@@ -65,6 +65,8 @@ function updateDetails() {
 			+ "," + $("#detailsBdate").val() + "," + $("#detailsBMonth").val() + "," + $("#detailsBYear").val() + "," + $("#detailsLanguage").val(),
 		success: function(data) {
 			console.log("SUCCESS: ", data);
+			$("#bannername").html($("#detailsFirstname").val());
+			alert("Details updated successfully!");
 		},
 		error: function(e) {
 			console.log("ERROR: ", e);
@@ -94,6 +96,9 @@ function updatePassword() {
 				alert("Please enter correct Old Password!");
 			}
 			else {
+				$("#settingsoldpassword").val('');
+				$("#settingsnewpassword").val('');
+				$("#settingsconfirmpassword").val('');
 				alert("Password Changed Successfully!");
 			}
 		},
@@ -105,3 +110,4 @@ function updatePassword() {
 		}
 	});
 }
+

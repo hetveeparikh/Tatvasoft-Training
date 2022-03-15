@@ -15,9 +15,11 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 import helperlanduser.model.Customer;
+import helperlanduser.model.Rating;
 import helperlanduser.model.ServiceRequest;
 import helperlanduser.model.ServiceRequestAddress;
 import helperlanduser.model.ServiceRequestExtra;
+import helperlanduser.model.UserAddress;
 
 public class ServiceProviderDao {
 
@@ -25,6 +27,17 @@ public class ServiceProviderDao {
 
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
+	}
+
+	public int addspAddress(UserAddress address) {
+
+		String sql = "insert into useraddress(AddressLine1,AddressLine2,PostalCode,City,Mobile,UserId,IsDefault,IsDeleted,Email) values(?,?,?,?,?,?,?,?,?)";
+		int add = template.update(sql,
+				new Object[] { address.getAddressLine1(), address.getAddressLine2(), address.getPostalCode(),
+						address.getCity(), address.getMobile(), address.getUserId(), 1, 1, address.getEmail() });
+
+		return add;
+
 	}
 
 	public List<ServiceRequest> servicedash() {
@@ -68,7 +81,7 @@ public class ServiceProviderDao {
 					customer.setMobile(rs.getString("Mobile"));
 					customer.setUserTypeId(rs.getInt("UserTypeId"));
 					customer.setUserId(rs.getInt("UserId"));
-					customer.setCreatedDate(rs.getDate("CreatedDate"));
+					customer.setCreatedDate(rs.getString("CreatedDate"));
 
 					request.setServiceRequestAddress(address);
 					request.setCustomer(customer);
@@ -105,13 +118,11 @@ public class ServiceProviderDao {
 		// query for service request
 		String reqsql = "select * from servicerequest where ServiceId='" + serviceid + "' ";
 		ServiceRequest serviceRequest = template.queryForObject(reqsql, new spServiceRequestDetailsMapper());
-		System.out.println(serviceRequest + " service");
 
 		// query for service request address
 		String reqaddresssql = "select * from servicerequestaddress where ServiceRequestId='" + serviceid + "' ";
 		ServiceRequestAddress serviceRequestAddress = template.queryForObject(reqaddresssql,
 				new spServiceRequestAddressMapper());
-		System.out.println(serviceRequestAddress + " addresss");
 
 		// query for extra services
 		String extrasql = "select * from servicerequestextra where ServiceRequestId='" + serviceid + "' ";
@@ -170,7 +181,7 @@ public class ServiceProviderDao {
 					customer.setMobile(rs.getString("Mobile"));
 					customer.setUserTypeId(rs.getInt("UserTypeId"));
 					customer.setUserId(rs.getInt("UserId"));
-					customer.setCreatedDate(rs.getDate("CreatedDate"));
+					customer.setCreatedDate(rs.getString("CreatedDate"));
 
 					request.setServiceRequestAddress(address);
 					request.setCustomer(customer);
@@ -224,7 +235,7 @@ public class ServiceProviderDao {
 					customer.setMobile(rs.getString("Mobile"));
 					customer.setUserTypeId(rs.getInt("UserTypeId"));
 					customer.setUserId(rs.getInt("UserId"));
-					customer.setCreatedDate(rs.getDate("CreatedDate"));
+					customer.setCreatedDate(rs.getString("CreatedDate"));
 
 					request.setServiceRequestAddress(address);
 					request.setCustomer(customer);
@@ -240,17 +251,68 @@ public class ServiceProviderDao {
 	public List<Customer> getOtherSP(int id) {
 		String sql = "select Email from user where UserId not in ('" + id + "') and UserTypeId = 3";
 		List<Customer> splist = template.query(sql, new CustomerSpMapper());
-		String[] allemailaddress = {};
-		System.out.println(allemailaddress + " other sp");
 		return splist;
 	}
 
 	public String spEmail(int serviceid) {
 		String sql = "select Email from servicerequest inner join user on servicerequest.UserId=user.UserId where ServiceRequestId=? ";
 		String email = template.queryForObject(sql, String.class, new Object[] { serviceid });
-		System.out.println(email);
 		return email;
 	}
+	
+	public List<Rating> ratings(int id) {
+		String sql = "select * from rating inner join user on rating.RatingFrom=user.UserId inner join servicerequest sr on rating.ServiceRequestId=sr.ServiceRequestId where rating.RatingTo ='"+ id +"' ";
+
+		return template.query(sql, new ResultSetExtractor<List<Rating>>() {
+			public List<Rating> extractData(ResultSet rs) throws SQLException, DataAccessException {
+
+				List<Rating> list = new ArrayList<Rating>();
+
+				while (rs.next()) {
+					
+					Rating rating = new Rating();
+					
+					rating.setComments(rs.getString("Comments"));
+					rating.setFriendly(rs.getInt("Friendly"));
+					rating.setOnTimeArrival(rs.getInt("OnTimeArrival"));
+					rating.setQualityOfService(rs.getInt("QualityOfService"));
+					rating.setRatings(rs.getInt("Ratings"));
+					rating.setRatingFrom(rs.getInt("RatingFrom"));
+					rating.setRatingTo(rs.getInt("RatingTo"));
+					rating.setServiceRequestId(rs.getInt("ServiceRequestId"));
+					rating.setRatingDate(rs.getDate("RatingDate"));
+
+					ServiceRequest request = new ServiceRequest();
+
+					request.setServiceId(rs.getInt("ServiceId"));
+					request.setServiceStartDate(rs.getString("ServiceStartDate"));
+					request.setServiceStartTime(rs.getString("ServiceStartTime"));
+					request.setSubTotal(rs.getFloat("SubTotal"));
+					request.setStatus(rs.getString("Status"));
+					request.setExtraHours(rs.getFloat("ExtraHours"));
+
+					Customer customer = new Customer();
+
+					customer.setFirstName(rs.getString("FirstName"));
+					customer.setLastName(rs.getString("LastName"));
+					customer.setPassword(rs.getString("Password"));
+					customer.setLastName(rs.getString("Lastname"));
+					customer.setEmail(rs.getString("Email"));
+					customer.setMobile(rs.getString("Mobile"));
+					customer.setUserTypeId(rs.getInt("UserTypeId"));
+					customer.setUserId(rs.getInt("UserId"));
+					customer.setCreatedDate(rs.getString("CreatedDate"));
+
+					rating.setCustomer(customer);
+					rating.setServiceRequest(request);
+
+					list.add(rating);
+
+				}
+				return list;
+			}
+		});
+	} 
 
 }
 

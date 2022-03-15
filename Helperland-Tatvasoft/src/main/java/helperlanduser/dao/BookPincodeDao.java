@@ -30,8 +30,6 @@ public class BookPincodeDao {
 
 		String sql = "select * from user where user.UserTypeId = 3 ";
 		List<Customer> splist = template.query(sql, new CustomerSpMapper());
-		String[] allemailaddress = {};
-		System.out.println(allemailaddress);
 		return splist;
 	}
 }

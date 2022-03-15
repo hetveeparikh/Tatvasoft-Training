@@ -58,13 +58,13 @@ function secondtab() {
 }
 
 function thirdtab() {
-	
+
 	var x = document.forms["secondform"]["TomorrowDate"].value;
 	if (x == "" || x == null) {
 		alert("Please select date!");
 		return false;
 	}
-	
+
 	first.style.display = "none";
 	second.style.display = "none";
 	third.style.display = "block";
@@ -82,7 +82,7 @@ function thirdtab() {
 		url: "/Helperland-Tatvasoft/readaddress/",
 		success: function(response) {
 			console.log("SUCCESS: ", response);
-		
+
 			var result = "<thead><tr><th></th><th></th><th></th></tr></thead>"
 			result += "<tbody>";
 			$.each(response, function(k, v) {
@@ -118,16 +118,32 @@ var year = currentDate.getFullYear()
 var finaldate = document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;*/
 
 
+$(document).ready(function() {
+	var dtToday = new Date();
+
+	var month = dtToday.getMonth() + 1;
+	var day = dtToday.getDate() + 1;
+	var year = dtToday.getFullYear();
+	if (month < 10)
+		month = '0' + month.toString();
+	if (day < 10)
+		day = '0' + day.toString();
+
+	var maxDate = year + '-' + month + '-' + day;
+	$('#tomorrowdate').attr('min', maxDate);
+});
+
+
 $("#thirdcontinue").click(function() {
 	console.log($('#addressradio:checked').val());
 	console.log($('#tomorrowdate').val());
 	console.log($('#starttime').val());
-	console.log( $('#petsathome').is(':checked'));
+	console.log($('#petsathome').is(':checked'));
 });
 
 
 function fourthtab() {
-	
+
 	first.style.display = "none";
 	second.style.display = "none";
 	third.style.display = "none";

@@ -8,7 +8,6 @@ import helperlanduser.model.Login;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.List;
 
 public class CustomerDao {
@@ -19,26 +18,19 @@ public class CustomerDao {
 	}
 
 	public void save(Customer c) {
-
-		Date date=new Date();
-		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId,UserProfilePicture,IsApproved,IsDeleted,IsActive) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		template.update(sql, new Object[] { c.getUserId(), c.getFirstName(), c.getLastName(), c.getEmail(),
-				c.getPassword(), c.getMobile(), date, c.getUserTypeId()});
+				c.getPassword(), c.getMobile(), c.getCreatedDate(), c.getUserTypeId(), c.getUserProfilePicture(),
+				c.getIsApproved(), c.getIsDeleted(), c.getIsActive()});
 	}
 	
 	public Customer validEmail(Customer c) {
-		
 		String sql = "select * from user where Email='" + c.getEmail() + "'";
-
 		List<Customer> customers = template.query(sql, new CustomerUserMapper());
-
-		return customers.size() > 0 ? customers.get(0) : null;		
-		
+		return customers.size() > 0 ? customers.get(0) : null;	
 	}
 	
-	public Customer updatePassword(Customer c){  
-		System.out.println(c.getPassword()+c.getEmail());
-		
+	public Customer updatePassword(Customer c){  		
 	    String query="update user set Password='"+c.getPassword()+"' where Email='"+c.getEmail()+"' ";  
 	    template.update(query);
 		return c;  
@@ -47,11 +39,8 @@ public class CustomerDao {
 	
 	public Customer validateUser(Login login) {
 		
-		String sql = "select * from user where Email='" + login.getEmail() + "' and Password='" + login.getPassword()
-				+ "'";
-
+		String sql = "select * from user where IsApproved=1 and IsDeleted=0 and Email='" + login.getEmail() + "' and Password='" + login.getPassword() + "'";
 		List<Customer> customers = template.query(sql, new CustomerUserMapper());
-
 		return customers.size() > 0 ? customers.get(0) : null;
 	}
 }
@@ -68,7 +57,11 @@ class CustomerUserMapper implements RowMapper<Customer> {
 	    customer.setMobile(rs.getString("Mobile"));
 	    customer.setUserTypeId(rs.getInt("UserTypeId"));
 	    customer.setUserId(rs.getInt("UserId"));
-	    customer.setCreatedDate(rs.getDate("CreatedDate"));
+	    customer.setCreatedDate(rs.getString("CreatedDate"));
+	    customer.setUserProfilePicture(rs.getString("UserProfilePicture"));
+	    customer.setIsActive(rs.getInt("IsActive"));
+	    customer.setIsApproved(rs.getInt("IsApproved"));
+	    customer.setIsDeleted(rs.getInt("IsDeleted"));
 
 	    return customer;
 	  }

@@ -1,16 +1,15 @@
 package com.ctrl;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -26,7 +25,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import helperlanduser.dao.SPSettingsDao;
 import helperlanduser.dao.ServiceProviderDao;
 import helperlanduser.model.Customer;
+import helperlanduser.model.Rating;
 import helperlanduser.model.ServiceRequest;
+import helperlanduser.model.UserAddress;
 
 @Controller
 public class ServiceProviderController {
@@ -39,46 +40,58 @@ public class ServiceProviderController {
 
 	@RequestMapping("/ServiceProviderDashboard")
 	public String spdash(Model model, HttpServletRequest request) {
-		
+
 		HttpSession session = request.getSession();
-		System.out.println(session.getAttribute("userid"));
-		System.out.println(session.getAttribute("usertypeid"));
-		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
-		model.addAttribute("settingslastname", session.getAttribute("lastname"));
-		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
-		model.addAttribute("settingsemail", session.getAttribute("custemail"));
 
-		Object temp = session.getAttribute("usertypeid");
-		String str = temp.toString();
+		if (session.getAttribute("userid") != null && (session.getAttribute("usertypeid")+"").equals("3")) {
+		
+			model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
+			model.addAttribute("settingslastname", session.getAttribute("lastname"));
+			model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
+			model.addAttribute("settingsemail", session.getAttribute("custemail"));
 
-		if (session.getAttribute("userid") != null && str.equals("3")) {
-			List<ServiceRequest> spServiceRequests = serviceProviderDao.servicedash();
-			model.addAttribute("sprequests", spServiceRequests);
-			System.out.println("in dashboard controller");
+			
+			UserAddress spaddress = spSettingsDao.readSpAddress(""+session.getAttribute("userid"));
+			
+			model.addAttribute("settingsaddline1", spaddress.getAddressLine1());
+			model.addAttribute("settingsaddline2", spaddress.getAddressLine2());
+			model.addAttribute("settingscity", spaddress.getCity());
+			model.addAttribute("settingspostalcode", spaddress.getPostalCode());
+			
+			model.addAttribute("settingsavatar", session.getAttribute("spavatar"));
 			return "SP - Dashboard";
 		}
 
 		else {
-			request.setAttribute("notloggedin", "alertlogin");
+			model.addAttribute("plsbook", "Please Login First!");
+			model.addAttribute("plsbookdiv", "style='display: block !important';");
 			return "Homepage";
 		}
+	}
+	
+	@RequestMapping("/spDashboard")
+	public @ResponseBody List<ServiceRequest> spdashboard(HttpServletRequest request, Model model,
+			ServiceRequest serviceRequest) {
+		HttpSession session = request.getSession();
+		String userid = "" + session.getAttribute("userid");
+		int id = Integer.parseInt(userid);
+		serviceRequest.setUserId(id);
+		List<ServiceRequest> dashlist = serviceProviderDao.servicedash();
+		return dashlist;
 	}
 	
 	@RequestMapping(value = "/spdetailsmodal/{serviceid}", method = RequestMethod.GET)
 	public @ResponseBody HashMap<String, Object> details(@PathVariable("serviceid") String serviceid,
 			 HttpServletRequest request, ServiceRequest serviceRequest ,
 			Model model) throws Exception{
-
-		
-		System.out.println(serviceid+"details con");
 		
 		HashMap<String, Object> hashModal =  serviceProviderDao.spdetailsmodal(serviceid);
 		
 		return hashModal;
 	}
 
-	@RequestMapping(value = "/acceptrequest/{serviceid}", method = RequestMethod.GET)
-	public @ResponseBody int rescheduleRequest(@PathVariable("serviceid") String serviceid,
+	@RequestMapping(value = "/acceptsprequest/{serviceid}", method = RequestMethod.GET)
+	public @ResponseBody int acceptrequest(@PathVariable("serviceid") String serviceid,
 			 HttpServletRequest request, ServiceRequest serviceRequest ,
 			Model model) {
 
@@ -86,7 +99,6 @@ public class ServiceProviderController {
 		String str = "" + session.getAttribute("userid");
 		int temp = Integer.parseInt(str);
 		serviceRequest.setUserId(temp);
-		System.out.println("req con");
 		int accept = serviceProviderDao.acceptrequest(str,serviceid);
 		
 		if(accept == 1) {
@@ -100,13 +112,11 @@ public class ServiceProviderController {
 			sendServiceEmail(message, subject, email, from);
 			
 			List<Customer> splist = serviceProviderDao.getOtherSP(temp);
-			Iterator<Customer> iterator = splist.iterator();
-			while (iterator.hasNext()) {
-				String to = iterator.next().getEmail();
-				String message1="Service Request with Id 27"+ serviceid+" has been accepted.";
-				String subject1="Service Request Has Been Accepted";
-				sendServiceEmail(message1, subject1, to, from);
-			}
+			
+			String toemail=splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
+			String message1="Service Request with Id 27"+ serviceid+" has been accepted.";
+			String subject1="Service Request Has Been Accepted";
+			sendServiceEmail(message1, subject1, toemail, from);
 		}
 		
 		return accept;
@@ -131,13 +141,11 @@ public class ServiceProviderController {
 			sendServiceEmail(message, subject, email, from);
 			
 			List<Customer> splist = serviceProviderDao.getOtherSP(temp);
-			Iterator<Customer> iterator = splist.iterator();
-			while (iterator.hasNext()) {
-				String to = iterator.next().getEmail();
-				String message1="The Service Request with Id 27"+ serviceid+" is available again.";
-				String subject1="Service Request Now Available Again!";
-				sendServiceEmail(message1, subject1, to, from);
-			}
+			
+			String toemail=splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
+			String message1="The Service Request with Id 27"+ serviceid+" is available again.";
+			String subject1="Service Request Now Available Again!";
+			sendServiceEmail(message1, subject1, toemail, from);
 		}
 				
 		return cancel;
@@ -172,7 +180,6 @@ public class ServiceProviderController {
 		
 		List<ServiceRequest> services =  serviceProviderDao.upcomingservices(id);
 		
-		System.out.println("in upcoming controller");
 		return services;
 	}
 	
@@ -186,8 +193,20 @@ public class ServiceProviderController {
 		
 		List<ServiceRequest> history =  serviceProviderDao.servicehistory(id);
 		
-		System.out.println("in history controller");
 		return history;
+	}
+	
+	@RequestMapping("/spratings")
+	public @ResponseBody List<Rating> sprating(HttpServletRequest request, Model model,
+			ServiceRequest serviceRequest) {
+		HttpSession session = request.getSession();
+		String userid = "" + session.getAttribute("userid");
+		int id = Integer.parseInt(userid);
+		serviceRequest.setUserId(id);
+		
+		List<Rating> ratings =  serviceProviderDao.ratings(id);
+		
+		return ratings;
 	}
 	
 	public void sendServiceEmail(String message, String subject, String to, String from) {
@@ -218,7 +237,7 @@ public class ServiceProviderController {
 
 			m.setFrom(from);
 
-			m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			m.addRecipients(Message.RecipientType.TO, to);
 
 			m.setSubject(subject);
 
@@ -246,6 +265,48 @@ public class ServiceProviderController {
 		int checkpassword = spSettingsDao.updatePassword(customer, OldPassword);
 
 		return checkpassword;
+	}
+	
+	@RequestMapping(value = "/updateSPDetails/{FirstName},{LastName},{Email},{Mobile},{Day},{Month},{Year},{Nationality},{Gender},{AddressLine1},{AddressLine2},{PostalCode},{City},{Avatar}", method = RequestMethod.GET)
+	public @ResponseBody void settingsCustDetails(@PathVariable("FirstName") String FirstName,
+			@PathVariable("LastName") String LastName, @PathVariable("Email") String Email,
+			@PathVariable("Mobile") String Mobile, @PathVariable("Day") String Day, @PathVariable("Month") String Month,
+			@PathVariable("Year") String Year, @PathVariable("Nationality") String Nationality,
+			@PathVariable("Gender") String Gender,@PathVariable("AddressLine1") String AddressLine1,
+			@PathVariable("AddressLine2") String AddressLine2, @PathVariable("PostalCode") String postalcode,
+			@PathVariable("City") String City, @PathVariable("Avatar") String Avatar, HttpServletRequest request,
+			Customer customer, Model model, UserAddress userAddress) {
+
+		HttpSession session = request.getSession();
+		String str = "" + session.getAttribute("userid");
+		int temp = Integer.parseInt(str);
+		customer.setUserId(temp);
+		userAddress.setUserId(temp);
+		userAddress.setEmail("" + session.getAttribute("custemail"));
+
+		String DateOfBirth = "" + Day + " " + Month + " " + Year;
+		customer.setDateOfBirth(DateOfBirth);
+		customer.setUserProfilePicture(Avatar);
+		
+		session.setAttribute("firstname", FirstName );
+		session.setAttribute("lastname", LastName);
+		session.setAttribute("custmobile", Mobile);
+		session.setAttribute("custemail", Email);
+		session.setAttribute("spavatar", Avatar);
+		
+		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
+		model.addAttribute("settingslastname", session.getAttribute("lastname"));
+		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
+		model.addAttribute("settingsemail", session.getAttribute("custemail"));
+		model.addAttribute("settingsaddline1", AddressLine1);
+		model.addAttribute("settingsaddline2", AddressLine2);
+		model.addAttribute("settingscity", City);
+		model.addAttribute("settingspostalcode", postalcode);
+		model.addAttribute("settingsavatar", Avatar);
+		
+		spSettingsDao.updateSp(customer);
+		spSettingsDao.updateSpAddressSettings(userAddress);
+		
 	}
 	
 }
