@@ -43,11 +43,8 @@ public class SPSettingsDao {
 	}
 
 	public UserAddress readSpAddress(String id) {
-
 		String sql = "select * from useraddress where UserId=?";
-
 		UserAddress address = template.queryForObject(sql, new UserAddressDaoMapper(), new Object[] { id });
-
 		return address;
 	}
 

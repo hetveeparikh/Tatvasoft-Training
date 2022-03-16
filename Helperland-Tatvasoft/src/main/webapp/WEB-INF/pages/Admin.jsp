@@ -253,7 +253,8 @@
 					<!-- Modal body -->
 					<div class="modal-body">
 						<span class="newdate">Select new date and time</span>
-						<div class="d-flex">
+						<div class="d-flex justify-content-center">
+							
 							<form id="rescheduleform" name="rescheduleform">
 								<div class="d-flex">
 									<div class="d-flex">
@@ -267,11 +268,46 @@
 											<option value="9:00">9:00</option>
 											<option value="9:30">9:30</option>
 										</select>
-										
+									</div>
+									
+									
+								</div>
+								
+								<p class="newaddress">Edit Service Address</p>
+								
+								<div class="d-flex">
+									<div>
+										<span class="addlabel">Address Line 1</span><br>
+										<input type="text" class="street" required
+										name="AddressLine1" id="addline1">
+									</div>
+									<div>
+										<span class="addlabel">Address Line 2</span><br>
+										<input type="text" class="houseno" 
+										name="AddressLine2" id="addline2" required >
 									</div>
 								</div>
-								<div>
-									<button type="submit" class="saveadd" data-bs-dismiss="modal"> Reschedule</button>
+
+								<div class="d-flex">
+									<div>
+										<span class="addlabel">Postal Code</span><br>
+										<input type="text"  class="postal"
+										name="PostalCode" id="addpostalcode" required> 
+									</div>
+									
+									<div>
+										<span class="addlabel">Add City</span><br>
+										<select title="City" class="city" name="City" id="addcity" required>
+											<option value="">Choose your city</option>
+											<option value="A">A</option>
+											<option value="B">B</option>
+											<option value="C">C</option>
+											<option value="D">D</option>
+										</select>
+									</div>
+								</div>
+								<div class="text-center">
+									<button type="submit" class="saveadd"> Reschedule</button>
 									<input type="button" class="canceladd" value="Close"
 										data-bs-dismiss="modal" />
 								</div>
@@ -480,7 +516,7 @@
 					}
 					
 					var editreschedule="";
-					if(v.status!="Completed"){
+					if(v.status=="New" || v.status=="Accepted"){
 						editreschedule='<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#reschedulemodal" onclick="reschedule('+ v.serviceId +')">Edit and Reschedule</a>';
 					}
 					
@@ -492,7 +528,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-ASR/icon-clock.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -501,7 +537,7 @@
 					result += '<span class="david">'+ v.customer.firstName +' '+v.customer.lastName+'</span>';
 					result += '<div class="d-flex">';
 					result += '<img class="ghar" src="<%= request.getContextPath() %>/resources/img/img-US/ghar.png">';
-					result += '<p class="add">'+ v.serviceRequestAddress.addressLine1 +', '+ v.serviceRequestAddress.addressLine2 +'</p>';
+					result += '<p class="add">'+ v.serviceRequestAddress.addressLine1 +', '+ v.serviceRequestAddress.addressLine2 + '<br>' + v.serviceRequestAddress.city +', ' + v.serviceRequestAddress.postalCode +'</p>';
 					result += '</div>';
 					result += '</div>';
 					result += '</td>';
@@ -554,13 +590,41 @@
 		servicerequests();
 	});
 	
+	/* Read Address */
+	
+	
+	
 	
 	/* Reschedule Request */
 	
 	function reschedule(v){
 		
 		jQuery(document).ready(function($) {
+			
+			$.ajax({
+				type: "GET",
+				url: "/Helperland-Tatvasoft/readaddressadmin/" + v ,
+				success: function(data) {
+					console.log("SUCCESS:", data);
+					$('#addline1').val(data.addressLine1);
+					$('#addline2').val(data.addressLine2);
+					$('#addpostalcode').val(data.postalCode);
+					$('#addcity').val(data.city);
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+			
 			$("#rescheduleform").submit(function(event) {
+				var x = document.forms["rescheduleform"]["TomorrowDate"].value;
+				if (x == "" || x == null) {
+					alert("Please select date!");
+					return false;
+				}
 				event.preventDefault();
 				reschedulerequest(v);
 				console.log(v);
@@ -568,12 +632,12 @@
 		});
 	}
 	function reschedulerequest(v) {
-		console.log(document.getElementById("updatedtime").value);
 		$.ajax({
 			type: "GET",
-			url: "/Helperland-Tatvasoft/rescheduleRequestsAdmin/" +$("#tomorrowdate").val() + "," + $("#updatedtime").val() + "," + v,
+			url: "/Helperland-Tatvasoft/rescheduleRequestsAdmin/" +$("#tomorrowdate").val() + "," + $("#updatedtime").val() + "," + v + "," + $("#addline1").val()
+			+ "," + $("#addline2").val() + "," + $("#addpostalcode").val() + "," + $("#addcity").val(),
 			success: function(data) {
-				console.log("SUCCESS: resch", data);
+				console.log("SUCCESS: ", data);
 				servicerequests();
 			},
 			error: function(e) {
@@ -798,6 +862,8 @@
 			}
 		});
 	}
+	
+	
 	
     </script>
 </body>

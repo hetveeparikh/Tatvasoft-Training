@@ -1,21 +1,17 @@
 package com.ctrl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,8 +44,9 @@ public class LoginSignUpController {
 
 		Random random = new Random();
 		customer.setUserId(random.nextInt(10000));
+		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
-		customer.setCreatedDate(date.toString());
+		customer.setCreatedDate(dtf.format(date));
 		customer.setUserProfilePicture("NA");
 		customer.setUserTypeId(2);
 		customer.setIsActive(1);
@@ -65,9 +61,9 @@ public class LoginSignUpController {
 		Random random = new Random();
 		int randomno = random.nextInt(10000);
 		customer.setUserId(randomno);
-		
+		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
-		customer.setCreatedDate(date.toString());
+		customer.setCreatedDate(dtf.format(date));
 		customer.setUserTypeId(3);
 		customer.setUserProfilePicture("car");
 		customer.setIsActive(1);
@@ -139,7 +135,7 @@ public class LoginSignUpController {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("helperland.hetvee@gmail.com", "helperland-22");
+				return new PasswordAuthentication("helperland.hetvee@gmail.com", "");
 			}
 
 		});

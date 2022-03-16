@@ -183,7 +183,7 @@
 														type="text" placeholder="+91" class="pinmodal"
 														name="pincode" disabled /> <input type="text"
 														placeholder="Mobile Number" class="mnomodal" name="Mobile"
-														required />
+														id="Mobile" required />
 												</div>
 												<div>
 													<input type="password" placeholder="Password"
@@ -192,8 +192,11 @@
 														id="ConfirmPassword" name="cpass"
 														class="confirmsignuppass" required />
 												</div>
-												<div style="margin-top: 7px;" class="text-center mb-2"
-													id="CheckPasswordMatch"></div>
+												<div class="text-center mb-2 mt-2" id="Passworddiv"></div>
+
+												<div class="text-center mb-2 mt-2" id="Mobilediv"></div>
+												
+												<div class="text-center mb-2 mt-2" id="CheckPasswordMatch"></div>
 												<div>
 													<input type="checkbox" value="privacy" id="ppcheckbox"
 														required /> <label for="ppcheckbox" class="signuppolicy">I
@@ -360,7 +363,7 @@
 										class="signupemailmodal" name="Email" required /> <input
 										type="text" placeholder="+49" class="pinmodal" name="pincode"
 										disabled /> <input type="text" placeholder="Mobile Number"
-										class="mnomodal" name="Mobile" required />
+										class="mnomodal" id="Mobile1" name="Mobile" required />
 								</div>
 								<div>
 									<input type="password" placeholder="Password"
@@ -369,8 +372,11 @@
 										id="ConfirmPassword1" name="cpass" class="confirmsignuppass"
 										required />
 								</div>
-								<div style="margin-top: 7px;" class="text-center mb-2"
-									id="CheckPasswordMatch1"></div>
+								<div class="text-center mb-2 mt-2" id="Passworddiv1"></div>
+
+								<div class="text-center mb-2 mt-2" id="Mobilediv1"></div>
+
+								<div class="text-center mb-2 mt-2" id="CheckPasswordMatch1"></div>
 								<div>
 									<input type="checkbox" value="privacy" id="ppcheckbox" required />
 									<label for="ppcheckbox" class="signuppolicy">I have
@@ -555,7 +561,109 @@
 		}
 	</script>
 	
+	<script>
+		
+		/* Validation msg for Password */
 	
+		$(document).ready(function() {
+			$("#Password").on('keyup', function() {
+				var password = $("#Password").val();
+				var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+				if(!regularExpression.test(password)){
+					$('#Passworddiv').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
+				}
+				else{
+					$('#Passworddiv').html("Password strength : Good<br><hr>").css("color", "green");
+				}
+			});
+		});
+		
+		$(document).ready(function() {
+			$("#Password1").on('keyup', function() {
+				var password = $("#Password1").val();
+				var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+				if(!regularExpression.test(password)){
+					$('#Passworddiv1').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
+				}
+				else{
+					$('#Passworddiv1').html("Password strength : Good<br><hr>").css("color", "green");
+				}
+			});
+		});
+		
+		/* Validation msg for Mobile */
+		
+		$(document).ready(function() {
+			$("#Mobile").on('keyup', function() {
+				var mob = $("#Mobile").val();
+				var phoneno = /^\d{10}$/;
+				if(!phoneno.test(mob)){
+					$('#Mobilediv').html("Invalid mobile number.<br><hr>").css("color", "red");
+				}
+				else{
+					$('#Mobilediv').html("");
+				}
+			});
+		});
+		
+		$(document).ready(function() {
+			$("#Mobile1").on('keyup', function() {
+				var mob = $("#Mobile1").val();
+				var phoneno = /^\d{10}$/;
+				if(mob.match(phoneno)){
+					$('#Mobilediv1').html("Invalid mobile number.<br><hr>").css("color", "red");
+				}
+				else{
+					$('#Mobilediv1').html("");
+				}
+			});
+		});
+		
+		
+		/* Form Validations */
+		
+		$("#registerform").submit(function(event) {
+			var password = document.forms["registerform"]["Password"].value;
+			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+			if(!regularExpression.test(password)){
+				return false;
+			}
+			else{
+				return true;
+			}
+			
+			var phoneno = /^\d{10}$/;
+			var mobile = document.forms["registerform"]["Mobile"].value;
+			if(mobile.match(phoneno)){
+			    return true;
+			}
+			else{
+			    return false;
+			}
+		});
+		
+		
+		$("#registerform").submit(function(event) {
+			var password = document.forms["registerform"]["Password1"].value;
+			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+			if(!regularExpression.test(password)){
+				return false;
+			}
+			else{
+				return true;
+			}
+			
+			var phoneno = /^\d{10}$/;
+			var mobile = document.forms["registerform"]["Mobile"].value;
+			if(mobile.match(phoneno)){
+			    return true;
+			}
+			else{
+			    return false;
+			}
+		});
+		
+	</script>
 </body>
 
 </html>

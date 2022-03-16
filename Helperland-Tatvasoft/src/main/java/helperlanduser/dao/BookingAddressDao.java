@@ -44,8 +44,8 @@ public class BookingAddressDao {
 				address.setState(rs.getString("State"));
 				address.setUserId(rs.getInt("UserId"));
 				address.setAddressId(rs.getInt("AddressId"));
-				address.setIsDefault(rs.getBoolean("IsDefault"));
-				address.setIsDeleted(rs.getBoolean("IsDeleted"));
+				address.setDefault(rs.getBoolean("IsDefault"));
+				address.setDeleted(rs.getBoolean("IsDeleted"));
 
 				return address;
 			}

@@ -1,12 +1,12 @@
 package helperlanduser.model;
 
 public class BookPincode {
-	private int PostalCode;
+	private int postalCode;
 
 	public int getPostalCode() {
-		return PostalCode;
+		return postalCode;
 	}
 	public void setPostalCode(int postalCode) {
-		PostalCode = postalCode;
+		this.postalCode = postalCode;
 	}
 }

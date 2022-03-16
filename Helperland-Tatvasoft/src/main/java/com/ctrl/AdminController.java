@@ -30,6 +30,7 @@ import helperlanduser.dao.CustomerRequestsDao;
 import helperlanduser.dao.ServiceProviderDao;
 import helperlanduser.model.Customer;
 import helperlanduser.model.ServiceRequest;
+import helperlanduser.model.ServiceRequestAddress;
 
 @Controller
 public class AdminController {
@@ -115,25 +116,47 @@ public class AdminController {
 		return hashModal;
 	}
 	
-	@RequestMapping(value = "/rescheduleRequestsAdmin/{ServiceStartDate},{ServiceStartTime},{serviceid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/readaddressadmin/{serviceid}")
+	public @ResponseBody ServiceRequestAddress readServiceAddressAdmin(@PathVariable("serviceid") String serviceid, ServiceRequestAddress serviceRequestAddress, Model model) {
+		
+		ServiceRequestAddress srdata = adminDao.readServiceRequestAddress(serviceid);
+		model.addAttribute("adminadd1", srdata.getAddressLine1());
+		model.addAttribute("adminadd2", srdata.getAddressLine2());
+		model.addAttribute("admincity", srdata.getCity());
+		model.addAttribute("adminpin", srdata.getPostalCode());
+		return srdata;
+	}
+	
+	@RequestMapping(value = "/rescheduleRequestsAdmin/{ServiceStartDate},{ServiceStartTime},{serviceid},{AddressLine1},{AddressLine2},{PostalCode},{City}", method = RequestMethod.GET)
 	public @ResponseBody void rescheduleRequestAdmin(@PathVariable("ServiceStartDate") String ServiceStartDate,
 			@PathVariable("ServiceStartTime") String ServiceStartTime, @PathVariable("serviceid") String serviceid,
+			@PathVariable("AddressLine1") String AddressLine1,
+			@PathVariable("AddressLine2") String AddressLine2, @PathVariable("PostalCode") String Postalcode,
+			@PathVariable("City") String City, ServiceRequestAddress serviceRequestAddress,
 			HttpServletRequest request, ServiceRequest serviceRequest, Model model) {
 		
 		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
+
+		serviceRequestAddress.setAddressLine1(AddressLine1);
+		serviceRequestAddress.setAddressLine2(AddressLine2);
+		serviceRequestAddress.setCity(City);
+		serviceRequestAddress.setPostalCode(Postalcode);
+		serviceRequestAddress.setServiceRequestId(Integer.parseInt(serviceid));
+		
+		adminDao.editServiceRequestAddress(serviceRequestAddress);
 		
 		int spid = customerRequestsDao.fetchSpId(serviceid);
 		serviceRequest.setModifiedDate(dtf.format(date));
 
 		if (spid == 0) {
-			int reschedule = adminDao.rescheduleRequests(serviceRequest, serviceid);
+			adminDao.rescheduleRequests(serviceRequest, serviceid);
 			// return reschedule;
 			List<Customer> splist = adminDao.getOtherSPadmin();
 
 			String toemail = splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
 			String message1 = "The Service Request with Id 27" + serviceid
-					+ " is rescheduled by the admin and now available at new timings.\nService Date : " + ServiceStartDate
+					+ " is rescheduled and edited by the admin and now available at new timings.\nService Date : " + ServiceStartDate
 					+ "\nService Time : " + ServiceStartTime + "\n\nFor more details, visit dashboard.";
 			String subject1 = "New Timings of Service Request!";
 			String from = "helperland.hetvee@gmail.com";
@@ -144,13 +167,13 @@ public class AdminController {
 			Iterator<ServiceRequest> iterator = splist.iterator();
 			while (iterator.hasNext()) {
 				if (ServiceStartDate.equals(iterator.next().getServiceStartDate())) {
-					int reschedule = adminDao.rescheduleAdminRequests(serviceRequest, serviceid);
+					adminDao.rescheduleAdminRequests(serviceRequest, serviceid);
 
 					List<Customer> splist1 = adminDao.getOtherSPadmin();
 
 					String toemail = splist1.stream().map(Customer::getEmail).collect(Collectors.joining(","));
 					String message1 = "The Service Request with Id 27" + serviceid
-							+ " is rescheduled by the admin and now available at new timings.\nService Date : " + ServiceStartDate
+							+ " is rescheduled and edited by the admin and now available at new timings.\nService Date : " + ServiceStartDate
 							+ "\nService Time : " + ServiceStartTime + "\n\nFor more details, visit dashboard.";
 					String subject1 = "New Service Request!";
 					String from = "helperland.hetvee@gmail.com";
@@ -158,7 +181,7 @@ public class AdminController {
 
 					String email = customerRequestsDao.cancelEmail(Integer.parseInt(serviceid));
 					String message = "The service request with Service Id : 27" + serviceid
-							+ " has been cancelled due to the conflict, as it has been rescheduled by the admin. Sorry for the inconvenience.";
+							+ " has been cancelled due to the conflict, as it has been rescheduled and edited by the admin. Sorry for the inconvenience.";
 					String subject = "Service Request Cancelled";
 					sendServiceEmail(message, subject, email, from);
 
@@ -166,11 +189,11 @@ public class AdminController {
 
 					break;
 				} else {
-					int reschedule = adminDao.rescheduleRequests(serviceRequest, serviceid);
+					adminDao.rescheduleRequests(serviceRequest, serviceid);
 					
 					String email = customerRequestsDao.cancelEmail(Integer.parseInt(serviceid));
 					String message = "The service request with Service Id : 27" + serviceid
-							+ " has been  rescheduled by the admin. The New timings are:\nService Date : " + ServiceStartDate
+							+ " has been  rescheduled and edited by the admin. The New timings are:\nService Date : " + ServiceStartDate
 							+ "\nService Time : " + ServiceStartTime + "\n\nFor more details, visit dashboard.";
 					String subject = "Service Request Rescheduled";
 					String from = "helperland.hetvee@gmail.com";
@@ -197,7 +220,7 @@ public class AdminController {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("helperland.hetvee@gmail.com", "helperland-22");
+				return new PasswordAuthentication("helperland.hetvee@gmail.com", "");
 			}
 
 		});

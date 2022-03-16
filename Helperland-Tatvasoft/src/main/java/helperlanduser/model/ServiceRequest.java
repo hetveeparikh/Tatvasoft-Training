@@ -4,193 +4,188 @@ import java.util.Date;
 
 public class ServiceRequest {
 
-	private String Comments;
-	private int ServiceRequestId;
-	private int UserId;
-	private int ServiceId;
-	private String ServiceStartDate;
-	private String ZipCode;
-	private float ServiceHourlyRate;
-	private float ServiceHours;
-	private float ExtraHours;
-	private float SubTotal;
-	private float Discount;
-	private float TotalCost;
-	private String PaymentTransactionRefNo;
-	private int ServiceProviderId;
-	private Date SPAcceptedDate;
-	private String HasPets;
-	private String Status;
-	private Date CreatedDate;
-	private String ModifiedDate;
-	private int ModifiedBy;
-	private float RefundedAmount;
-	private float Distance;
-	private boolean HasIssue;
-	private int RecordVersion;
-	private String ServiceStartTime;
-	private int PaymentDone;
-	private int PaymentDue;
-	
+	private String comments;
+	private int serviceRequestId;
+	private int userId;
+	private int serviceId;
+	private String serviceStartDate;
+	private String zipCode;
+	private float serviceHourlyRate;
+	private float serviceHours;
+	private float extraHours;
+	private float subTotal;
+	private float discount;
+	private float totalCost;
+	private String paymentTransactionRefNo;
+	private int serviceProviderId;
+	private String sPAcceptedDate;
+	private String hasPets;
+	private String status;
+	private String createdDate;
+	private String modifiedDate;
+	private int modifiedBy;
+	private float refundedAmount;
+	private float distance;
+	private boolean hasIssue;
+	private int recordVersion;
+	private String serviceStartTime;
+	private int paymentDone;
+	private int paymentDue;
 	private ServiceRequestAddress serviceRequestAddress;
-	
 	private Customer customer;
-	
 	private Customer sp;
-	
 	private Rating rating;
 			
 	public String getComments() {
-		return Comments;
+		return comments;
 	}
 	public void setComments(String comments) {
-		Comments = comments;
+		this.comments = comments;
 	}
 	public int getServiceRequestId() {
-		return ServiceRequestId;
+		return serviceRequestId;
 	}
 	public void setServiceRequestId(int serviceRequestId) {
-		ServiceRequestId = serviceRequestId;
+		this.serviceRequestId = serviceRequestId;
 	}
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 	public int getServiceId() {
-		return ServiceId;
+		return serviceId;
 	}
 	public void setServiceId(int serviceId) {
-		ServiceId = serviceId;
+		this.serviceId = serviceId;
 	}
 	public String getServiceStartDate() {
-		return ServiceStartDate;
+		return serviceStartDate;
 	}
-	public void setServiceStartDate(String serviceStartDate2) {
-		ServiceStartDate = serviceStartDate2;
+	public void setServiceStartDate(String serviceStartDate) {
+		this.serviceStartDate = serviceStartDate;
 	}
 	public String getZipCode() {
-		return ZipCode;
+		return zipCode;
 	}
 	public void setZipCode(String zipCode) {
-		ZipCode = zipCode;
+		this.zipCode = zipCode;
 	}
 	public float getServiceHourlyRate() {
-		return ServiceHourlyRate;
+		return serviceHourlyRate;
 	}
 	public void setServiceHourlyRate(float serviceHourlyRate) {
-		ServiceHourlyRate = serviceHourlyRate;
+		this.serviceHourlyRate = serviceHourlyRate;
 	}
 	public float getServiceHours() {
-		return ServiceHours;
+		return serviceHours;
 	}
 	public void setServiceHours(float serviceHours) {
-		ServiceHours = serviceHours;
+		this.serviceHours = serviceHours;
 	}
 	public float getExtraHours() {
-		return ExtraHours;
+		return extraHours;
 	}
 	public void setExtraHours(float extraHours) {
-		ExtraHours = extraHours;
+		this.extraHours = extraHours;
 	}
 	public float getSubTotal() {
-		return SubTotal;
+		return subTotal;
 	}
 	public void setSubTotal(float subTotal) {
-		SubTotal = subTotal;
+		this.subTotal = subTotal;
 	}
 	public float getDiscount() {
-		return Discount;
+		return discount;
 	}
 	public void setDiscount(float discount) {
-		Discount = discount;
+		this.discount = discount;
 	}
 	public float getTotalCost() {
-		return TotalCost;
+		return totalCost;
 	}
 	public void setTotalCost(float totalCost) {
-		TotalCost = totalCost;
+		this.totalCost = totalCost;
 	}
 	public String getPaymentTransactionRefNo() {
-		return PaymentTransactionRefNo;
+		return paymentTransactionRefNo;
 	}
 	public void setPaymentTransactionRefNo(String paymentTransactionRefNo) {
-		PaymentTransactionRefNo = paymentTransactionRefNo;
+		this.paymentTransactionRefNo = paymentTransactionRefNo;
 	}
 	public int getServiceProviderId() {
-		return ServiceProviderId;
+		return serviceProviderId;
 	}
 	public void setServiceProviderId(int serviceProviderId) {
-		ServiceProviderId = serviceProviderId;
+		this.serviceProviderId = serviceProviderId;
 	}
-	public Date getSPAcceptedDate() {
-		return SPAcceptedDate;
+	public String getSPAcceptedDate() {
+		return sPAcceptedDate;
 	}
-	public void setSPAcceptedDate(Date sPAcceptedDate) {
-		SPAcceptedDate = sPAcceptedDate;
+	public void setSPAcceptedDate(String sPAcceptedDate) {
+		this.sPAcceptedDate = sPAcceptedDate;
 	}
 	public String getHasPets() {
-		return HasPets;
+		return hasPets;
 	}
 	public void setHasPets(String hasPets) {
-		HasPets = hasPets;
+		this.hasPets = hasPets;
 	}
 	public String getStatus() {
-		return Status;
+		return status;
 	}
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
-	public Date getCreatedDate() {
-		return CreatedDate;
+	public String getCreatedDate() {
+		return createdDate;
 	}
-	public void setCreatedDate(Date createdDate) {
-		CreatedDate = createdDate;
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
 	}
 	public String getModifiedDate() {
-		return ModifiedDate;
+		return modifiedDate;
 	}
 	public void setModifiedDate(String modifiedDate) {
-		ModifiedDate = modifiedDate;
+		this.modifiedDate = modifiedDate;
 	}
 	public int getModifiedBy() {
-		return ModifiedBy;
+		return modifiedBy;
 	}
 	public void setModifiedBy(int modifiedBy) {
-		ModifiedBy = modifiedBy;
+		this.modifiedBy = modifiedBy;
 	}
 	public float getRefundedAmount() {
-		return RefundedAmount;
+		return refundedAmount;
 	}
 	public void setRefundedAmount(float refundedAmount) {
-		RefundedAmount = refundedAmount;
+		this.refundedAmount = refundedAmount;
 	}
 	public float getDistance() {
-		return Distance;
+		return distance;
 	}
 	public void setDistance(float distance) {
-		Distance = distance;
+		this.distance = distance;
 	}
 	public boolean isHasIssue() {
-		return HasIssue;
+		return hasIssue;
 	}
 	public void setHasIssue(boolean hasIssue) {
-		HasIssue = hasIssue;
+		this.hasIssue = hasIssue;
 	}
 	public int getRecordVersion() {
-		return RecordVersion;
+		return recordVersion;
 	}
 	public void setRecordVersion(int recordVersion) {
-		RecordVersion = recordVersion;
+		this.recordVersion = recordVersion;
 	}
 	public String getServiceStartTime() {
-		return ServiceStartTime;
+		return serviceStartTime;
 	}
 	public void setServiceStartTime(String serviceStartTime) {
-		ServiceStartTime = serviceStartTime;
+		this.serviceStartTime = serviceStartTime;
 	}
-	
 	public ServiceRequestAddress getServiceRequestAddress() {
 		return serviceRequestAddress;
 	}
@@ -211,29 +206,29 @@ public class ServiceRequest {
 		this.rating = rating;
 	}
 	public int getPaymentDone() {
-		return PaymentDone;
+		return paymentDone;
 	}
 	public void setPaymentDone(int paymentDone) {
-		PaymentDone = paymentDone;
+		this.paymentDone = paymentDone;
 	}
 	public int getPaymentDue() {
-		return PaymentDue;
+		return paymentDue;
 	}
 	public void setPaymentDue(int paymentDue) {
-		PaymentDue = paymentDue;
+		this.paymentDue = paymentDue;
 	}
 	@Override
 	public String toString() {
-		return "ServiceRequest [Comments=" + Comments + ", ServiceRequestId=" + ServiceRequestId + ", UserId=" + UserId
-				+ ", ServiceId=" + ServiceId + ", ServiceStartDate=" + ServiceStartDate + ", ZipCode=" + ZipCode
-				+ ", ServiceHourlyRate=" + ServiceHourlyRate + ", ServiceHours=" + ServiceHours + ", ExtraHours="
-				+ ExtraHours + ", SubTotal=" + SubTotal + ", Discount=" + Discount + ", TotalCost=" + TotalCost
-				+ ", PaymentTransactionRefNo=" + PaymentTransactionRefNo + ", ServiceProviderId=" + ServiceProviderId
-				+ ", SPAcceptedDate=" + SPAcceptedDate + ", HasPets=" + HasPets + ", Status=" + Status
-				+ ", CreatedDate=" + CreatedDate + ", ModifiedDate=" + ModifiedDate + ", ModifiedBy=" + ModifiedBy
-				+ ", RefundedAmount=" + RefundedAmount + ", Distance=" + Distance + ", HasIssue=" + HasIssue
-				+ ", RecordVersion=" + RecordVersion + ", ServiceStartTime=" + ServiceStartTime + ", PaymentDone="
-				+ PaymentDone + ", PaymentDue=" + PaymentDue + ", serviceRequestAddress=" + serviceRequestAddress
+		return "ServiceRequest [Comments=" + comments + ", ServiceRequestId=" + serviceRequestId + ", UserId=" + userId
+				+ ", ServiceId=" + serviceId + ", ServiceStartDate=" + serviceStartDate + ", ZipCode=" + zipCode
+				+ ", ServiceHourlyRate=" + serviceHourlyRate + ", ServiceHours=" + serviceHours + ", ExtraHours="
+				+ extraHours + ", SubTotal=" + subTotal + ", Discount=" + discount + ", TotalCost=" + totalCost
+				+ ", PaymentTransactionRefNo=" + paymentTransactionRefNo + ", ServiceProviderId=" + serviceProviderId
+				+ ", SPAcceptedDate=" + sPAcceptedDate + ", HasPets=" + hasPets + ", Status=" + status
+				+ ", CreatedDate=" + createdDate + ", ModifiedDate=" + modifiedDate + ", ModifiedBy=" + modifiedBy
+				+ ", RefundedAmount=" + refundedAmount + ", Distance=" + distance + ", HasIssue=" + hasIssue
+				+ ", RecordVersion=" + recordVersion + ", ServiceStartTime=" + serviceStartTime + ", PaymentDone="
+				+ paymentDone + ", PaymentDue=" + paymentDue + ", serviceRequestAddress=" + serviceRequestAddress
 				+ ", customer=" + customer + ", rating=" + rating + "]";
 	}
 	public Customer getSp() {

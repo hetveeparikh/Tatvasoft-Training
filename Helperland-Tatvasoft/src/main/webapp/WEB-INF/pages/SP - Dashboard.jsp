@@ -352,7 +352,7 @@
 						        <label>Date of birth</label>
 						        <div>
 						            <select class="bdayset" id="detailsBdate" required>
-						                <option value="">Day</option>
+						                <option value="">DD</option>
 						                <option value="1">01</option>
 						                <option value="2">02</option>
 						                <option value="3">03</option>
@@ -386,7 +386,7 @@
 						                <option value="31">31</option>
 						            </select>
 						            <select class="bdayset"  id="detailsBMonth" required>
-						                <option value="">Month</option>
+						                <option value="">MM</option>
 										<option value="January">January</option>
 										<option value="February">February</option>
 										<option value="March">March</option>
@@ -401,7 +401,7 @@
 										<option value="December">December</option>
 						            </select>
 						            <select class="bdayset" id="detailsBYear" required>
-						                <option value="">Year</option>
+						                <option value="">YY</option>
 										<option value="2022">2022</option>
 										<option value="2021">2021</option>
 										<option value="2020">2020</option>

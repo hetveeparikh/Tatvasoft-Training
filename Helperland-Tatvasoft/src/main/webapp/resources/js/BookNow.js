@@ -111,13 +111,6 @@ function thirdtab() {
 }
 
 
-/*var currentDate = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-var day = currentDate.getDate()
-var month = currentDate.getMonth() + 1
-var year = currentDate.getFullYear()
-var finaldate = document.getElementById('tomorrowdate').value = day + " / " + month + " / " + year;*/
-
-
 $(document).ready(function() {
 	var dtToday = new Date();
 

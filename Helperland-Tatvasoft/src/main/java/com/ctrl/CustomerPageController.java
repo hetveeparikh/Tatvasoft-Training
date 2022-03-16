@@ -1,5 +1,6 @@
 package com.ctrl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -189,11 +190,12 @@ public class CustomerPageController {
 		int temp = Integer.parseInt(str);
 		serviceRequest.setUserId(temp);
 
+		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		
 		int spid = customerRequestsDao.fetchSpId(serviceid);
 		serviceRequest.setModifiedBy(temp);
-		serviceRequest.setModifiedDate(date.toString());
+		serviceRequest.setModifiedDate(dtf.format(date));
 
 		if (spid == 0) {
 			int reschedule = customerRequestsDao.rescheduleRequests(serviceRequest, serviceid);
@@ -290,7 +292,7 @@ public class CustomerPageController {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("helperland.hetvee@gmail.com", "helperland-22");
+				return new PasswordAuthentication("helperland.hetvee@gmail.com", "");
 			}
 
 		});
@@ -354,6 +356,7 @@ public class CustomerPageController {
 		String str = "" + session.getAttribute("userid");
 		int temp = Integer.parseInt(str);
 
+		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 
 		int ratings = Math.round((OnTimeArrival + Friendly + QualityOfService) / 3);
@@ -366,7 +369,7 @@ public class CustomerPageController {
 		rating.setRatingTo(RatingTo);
 		rating.setRatings(ratings);
 		rating.setServiceRequestId(ServiceRequestId);
-		rating.setRatingDate(date);
+		rating.setRatingDate(dtf.format(date));
 
 		int ratingss = customerRequestsDao.ratingsp(rating);
 		return ratingss;

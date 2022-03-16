@@ -1,74 +1,74 @@
 package helperlanduser.model;
 
 public class ServiceRequestAddress {
-	private int Id;
-	private int ServiceRequestId;
-	public String AddressLine1;
-	public String AddressLine2;
-	public String City;
-	public String State;
-	public String Mobile;
-	public String Email;
-	public String PostalCode;
+	private int id;
+	private int serviceRequestId;
+	public String addressLine1;
+	public String addressLine2;
+	public String city;
+	public String state;
+	public String mobile;
+	public String email;
+	public String postalCode;
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public int getServiceRequestId() {
-		return ServiceRequestId;
+		return serviceRequestId;
 	}
 	public void setServiceRequestId(int serviceRequestId) {
-		ServiceRequestId = serviceRequestId;
+		this.serviceRequestId = serviceRequestId;
 	}
 	public String getAddressLine1() {
-		return AddressLine1;
+		return addressLine1;
 	}
 	public void setAddressLine1(String addressLine1) {
-		AddressLine1 = addressLine1;
+		this.addressLine1 = addressLine1;
 	}
 	public String getAddressLine2() {
-		return AddressLine2;
+		return addressLine2;
 	}
 	public void setAddressLine2(String addressLine2) {
-		AddressLine2 = addressLine2;
+		this.addressLine2 = addressLine2;
 	}
 	public String getCity() {
-		return City;
+		return city;
 	}
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	public String getMobile() {
-		return Mobile;
+		return mobile;
 	}
 	public void setMobile(String mobile) {
-		Mobile = mobile;
+		this.mobile = mobile;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getPostalCode() {
-		return PostalCode;
+		return postalCode;
 	}
 	public void setPostalCode(String postalCode) {
-		PostalCode = postalCode;
+		this.postalCode = postalCode;
 	}
 	@Override
 	public String toString() {
-		return "ServiceRequestAddress [Id=" + Id + ", ServiceRequestId=" + ServiceRequestId + ", AddressLine1="
-				+ AddressLine1 + ", AddressLine2=" + AddressLine2 + ", City=" + City + ", State=" + State + ", Mobile="
-				+ Mobile + ", Email=" + Email + ", PostalCode=" + PostalCode + "]";
+		return "ServiceRequestAddress [Id=" + id + ", ServiceRequestId=" + serviceRequestId + ", AddressLine1="
+				+ addressLine1 + ", AddressLine2=" + addressLine2 + ", City=" + city + ", State=" + state + ", Mobile="
+				+ mobile + ", Email=" + email + ", PostalCode=" + postalCode + "]";
 	}
 	
 	

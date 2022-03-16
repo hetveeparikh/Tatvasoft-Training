@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 
 import helperlanduser.model.Customer;
 import helperlanduser.model.Rating;
@@ -175,4 +176,32 @@ public class AdminDao {
 		List<Customer> splist = template.query(sql, new CustomerSpMapper());
 		return splist;
 	}
+	
+	public int editServiceRequestAddress(ServiceRequestAddress serviceRequestAddress) {
+		String query = "update servicerequestaddress set AddressLine1='" + serviceRequestAddress.getAddressLine1()
+				+ "',AddressLine2='" + serviceRequestAddress.getAddressLine2() + "',City='" + serviceRequestAddress.getCity()
+				+ "',PostalCode='" + serviceRequestAddress.getPostalCode() + "' where ServiceRequestId='" + serviceRequestAddress.getServiceRequestId() + "' ";
+		return template.update(query);
+	}
+
+	public ServiceRequestAddress readServiceRequestAddress(String serviceid) {
+		String sql = "select * from servicerequestaddress where ServiceRequestId=?";
+		ServiceRequestAddress address = template.queryForObject(sql, new ServiceRequestAddressAdminMapper(), new Object[] { serviceid });
+		return address;
+	}
+}
+class ServiceRequestAddressAdminMapper implements RowMapper<ServiceRequestAddress> {
+
+	public ServiceRequestAddress mapRow(ResultSet rs, int arg1) throws SQLException {
+
+		ServiceRequestAddress address = new ServiceRequestAddress();
+
+		address.setAddressLine1(rs.getString("AddressLine1"));
+		address.setAddressLine2(rs.getString("AddressLine2"));
+		address.setPostalCode(rs.getString("PostalCode"));
+		address.setCity(rs.getString("City"));
+
+		return address;
+	}
+
 }

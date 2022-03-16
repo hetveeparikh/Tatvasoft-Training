@@ -95,20 +95,20 @@ public class ServiceProviderDao {
 	}
 
 	public int cancelrequest(String srid) {
-		String query = "update servicerequest set status='New' , ServiceProviderId = 0 where ServiceRequestId='" + srid
+		String query = "update servicerequest set PaymentDone=0, status='New' , ServiceProviderId = 0 where ServiceRequestId='" + srid
 				+ "' ";
 		return template.update(query);
 	}
 
 	public int completedrequest(String srid) {
-		String query = "update servicerequest set status='Completed' where ServiceRequestId='" + srid + "' ";
+		String query = "update servicerequest set PaymentDone=1, status='Completed' where ServiceRequestId='" + srid + "' ";
 		return template.update(query);
 	}
 
 	public int acceptrequest(String userid, String srid) {
 		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
-		String query = "update servicerequest set status='Accepted' , ServiceProviderId ='" + userid
+		String query = "update servicerequest set PaymentDone=0, status='Accepted' , ServiceProviderId ='" + userid
 				+ "' , SPAcceptedDate = '" + dtf.format(date) + "' where ServiceRequestId='" + srid + "' ";
 		return template.update(query);
 	}
@@ -280,7 +280,7 @@ public class ServiceProviderDao {
 					rating.setRatingFrom(rs.getInt("RatingFrom"));
 					rating.setRatingTo(rs.getInt("RatingTo"));
 					rating.setServiceRequestId(rs.getInt("ServiceRequestId"));
-					rating.setRatingDate(rs.getDate("RatingDate"));
+					rating.setRatingDate(rs.getString("RatingDate"));
 
 					ServiceRequest request = new ServiceRequest();
 

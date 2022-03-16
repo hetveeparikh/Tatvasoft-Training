@@ -99,7 +99,7 @@ public class CustomerRequestsDao {
 
 	public int rescheduleNewRequest(ServiceRequest serviceRequest, String serviceid) {
 		String query = "update servicerequest set ModifiedBy='" + serviceRequest.getModifiedBy() + "', ModifiedDate='"
-				+ serviceRequest.getModifiedDate() + "' ServiceStartTime='" + serviceRequest.getServiceStartTime()
+				+ serviceRequest.getModifiedDate() + "' , ServiceStartTime='" + serviceRequest.getServiceStartTime()
 				+ "', ServiceStartDate='" + serviceRequest.getServiceStartDate()
 				+ "', ServiceProviderId=0, Status='New', SPAcceptedDate=null where UserId='"
 				+ serviceRequest.getUserId() + "'and ServiceId='" + serviceid + "' ";

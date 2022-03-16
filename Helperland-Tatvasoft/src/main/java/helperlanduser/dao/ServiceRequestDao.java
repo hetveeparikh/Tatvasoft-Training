@@ -1,5 +1,6 @@
 package helperlanduser.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -21,6 +22,7 @@ public class ServiceRequestDao {
 
 	public int addrequest(ServiceRequest serviceRequest, HttpServletRequest request) {
 		Random random = new Random();
+		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();
 		int serviceReqId = random.nextInt(10000);
 
@@ -36,10 +38,10 @@ public class ServiceRequestDao {
 		String pets = serviceRequest.getHasPets();
 		String pincode = serviceRequest.getZipCode();
 
-		String sql = "insert into servicerequest(HasPets,PaymentDue,RecordVersion,RefundedAmount,Distance, HasIssue,CreatedDate,ZipCode,"
+		String sql = "insert into servicerequest(PaymentTransactionRefNo,PaymentDone,HasPets,PaymentDue,RecordVersion,RefundedAmount,Distance, HasIssue,CreatedDate,ZipCode,"
 				+ "ServiceProviderId,ServiceRequestId,UserId,TotalCost,ServiceHours,SubTotal,ExtraHours,ServiceStartTime,ServiceStartDate,Comments,Discount,ServiceId,Status) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] { pets, 0, "1.0", 0, 0, 0, date, pincode, 0, serviceReqId, userid, totalcost,
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		template.update(sql, new Object[] { "NA", 0, pets, 0, "1.0", 0, 0, 0, dtf.format(date), pincode, 0, serviceReqId, userid, totalcost,
 				serviceHours, subtotal, extraHours, starttime, startdate, comments, 0, serviceReqId, "New" });
 
 		return serviceReqId;
@@ -52,6 +54,5 @@ public class ServiceRequestDao {
 		String sql = "insert into servicerequestextra(ServiceRequestId,ServiceExtra) values(?,?)";
 		template.update(sql, new Object[] { serviceRequestExtra.getServiceRequestId(), serviceRequestExtra.getServiceExtra() });
 		return 1;
-
 	}
 }

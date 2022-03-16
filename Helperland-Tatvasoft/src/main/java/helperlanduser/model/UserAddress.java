@@ -2,90 +2,89 @@ package helperlanduser.model;
 
 public class UserAddress {
 
-	private int AddressId;
-	private String AddressLine1;
-	private String AddressLine2;
-	private String City;
-	private String Email;
-	private String Mobile;
-	private String PostalCode;
-	private String State;
-	private int UserId;
-	private boolean IsDefault;
-	private boolean IsDeleted;
-	
+	private int addressId;
+	private String addressLine1;
+	private String addressLine2;
+	private String city;
+	private String email;
+	private String mobile;
+	private String postalCode;
+	private String state;
+	private int userId;
+	private boolean isDefault;
+	private boolean isDeleted;
 	public int getAddressId() {
-		return AddressId;
+		return addressId;
 	}
 	public void setAddressId(int addressId) {
-		AddressId = addressId;
+		this.addressId = addressId;
 	}
 	public String getAddressLine1() {
-		return AddressLine1;
+		return addressLine1;
 	}
 	public void setAddressLine1(String addressLine1) {
-		AddressLine1 = addressLine1;
+		this.addressLine1 = addressLine1;
 	}
 	public String getAddressLine2() {
-		return AddressLine2;
+		return addressLine2;
 	}
 	public void setAddressLine2(String addressLine2) {
-		AddressLine2 = addressLine2;
+		this.addressLine2 = addressLine2;
 	}
 	public String getCity() {
-		return City;
+		return city;
 	}
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getMobile() {
-		return Mobile;
+		return mobile;
 	}
 	public void setMobile(String mobile) {
-		Mobile = mobile;
+		this.mobile = mobile;
 	}
 	public String getPostalCode() {
-		return PostalCode;
+		return postalCode;
 	}
 	public void setPostalCode(String postalCode) {
-		PostalCode = postalCode;
+		this.postalCode = postalCode;
 	}
 	public String getState() {
-		return State;
+		return state;
 	}
 	public void setState(String state) {
-		State = state;
+		this.state = state;
 	}
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
-	public boolean isIsDefault() {
-		return IsDefault;
+	public boolean isDefault() {
+		return isDefault;
 	}
-	public void setIsDefault(boolean isDefault) {
-		IsDefault = isDefault;
+	public void setDefault(boolean isDefault) {
+		this.isDefault = isDefault;
 	}
-	public boolean isIsDeleted() {
-		return IsDeleted;
+	public boolean isDeleted() {
+		return isDeleted;
 	}
-	public void setIsDeleted(boolean isDeleted) {
-		IsDeleted = isDeleted;
+	public void setDeleted(boolean isDeleted) {
+		this.isDeleted = isDeleted;
 	}
 	@Override
 	public String toString() {
-		return "UserAddress [AddressId=" + AddressId + ", AddressLine1=" + AddressLine1 + ", AddressLine2="
-				+ AddressLine2 + ", City=" + City + ", Email=" + Email + ", Mobile=" + Mobile + ", PostalCode="
-				+ PostalCode + ", State=" + State + ", UserId=" + UserId + ", IsDefault=" + IsDefault + ", IsDeleted="
-				+ IsDeleted + "]";
+		return "UserAddress [addressId=" + addressId + ", addressLine1=" + addressLine1 + ", addressLine2="
+				+ addressLine2 + ", city=" + city + ", email=" + email + ", mobile=" + mobile + ", postalCode="
+				+ postalCode + ", state=" + state + ", userId=" + userId + ", isDefault=" + isDefault + ", isDeleted="
+				+ isDeleted + "]";
 	}
 	
 	

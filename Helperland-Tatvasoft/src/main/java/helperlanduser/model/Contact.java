@@ -3,84 +3,82 @@ package helperlanduser.model;
 import java.util.Date;
 
 public class Contact {
-	private int ContactUsId;
-	private String FName;
-	private String LName;
-	private String Email;
-	private String Subject;
-	private String PhoneNumber;
-	private String Message;
-	private String UploadFileName;
-	private Date CreatedOn;
-	private int CreatedBy;
+	private int contactUsId;
+	private String fName;
+	private String lName;
+	private String email;
+	private String subject;
+	private String phoneNumber;
+	private String message;
+	private String uploadFileName;
+	private Date createdOn;
+	private int createdBy;
 	public int getContactUsId() {
-		return ContactUsId;
+		return contactUsId;
 	}
 	public void setContactUsId(int contactUsId) {
-		ContactUsId = contactUsId;
+		this.contactUsId = contactUsId;
 	}
 	public String getFName() {
-		return FName;
+		return fName;
 	}
 	public void setFName(String fName) {
-		FName = fName;
+		this.fName = fName;
 	}
 	public String getLName() {
-		return LName;
+		return lName;
 	}
 	public void setLName(String lName) {
-		LName = lName;
+		this.lName = lName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getSubject() {
-		return Subject;
+		return subject;
 	}
 	public void setSubject(String subject) {
-		Subject = subject;
+		this.subject = subject;
 	}
 	public String getPhoneNumber() {
-		return PhoneNumber;
+		return phoneNumber;
 	}
 	public void setPhoneNumber(String phoneNumber) {
-		PhoneNumber = phoneNumber;
+		this.phoneNumber = phoneNumber;
 	}
 	public String getMessage() {
-		return Message;
+		return message;
 	}
 	public void setMessage(String message) {
-		Message = message;
+		this.message = message;
 	}
 	public String getUploadFileName() {
-		return UploadFileName;
+		return uploadFileName;
 	}
 	public void setUploadFileName(String uploadFileName) {
-		UploadFileName = uploadFileName;
+		this.uploadFileName = uploadFileName;
 	}
 	public Date getCreatedOn() {
-		return CreatedOn;
+		return createdOn;
 	}
 	public void setCreatedOn(Date createdOn) {
-		CreatedOn = createdOn;
+		this.createdOn = createdOn;
 	}
 	public int getCreatedBy() {
-		return CreatedBy;
+		return createdBy;
 	}
 	public void setCreatedBy(int createdBy) {
-		CreatedBy = createdBy;
+		this.createdBy = createdBy;
 	}
 	@Override
 	public String toString() {
-		return "Contact [ContactUsId=" + ContactUsId + ", FName=" + FName + ", LName=" + LName + ", Email=" + Email
-				+ ", Subject=" + Subject + ", PhoneNumber=" + PhoneNumber + ", Message=" + Message + ", UploadFileName="
-				+ UploadFileName + ", CreatedOn=" + CreatedOn + ", CreatedBy=" + CreatedBy + "]";
+		return "Contact [contactUsId=" + contactUsId + ", fName=" + fName + ", lName=" + lName + ", email=" + email
+				+ ", subject=" + subject + ", phoneNumber=" + phoneNumber + ", message=" + message + ", uploadFileName="
+				+ uploadFileName + ", createdOn=" + createdOn + ", createdBy=" + createdBy + "]";
 	}
-	
-	
 	
 	
 }

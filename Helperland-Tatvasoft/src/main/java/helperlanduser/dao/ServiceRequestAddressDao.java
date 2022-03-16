@@ -17,8 +17,8 @@ public class ServiceRequestAddressDao {
 	public int saveserviceaddress(ServiceRequestAddress address) {
 		
 		String sql = "insert into servicerequestaddress(AddressLine1,AddressLine2,City,State,PostalCode,Mobile,Email,ServiceRequestId) values(?,?,?,?,?,?,?,?)";
-		int add = template.update(sql, new Object[] {address.AddressLine1, address.AddressLine2, address.City, address.State,
-				address.PostalCode, address.Mobile, address.Email, address.getServiceRequestId() });
+		int add = template.update(sql, new Object[] {address.getAddressLine1(), address.getAddressLine2(), address.getCity(), address.getState(),
+				address.getPostalCode(), address.getMobile(), address.getEmail(), address.getServiceRequestId() });
 		return add;
 	}
 
@@ -45,8 +45,8 @@ class UserAddressMapper implements RowMapper<UserAddress> {
 		address.setState(rs.getString("State"));
 		address.setUserId(rs.getInt("UserId"));
 		address.setAddressId(rs.getInt("AddressId"));
-		address.setIsDefault(rs.getBoolean("IsDefault"));
-		address.setIsDeleted(rs.getBoolean("IsDeleted"));
+		address.setDefault(rs.getBoolean("IsDefault"));
+		address.setDeleted(rs.getBoolean("IsDeleted"));
 
 		return address;
 	}

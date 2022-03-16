@@ -122,7 +122,7 @@
 	</header>
 
 	<section id="welcomecs">
-		<span class="Welcome-Gaurang wc"> Welcome <span class="Gaurang" id="bannername">${settingsfirstname }</span>!
+		<span class="Welcome-Gaurang wc"> Welcome, <span class="Gaurang" id="bannername">${settingsfirstname }!</span>
 		</span>
 		<div class="l1"></div>
 	</section>
@@ -605,8 +605,8 @@
 
 					<!-- Modal body -->
 					<div class="modal-body">
-						<span class="newdate">Select new date and time</span>
-						<div class="d-flex justify-content-center">
+						<span class="newdate">&nbsp;&nbsp;Select new date and time</span>
+						<div class="d-flex">
 							<form id="rescheduleform" name="rescheduleform">
 								<div class="d-flex">
 									<div class="d-flex">
@@ -623,8 +623,8 @@
 										
 									</div>
 								</div>
-								<div class="text-center">
-									<button type="submit" class="saveadd" data-bs-dismiss="modal"> Reschedule</button>
+								<div>
+									<button type="submit" class="saveadd"> Reschedule</button>
 									<input type="button" class="canceladd" value="Close"
 										data-bs-dismiss="modal" />
 								</div>
@@ -1103,6 +1103,11 @@
 			
 			jQuery(document).ready(function($) {
 				$("#rescheduleform").submit(function(event) {
+					var x = document.forms["rescheduleform"]["TomorrowDate"].value;
+					if (x == "" || x == null) {
+						alert("Please select date!");
+						return false;
+					}
 					event.preventDefault();
 					reschedulerequest(v);
 					console.log(v);

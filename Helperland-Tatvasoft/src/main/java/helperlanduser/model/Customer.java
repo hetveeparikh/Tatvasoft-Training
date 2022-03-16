@@ -2,127 +2,126 @@ package helperlanduser.model;
 
 public class Customer {
 	
-	private int UserId;
-	private String FirstName;
-	private String LastName;
-	private String Email;
-	private String Password;
-	private String Mobile;
-	private int UserTypeId;
-	private String CreatedDate;
-	private String DateOfBirth;
-	private String Language;
-	private String Nationality;
-	private String Gender;
-	private String UserProfilePicture;
-	private int IsActive;
-	private int IsApproved;
-	private int IsDeleted;
-	private int IsRegisteredUser;
-	
-	public int getIsActive() {
-		return IsActive;
-	}
-	public void setIsActive(int isActive) {
-		IsActive = isActive;
-	}
-	public int getIsApproved() {
-		return IsApproved;
-	}
-	public void setIsApproved(int isApproved) {
-		IsApproved = isApproved;
-	}
-	public int getIsDeleted() {
-		return IsDeleted;
-	}
-	public void setIsDeleted(int isDeleted) {
-		IsDeleted = isDeleted;
-	}
-	public int getIsRegisteredUser() {
-		return IsRegisteredUser;
-	}
-	public void setIsRegisteredUser(int isRegisteredUser) {
-		IsRegisteredUser = isRegisteredUser;
-	}
+	private int userId;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String password;
+	private String mobile;
+	private int userTypeId;
+	private String createdDate;
+	private String dateOfBirth;
+	private String language;
+	private String nationality;
+	private String gender;
+	private String userProfilePicture;
+	private int isActive;
+	private int isApproved;
+	private int isDeleted;
+	private int isRegisteredUser;
 	private UserAddress userAddress;
 	
+	public int getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
+	}
+	public int getIsApproved() {
+		return isApproved;
+	}
+	public void setIsApproved(int isApproved) {
+		this.isApproved = isApproved;
+	}
+	public int getIsDeleted() {
+		return isDeleted;
+	}
+	public void setIsDeleted(int isDeleted) {
+		this.isDeleted = isDeleted;
+	}
+	public int getIsRegisteredUser() {
+		return isRegisteredUser;
+	}
+	public void setIsRegisteredUser(int isRegisteredUser) {
+		this.isRegisteredUser = isRegisteredUser;
+	}
 	public String getNationality() {
-		return Nationality;
+		return nationality;
 	}
 	public void setNationality(String nationality) {
-		Nationality = nationality;
+		this.nationality = nationality;
 	}
 	public String getGender() {
-		return Gender;
+		return gender;
 	}
 	public void setGender(String gender) {
-		Gender = gender;
+		this.gender = gender;
 	}
 	public String getUserProfilePicture() {
-		return UserProfilePicture;
+		return userProfilePicture;
 	}
 	public void setUserProfilePicture(String userProfilePicture) {
-		UserProfilePicture = userProfilePicture;
+		this.userProfilePicture = userProfilePicture;
 	}
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		this.lastName = lastName;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 	public String getMobile() {
-		return Mobile;
+		return mobile;
 	}
 	public void setMobile(String mobile) {
-		Mobile = mobile;
+		this.mobile = mobile;
 	}
 	public int getUserTypeId() {
-		return UserTypeId;
+		return userTypeId;
 	}
 	public void setUserTypeId(int userTypeId) {
-		UserTypeId = userTypeId;
+		this.userTypeId = userTypeId;
 	}
 	public String getCreatedDate() {
-		return CreatedDate;
+		return createdDate;
 	}
 	public void setCreatedDate(String createdDate) {
-		CreatedDate = createdDate;
+		this.createdDate = createdDate;
 	}
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 	public String getDateOfBirth() {
-		return DateOfBirth;
+		return dateOfBirth;
 	}
 	public void setDateOfBirth(String dateOfBirth) {
-		DateOfBirth = dateOfBirth;
+		this.dateOfBirth = dateOfBirth;
 	}
 	public String getLanguage() {
-		return Language;
+		return language;
 	}
 	public void setLanguage(String language) {
-		Language = language;
+		this.language = language;
 	}
 	public UserAddress getUserAddress() {
 		return userAddress;
@@ -132,11 +131,11 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [UserId=" + UserId + ", FirstName=" + FirstName + ", LastName=" + LastName + ", Email=" + Email
-				+ ", Password=" + Password + ", Mobile=" + Mobile + ", UserTypeId=" + UserTypeId + ", CreatedDate="
-				+ CreatedDate + ", DateOfBirth=" + DateOfBirth + ", Language=" + Language + ", Nationality="
-				+ Nationality + ", Gender=" + Gender + ", UserProfilePicture=" + UserProfilePicture + ", IsActive="
-				+ IsActive + ", IsApproved=" + IsApproved + ", IsDeleted=" + IsDeleted + ", IsRegisteredUser="
-				+ IsRegisteredUser + ", userAddress=" + userAddress + "]";
+		return "Customer [UserId=" + userId + ", FirstName=" + firstName + ", LastName=" + lastName + ", Email=" + email
+				+ ", Password=" + password + ", Mobile=" + mobile + ", UserTypeId=" + userTypeId + ", CreatedDate="
+				+ createdDate + ", DateOfBirth=" + dateOfBirth + ", Language=" + language + ", Nationality="
+				+ nationality + ", Gender=" + gender + ", UserProfilePicture=" + userProfilePicture + ", IsActive="
+				+ isActive + ", IsApproved=" + isApproved + ", IsDeleted=" + isDeleted + ", IsRegisteredUser="
+				+ isRegisteredUser + ", userAddress=" + userAddress + "]";
 	}
 }

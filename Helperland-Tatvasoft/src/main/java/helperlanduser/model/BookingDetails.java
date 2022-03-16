@@ -1,14 +1,14 @@
 package helperlanduser.model;
 
 public class BookingDetails {
-	private String ServiceStartTime;
+	private String serviceStartTime;
 
 	public String getServiceStartTime() {
-		return ServiceStartTime;
+		return serviceStartTime;
 	}
 
 	public void setServiceStartTime(String serviceStartTime) {
-		ServiceStartTime = serviceStartTime;
+		this.serviceStartTime = serviceStartTime;
 	}
 	
 }

@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class Rating {
 
-	private int RatingId;
-	private int ServiceRequestId;
-	private int RatingFrom;
-	private int RatingTo;
-	private int Ratings;
-	private String Comments;
-	private Date RatingDate;
-	private int OnTimeArrival;
-	private int Friendly;
-	private int QualityOfService;
+	private int ratingId;
+	private int serviceRequestId;
+	private int ratingFrom;
+	private int ratingTo;
+	private int ratings;
+	private String comments;
+	private String ratingDate;
+	private int onTimeArrival;
+	private int friendly;
+	private int qualityOfService;
 	private float avgrating;
 	
 	public ServiceRequest getServiceRequest() {
@@ -32,64 +32,64 @@ public class Rating {
 	private Customer customer;
 	
 	public int getRatingId() {
-		return RatingId;
+		return ratingId;
 	}
 	public void setRatingId(int ratingId) {
-		RatingId = ratingId;
+		this.ratingId = ratingId;
 	}
 	public int getServiceRequestId() {
-		return ServiceRequestId;
+		return serviceRequestId;
 	}
 	public void setServiceRequestId(int serviceRequestId) {
-		ServiceRequestId = serviceRequestId;
+		this.serviceRequestId = serviceRequestId;
 	}
 	public int getRatingFrom() {
-		return RatingFrom;
+		return ratingFrom;
 	}
 	public void setRatingFrom(int ratingFrom) {
-		RatingFrom = ratingFrom;
+		this.ratingFrom = ratingFrom;
 	}
 	public int getRatingTo() {
-		return RatingTo;
+		return ratingTo;
 	}
 	public void setRatingTo(int ratingTo) {
-		RatingTo = ratingTo;
+		this.ratingTo = ratingTo;
 	}
 	public int getRatings() {
-		return Ratings;
+		return ratings;
 	}
 	public void setRatings(int ratings) {
-		Ratings = ratings;
+		this.ratings = ratings;
 	}
 	public String getComments() {
-		return Comments;
+		return comments;
 	}
 	public void setComments(String comments) {
-		Comments = comments;
+		this.comments = comments;
 	}
-	public Date getRatingDate() {
-		return RatingDate;
+	public String getRatingDate() {
+		return ratingDate;
 	}
-	public void setRatingDate(Date ratingDate) {
-		RatingDate = ratingDate;
+	public void setRatingDate(String ratingDate) {
+		this.ratingDate = ratingDate;
 	}
 	public int getOnTimeArrival() {
-		return OnTimeArrival;
+		return onTimeArrival;
 	}
 	public void setOnTimeArrival(int onTimeArrival) {
-		OnTimeArrival = onTimeArrival;
+		this.onTimeArrival = onTimeArrival;
 	}
 	public int getFriendly() {
-		return Friendly;
+		return friendly;
 	}
 	public void setFriendly(int friendly) {
-		Friendly = friendly;
+		this.friendly = friendly;
 	}
 	public int getQualityOfService() {
-		return QualityOfService;
+		return qualityOfService;
 	}
 	public void setQualityOfService(int qualityOfService) {
-		QualityOfService = qualityOfService;
+		this.qualityOfService = qualityOfService;
 	}
 	public float getAvgrating() {
 		return avgrating;
@@ -99,12 +99,10 @@ public class Rating {
 	}
 	@Override
 	public String toString() {
-		return "Rating [RatingId=" + RatingId + ", ServiceRequestId=" + ServiceRequestId + ", RatingFrom=" + RatingFrom
-				+ ", RatingTo=" + RatingTo + ", Ratings=" + Ratings + ", Comments=" + Comments + ", RatingDate="
-				+ RatingDate + ", OnTimeArrival=" + OnTimeArrival + ", Friendly=" + Friendly + ", QualityOfService="
-				+ QualityOfService + ", avgrating=" + avgrating + ", serviceRequest=" + serviceRequest + ", customer="
+		return "Rating [RatingId=" + ratingId + ", ServiceRequestId=" + serviceRequestId + ", RatingFrom=" + ratingFrom
+				+ ", RatingTo=" + ratingTo + ", Ratings=" + ratings + ", Comments=" + comments + ", RatingDate="
+				+ ratingDate + ", OnTimeArrival=" + onTimeArrival + ", Friendly=" + friendly + ", QualityOfService="
+				+ qualityOfService + ", avgrating=" + avgrating + ", serviceRequest=" + serviceRequest + ", customer="
 				+ customer + "]";
 	}
-	
-	
 }

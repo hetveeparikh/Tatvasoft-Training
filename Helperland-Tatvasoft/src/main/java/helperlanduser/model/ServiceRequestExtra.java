@@ -1,32 +1,32 @@
 package helperlanduser.model;
 
 public class ServiceRequestExtra {
-	private int ServiceRequestExtraId;
-	private int ServiceRequestId;
-	private String ServiceExtra;
+	private int serviceRequestExtraId;
+	private int serviceRequestId;
+	private String serviceExtra;
 	
 	public int getServiceRequestExtraId() {
-		return ServiceRequestExtraId;
+		return serviceRequestExtraId;
 	}
 	public void setServiceRequestExtraId(int serviceRequestExtraId) {
-		ServiceRequestExtraId = serviceRequestExtraId;
+		this.serviceRequestExtraId = serviceRequestExtraId;
 	}
 	public int getServiceRequestId() {
-		return ServiceRequestId;
+		return serviceRequestId;
 	}
 	public void setServiceRequestId(int serviceRequestId) {
-		ServiceRequestId = serviceRequestId;
+		this.serviceRequestId = serviceRequestId;
 	}
 	public String getServiceExtra() {
-		return ServiceExtra;
+		return serviceExtra;
 	}
 	public void setServiceExtra(String serviceExtra) {
-		ServiceExtra = serviceExtra;
+		this.serviceExtra = serviceExtra;
 	}
 	@Override
 	public String toString() {
-		return "ServiceRequestExtra [ServiceRequestExtraId=" + ServiceRequestExtraId + ", ServiceRequestId="
-				+ ServiceRequestId + ", ServiceExtra=" + ServiceExtra + "]";
+		return "ServiceRequestExtra [ServiceRequestExtraId=" + serviceRequestExtraId + ", ServiceRequestId="
+				+ serviceRequestId + ", ServiceExtra=" + serviceExtra + "]";
 	}
 	
 	

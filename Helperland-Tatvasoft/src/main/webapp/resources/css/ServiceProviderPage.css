@@ -664,12 +664,12 @@ img.ghar {
 	line-height: 20px;
 	color: #646464;
 	height: auto;
-	padding: 10px 15px;
 	box-shadow: none;
 	border: 1px solid #dedddd;
 	resize: vertical;
 	height: 46px;
 	resize: none;
+	width: 30%;
 }
 
 .bdayset option {

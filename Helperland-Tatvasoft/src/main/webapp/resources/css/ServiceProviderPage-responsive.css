@@ -6,7 +6,7 @@
       display: none;
   }
   .offset-lg-2{
-      margin-left: 14%;
+      margin-left: 12%;
   }
   .sptable{
     margin-left: inherit !important;
@@ -21,6 +21,9 @@
   }
   .container{
       max-width: 100%;
+  }
+  #SettingsDetails, #SettingsPassword, .bottom{
+  	  padding: 0px 20px;
   }
 }
 @media only screen and (min-width: 767px) and (max-width: 1220px) {

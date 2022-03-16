@@ -224,7 +224,7 @@ public class ServiceProviderController {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication("helperland.hetvee@gmail.com", "helperland-22");
+				return new PasswordAuthentication("helperland.hetvee@gmail.com", "");
 			}
 
 		});
