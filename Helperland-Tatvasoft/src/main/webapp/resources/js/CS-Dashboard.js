@@ -125,3 +125,109 @@ $(document).ready(function() {
 	var maxDate = year + '-' + month + '-' + day;
 	$('#tomorrowdate').attr('min', maxDate);
 });
+
+/*Password Validation*/
+
+$(document).ready(function() {
+	$("#settingsnewpassword").on('keyup', function() {
+		var password = $("#settingsnewpassword").val();
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+		if (!regularExpression.test(password)) {
+			$('#Passwordspdetailsdiv').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.").css("color", "red");
+		}
+		else {
+			$('#Passwordspdetailsdiv').html("Password strength : Good").css("color", "green");
+		}
+	});
+});
+
+$("#passwordform").submit(function(event) {
+	var password = document.forms["passwordform"]["password"].value;
+	var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+	if (!regularExpression.test(password)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});
+
+/*Details validation mobile*/
+
+$(document).ready(function() {
+	$("#detailsMobile").on('keyup', function() {
+		var mob = $("#detailsMobile").val();
+		var phoneno = /^\d{10}$/;
+		if (!phoneno.test(mob)) {
+			$('#Mobiledivdetails').html("Invalid mobile number.").css("color", "red");
+		}
+		else {
+			$('#Mobiledivdetails').html("");
+		}
+	});
+});
+
+$("#addDetailsForm").submit(function(event) {
+	var phoneno = /^\d{10}$/;
+	var mobile = document.forms["addDetailsForm"]["Mobile"].value;
+	if (!phoneno.test(mobile)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});
+
+
+/*Edit address validation mobile*/
+
+$(document).ready(function() {
+	$("#addmobile").on('keyup', function() {
+		var mob = $("#addmobile").val();
+		var phoneno = /^\d{10}$/;
+		if (!phoneno.test(mob)) {
+			$('#Mobilediveditadd').html("Invalid mobile number.").css("color", "red");
+		}
+		else {
+			$('#Mobilediveditadd').html("");
+		}
+	});
+});
+
+$("#editAddressSettingsForm").submit(function(event) {
+	var phoneno = /^\d{10}$/;
+	var mobile = document.forms["editAddressSettingsForm"]["Mobile"].value;
+	if (!phoneno.test(mobile)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});
+
+/*Add address validation mobile*/
+
+$(document).ready(function() {
+	$("#addmobilee").on('keyup', function() {
+		var mob = $("#addmobilee").val();
+		var phoneno = /^\d{10}$/;
+		if (!phoneno.test(mob)) {
+			$('#Mobiledivnewadd').html("Invalid mobile number.").css("color", "red");
+		}
+		else {
+			$('#Mobiledivnewadd').html("");
+		}
+	});
+});
+
+$("#addAddressSettingsForm").submit(function(event) {
+	var phoneno = /^\d{10}$/;
+	var mobile = document.forms["addAddressSettingsForm"]["Mobile"].value;
+	if (!phoneno.test(mobile)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});
+

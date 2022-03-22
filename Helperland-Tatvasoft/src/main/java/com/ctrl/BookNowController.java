@@ -1,16 +1,15 @@
 package com.ctrl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Collectors;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -111,7 +110,7 @@ public class BookNowController {
 	}
 
 	@RequestMapping(value = "/servicerequest/{ZipCode},{AddressId},{TotalCost},{ServiceHours},{ServiceStartDate},{ExtraHours},{SubTotal},{Comments},{ServiceStartTime},{HasPets},{Extras}", method = RequestMethod.GET)
-	public @ResponseBody String addrequestaddress(@PathVariable("ZipCode") String ZipCode,
+	public @ResponseBody int addrequestaddress(@PathVariable("ZipCode") String ZipCode,
 			@PathVariable("AddressId") int AddressId, @PathVariable("TotalCost") float TotalCost,
 			@PathVariable("ServiceHours") float ServiceHours, @PathVariable("ServiceStartDate") String ServiceStartDate,
 			@PathVariable("ExtraHours") float ExtraHours, @PathVariable("SubTotal") float SubTotal,
@@ -161,7 +160,7 @@ public class BookNowController {
 		}
 
 		if (servicereq != 0 && address != 0) {
-			
+			List<Customer> emaillist = this.bookPincodeDao.getAllEmail();
 			String subject = "New Service Request!";
 			String from = "helperland.hetvee@gmail.com";
 			String message = "Service Request Details: " + "\n\n" + "Service Request Id: 27" + servicereq + "\n"
@@ -169,18 +168,13 @@ public class BookNowController {
 					+ "Total Hours: " + ExtraHours + "\n" + "Comments: " + Comments + "\n"
 					+ "Address: " + getaddress.getAddressLine1() + ", " + getaddress.getAddressLine2() + ", " + getaddress.getCity()
 					+ "\n" + "Postalcode: " + ZipCode + "\n" + "Mobile Number: " + getaddress.getMobile() + "\n"
-					+ "Extra Services: " + Extras + "\n" + "Pet Status: " + HasPets + "\n" + "Total Payment: "
+					+ "\nExtra Services: " + Extras + "\n" + "Pet Status: " + HasPets + "\n" + "Total Payment: "
 					+ TotalCost;
-			List<Customer> emaillist = this.bookPincodeDao.getAllEmail();
-			Iterator<Customer> iterator = emaillist.iterator();
-			while (iterator.hasNext()) {
-				String to = iterator.next().getEmail();
-				sendServiceRequestEmail(message, subject, to, from);
-			}
-
+			String to = emaillist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
+			sendServiceRequestEmail(message, subject, to, from);
 		}
 
-		return null;
+		return servicereq;
 
 	}
 
@@ -212,7 +206,7 @@ public class BookNowController {
 
 			m.setFrom(from);
 
-			m.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+			m.addRecipients(Message.RecipientType.TO, to);
 
 			m.setSubject(subject);
 

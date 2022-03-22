@@ -79,7 +79,7 @@ public class CustomerRequestsDao {
 
 	public int rescheduleRequests(ServiceRequest serviceRequest, String serviceid) {
 		String query = "update servicerequest set ModifiedBy='" + serviceRequest.getModifiedBy() + "', ModifiedDate='"
-				+ serviceRequest.getModifiedDate() + "' ServiceStartTime='" + serviceRequest.getServiceStartTime()
+				+ serviceRequest.getModifiedDate() + "', ServiceStartTime='" + serviceRequest.getServiceStartTime()
 				+ "', ServiceStartDate='" + serviceRequest.getServiceStartDate() + "' where UserId='"
 				+ serviceRequest.getUserId() + "'and ServiceId='" + serviceid + "' ";
 		return template.update(query);

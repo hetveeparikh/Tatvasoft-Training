@@ -160,7 +160,7 @@
 												data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											<form action="addCustomer" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
+											<form action="addCustomer" id="registerform" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 												<div>
 													<input type="text" placeholder="First name"
 														class="fnamemodal" name="FirstName" required /> <input
@@ -254,6 +254,24 @@
 				</div>
 			</div>
 		</nav>
+		
+		<div class="position-absolute w-100  d-flex justify-content-center" style="top:110px; z-index:100;">
+			<div class="alert alert-danger d-none w-75 h-25 fade show" ${errordiv } role="alert" id="error-alert">
+				<div class="d-flex justify-content-between">
+				<h5>${error }</h5>
+			  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  	</div>
+			</div>
+		</div>
+		
+		<div class="position-absolute w-100  d-flex justify-content-center" style="top:140px; z-index:100;">
+			<div class="alert alert-success d-none w-75 h-25 fade show" ${successdiv } role="alert" id="success-alert">
+				<div class="d-flex justify-content-between">
+				<h5>${success }</h5>
+			  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  	</div>
+			</div>
+		</div>
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -339,7 +357,7 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form action="addCustomer" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
+							<form action="addCustomer" id="registerform1" method="post" oninput='cpass.setCustomValidity(cpass.value != Password.value ? "Passwords do not match." : "")'>
 								<div>
 									<input type="text" placeholder="First name" class="fnamemodal"
 										name="FirstName" required /> <input type="text"
@@ -387,7 +405,7 @@
 					</div>
 				</div>
 			</div>
-			<a href="bap linkhelper">Become a Helper</a>
+			<a href="bap" class=" linkhelper">Become a Helper</a>
 			<a class="nav-link noti notiflink" href="#">
 				<span>Notifications</span></a>
 			<li class="nav-item dropdown melink">
@@ -442,14 +460,14 @@
 							placeholder="Email Address" required>
 						<div class="num">
 							<input type="text" placeholder="+91" class="code" disabled>
-							<input type="text" placeholder="Phone number" name="Mobile2"
+							<input type="text" placeholder="Phone number" name="Mobile"
 								class="number" required id="Mobile2">
 						</div>
 						<input type="password" class="pass" placeholder="Password"
-							name="Password" required id="pass"> 
+							name="Password" required id="Password2"> 
 						<input name="cpass"
 							type="password" class="cpass" placeholder="Confirm Password"
-							id="cpass" required>
+							id="ConfirmPassword2" required>
 						<div class="text-center mb-2 mt-2" id="Passworddiv2"></div>
 
 						<div class="text-center mb-2 mt-2" id="Mobilediv2"></div>
@@ -617,7 +635,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/ServiceProvider-BAP.js"></script>
 	<script
@@ -628,44 +647,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"
 		integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		
-	<script type="text/javascript">
 	
-
-	$(document).ready(function () {
-	   $("#cpass").on('keyup', function(){
-	    var pass = $("#pass").val();
-	    var cpass = $("#cpass").val();
-	    if (pass != cpass)
-	        $("#CheckPasswordMatch2").html("Password does not match !").css("color","red");
-	    else
-	        $("#CheckPasswordMatch2").html("Password match !").css("color","green");
-	   });
-	});
-
-	$(document).ready(function () {
-	   $("#ConfirmPassword").on('keyup', function(){
-	    var password = $("#Password").val();
-	    var confirmPassword = $("#ConfirmPassword").val();
-	    if (password != confirmPassword)
-	        $("#CheckPasswordMatch").html("Password does not match !").css("color","red");
-	    else
-	        $("#CheckPasswordMatch").html("Password match !").css("color","green");
-	   });
-	});
-
-	$(document).ready(function () {
-	   $("#ConfirmPassword1").on('keyup', function(){
-	    var password1 = $("#Password1").val();
-	    var confirmPassword1 = $("#ConfirmPassword1").val();
-	    if (password1 != confirmPassword1)
-	        $("#CheckPasswordMatch1").html("Password does not match !").css("color","red");
-	    else
-	        $("#CheckPasswordMatch1").html("Password match !").css("color","green");
-	   });
-	});
-
-	</script>
 
 	<script>
 		let name =
@@ -688,152 +670,226 @@
 	</script>
 
 	<script>
+	$(document).ready(function() {
+		$("#ConfirmPassword").on('keyup', function() {
+			var password = $("#Password").val();
+			var confirmPassword = $("#ConfirmPassword").val();
+			if (password != confirmPassword)
+				$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+			else
+				$("#CheckPasswordMatch").html("Password matches !").css("color","green");
+		});
 		
-		/* Validation msg for Password */
+		$("#Password").on('keyup', function() {
+			var password = $("#Password").val();
+			var confirmPassword = $("#ConfirmPassword").val();
+			if (password != confirmPassword)
+				$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+			else
+				$("#CheckPasswordMatch").html("Password matches !").css("color","green");
+		});
+	});
+
+	$(document).ready(function() {
+		$("#ConfirmPassword1").on('keyup',function() {
+			var password1 = $("#Password1").val();
+			var confirmPassword1 = $("#ConfirmPassword1").val();
+			if (password1 != confirmPassword1)
+				$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
+			else
+				$("#CheckPasswordMatch1").html("Password matches !").css("color","green");
+		});
+		
+		$("#Password1").on('keyup',function() {
+			var password1 = $("#Password1").val();
+			var confirmPassword1 = $("#ConfirmPassword1").val();
+			if (password1 != confirmPassword1)
+				$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
+			else
+				$("#CheckPasswordMatch1").html("Password matches !").css("color","green");
+		});
+	});
 	
-		$(document).ready(function() {
-			$("#Password").on('keyup', function() {
-				var password = $("#Password").val();
-				var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
-				if(!regularExpression.test(password)){
-					$('#Passworddiv').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
-				}
-				else{
-					$('#Passworddiv').html("Password strength : Good<br><hr>").css("color", "green");
-				}
-			});
+	$(document).ready(function() {
+		$("#ConfirmPassword2").on('keyup',function() {
+			var password1 = $("#Password2").val();
+			var confirmPassword1 = $("#ConfirmPassword2").val();
+			if (password1 != confirmPassword1)
+				$("#CheckPasswordMatch2").html("Password does not match !").css("color", "red");
+			else
+				$("#CheckPasswordMatch2").html("Password matches !").css("color","green");
 		});
 		
-		$(document).ready(function() {
-			$("#Password1").on('keyup', function() {
-				var password = $("#Password1").val();
-				var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
-				if(!regularExpression.test(password)){
-					$('#Passworddiv1').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
-				}
-				else{
-					$('#Passworddiv1').html("Password strength : Good<br><hr>").css("color", "green");
-				}
-			});
+		$("#Password2").on('keyup',function() {
+			var password1 = $("#Password2").val();
+			var confirmPassword1 = $("#ConfirmPassword2").val();
+			if (password1 != confirmPassword1)
+				$("#CheckPasswordMatch2").html("Password does not match !").css("color", "red");
+			else
+				$("#CheckPasswordMatch2").html("Password matches !").css("color","green");
 		});
-		
-		$(document).ready(function() {
-			$("#Password2").on('keyup', function() {
-				var password = $("#Password2").val();
-				var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
-				if(!regularExpression.test(password)){
-					$('#Passworddiv2').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
-				}
-				else{
-					$('#Passworddiv2').html("Password strength : Good<br><hr>").css("color", "green");
-				}
-			});
-		});
-		
-		/* Validation msg for Mobile */
-		
-		$(document).ready(function() {
-			$("#Mobile").on('keyup', function() {
-				var mob = $("#Mobile").val();
-				var phoneno = /^\d{10}$/;
-				if(!phoneno.test(mob)){
-					$('#Mobilediv').html("Invalid mobile number.<br><hr>").css("color", "red");
-				}
-				else{
-					$('#Mobilediv').html("");
-				}
-			});
-		});
-		
-		$(document).ready(function() {
-			$("#Mobile1").on('keyup', function() {
-				var mob = $("#Mobile1").val();
-				var phoneno = /^\d{10}$/;
-				if(mob.match(phoneno)){
-					$('#Mobilediv1').html("Invalid mobile number.<br><hr>").css("color", "red");
-				}
-				else{
-					$('#Mobilediv1').html("");
-				}
-			});
-		});
-		
-		$(document).ready(function() {
-			$("#Mobile2").on('keyup', function() {
-				var mob = $("#Mobile2").val();
-				var phoneno = /^\d{10}$/;
-				if(mob.match(phoneno)){
-					$('#Mobilediv2').html("Invalid mobile number.<br><hr>").css("color", "red");
-				}
-				else{
-					$('#Mobilediv2').html("");
-				}
-			});
-		});
-		
-		
-		/* Form Validations */
-		
-		$("#registerform").submit(function(event) {
-			var password = document.forms["registerform"]["Password"].value;
+	});
+	
+	/* Validation msg for Password */
+
+	$(document).ready(function() {
+		$("#Password").on('keyup', function() {
+			var password = $("#Password").val();
 			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
 			if(!regularExpression.test(password)){
-				return false;
+				$('#Passworddiv').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
 			}
 			else{
-				return true;
-			}
-			
-			var phoneno = /^\d{10}$/;
-			var mobile = document.forms["registerform"]["Mobile"].value;
-			if(mobile.match(phoneno)){
-			    return true;
-			}
-			else{
-			    return false;
+				$('#Passworddiv').html("Password strength : Good<br><hr>").css("color", "green");
 			}
 		});
-		
-		
-		$("#registerform").submit(function(event) {
-			var password = document.forms["registerform"]["Password"].value;
+	});
+	
+	$(document).ready(function() {
+		$("#Password1").on('keyup', function() {
+			var password = $("#Password1").val();
 			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
 			if(!regularExpression.test(password)){
-				return false;
+				$('#Passworddiv1').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
 			}
 			else{
-				return true;
-			}
-			
-			var phoneno = /^\d{10}$/;
-			var mobile = document.forms["registerform"]["Mobile"].value;
-			if(mobile.match(phoneno)){
-			    return true;
-			}
-			else{
-			    return false;
+				$('#Passworddiv1').html("Password strength : Good<br><hr>").css("color", "green");
 			}
 		});
-		
-		$("#spregister").submit(function(event) {
-			var password = document.forms["spregister"]["Password"].value;
+	});
+	
+	$(document).ready(function() {
+		$("#Password2").on('keyup', function() {
+			var password = $("#Password2").val();
 			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
 			if(!regularExpression.test(password)){
-				return false;
+				$('#Passworddiv2').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.<br><hr>").css("color", "red");
 			}
 			else{
-				return true;
-			}
-			
-			var phoneno = /^\d{10}$/;
-			var mobile = document.forms["spregister"]["Mobile2"].value;
-			if(mobile.match(phoneno)){
-			    return true;
-			}
-			else{
-			    return false;
+				$('#Passworddiv2').html("Password strength : Good<br><hr>").css("color", "green");
 			}
 		});
+	});
+	
+	/* Validation msg for Mobile */
+	
+	$(document).ready(function() {
+		$("#Mobile").on('keyup', function() {
+			var mob = $("#Mobile").val();
+			var phoneno = /^\d{10}$/;
+			if(!phoneno.test(mob)){
+				$('#Mobilediv').html("Invalid mobile number.<br><hr>").css("color", "red");
+			}
+			else{
+				$('#Mobilediv').html("");
+			}
+		});
+	});
+	
+	$(document).ready(function() {
+		$("#Mobile1").on('keyup', function() {
+			var mob = $("#Mobile1").val();
+			var phoneno = /^\d{10}$/;
+			if(!phoneno.test(mob)){
+				$('#Mobilediv1').html("Invalid mobile number.<br><hr>").css("color", "red");
+			}
+			else{
+				$('#Mobilediv1').html("");
+			}
+		});
+	});
+	
+	$(document).ready(function() {
+		$("#Mobile2").on('keyup', function() {
+			var mob = $("#Mobile2").val();
+			var phoneno = /^\d{10}$/;
+			if(!phoneno.test(mob)){
+				$('#Mobilediv2').html("Invalid mobile number.<br><hr>").css("color", "red");
+			}
+			else{
+				$('#Mobilediv2').html("");
+			}
+		});
+	});
+	
+	
+	/* Form Validations */
+	
+	$("#registerform").submit(function(event) {
+		var password = document.forms["registerform"]["Password"].value;
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+		if(!regularExpression.test(password)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+	
+	$("#registerform").submit(function(event) {
+		var phoneno = /^\d{10}$/;
+		var mobile = document.forms["registerform"]["Mobile"].value;
+		if(!phoneno.test(mobile)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+	
+	
+	$("#registerform1").submit(function(event) {
+		var password = document.forms["registerform1"]["Password"].value;
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+		if(!regularExpression.test(password)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+	
+	$("#registerform1").submit(function(event) {
+		var phoneno = /^\d{10}$/;
+		var mobile = document.forms["registerform1"]["Mobile"].value;
+		if(!phoneno.test(mobile)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+	
+	$("#spregister").submit(function(event) {
+		var password = document.forms["spregister"]["Password"].value;
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+		if(!regularExpression.test(password)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+	
+	$("#spregister").submit(function(event) {
+		var phoneno = /^\d{10}$/;
+		var mobile = document.forms["spregister"]["Mobile"].value;
+		if(!phoneno.test(mobile)){
+			return false;
+		}
+		else{
+			return true;
+		}
+	});
+	
+	$("#error-alert").fadeTo(2000, 500).slideUp(500, function(){
+	    $("#error-alert").slideUp(500);
+	});
+	
+	$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+	    $("#success-alert").slideUp(500);
+	});
+		
 		
 	</script>
 </body>

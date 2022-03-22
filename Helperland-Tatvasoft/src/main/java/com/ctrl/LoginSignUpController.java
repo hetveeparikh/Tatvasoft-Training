@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +29,7 @@ import helperlanduser.dao.CustomerDao;
 import helperlanduser.dao.ServiceProviderDao;
 import helperlanduser.model.Customer;
 import helperlanduser.model.Login;
+import helperlanduser.model.Rating;
 import helperlanduser.model.UserAddress;
 
 @Controller
@@ -35,48 +37,88 @@ public class LoginSignUpController {
 
 	@Autowired
 	private CustomerDao customerDao;
-	
+
 	@Autowired
 	private ServiceProviderDao serviceProviderDao;
 
 	@RequestMapping(value = "/addCustomer", method = RequestMethod.POST)
-	public String addcustomer(@ModelAttribute("customer") Customer customer) {
+	public String addcustomer(@ModelAttribute("customer") Customer customer, Model model) {
 
-		Random random = new Random();
-		customer.setUserId(random.nextInt(10000));
-		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = new Date();
-		customer.setCreatedDate(dtf.format(date));
-		customer.setUserProfilePicture("NA");
-		customer.setUserTypeId(2);
-		customer.setIsActive(1);
-		customer.setIsDeleted(0);
-		customer.setIsApproved(1);
-		customerDao.save(customer);
+		Customer emailexists = customerDao.validEmail(customer);
+
+		if (emailexists == null) {
+			Random random = new Random();
+			customer.setUserId(random.nextInt(10000));
+			SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = new Date();
+			customer.setCreatedDate(dtf.format(date));
+			customer.setUserProfilePicture("NA");
+			customer.setUserTypeId(2);
+			customer.setIsActive(1);
+			customer.setIsDeleted(0);
+			customer.setIsApproved(1);
+			customerDao.save(customer);
+			
+			String email = customer.getEmail();
+			String message = "Dear "+ customer.getFirstName() +",\n\nYou are now successfully registered at Helperland! Book your service request now and enjoy the benefits.";
+			String subject = "Registered Successfully!";
+			String from = "helperland.hetvee@gmail.com";
+			sendServiceEmail(message, subject, email, from);
+			
+			model.addAttribute("success", "Registered Successfully! Please login now.");
+			model.addAttribute("successdiv", "style='display: block !important';");
+			
+		} else {
+			model.addAttribute("error", "Email already exists!");
+			model.addAttribute("errordiv", "style='display: block !important';");
+		}
 		return "Homepage";
 	}
 
 	@RequestMapping(value = "/addServiceProvider", method = RequestMethod.POST)
-	public String addServiceProvider(@ModelAttribute("customer") Customer customer,@ModelAttribute("useraddress") UserAddress useraddress) {
-		Random random = new Random();
-		int randomno = random.nextInt(10000);
-		customer.setUserId(randomno);
-		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date date = new Date();
-		customer.setCreatedDate(dtf.format(date));
-		customer.setUserTypeId(3);
-		customer.setUserProfilePicture("car");
-		customer.setIsActive(1);
-		customer.setIsDeleted(0);
-		customer.setIsApproved(0);
-		customerDao.save(customer);
+	public String addServiceProvider(@ModelAttribute("customer") Customer customer,@ModelAttribute("useraddress") UserAddress useraddress, Model model, Rating rating) {
 		
-		useraddress.setUserId(randomno);
-		useraddress.setAddressLine1("AddressLine-1");
-		useraddress.setAddressLine2("AddressLine-2");
-		useraddress.setCity("City");
-		useraddress.setPostalCode("PostalCode");
-		serviceProviderDao.addspAddress(useraddress);
+		Customer emailexists = customerDao.validEmail(customer);
+		
+		if(emailexists == null) {
+			Random random = new Random();
+			int randomno = random.nextInt(10000);
+			customer.setUserId(randomno);
+			SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = new Date();
+			customer.setCreatedDate(dtf.format(date));
+			customer.setUserTypeId(3);
+			customer.setUserProfilePicture("car");
+			customer.setIsActive(1);
+			customer.setIsDeleted(0);
+			customer.setIsApproved(0);
+			customerDao.save(customer);
+			
+			useraddress.setUserId(randomno);
+			useraddress.setAddressLine1("AddressLine-1");
+			useraddress.setAddressLine2("AddressLine-2");
+			useraddress.setCity("City");
+			useraddress.setPostalCode("PostalCode");
+			serviceProviderDao.addspAddress(useraddress);
+			
+			rating.setRatingTo(randomno);
+			rating.setRatings(0);
+			rating.setRatingFrom(0);
+			serviceProviderDao.addratings(rating);
+			
+			String email = customer.getEmail();
+			String message = "Dear "+ customer.getFirstName() +",\n\nYou are now successfully registered at Helperland as a Service Provider! We'll let you know when your account gets approved by our team. You can start giving your service to the customers once it gets approved. Thank you for your patience.";
+			String subject = "Registered Successfully!";
+			String from = "helperland.hetvee@gmail.com";
+			sendServiceEmail(message, subject, email, from);
+			
+			model.addAttribute("success", "Registered Successfully! Please login now.");
+			model.addAttribute("successdiv", "style='display: block !important';");
+			
+		} else {
+			model.addAttribute("error", "Email already exists!");
+			model.addAttribute("errordiv", "style='display: block !important';");
+		}
 		
 		return "ServiceProvider-BAP";
 	}
@@ -98,17 +140,16 @@ public class LoginSignUpController {
 			session.setAttribute("custemail", customer.getEmail());
 			session.setAttribute("spgender", customer.getGender());
 			session.setAttribute("spavatar", customer.getUserProfilePicture());
+			session.setAttribute("spstatus", customer.getIsActive());
 
 			session.setMaxInactiveInterval(15 * 60);
 
 			int type = customer.getUserTypeId();
 			if (type == 2) {
 				mav = new ModelAndView("redirect:customerDashboard");
-			} 
-			else if (type == 3) {
+			} else if (type == 3) {
 				mav = new ModelAndView("redirect:ServiceProviderDashboard");
-			}
-			else {
+			} else {
 				mav = new ModelAndView("redirect:admin");
 			}
 		} else {
@@ -146,11 +187,11 @@ public class LoginSignUpController {
 
 		try {
 
-			String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"; 
-			String pwd = RandomStringUtils.random(7, characters); 
+			String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+			String pwd = RandomStringUtils.random(7, characters);
 			System.out.println(pwd);
 			String message = "Your new password is " + pwd;
-			
+
 			m.setFrom(from);
 
 			m.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
@@ -158,12 +199,12 @@ public class LoginSignUpController {
 			m.setSubject(subject);
 
 			m.setText(message);
-			
+
 			Customer customer = new Customer();
-			customer.setPassword(pwd); 
-			customer.setEmail(email); 
+			customer.setPassword(pwd);
+			customer.setEmail(email);
 			String pass = customer.getPassword();
-			System.out.println(pass); 
+			System.out.println(pass);
 			System.out.println(customer.getEmail());
 			customerDao.updatePassword(customer);
 
@@ -182,18 +223,22 @@ public class LoginSignUpController {
 			@ModelAttribute("customer") Customer customer) {
 		ModelAndView mav = null;
 
-		System.out.println("preparing to send message ...");
-		String subject = "Change Password Request";
-		String from = "helperland.hetvee@gmail.com";
 		Customer cust = customerDao.validEmail(customer);
 
-		String email = cust.getEmail();
-		if (customer.getEmail().trim().equals(email.trim())) {
-			sendEmail( subject, email, from);
-			mav = new ModelAndView("Homepage");
+		if (cust != null) {
+			String subject = "Change Password Request";
+			String from = "helperland.hetvee@gmail.com";
+			String email = cust.getEmail();
+			if (customer.getEmail().trim().equals(email.trim())) {
+				sendEmail(subject, email, from);
+				mav = new ModelAndView("Homepage");
+			}
 		} else {
 			mav = new ModelAndView("Homepage");
+			mav.addObject("error", "Please enter valid email.");
+			mav.addObject("errordiv", "style='display: block !important';");
 		}
+
 		return mav;
 	}
 
@@ -205,6 +250,49 @@ public class LoginSignUpController {
 			session.invalidate();
 		}
 		return "Homepage";
+	}
+	
+	public void sendServiceEmail(String message, String subject, String to, String from) {
+
+		String host = "smtp.gmail.com";
+
+		Properties properties = System.getProperties();
+		System.out.println("PROPERTIES " + properties);
+
+		properties.put("mail.smtp.host", host);
+		properties.put("mail.smtp.port", "465");
+		properties.put("mail.smtp.ssl.enable", "true");
+		properties.put("mail.smtp.auth", "true");
+
+		Session session = Session.getInstance(properties, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication("helperland.hetvee@gmail.com", "");
+			}
+
+		});
+
+		session.setDebug(true);
+
+		MimeMessage m = new MimeMessage(session);
+
+		try {
+
+			m.setFrom(from);
+
+			m.addRecipients(Message.RecipientType.TO, to);
+
+			m.setSubject(subject);
+
+			m.setText(message);
+
+			Transport.send(m);
+
+			System.out.println("Sent success...................");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

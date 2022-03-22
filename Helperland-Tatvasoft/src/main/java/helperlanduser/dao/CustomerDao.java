@@ -16,7 +16,7 @@ public class CustomerDao {
 	public void setTemplate(JdbcTemplate template) {
 		this.template = template;
 	}
-
+	
 	public void save(Customer c) {
 		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId,UserProfilePicture,IsApproved,IsDeleted,IsActive) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 		template.update(sql, new Object[] { c.getUserId(), c.getFirstName(), c.getLastName(), c.getEmail(),

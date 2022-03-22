@@ -38,10 +38,10 @@ public class ServiceRequestDao {
 		String pets = serviceRequest.getHasPets();
 		String pincode = serviceRequest.getZipCode();
 
-		String sql = "insert into servicerequest(PaymentTransactionRefNo,PaymentDone,HasPets,PaymentDue,RecordVersion,RefundedAmount,Distance, HasIssue,CreatedDate,ZipCode,"
+		String sql = "insert into servicerequest(ServiceHourlyRate,PaymentTransactionRefNo,PaymentDone,HasPets,PaymentDue,RecordVersion,RefundedAmount,Distance, HasIssue,CreatedDate,ZipCode,"
 				+ "ServiceProviderId,ServiceRequestId,UserId,TotalCost,ServiceHours,SubTotal,ExtraHours,ServiceStartTime,ServiceStartDate,Comments,Discount,ServiceId,Status) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		template.update(sql, new Object[] { "NA", 0, pets, 0, "1.0", 0, 0, 0, dtf.format(date), pincode, 0, serviceReqId, userid, totalcost,
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		template.update(sql, new Object[] { 18,"NA", 0, pets, 0, "1.0", 0, 0, 0, dtf.format(date), pincode, 0, serviceReqId, userid, totalcost,
 				serviceHours, subtotal, extraHours, starttime, startdate, comments, 0, serviceReqId, "New" });
 
 		return serviceReqId;

@@ -277,6 +277,15 @@
 			  	</div>
 			</div>
 		</div>
+		
+		<div class="position-absolute w-100  d-flex justify-content-center" style="top:140px; z-index:100;">
+			<div class="alert alert-success d-none w-75 h-25 fade show" ${successdiv } role="alert" id="success-alert">
+				<div class="d-flex justify-content-between">
+				<h5>${success }</h5>
+			  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			  	</div>
+			</div>
+		</div>
 
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -361,7 +370,7 @@
 								aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
-							<form action="addCustomer" method="post" oninput='ConfirmPassword.setCustomValidity(ConfirmPassword.value != Password.value ? "Passwords do not match." : "")'>
+							<form  id="registerform1" action="addCustomer" method="post" oninput='ConfirmPassword.setCustomValidity(ConfirmPassword.value != Password.value ? "Passwords do not match." : "")'>
 								<div>
 									<input type="text" placeholder="First name" class="fnamemodal"
 										name="FirstName" required /> <input type="text"
@@ -371,7 +380,7 @@
 								<div>
 									<input type="email" placeholder="E-mail Address"
 										class="signupemailmodal" name="Email" required /> <input
-										type="text" placeholder="+49" class="pinmodal" name="pincode"
+										type="text" placeholder="+91" class="pinmodal" name="pincode"
 										disabled /> <input type="text" placeholder="Mobile Number"
 										class="mnomodal" name="Mobile" id="Mobile1" required />
 								</div>
@@ -388,7 +397,7 @@
 								<div class="text-center mb-2 mt-2"
 									id="Mobilediv1"></div>	
 								
-								<div style="margin-top: 7px;" class="text-center mb-2"
+								<div class="text-center mb-2 mt-2"
 									id="CheckPasswordMatch1"></div>
 								<div>
 									<input type="checkbox" value="privacy" id="ppcheckbox" required />
@@ -767,8 +776,8 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/Homepage.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
+	<!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -778,48 +787,6 @@
 		integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q=="
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-	<script>
-	
-		$(document).ready(function() {
-			$("#ConfirmPassword").on('keyup', function() {
-				var password = $("#Password").val();
-				var confirmPassword = $("#ConfirmPassword").val();
-				if (password != confirmPassword)
-					$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
-				else
-					$("#CheckPasswordMatch").html("Password matches !").css("color","green");
-			});
-			
-			$("#Password").on('keyup', function() {
-				var password = $("#Password").val();
-				var confirmPassword = $("#ConfirmPassword").val();
-				if (password != confirmPassword)
-					$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
-				else
-					$("#CheckPasswordMatch").html("Password matches !").css("color","green");
-			});
-		});
-
-		$(document).ready(function() {
-			$("#ConfirmPassword1").on('keyup',function() {
-				var password1 = $("#Password1").val();
-				var confirmPassword1 = $("#ConfirmPassword1").val();
-				if (password1 != confirmPassword1)
-					$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
-				else
-					$("#CheckPasswordMatch1").html("Password matches !").css("color","green");
-			});
-			
-			$("#Password1").on('keyup',function() {
-				var password1 = $("#Password1").val();
-				var confirmPassword1 = $("#ConfirmPassword1").val();
-				if (password1 != confirmPassword1)
-					$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
-				else
-					$("#CheckPasswordMatch1").html("Password matches !").css("color","green");
-			});
-		});
-	</script>
 
 	<script>
 		let name =
@@ -847,9 +814,54 @@
 		$("#login-alert").fadeTo(2000, 500).slideUp(500, function(){
 		    $("#login-alert").slideUp(500);
 		});
+		
+		$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+		    $("#success-alert").slideUp(500);
+		});
+		
 	</script>
 
 	<script>
+	
+		$(document).ready(function() {
+			$("#ConfirmPassword").on('keyup', function() {
+				var password = $("#Password").val();
+				var confirmPassword = $("#ConfirmPassword").val();
+				if (password != confirmPassword)
+					$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+				else
+					$("#CheckPasswordMatch").html("Password matches !").css("color","green");
+			});
+			
+			$("#Password").on('keyup', function() {
+				var password = $("#Password").val();
+				var confirmPassword = $("#ConfirmPassword").val();
+				if (password != confirmPassword)
+					$("#CheckPasswordMatch").html("Password does not match !").css("color", "red");
+				else
+					$("#CheckPasswordMatch").html("Password matches !").css("color","green");
+			});
+		});
+	
+		$(document).ready(function() {
+			$("#ConfirmPassword1").on('keyup',function() {
+				var password1 = $("#Password1").val();
+				var confirmPassword1 = $("#ConfirmPassword1").val();
+				if (password1 != confirmPassword1)
+					$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
+				else
+					$("#CheckPasswordMatch1").html("Password matches !").css("color","green");
+			});
+			
+			$("#Password1").on('keyup',function() {
+				var password1 = $("#Password1").val();
+				var confirmPassword1 = $("#ConfirmPassword1").val();
+				if (password1 != confirmPassword1)
+					$("#CheckPasswordMatch1").html("Password does not match !").css("color", "red");
+				else
+					$("#CheckPasswordMatch1").html("Password matches !").css("color","green");
+			});
+		});
 		
 		/* Validation msg for Password */
 	
@@ -898,7 +910,7 @@
 			$("#Mobile1").on('keyup', function() {
 				var mob = $("#Mobile1").val();
 				var phoneno = /^\d{10}$/;
-				if(mob.match(phoneno)){
+				if(!phoneno.test(mob)){
 					$('#Mobilediv1').html("Invalid mobile number.<br><hr>").css("color", "red");
 				}
 				else{
@@ -919,20 +931,22 @@
 			else{
 				return true;
 			}
-			
+		});
+		
+		$("#registerform").submit(function(event) {
 			var phoneno = /^\d{10}$/;
 			var mobile = document.forms["registerform"]["Mobile"].value;
-			if(mobile.match(phoneno)){
-			    return true;
+			if(!phoneno.test(mobile)){
+				return false;
 			}
 			else{
-			    return false;
+				return true;
 			}
 		});
 		
 		
-		$("#registerform").submit(function(event) {
-			var password = document.forms["registerform"]["Password1"].value;
+		$("#registerform1").submit(function(event) {
+			var password = document.forms["registerform1"]["Password"].value;
 			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
 			if(!regularExpression.test(password)){
 				return false;
@@ -940,16 +954,19 @@
 			else{
 				return true;
 			}
-			
+		});
+		
+		$("#registerform1").submit(function(event) {
 			var phoneno = /^\d{10}$/;
-			var mobile = document.forms["registerform"]["Mobile"].value;
-			if(mobile.match(phoneno)){
-			    return true;
+			var mobile = document.forms["registerform1"]["Mobile"].value;
+			if(!phoneno.test(mobile)){
+				return false;
 			}
 			else{
-			    return false;
+				return true;
 			}
 		});
+		
 		
 	</script>
 	

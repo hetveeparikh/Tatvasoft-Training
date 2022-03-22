@@ -82,7 +82,7 @@
         width: 72.2%;
     }
 }
-@media only screen and (min-width: 767px) and (max-width: 1220px) {
+@media only screen and (min-width: 761px) and (max-width: 1220px) {
     .logo{
         text-align: center;
         width: 100%;

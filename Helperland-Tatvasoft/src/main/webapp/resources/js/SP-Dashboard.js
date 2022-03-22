@@ -46,3 +46,55 @@ document.getElementById("defaultOpen1").click();
 $(function() {
 	$('#defaultOpen1').addClass('active1');
 });
+
+/*Mobile validation*/
+
+$(document).ready(function() {
+	$("#detailsMobile").on('keyup', function() {
+		var mob = $("#detailsMobile").val();
+		var phoneno = /^\d{10}$/;
+		if (!phoneno.test(mob)) {
+			$('#Mobilespdetailsdiv').html("Invalid mobile number.").css("color", "red");
+		}
+		else {
+			$('#Mobilespdetailsdiv').html("");
+		}
+	});
+});
+
+$("#addDetailsForm").submit(function(event) {
+	var phoneno = /^\d{10}$/;
+	var mobile = document.forms["addDetailsForm"]["Mobile"].value;
+	if (!phoneno.test(mobile)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});
+
+/*Password Validation*/
+
+$(document).ready(function() {
+	$("#settingsnewpassword").on('keyup', function() {
+		var password = $("#settingsnewpassword").val();
+		var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+		if (!regularExpression.test(password)) {
+			$('#Passwordspdetailsdiv').html("Password must be in length 6-14<br>Should contain atleast one uppercase letter, lowercase letter, number and special character.").css("color", "red");
+		}
+		else {
+			$('#Passwordspdetailsdiv').html("Password strength : Good").css("color", "green");
+		}
+	});
+});
+
+$("#passwordform").submit(function(event) {
+	var password = document.forms["passwordform"]["password"].value;
+	var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+	if (!regularExpression.test(password)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});

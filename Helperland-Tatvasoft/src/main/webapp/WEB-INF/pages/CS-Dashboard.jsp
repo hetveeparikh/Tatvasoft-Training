@@ -122,7 +122,7 @@
 	</header>
 
 	<section id="welcomecs">
-		<span class="Welcome-Gaurang wc"> Welcome, <span class="Gaurang" id="bannername">${settingsfirstname }!</span>
+		<span class="Welcome-Gaurang wc"> Welcome, <span class="Gaurang" id="bannername">${settingsfirstname }</span><strong>!</strong>
 		</span>
 		<div class="l1"></div>
 	</section>
@@ -309,9 +309,10 @@
 						<label>Mobile Number</label>
 						<div class="d-flex">
 							<span class="d-flex align-items-center numset" disabled>+91</span> <input
-								type="text" class="setinput" id="detailsMobile" required
+								type="text" class="setinput" id="detailsMobile" name="Mobile" required
 								value=${settingsmobile }>
 						</div>
+						<div class="text-center mb-2 mt-2" id="Mobiledivdetails"></div>
 					</div>
 					<div class="col-sm-8">
 						<label>Date of birth</label>
@@ -441,29 +442,22 @@
 
 				<!-- Modalsssssss -->
 
-				<div class="modal fade" id="editaddress" aria-hidden="true"
-					aria-labelledby="log" tabindex="-1">
+				<div class="modal fade" id="editaddress" aria-hidden="true" aria-labelledby="log" tabindex="-1">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title" id="addmodal">Edit address</h4>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 							</div>
-							<form id="editAddressSettingsForm" method="post"
-								name="editAddressSettingsForm">
+							<form id="editAddressSettingsForm" method="post" name="editAddressSettingsForm">
 								<div class="modal-body">
 
 									<div>
-										<input type="text" placeholder="Street Name" class="street"
-											name="AddressLine1" id="addline1"  required/> <input type="text"
-											placeholder="House Number" class="houseno"
-											name="AddressLine2" id="addline2" required />
+										<input type="text" placeholder="Street Name" class="street" name="AddressLine1" id="addline1" required> <input type="text" placeholder="House Number" class="houseno" name="AddressLine2" id="addline2" required>
 									</div>
 
 									<div>
-										<input type="text" placeholder="Postal Code" class="postal"
-											name="PostalCode" id="addpostalcode" required /> <select title="City"
-											class="city" name="City" id="addcity" required>
+										<input type="text" placeholder="Postal Code" class="postal" name="PostalCode" id="addpostalcode" required> <select title="City" class="city" name="City" id="addcity" required>
 											<option value="">Choose your city</option>
 											<option value="A">A</option>
 											<option value="B">B</option>
@@ -473,15 +467,14 @@
 									</div>
 
 									<div>
-										<input type="text" placeholder="Phone Number" class="number"
-											name="Mobile" id="addmobile" required />
-
+										<input type="text" placeholder="Phone Number" class="number" name="Mobile" id="addmobile" required>
 									</div>
+									
+									<div class="text-center mb-2 mt-2" id="Mobilediveditadd"></div>
 								</div>
 								<div class="text-center">
 									<button type="submit" class="saveadd">Save</button>
-									<input type="button" class="canceladd" value="Close"
-										data-bs-dismiss="modal" />
+									<input type="button" class="canceladd" value="Close" data-bs-dismiss="modal">
 								</div>
 
 							</form>
@@ -518,10 +511,10 @@
 				
 				
 
-				<!-- ////// -->
+				<!--Add address-->
 
-				<div data-bs-toggle="modal" href="#address">
-					<input type="button" value="+ Add new Address" class="addbtn">
+				<div>
+					<input type="button" value="+ Add new Address" class="addbtn" data-bs-toggle="modal" href="#address">
 				</div>
 
 				<div class="modal fade" id="address" aria-hidden="true"
@@ -559,12 +552,16 @@
 											name="Mobile" id="addmobilee"  required/>
 
 									</div>
+									
+									<div class="text-center mb-2 mt-2" id="Mobiledivnewadd"></div>
 								</div>
 								<div class="text-center">
 									<button type="submit" class="saveadd">Save</button>
 									<input type="button" class="canceladd" value="Close"
 										data-bs-dismiss="modal" />
 								</div>
+								
+								
 
 							</form>
 						</div>
@@ -575,14 +572,15 @@
 			<div id="SettingsPassword" class="tabcontent1">
 				<form id="passwordform"
 					oninput='confirmpassword.setCustomValidity(confirmpassword.value != password.value ? "Passwords do not match." : "")'>
-					<label class="setpass">Old Password</label> <br> <input
-						type="password" placeholder="Current Password" class="passbox"
-						id="settingsoldpassword" required> <br> <label
-						class="setpass">New Password</label> <br> <input
-						type="password" placeholder="Password" class="passbox"
+					<label class="setpass">Old Password</label> <br> 
+					<input type="password" placeholder="Current Password" class="passbox"
+						id="settingsoldpassword" required> <br> 
+					<label class="setpass">New Password</label> <br> 
+					<input type="password" placeholder="Password" class="passbox"
 						id="settingsnewpassword" name="password" required> <br>
-					<label class="setpass">Confirm Password</label> <br> <input
-						type="password" placeholder="Confirm Password" class="passbox"
+					<div class="mb-2 mt-2 w-25" id="Passwordspdetailsdiv"></div>
+					<label class="setpass">Confirm Password</label> <br> 
+					<input type="password" placeholder="Confirm Password" class="passbox"
 						id="settingsconfirmpassword" name="confirmpassword" required><br>
 					<button type="submit" class="savedetails">Save</button>
 				</form>
@@ -829,22 +827,18 @@
 		</div>
 	</footer>
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript" charset="utf8"
-		src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
+	<!-- <script type="text/javascript" charset="utf8"
+		src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 		
-		<script type="text/javascript" charset="utf8"
-		src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-	<script
-		src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-		
-	<script
-		src="<%=request.getContextPath()%>/resources/js/CS-Dashboard.js"></script>
-
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/CS-Dashboard.js"></script>
 	
+
 	<script>
 	
 	function dashdt(){
@@ -1357,6 +1351,7 @@
 				url: "/Helperland-Tatvasoft/ratingsp/"  + r2 + "," + r3 + "," + r1 + "," + v + "," + k +"," + $('#ratingcomments').val() ,
 				success: function(data) {
 					console.log("SUCCESS: ratings given", data);
+					$('#rating-form1').prop('checked', false);
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);

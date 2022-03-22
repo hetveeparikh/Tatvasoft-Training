@@ -189,6 +189,12 @@ public class AdminDao {
 		ServiceRequestAddress address = template.queryForObject(sql, new ServiceRequestAddressAdminMapper(), new Object[] { serviceid });
 		return address;
 	}
+	
+	public String userEmail(int userid) {
+		String sql = "select Email from user where UserId=?";
+		String email = template.queryForObject(sql, String.class, new Object[] { userid });
+		return email;
+	}
 }
 class ServiceRequestAddressAdminMapper implements RowMapper<ServiceRequestAddress> {
 

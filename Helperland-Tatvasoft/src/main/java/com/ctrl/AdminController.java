@@ -92,6 +92,13 @@ public class AdminController {
 	public @ResponseBody int approvestatus(@PathVariable("UserId") int UserId, Customer customer, HttpServletRequest request, Model model) {
 		customer.setUserId(UserId);
 		int approve = adminDao.approveuser(customer);
+		
+		String email = adminDao.userEmail(UserId);
+		String message = "Your account has been approved by the admin.";
+		String subject = "Account Approved";
+		String from = "helperland.hetvee@gmail.com";
+		sendServiceEmail(message, subject, email, from);
+		
 		return approve;
 	}
 	
@@ -99,6 +106,13 @@ public class AdminController {
 	public @ResponseBody int deletestatus(@PathVariable("UserId") int UserId, Customer customer, HttpServletRequest request, Model model) {
 		customer.setUserId(UserId);
 		int delete = adminDao.deleteuser(customer);
+		
+		String email = adminDao.userEmail(UserId);
+		String message = "Your account has been deleted by the admin.";
+		String subject = "Account Deleted";
+		String from = "helperland.hetvee@gmail.com";
+		sendServiceEmail(message, subject, email, from);
+		
 		return delete;
 	}
 	

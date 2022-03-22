@@ -48,6 +48,9 @@ function secondtab() {
 	second.style.display = "block";
 	third.style.display = "none";
 	fourth.style.display = "none";
+	
+	det.style.color = "#646464";
+	det.style.backgroundColor = "#f3f3f3";
 
 	serv.style.color = "#646464";
 	serv.style.backgroundColor = "#f3f3f3";
@@ -75,6 +78,9 @@ function thirdtab() {
 
 	sche.style.color = "#646464";
 	sche.style.backgroundColor = "#f3f3f3";
+	
+	pay.style.color = "#646464";
+	pay.style.backgroundColor = "#f3f3f3";
 
 	$.ajax({
 		type: "GET",
@@ -224,4 +230,28 @@ function addAddress() {
 	});
 }
 
+/*Add address validation mobile*/
 
+$(document).ready(function() {
+	$("#addmobile").on('keyup', function() {
+		var mob = $("#addmobile").val();
+		var phoneno = /^\d{10}$/;
+		if (!phoneno.test(mob)) {
+			$('#Mobiledivnewadd').html("Invalid mobile number.").css("color", "red");
+		}
+		else {
+			$('#Mobiledivnewadd').html("");
+		}
+	});
+});
+
+$("#addAddressForm").submit(function(event) {
+	var phoneno = /^\d{10}$/;
+	var mobile = document.forms["addAddressForm"]["Mobile"].value;
+	if (!phoneno.test(mobile)) {
+		return false;
+	}
+	else {
+		return true;
+	}
+});

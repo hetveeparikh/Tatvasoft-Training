@@ -1,6 +1,7 @@
 package com.ctrl;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -22,9 +23,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import helperlanduser.dao.SPSettingsDao;
 import helperlanduser.dao.ServiceProviderDao;
+import helperlanduser.dto.ServiceRequestBlockDTO;
+import helperlanduser.dto.ServiceRequestScheduleDTO;
 import helperlanduser.model.Customer;
+import helperlanduser.model.FavouriteAndBlocked;
 import helperlanduser.model.Rating;
 import helperlanduser.model.ServiceRequest;
 import helperlanduser.model.UserAddress;
@@ -34,7 +40,7 @@ public class ServiceProviderController {
 
 	@Autowired
 	ServiceProviderDao serviceProviderDao;
-	
+
 	@Autowired
 	SPSettingsDao spSettingsDao;
 
@@ -43,21 +49,21 @@ public class ServiceProviderController {
 
 		HttpSession session = request.getSession();
 
-		if (session.getAttribute("userid") != null && (session.getAttribute("usertypeid")+"").equals("3")) {
-		
+		if (session.getAttribute("userid") != null && (session.getAttribute("usertypeid") + "").equals("3")) {
+
 			model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
 			model.addAttribute("settingslastname", session.getAttribute("lastname"));
 			model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
 			model.addAttribute("settingsemail", session.getAttribute("custemail"));
+			model.addAttribute("settingsstatus", session.getAttribute("spstatus"));
 
-			
-			UserAddress spaddress = spSettingsDao.readSpAddress(""+session.getAttribute("userid"));
-			
+			UserAddress spaddress = spSettingsDao.readSpAddress("" + session.getAttribute("userid"));
+
 			model.addAttribute("settingsaddline1", spaddress.getAddressLine1());
 			model.addAttribute("settingsaddline2", spaddress.getAddressLine2());
 			model.addAttribute("settingscity", spaddress.getCity());
 			model.addAttribute("settingspostalcode", spaddress.getPostalCode());
-			
+
 			model.addAttribute("settingsavatar", session.getAttribute("spavatar"));
 			return "SP - Dashboard";
 		}
@@ -68,7 +74,7 @@ public class ServiceProviderController {
 			return "Homepage";
 		}
 	}
-	
+
 	@RequestMapping("/spDashboard")
 	public @ResponseBody List<ServiceRequest> spdashboard(HttpServletRequest request, Model model,
 			ServiceRequest serviceRequest) {
@@ -79,97 +85,102 @@ public class ServiceProviderController {
 		List<ServiceRequest> dashlist = serviceProviderDao.servicedash();
 		return dashlist;
 	}
-	
+
 	@RequestMapping(value = "/spdetailsmodal/{serviceid}", method = RequestMethod.GET)
 	public @ResponseBody HashMap<String, Object> details(@PathVariable("serviceid") String serviceid,
-			 HttpServletRequest request, ServiceRequest serviceRequest ,
-			Model model) throws Exception{
-		
-		HashMap<String, Object> hashModal =  serviceProviderDao.spdetailsmodal(serviceid);
-		
+			HttpServletRequest request, ServiceRequest serviceRequest, Model model) throws Exception {
+
+		HashMap<String, Object> hashModal = serviceProviderDao.spdetailsmodal(serviceid);
+
 		return hashModal;
 	}
 
 	@RequestMapping(value = "/acceptsprequest/{serviceid}", method = RequestMethod.GET)
-	public @ResponseBody int acceptrequest(@PathVariable("serviceid") String serviceid,
-			 HttpServletRequest request, ServiceRequest serviceRequest ,
-			Model model) {
+	public @ResponseBody int acceptrequest(@PathVariable("serviceid") String serviceid, HttpServletRequest request,
+			ServiceRequest serviceRequest, Model model) {
+
+		HttpSession session = request.getSession();
+		
+		if(Integer.parseInt(session.getAttribute("spstatus")+"")==1) {
+			String str = "" + session.getAttribute("userid");
+			int temp = Integer.parseInt(str);
+			serviceRequest.setUserId(temp);
+			int accept = serviceProviderDao.acceptrequest(str, serviceid);
+
+			if (accept == 1) {
+				String email = serviceProviderDao.spEmail(Integer.parseInt(serviceid));
+				String message = "Your service request with Service Id = 27" + serviceid
+						+ " has been accepted!\n\nYour Service Provider Details are as follows:\n" + "Name: "
+						+ session.getAttribute("firstname") + " " + session.getAttribute("lastname") + "\nMobile No.: "
+						+ session.getAttribute("custmobile") + "\nEmail : " + session.getAttribute("custemail")
+						+ "\n\nYou can get more details on your dahboard.";
+				String subject = "Service Request Accepted!";
+				String from = "helperland.hetvee@gmail.com";
+				sendServiceEmail(message, subject, email, from);
+
+				List<Customer> splist = serviceProviderDao.getOtherSP(temp);
+
+				String toemail = splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
+				String message1 = "Service Request with Id 27" + serviceid + " has been accepted.";
+				String subject1 = "Service Request Has Been Accepted";
+				sendServiceEmail(message1, subject1, toemail, from);
+			}
+
+			return accept;
+		}
+		else {
+			return 0;
+		}
+		
+	}
+
+	@RequestMapping(value = "/cancelsprequest/{serviceid}", method = RequestMethod.GET)
+	public @ResponseBody int cancelspRequest(@PathVariable("serviceid") String serviceid, HttpServletRequest request,
+			ServiceRequest serviceRequest, Model model) {
 
 		HttpSession session = request.getSession();
 		String str = "" + session.getAttribute("userid");
 		int temp = Integer.parseInt(str);
 		serviceRequest.setUserId(temp);
-		int accept = serviceProviderDao.acceptrequest(str,serviceid);
-		
-		if(accept == 1) {
-			String email = serviceProviderDao.spEmail(Integer.parseInt(serviceid));
-			String message="Your service request with Service Id = 27"+serviceid+" has been accepted!\n\nYour Service Provider Details are as follows:\n"+
-							"Name: "+ session.getAttribute("firstname") + " "+ session.getAttribute("lastname") +
-							"\nMobile No.: "+ session.getAttribute("custmobile")+
-							"\nEmail : "+ session.getAttribute("custemail") +"\n\nYou can get more details on your dahboard.";
-			String subject="Service Request Accepted!";
-			String from = "helperland.hetvee@gmail.com";
-			sendServiceEmail(message, subject, email, from);
-			
-			List<Customer> splist = serviceProviderDao.getOtherSP(temp);
-			
-			String toemail=splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
-			String message1="Service Request with Id 27"+ serviceid+" has been accepted.";
-			String subject1="Service Request Has Been Accepted";
-			sendServiceEmail(message1, subject1, toemail, from);
-		}
-		
-		return accept;
-	}
-	
-	@RequestMapping(value = "/cancelsprequest/{serviceid}", method = RequestMethod.GET)
-	public @ResponseBody int cancelspRequest(@PathVariable("serviceid") String serviceid,
-			 HttpServletRequest request, ServiceRequest serviceRequest ,
-			Model model) {
-
-		HttpSession session= request.getSession();
-		String str = "" + session.getAttribute("userid");
-		int temp = Integer.parseInt(str);
-		serviceRequest.setUserId(temp);
 		int cancel = serviceProviderDao.cancelrequest(serviceid);
-		
-		if(cancel == 1) {
+
+		if (cancel == 1) {
 			String email = serviceProviderDao.spEmail(Integer.parseInt(serviceid));
-			String message="Your service request with Service Id : 27"+serviceid+" has been cancelled by your Service Provider.\nYou will get notified as soon as another service provider accepts your request. Sorry for the inconvenience.";
-			String subject="Service Request Cancelled";
+			String message = "Your service request with Service Id : 27" + serviceid
+					+ " has been cancelled by your Service Provider.\nYou will get notified as soon as another service provider accepts your request. Sorry for the inconvenience.";
+			String subject = "Service Request Cancelled";
 			String from = "helperland.hetvee@gmail.com";
 			sendServiceEmail(message, subject, email, from);
-			
+
 			List<Customer> splist = serviceProviderDao.getOtherSP(temp);
-			
-			String toemail=splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
-			String message1="The Service Request with Id 27"+ serviceid+" is available again.";
-			String subject1="Service Request Now Available Again!";
+
+			String toemail = splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
+			String message1 = "The Service Request with Id 27" + serviceid + " is available again.";
+			String subject1 = "Service Request Now Available Again!";
 			sendServiceEmail(message1, subject1, toemail, from);
 		}
-				
+
 		return cancel;
 	}
-	
+
 	@RequestMapping(value = "/completedsprequest/{serviceid}", method = RequestMethod.GET)
-	public @ResponseBody int completedsprequest(@PathVariable("serviceid") String serviceid,
-			 HttpServletRequest request, ServiceRequest serviceRequest ,
-			Model model) {
+	public @ResponseBody int completedsprequest(@PathVariable("serviceid") String serviceid, HttpServletRequest request,
+			ServiceRequest serviceRequest, Model model) {
 
 		int done = serviceProviderDao.completedrequest(serviceid);
-		
-		if(done==1) {
+
+		if (done == 1) {
 			String email = serviceProviderDao.spEmail(Integer.parseInt(serviceid));
-			String message="Your service request with Service Id : 27"+serviceid+" has been completed by your Service Provider.";
-			String subject="Service Request Completed!";
+			String message = "Your service request with Service Id : 27" + serviceid
+					+ " has been completed by your Service Provider.";
+			String subject = "Service Request Completed!";
 			String from = "helperland.hetvee@gmail.com";
 			sendServiceEmail(message, subject, email, from);
 		}
-				
+
 		return done;
 	}
-	
-	
+
 	@RequestMapping("/upcomingservices")
 	public @ResponseBody List<ServiceRequest> upcomingservice(HttpServletRequest request, Model model,
 			ServiceRequest serviceRequest) {
@@ -177,12 +188,12 @@ public class ServiceProviderController {
 		String userid = "" + session.getAttribute("userid");
 		int id = Integer.parseInt(userid);
 		serviceRequest.setUserId(id);
-		
-		List<ServiceRequest> services =  serviceProviderDao.upcomingservices(id);
-		
+
+		List<ServiceRequest> services = serviceProviderDao.upcomingservices(id);
+
 		return services;
 	}
-	
+
 	@RequestMapping("/spservicehistory")
 	public @ResponseBody List<ServiceRequest> spservicehistory(HttpServletRequest request, Model model,
 			ServiceRequest serviceRequest) {
@@ -190,25 +201,24 @@ public class ServiceProviderController {
 		String userid = "" + session.getAttribute("userid");
 		int id = Integer.parseInt(userid);
 		serviceRequest.setUserId(id);
-		
-		List<ServiceRequest> history =  serviceProviderDao.servicehistory(id);
-		
+
+		List<ServiceRequest> history = serviceProviderDao.servicehistory(id);
+
 		return history;
 	}
-	
+
 	@RequestMapping("/spratings")
-	public @ResponseBody List<Rating> sprating(HttpServletRequest request, Model model,
-			ServiceRequest serviceRequest) {
+	public @ResponseBody List<Rating> sprating(HttpServletRequest request, Model model, ServiceRequest serviceRequest) {
 		HttpSession session = request.getSession();
 		String userid = "" + session.getAttribute("userid");
 		int id = Integer.parseInt(userid);
 		serviceRequest.setUserId(id);
-		
-		List<Rating> ratings =  serviceProviderDao.ratings(id);
-		
+
+		List<Rating> ratings = serviceProviderDao.ratings(id);
+
 		return ratings;
 	}
-	
+
 	public void sendServiceEmail(String message, String subject, String to, String from) {
 
 		String host = "smtp.gmail.com";
@@ -251,7 +261,7 @@ public class ServiceProviderController {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@RequestMapping(value = "/updateSPPassword/{OldPassword},{NewPassword}", method = RequestMethod.GET)
 	public @ResponseBody int settingsCustAddress(@PathVariable("OldPassword") String OldPassword,
 			@PathVariable("NewPassword") String NewPassword, HttpServletRequest request, Customer customer,
@@ -266,13 +276,13 @@ public class ServiceProviderController {
 
 		return checkpassword;
 	}
-	
+
 	@RequestMapping(value = "/updateSPDetails/{FirstName},{LastName},{Email},{Mobile},{Day},{Month},{Year},{Nationality},{Gender},{AddressLine1},{AddressLine2},{PostalCode},{City},{Avatar}", method = RequestMethod.GET)
 	public @ResponseBody void settingsCustDetails(@PathVariable("FirstName") String FirstName,
 			@PathVariable("LastName") String LastName, @PathVariable("Email") String Email,
 			@PathVariable("Mobile") String Mobile, @PathVariable("Day") String Day, @PathVariable("Month") String Month,
 			@PathVariable("Year") String Year, @PathVariable("Nationality") String Nationality,
-			@PathVariable("Gender") String Gender,@PathVariable("AddressLine1") String AddressLine1,
+			@PathVariable("Gender") String Gender, @PathVariable("AddressLine1") String AddressLine1,
 			@PathVariable("AddressLine2") String AddressLine2, @PathVariable("PostalCode") String postalcode,
 			@PathVariable("City") String City, @PathVariable("Avatar") String Avatar, HttpServletRequest request,
 			Customer customer, Model model, UserAddress userAddress) {
@@ -287,13 +297,13 @@ public class ServiceProviderController {
 		String DateOfBirth = "" + Day + " " + Month + " " + Year;
 		customer.setDateOfBirth(DateOfBirth);
 		customer.setUserProfilePicture(Avatar);
-		
-		session.setAttribute("firstname", FirstName );
+
+		session.setAttribute("firstname", FirstName);
 		session.setAttribute("lastname", LastName);
 		session.setAttribute("custmobile", Mobile);
 		session.setAttribute("custemail", Email);
 		session.setAttribute("spavatar", Avatar);
-		
+
 		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
 		model.addAttribute("settingslastname", session.getAttribute("lastname"));
 		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
@@ -303,10 +313,62 @@ public class ServiceProviderController {
 		model.addAttribute("settingscity", City);
 		model.addAttribute("settingspostalcode", postalcode);
 		model.addAttribute("settingsavatar", Avatar);
-		
+
 		spSettingsDao.updateSp(customer);
 		spSettingsDao.updateSpAddressSettings(userAddress);
-		
+
 	}
-	
+
+	@RequestMapping(value = "/spserviceschedule", method = RequestMethod.GET)
+	public @ResponseBody String spserviceschedule(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String str = "" + session.getAttribute("userid");
+
+		List<ServiceRequestScheduleDTO> schedule = serviceProviderDao.serviceschedule(str);
+		Gson gson = new Gson();
+		return gson.toJson(schedule);
+	}
+
+	@RequestMapping(value = "/spblockcustomer", method = RequestMethod.GET)
+	public @ResponseBody List<ServiceRequestBlockDTO> spBlockCustomer(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String str = "" + session.getAttribute("userid");
+		int temp = Integer.parseInt(str);
+
+		List<ServiceRequestBlockDTO> customers = serviceProviderDao.blockcustomer(temp);
+		return customers;
+	}
+
+	@RequestMapping(value = "/spblockunblock/{custid}")
+	public @ResponseBody void spBlockUnblock(HttpServletRequest request, FavouriteAndBlocked favouriteAndBlocked,
+			@PathVariable("custid") int custid) {
+		HttpSession session = request.getSession();
+		String str = "" + session.getAttribute("userid");
+		int temp = Integer.parseInt(str);
+
+		favouriteAndBlocked.setUserId(temp);
+		favouriteAndBlocked.setTargetUserId(custid);
+
+		FavouriteAndBlocked fab = serviceProviderDao.getListCustomers(favouriteAndBlocked);
+
+		if (fab == null) {
+			favouriteAndBlocked.setIsFavorite(0);
+			favouriteAndBlocked.setIsBlocked(1);
+			serviceProviderDao.addCustomerRecord(favouriteAndBlocked);
+		} else {
+			List<FavouriteAndBlocked> blockedvalue = serviceProviderDao.valueIsBlocked(favouriteAndBlocked);
+			
+			Iterator<FavouriteAndBlocked> iterator = blockedvalue.iterator();
+			while (iterator.hasNext()) {
+				if (iterator.next().getIsBlocked()==0) {
+					favouriteAndBlocked.setIsBlocked(1);
+					serviceProviderDao.changeBlockedValue(favouriteAndBlocked);
+				}
+				else {
+					favouriteAndBlocked.setIsBlocked(0);
+					serviceProviderDao.changeBlockedValue(favouriteAndBlocked);
+				}
+			}
+		}
+	}
 }

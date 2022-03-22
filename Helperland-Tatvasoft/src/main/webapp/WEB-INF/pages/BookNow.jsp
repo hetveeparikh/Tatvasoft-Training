@@ -98,7 +98,7 @@
 							</a>
 							<ul class="dropdown-menu dropdown-menu-end"
 								aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="customerDashboard">Dashboard</a></li>
+								<li><a class="dropdown-item" href="customerDashboard" id="dash">Dashboard</a></li>
 								<li><a class="dropdown-item" href="logout"
 									onclick="logout()">Log out</a></li>
 							</ul>
@@ -332,14 +332,14 @@
 									placeholder="Comments" class="comments" name="Comments"  id="secondcomments"></textarea>
 
 								<div>
-									<input type="checkbox" id="petsathome" /> <label
-										for="petsathome" class="pets">I have pets at home</label>
+									<input type="checkbox" id="petsathome" /> 
+									<label for="petsathome" class="pets">I have pets at home</label>
 								</div>
 
 
 								<div class="divider3"></div>
 
-								<div class="cbtn">
+								<div class="cbtn1">
 									<input type="button" class="schecontinue" onclick="thirdtab()"
 										value="Continue">
 								</div>
@@ -411,9 +411,9 @@
 
 												</div>
 											</div>
+											<div class="text-center mb-2 mt-2" id="Mobiledivnewadd"></div>
 											<div class="text-center">
-												<button type="submit" class="saveadd"
-													data-bs-dismiss="modal">Save</button>
+												<button type="submit" class="saveadd">Save</button>
 												<input type="button" class="canceladd" value="Close" data-bs-dismiss="modal"/>
 											</div>
 
@@ -430,6 +430,7 @@
 							<div class="divider3"></div>
 
 							<div class="cbtn">
+								<button class="schecontinue" onclick="secondtab()">Go back</button>
 								<button class="schecontinue" onclick="fourthtab()" id="thirdcontinue">Continue</button>
 							</div>
 
@@ -455,12 +456,13 @@
 
 								<div class="divider3"></div>
 								<div class="d-flex booklabel">
-									<input type="checkbox" id="payment" name="PaymentCheck" required/> <label for="payment"
-										class="bookpayment">I accepted terms and conditions,
+									<input type="checkbox" id="payment" name="PaymentCheck" required/> 
+									<label for="payment" class="bookpayment">I accepted terms and conditions,
 										the cancellation policy and the privacy policy. </label>
 								</div>
 								<div class="divider3"></div>
 								<div class="cbtn">
+									<button type="button" class="bookbtn" onclick="thirdtab();" id="selectadd">Select Address</button>
 									<button type="submit" class="bookbtn">Complete
 										Booking</button>
 								</div>
@@ -717,8 +719,27 @@
 
 
 		</div>
+		
+		<div class="modal fade" id="successmodal">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="text-center">
+		      		<img class="success-booking-img" src="<%=request.getContextPath()%>/resources/img/img-BookNow/correct-white-medium.png">
+		      	</div>
+		        <p class="text-center ques1">Booking has been successfully submitted </p>
+		        <p class="text-center ques1">Service Request Id : &nbsp;<span id="bookingid"></span> </p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 	</section>
+	
+	
 
 
 	<!-- Newsletter -->
@@ -782,7 +803,8 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<!-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/BookNow.js"></script>
 
 	<script type="text/javascript">
@@ -1160,16 +1182,23 @@
 					+ "," + finalarray,
 				success: function(data) {
 					console.log("SUCCESS: ", data);
-					alert("Service Request Sent!!");
+					$('#bookingid').html(" 27"+data);
+					$('#successmodal').modal("show");
+					
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);
+					alert('Please go to previous page and select address!');
 				},
 				done: function(e) {
 					console.log("DONE");
 				}
 			});
 		}
+		
+		$('#successmodal').on('hidden.bs.modal', function () {
+			document.getElementById("dash").click();
+		});
 		
 		
 	</script>

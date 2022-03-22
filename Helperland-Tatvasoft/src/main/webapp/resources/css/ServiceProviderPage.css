@@ -1,10 +1,5 @@
-@import
-	url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap")
-	;
-
-@import
-	url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap")
-	;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 body {
 	margin: 0px;
@@ -94,6 +89,10 @@ body {
 
 .dropdown-menu a {
 	color: #111 !important;
+}
+
+.dropdown-toggle::after {
+	color: white;
 }
 
 .navham {
@@ -248,7 +247,7 @@ body {
 	font-weight: normal;
 	font-stretch: normal;
 	font-style: normal;
-	line-height: 0.8;
+	line-height: 1.2;
 	display: block;
 	letter-spacing: normal;
 	text-align: center;
@@ -522,6 +521,7 @@ img.ghar {
 	font-size: 20px;
 	font-weight: bold;
 	color: #646464;
+	text-align: center;
 }
 
 .unblockbtn {
@@ -534,6 +534,7 @@ img.ghar {
 	padding: 0px 25px;
 	font-size: 20px;
 	background-color: #1d7a8c;
+	border: solid 1px #1d7a8c;
 	color: white;
 }
 
@@ -542,11 +543,10 @@ img.ghar {
 }
 
 .blockbox {
-	padding: 30px 20px;
-	margin-top: 30px;
+	padding: 50px 50px;
 	border: solid 1px #928b8b;
-	margin-right: 20px;
-	margin-left: 20px;
+	width: 15rem;
+	margin: 30px;
 }
 
 .blockbtn {
@@ -559,11 +559,12 @@ img.ghar {
 	padding: 0px 25px;
 	font-size: 20px;
 	background-color: #ff6b6b;
+	border: solid 1px #ff6b6b;
 	color: white;
 }
 
 .blockbtn:hover {
-	background-color: #c84040;
+	background-color: #f16565;
 }
 
 #dashboard_paginate {
@@ -769,6 +770,12 @@ img.ghar {
 	margin-left: 10px;
 }
 
+.inactivestatus {
+	color: red;
+	font-weight: normal;
+	margin-left: 10px;
+}
+
 .basicdetails {
 	font-size: 18px;
 	color: #646464;
@@ -807,9 +814,11 @@ footer {
 .dropdown-item.active {
 	background-color: transparent !important;
 }
+
 .dropdown-item:hover {
-  background-color: #e9ecef !important;
+	background-color: #e9ecef !important;
 }
+
 .spmodal {
 	cursor: pointer;
 }
@@ -901,4 +910,50 @@ img.ghaditime {
 .input-hidden:checked+label>img {
 	border: 3.5px solid #1d7a8c;
 	border-radius: 50%;
+}
+
+
+.fc-scrollgrid-liquid, .fc-col-header , .fc-scrollgrid-sync-table{
+	margin-top: 0px !important;
+}
+.fc-col-header-cell-cushion,.fc-daygrid-day-number {
+	text-decoration: none;
+	color: #646464;
+}
+.fc-col-header-cell-cushion:hover ,.fc-daygrid-day-number:hover {
+	color: #1d7a8c;
+	cursor: default;
+}
+.fc-header-toolbar{
+	margin-top: 30px;
+	margin-bottom: 10px;
+} 
+.fc .fc-daygrid-day.fc-day-today {
+	background-color: transparent !important;
+}
+.fc-prev-button, .fc-next-button, .fc-today-button{
+	background-color: #1d7a8c !important;
+	border: solid 1px #1d7a8c !important;
+}
+.fc-event-main{
+	font-weight: 600;
+}
+.upcomingline{
+	content: "";
+	width: 20px;
+	height: 18px;
+	background-color: #1d7a8c;
+	display: block;
+}
+.completedline{
+	content: "";
+	width: 20px;
+	height: 18px;
+	background-color: gainsboro;
+	display: block;
+}
+.lineschedule{
+	font-size: 18px;
+	margin-left: 10px;
+	font-weight: 500;
 }

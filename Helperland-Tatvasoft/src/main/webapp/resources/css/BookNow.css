@@ -1,20 +1,19 @@
-@import
-	url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap")
-	;
-
-@import
-	url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap")
-	;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 body {
 	margin: 0px;
 	padding: 0px;
 	overflow-x: hidden;
 }
-.modal-open{
+
+.modal-open {
 	padding: 0px;
 }
 
+.dropdown-toggle::after {
+	color: white;
+}
 
 .faqnav {
 	background-color: rgb(82, 82, 82, 0.8) !important;
@@ -305,7 +304,7 @@ img.Vector-Smart-Object1 {
 	font-weight: 500;
 }
 
-#extrahere{
+#extrahere {
 	padding-left: 20px;
 	padding-right: 20px;
 	font-size: 18px;
@@ -452,8 +451,8 @@ img.Vector-Smart-Object1 {
 	color: white;
 }
 
-#tomorrowdate{
-	border:1px solid #646464;;
+#tomorrowdate {
+	border: 1px solid #646464;;
 	font-size: 18px;
 	margin-right: 20px;
 }
@@ -470,7 +469,7 @@ img.Vector-Smart-Object1 {
 	height: auto;
 	border: solid 1px #c8c8c8;
 	padding: 10px;
-	padding-right:0px;
+	padding-right: 0px;
 	margin-right: 20px;
 	border-radius: 4px;
 }
@@ -580,12 +579,24 @@ img.Vector-Smart-Object1 {
 
 .cbtn {
 	text-align: right;
+	display: flex;
+	justify-content: space-between;
 }
 
 .ques {
 	display: flex;
 	justify-content: center;
 	font-size: 23px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-family: Roboto;
+	color: #353548;
+}
+
+.ques1 {
+	display: flex;
+	justify-content: center;
+	font-size: 20px;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	font-family: Roboto;
@@ -667,13 +678,14 @@ img.Vector-Smart-Object1 {
 	display: block;
 }
 
-.morehelp{
-	font-size:22px;
-	font-weight:400;
-	color:#1d7a8c;
+.morehelp {
+	font-size: 22px;
+	font-weight: 400;
+	color: #1d7a8c;
 }
-.morehelp:hover{
-	color:#355a75;
+
+.morehelp:hover {
+	color: #355a75;
 	cursor: pointer;
 }
 
@@ -769,22 +781,29 @@ img.Vector-Smart-Object1 {
 	color: white;
 	background-color: #1d7a8c;
 }
-.street,.houseno,.postal,.city,.number{
-  padding: 5px;
-  margin: 5px;
-  font-size: 15px;
+
+.street, .houseno, .postal, .city, .number {
+	padding: 5px;
+	margin: 5px;
+	font-size: 15px;
 }
-.saveadd,.canceladd{
-  padding: 5px 15px;
-  margin: 15px 5px;
-  background-color: #29626d;
-  color: white;
-  font-size: 18px;
+
+.saveadd, .canceladd {
+	padding: 5px 15px;
+	margin: 15px 5px;
+	background-color: #29626d;
+	color: white;
+	font-size: 18px;
+	border: solid 1px #29626d;
+	border-radius: 2rem;
 }
-.saveadd:hover,.canceladd:hover{
-  background-color: #1d4c55;
-  cursor: pointer;
+
+.saveadd:hover, .canceladd:hover {
+	background-color: #1d4c55;
+	cursor: pointer;
+	border: solid 1px #1d4c55;
 }
+
 .pcodetitle {
 	display: block;
 	margin-bottom: 5px;
@@ -1159,8 +1178,8 @@ img.Forma-1 {
 	position: inherit;
 }
 
-#firsttab,#secondtab,#thirdtab,#fourthtab{
-    display: none;
+#firsttab, #secondtab, #thirdtab, #fourthtab {
+	display: none;
 }
 
 .ver-line {
@@ -1174,4 +1193,25 @@ img.Forma-1 {
 
 .dropdown-menu a {
 	color: #111 !important;
+}
+.success-booking-img {
+	display: inline-block;
+	background: #67b644;
+	padding: 25px;
+	border-radius: 500px;
+	margin-bottom: 25px;
+}
+#successmodal .modal-header{
+	border-bottom: none;
+}
+.modal-body img{
+	margin-right: 0px;
+}
+#firstdiv {
+	font-size: 20px;
+	margin-top: 20px;
+	color: red;
+}
+.cbtn1{
+	text-align: right;
 }

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/ServiceProviderPage-responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
     <title>Service Provider Page | Helperland</title>
     <link rel="shortcut icon"
 	href="<%=request.getContextPath()%>/resources/img/img-Homepage/favicon_img.png"
@@ -83,7 +84,6 @@
             </div>
 
         </nav>
-        
 
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -118,7 +118,7 @@
     <section id="welcome">
         <span class="Welcome-Sandip wc">
             Welcome,
-            <span class="Sandip" id="bannername">${settingsfirstname }</span>!
+            <span class="Sandip" id="bannername">${settingsfirstname }</span><strong>!</strong>
         </span>
         <div class="l1"></div>
     </section>
@@ -127,10 +127,10 @@
         <div class="sidebar col-lg-3 offset-lg-2 ">
             <a href="#" class="tablinks active" onclick="clicksp(event, 'spdashboard')" id="defaultOpen">Dashboard</a>
             <a href="#" onclick="clicksp(event, 'spupcoming')" class="tablinks " id="upcomingtab">Upcoming Services</a>
-            <a href="#">Service Schedule</a>
+            <a href="#" onclick="clicksp(event, 'spschedule')" class="tablinks " id="scheduletab">Service Schedule</a>
             <a href="#" onclick="clicksp(event, 'sphistory')" class="tablinks " id="historytab" >Service History</a>
             <a href="#"  class="tablinks " onclick="clicksp(event, 'sprating')" id="ratingtab">My Ratings </a>
-            <a href="#" class="tablinks ">Block Customer</a>
+            <a href="#" class="tablinks " onclick="clicksp(event, 'spblock')" id="blocktab">Block Customer</a>
         </div>
 
         <div class="col-lg-7 tabcontent" id="spdashboard">
@@ -271,6 +271,26 @@
             </div>
         </div>
         
+        <!-- Schedule -->
+        
+        <div class="col-lg-7 tabcontent" id="spschedule">
+            <div class="row">
+                <div class="col-lg-12" id="calendar">
+                    
+                </div>
+            </div>
+            <div>
+            	<div class="mt-3 d-flex align-items-center">
+	            	<span class="upcomingline"></span>
+	            	<span class="lineschedule">Upcoming</span>
+	            </div>
+	            <div class="mt-3 d-flex align-items-center">
+	            	<span class="completedline"></span>
+	            	<span class="lineschedule">Completed</span>
+	            </div>
+            </div>
+            
+        </div>
         
         <!-- Ratingss -->
         
@@ -291,7 +311,16 @@
             </div>
         </div>
         
+        <!-- Block -->
         
+		
+        <div class="col-lg-7 tabcontent" id="spblock">
+	        <div class="">
+		        <div class="row" id="blocktable">
+		        
+		        </div>
+	        </div>
+        </div>
         
         
         <!-- settings -->
@@ -314,8 +343,15 @@
             <div class="settingshere d-flex flex-column">
 				<div  class="tabcontent1" id="SettingsDetails">
 					<form id="addDetailsForm">
-						<p class="status">Account Status:<span class="activestatus">Active</span></p>
-						
+
+						<c:if test="${settingsstatus == 1 }">
+							<p class="status">Account Status:<span class="activestatus">Active</span></p>
+						</c:if>
+
+						<c:if test="${settingsstatus == 0 }">
+							<p class="status">Account Status:<span class="inactivestatus">Inactive</span></p>
+						</c:if>
+
 						<div class="d-flex justify-content-between">
 						    <div class="detailsdivider">
 						        <p class="basicdetails">Basic Details</p>
@@ -347,7 +383,8 @@
 						            <span class="d-flex align-items-center numset" disabled>+91</span>
 						            <input type="text" placeholder="Mobile number" class="setinput" name="Mobile" id="detailsMobile" required value=${settingsmobile }>
 						        </div>
-						    </div>
+								<div class="text-center mb-2 mt-2" id="Mobilespdetailsdiv"></div>
+							</div>
 						    <div class="col-lg-4">
 						        <label>Date of birth</label>
 						        <div>
@@ -534,14 +571,15 @@
 				<div id="SettingsPassword" class="tabcontent1">
 					<form id="passwordform"
 						oninput='confirmpassword.setCustomValidity(confirmpassword.value != password.value ? "Passwords do not match." : "")'>
-						<label class="setpass">Old Password</label> <br> <input
-							type="password" placeholder="Current Password" class="passbox"
-							id="settingsoldpassword" required> <br> <label
-							class="setpass">New Password</label> <br> <input
-							type="password" placeholder="Password" class="passbox"
+						<label class="setpass">Old Password</label> <br> 
+						<input type="password" placeholder="Current Password" class="passbox"
+							id="settingsoldpassword" required> <br> 
+						<label class="setpass">New Password</label> <br> 
+						<input type="password" placeholder="Password" class="passbox"
 							id="settingsnewpassword" name="password" required> <br>
-						<label class="setpass">Confirm Password</label> <br> <input
-							type="password" placeholder="Confirm Password" class="passbox"
+						<div class="mb-2 mt-2 w-25" id="Passwordspdetailsdiv"></div>
+						<label class="setpass">Confirm Password</label> <br> 
+						<input type="password" placeholder="Confirm Password" class="passbox"
 							id="settingsconfirmpassword" name="confirmpassword" required><br>
 						<button type="submit" class="savedetails">Save</button>
 					</form>
@@ -715,10 +753,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <!-- <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.js"></script>
     <script type="text/javascript" charset="utf8"
         src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
     <script src="<%= request.getContextPath() %>/resources/js/SP-Dashboard.js"></script>
     
     <script>
@@ -1282,7 +1322,120 @@
 	});
 	
 
+	/* Service Schedule */
+	
+	function serviceSchedule(){
+    	$.ajax({
+			type: "GET",
+			url: "/Helperland-Tatvasoft/spserviceschedule",
+			success: function(data) {
+				console.log("SUCCESS: schedule", data);
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+    }
 
+	function calendar() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          navLinks: true,
+          events: 'http://localhost:8080/Helperland-Tatvasoft/spserviceschedule'
+        });
+        calendar.render();
+   }
+    
+    $(document).on('click','#scheduletab', function(){
+    	serviceSchedule();
+    	calendar();
+	});
+    
+    
+    /* Block Customer */
+    
+    function spblockcust(){
+		$.ajax({
+			type: "GET",
+			contentType: "application/json",
+			url: "/Helperland-Tatvasoft/spblockcustomer/",
+			success: function(response) {
+				console.log("SUCCESS: ", response);
+				var result = '';
+				$.each(response, function(k, v) {
+					
+					var blockbtn="";
+					if(v.customerBlocked == null){
+						blockbtn='<button class="d-flex justify-content-center blockbtn" onclick="blockunblock('+ v.customerId +')">Block</button>';
+					}
+					else if(v.customerBlocked == 0){
+						blockbtn='<button class="d-flex justify-content-center blockbtn" onclick="blockunblock('+ v.customerId +')">Block</button>';
+					}
+					else{
+						blockbtn='<button class="d-flex justify-content-center unblockbtn" onclick="blockunblock('+ v.customerId +')">Unblock</button>';
+					}
+					
+					result += '<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 blockbox">';
+					result += '<div class="d-flex flex-column">';
+					result += '<div class="d-flex justify-content-center">';
+					result += '<div class="d-flex justify-content-center align-items-center blocktopicircle">';
+					result += '<img class="blocktopi" src="<%=request.getContextPath()%>/resources/img/img-CS/hat.png">';
+					result += '</div>';
+					result += '</div>';
+					result += '<span class="d-flex justify-content-center blockname">'+v.customerName+'</span>';
+					result += '<div class="d-flex justify-content-center">';
+					result += blockbtn;
+					result += '</div>';
+					result += '</div>';
+					result += '</div>';
+
+				});
+				
+				$("#blocktable").html(result);
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+	}
+    $(document).on('click','#blocktab', function(){
+    	spblockcust();
+	});
+	
+	$(document).on('click','#blocknav', function(){
+		spblockcust();
+	});
+	
+	/* Block Unblock */
+	
+	function blockunblock(v){
+		event.preventDefault();
+		blockunblockfun(v);
+	}
+	function blockunblockfun(v) {
+		$.ajax({
+			type: "GET",
+			url: "/Helperland-Tatvasoft/spblockunblock/" + v,
+			success: function(data) {
+				console.log("SUCCESS: ", data);
+				spblockcust();
+			},
+			error: function(e) {
+				console.log("ERROR: ", e);
+			},
+			done: function(e) {
+				console.log("DONE");
+			}
+		});
+	}
+    
     </script>
 
 </body>
