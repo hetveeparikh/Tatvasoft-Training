@@ -35,6 +35,7 @@ public class ServiceRequest {
 	private Customer customer;
 	private Customer sp;
 	private Rating rating;
+	private Rating rating1;
 			
 	public String getComments() {
 		return comments;
@@ -236,6 +237,12 @@ public class ServiceRequest {
 	}
 	public void setSp(Customer sp) {
 		this.sp = sp;
+	}
+	public Rating getRating1() {
+		return rating1;
+	}
+	public void setRating1(Rating rating1) {
+		this.rating1 = rating1;
 	}
 	
 	

@@ -55,8 +55,8 @@ public class AdminController {
 			return "Admin";
 		}
 		else {
-			model.addAttribute("plsbook", "Please Login First!");
-			model.addAttribute("plsbookdiv", "style='display: block !important';");
+			model.addAttribute("plslogin", "Please Login First!");
+			model.addAttribute("plslogindiv", "style='display: block !important';");
 			return "Homepage";
 		}
 	}
@@ -103,8 +103,24 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admindelete/{UserId}", method = RequestMethod.GET)
-	public @ResponseBody int deletestatus(@PathVariable("UserId") int UserId, Customer customer, HttpServletRequest request, Model model) {
+	public @ResponseBody int deletestatus(@PathVariable("UserId") int UserId, Customer customer, HttpServletRequest request, Model model, ServiceRequest serviceRequest) {
 		customer.setUserId(UserId);
+		
+		SimpleDateFormat dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = new Date();
+		
+		String typeid = adminDao.deleteusertypeid(UserId);
+		
+		if(typeid.equals("2")) {
+			serviceRequest.setModifiedDate(dtf.format(date));
+			adminDao.deletecustomerrequests(UserId, serviceRequest);
+			
+		}
+		else if(typeid.equals("3")) {
+			serviceRequest.setModifiedDate(dtf.format(date));
+			adminDao.deletesprequests(UserId, serviceRequest);
+		}
+		
 		int delete = adminDao.deleteuser(customer);
 		
 		String email = adminDao.userEmail(UserId);

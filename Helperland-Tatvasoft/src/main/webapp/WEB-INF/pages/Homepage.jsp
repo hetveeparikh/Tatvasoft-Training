@@ -78,8 +78,7 @@
 								href="#login">
 								<a class="nav-link loginbtn">Login</a>
 							</div>
-							<div class="modal fade" id="login" aria-hidden="true"
-								aria-labelledby="log" tabindex="-1">
+							<div class="modal fade" id="login">
 								<div class="modal-dialog modal-dialog-centered modal-sm">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -270,9 +269,9 @@
 		</div>
 		
 		<div class="position-absolute w-100  d-flex justify-content-center" style="top:140px; z-index:100;">
-			<div class="alert alert-danger d-none w-75 h-25 fade show" ${plsbookdiv } role="alert" id="login-alert">
+			<div class="alert alert-danger d-none w-75 h-25 fade show" ${plslogindiv } role="alert" id="login-alert">
 				<div class="d-flex justify-content-between">
-				<h5>${plsbook }</h5>
+				<h5>${plslogin }</h5>
 			  	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 			  	</div>
 			</div>
@@ -723,6 +722,24 @@
 			</div>
 		</form>
 	</section>
+
+	<!-- Logout Modal -->
+		
+	<div class="modal fade" id="logoutmodal">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="text-center">
+	      		<img class="success-booking-img" src="<%=request.getContextPath()%>/resources/img/img-BookNow/correct-white-medium.png">
+	      	</div>
+	        <p class="text-center ques1">You are successfully logged out! </p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 	<footer>
 		<div class="Rectangle-12">

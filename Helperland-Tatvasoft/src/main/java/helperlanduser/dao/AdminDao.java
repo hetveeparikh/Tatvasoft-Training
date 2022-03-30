@@ -89,15 +89,18 @@ public class AdminDao {
 	public List<ServiceRequest> adminRequests() {
 
 		StringBuffer sql = new StringBuffer();
-		sql.append(" SELECT u1.FirstName AS CustomerFirstName, u1.LastName AS CustomerLastName,u2.FirstName AS SPFirstName, u2.LastName AS SPLastName, ");
+		sql.append(
+				" SELECT u1.FirstName AS CustomerFirstName, u1.LastName AS CustomerLastName,u2.FirstName AS SPFirstName, u2.LastName AS SPLastName, ");
 		sql.append(" u1.CreatedDate AS CustCreatedDate, u2.UserProfilePicture AS SPProfile, ");
-		sql.append(" ServiceId, ServiceStartDate, ServiceStartTime, SubTotal, PaymentDone, sr.Status, ExtraHours, ServiceProviderId, avg(Ratings) AS Avgrate, ");
+		sql.append(
+				" ServiceId, ServiceStartDate, ServiceStartTime, SubTotal, PaymentDone, sr.Status, ExtraHours, ServiceProviderId, avg(Ratings) AS Avgrate, ");
 		sql.append(" AddressLine1, AddressLine2, PostalCode, City, State, RatingTo, RatingFrom, Ratings ");
 		sql.append(" FROM servicerequest sr ");
 		sql.append(" LEFT JOIN user u1 ON sr.UserId = u1.UserId ");
 		sql.append(" LEFT JOIN user u2 ON sr.ServiceProviderId = u2.UserId ");
 		sql.append(" LEFT JOIN servicerequestaddress sra ON sr.ServiceRequestId = sra.ServiceRequestId ");
 		sql.append(" LEFT JOIN rating r ON sr.ServiceProviderId=r.RatingTo ");
+		sql.append(" WHERE sr.ServiceRequestId!=0 ");
 		sql.append(" GROUP BY (sr.ServiceRequestId) ");
 
 		return template.query(sql.toString(), new ResultSetExtractor<List<ServiceRequest>>() {
@@ -159,43 +162,67 @@ public class AdminDao {
 	}
 
 	public int rescheduleAdminRequests(ServiceRequest serviceRequest, String serviceid) {
-		String query = "update servicerequest set ModifiedBy=1, ModifiedDate='"+ serviceRequest.getModifiedDate() +"' ,ServiceStartTime='" + serviceRequest.getServiceStartTime()
-				+ "', ServiceStartDate='" + serviceRequest.getServiceStartDate()
+		String query = "update servicerequest set ModifiedBy=1, ModifiedDate='" + serviceRequest.getModifiedDate()
+				+ "' ,ServiceStartTime='" + serviceRequest.getServiceStartTime() + "', ServiceStartDate='"
+				+ serviceRequest.getServiceStartDate()
 				+ "', ServiceProviderId=0, Status='New', SPAcceptedDate=null where ServiceId='" + serviceid + "' ";
 		return template.update(query);
 	}
-	
+
 	public int rescheduleRequests(ServiceRequest serviceRequest, String serviceid) {
-		String query = "update servicerequest set ModifiedBy=1 , ModifiedDate='"+ serviceRequest.getModifiedDate() + "' ,ServiceStartTime='" + serviceRequest.getServiceStartTime()
-				+ "', ServiceStartDate='" + serviceRequest.getServiceStartDate() + "' where ServiceId='" + serviceid + "' ";
+		String query = "update servicerequest set ModifiedBy=1 , ModifiedDate='" + serviceRequest.getModifiedDate()
+				+ "' ,ServiceStartTime='" + serviceRequest.getServiceStartTime() + "', ServiceStartDate='"
+				+ serviceRequest.getServiceStartDate() + "' where ServiceId='" + serviceid + "' ";
 		return template.update(query);
 	}
-	
+
 	public List<Customer> getOtherSPadmin() {
 		String sql = "select Email from user where UserTypeId = 3";
 		List<Customer> splist = template.query(sql, new CustomerSpMapper());
 		return splist;
 	}
-	
+
 	public int editServiceRequestAddress(ServiceRequestAddress serviceRequestAddress) {
 		String query = "update servicerequestaddress set AddressLine1='" + serviceRequestAddress.getAddressLine1()
-				+ "',AddressLine2='" + serviceRequestAddress.getAddressLine2() + "',City='" + serviceRequestAddress.getCity()
-				+ "',PostalCode='" + serviceRequestAddress.getPostalCode() + "' where ServiceRequestId='" + serviceRequestAddress.getServiceRequestId() + "' ";
+				+ "',AddressLine2='" + serviceRequestAddress.getAddressLine2() + "',City='"
+				+ serviceRequestAddress.getCity() + "',PostalCode='" + serviceRequestAddress.getPostalCode()
+				+ "' where ServiceRequestId='" + serviceRequestAddress.getServiceRequestId() + "' ";
 		return template.update(query);
 	}
 
 	public ServiceRequestAddress readServiceRequestAddress(String serviceid) {
 		String sql = "select * from servicerequestaddress where ServiceRequestId=?";
-		ServiceRequestAddress address = template.queryForObject(sql, new ServiceRequestAddressAdminMapper(), new Object[] { serviceid });
+		ServiceRequestAddress address = template.queryForObject(sql, new ServiceRequestAddressAdminMapper(),
+				new Object[] { serviceid });
 		return address;
 	}
-	
+
 	public String userEmail(int userid) {
 		String sql = "select Email from user where UserId=?";
 		String email = template.queryForObject(sql, String.class, new Object[] { userid });
 		return email;
 	}
+
+	public String deleteusertypeid(int userid) {
+		String sql = "select UserTypeId from user where UserId=?";
+		String type = template.queryForObject(sql, String.class, new Object[] { userid });
+		return type;
+	}
+
+	public int deletecustomerrequests(int userId, ServiceRequest serviceRequest) {
+		String query = "update servicerequest set ModifiedBy=1 , ModifiedDate='" + serviceRequest.getModifiedDate()
+				+ "' ,Status='Cancelled', PaymentDone='0' where UserId='" + userId + "' and (Status='Accepted' or Status='New') ";
+		return template.update(query);
+	}
+
+	public int deletesprequests(int userId, ServiceRequest serviceRequest) {
+		String query = "update servicerequest set ModifiedBy=1 , ModifiedDate='" + serviceRequest.getModifiedDate()
+				+ "' ,Status='New',ServiceProviderId='0', PaymentDone='0' where ServiceProviderId='" + userId
+				+ "' and Status='Accepted' ";
+		return template.update(query);
+	}
 }
+
 class ServiceRequestAddressAdminMapper implements RowMapper<ServiceRequestAddress> {
 
 	public ServiceRequestAddress mapRow(ResultSet rs, int arg1) throws SQLException {

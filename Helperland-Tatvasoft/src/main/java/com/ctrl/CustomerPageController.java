@@ -13,7 +13,6 @@ import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,13 +61,20 @@ public class CustomerPageController {
 			model.addAttribute("settingslastname", session.getAttribute("lastname"));
 			model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
 			model.addAttribute("settingsemail", session.getAttribute("custemail"));
+			
+			String DateOfBirth = "" + session.getAttribute("custdob");
+			String[] DOB = DateOfBirth.split("\\s+");
+			
+			model.addAttribute("settingscustbdate", DOB[0]);
+			model.addAttribute("settingscustbmonth", DOB[1]);
+			model.addAttribute("settingscustbyear", DOB[2]);
 
 			return "CS-Dashboard";
 		}
 
 		else {
-			model.addAttribute("plsbook", "Please Login First!");
-			model.addAttribute("plsbookdiv", "style='display: block !important';");
+			model.addAttribute("plslogin", "Please Login First!");
+			model.addAttribute("plslogindiv", "style='display: block !important';");
 			return "Homepage";
 		}
 
@@ -101,14 +107,19 @@ public class CustomerPageController {
 		session.setAttribute("lastname", LastName);
 		session.setAttribute("custmobile", Mobile);
 		session.setAttribute("custemail", Email);
-
-		String DateOfBirth = "" + Day + " " + Month + " " + Year;
-		customer.setDateOfBirth(DateOfBirth);
-
 		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
 		model.addAttribute("settingslastname", session.getAttribute("lastname"));
 		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
 		model.addAttribute("settingsemail", session.getAttribute("custemail"));
+		
+		String DateOfBirth = "" + Day + " " + Month + " " + Year;
+		customer.setDateOfBirth(DateOfBirth);
+		
+		session.setAttribute("custdob", DateOfBirth);
+				
+		model.addAttribute("settingscustbdate", Day);
+		model.addAttribute("settingscustbmonth", Month);
+		model.addAttribute("settingscustbyear", Year);
 
 		customerSettingsDetailsDao.updateCustomer(customer);
 	}

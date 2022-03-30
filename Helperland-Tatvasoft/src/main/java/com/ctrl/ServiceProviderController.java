@@ -56,7 +56,8 @@ public class ServiceProviderController {
 			model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
 			model.addAttribute("settingsemail", session.getAttribute("custemail"));
 			model.addAttribute("settingsstatus", session.getAttribute("spstatus"));
-
+			model.addAttribute("settingsgender", session.getAttribute("spgender"));
+			
 			UserAddress spaddress = spSettingsDao.readSpAddress("" + session.getAttribute("userid"));
 
 			model.addAttribute("settingsaddline1", spaddress.getAddressLine1());
@@ -65,12 +66,20 @@ public class ServiceProviderController {
 			model.addAttribute("settingspostalcode", spaddress.getPostalCode());
 
 			model.addAttribute("settingsavatar", session.getAttribute("spavatar"));
+			
+			String DateOfBirth = "" + session.getAttribute("custdob");
+			String[] DOB = DateOfBirth.split("\\s+");
+			
+			model.addAttribute("settingsprobdate", DOB[0]);
+			model.addAttribute("settingsprobmonth", DOB[1]);
+			model.addAttribute("settingsprobyear", DOB[2]);
+			
 			return "SP - Dashboard";
 		}
 
 		else {
-			model.addAttribute("plsbook", "Please Login First!");
-			model.addAttribute("plsbookdiv", "style='display: block !important';");
+			model.addAttribute("plslogin", "Please Login First!");
+			model.addAttribute("plslogindiv", "style='display: block !important';");
 			return "Homepage";
 		}
 	}
@@ -81,8 +90,7 @@ public class ServiceProviderController {
 		HttpSession session = request.getSession();
 		String userid = "" + session.getAttribute("userid");
 		int id = Integer.parseInt(userid);
-		serviceRequest.setUserId(id);
-		List<ServiceRequest> dashlist = serviceProviderDao.servicedash();
+		List<ServiceRequest> dashlist = serviceProviderDao.servicedash(id);
 		return dashlist;
 	}
 
@@ -96,7 +104,7 @@ public class ServiceProviderController {
 	}
 
 	@RequestMapping(value = "/acceptsprequest/{serviceid}", method = RequestMethod.GET)
-	public @ResponseBody int acceptrequest(@PathVariable("serviceid") String serviceid, HttpServletRequest request,
+	public @ResponseBody int acceptrequest(@PathVariable("serviceid") String serviceid,	HttpServletRequest request,
 			ServiceRequest serviceRequest, Model model) {
 
 		HttpSession session = request.getSession();
@@ -105,33 +113,44 @@ public class ServiceProviderController {
 			String str = "" + session.getAttribute("userid");
 			int temp = Integer.parseInt(str);
 			serviceRequest.setUserId(temp);
-			int accept = serviceProviderDao.acceptrequest(str, serviceid);
+			
+			ServiceRequest getdata = serviceProviderDao.getConflictData(serviceid);
+			int conflict = serviceProviderDao.checkconflict(temp, getdata.getServiceStartDate(), getdata.getServiceStartTime(), getdata.getExtraHours());
+						
+			if(conflict == 0) {
+				int accept = serviceProviderDao.acceptrequest(str, serviceid);
 
-			if (accept == 1) {
-				String email = serviceProviderDao.spEmail(Integer.parseInt(serviceid));
-				String message = "Your service request with Service Id = 27" + serviceid
-						+ " has been accepted!\n\nYour Service Provider Details are as follows:\n" + "Name: "
-						+ session.getAttribute("firstname") + " " + session.getAttribute("lastname") + "\nMobile No.: "
-						+ session.getAttribute("custmobile") + "\nEmail : " + session.getAttribute("custemail")
-						+ "\n\nYou can get more details on your dahboard.";
-				String subject = "Service Request Accepted!";
-				String from = "helperland.hetvee@gmail.com";
-				sendServiceEmail(message, subject, email, from);
+				if (accept == 1) {
+					String email = serviceProviderDao.spEmail(Integer.parseInt(serviceid));
+					String message = "Your service request with Service Id = 27" + serviceid
+							+ " has been accepted!\n\nYour Service Provider Details are as follows:\n" + "Name: "
+							+ session.getAttribute("firstname") + " " + session.getAttribute("lastname") + "\nMobile No.: "
+							+ session.getAttribute("custmobile") + "\nEmail : " + session.getAttribute("custemail")
+							+ "\n\nYou can get more details on your dahboard.";
+					String subject = "Service Request Accepted!";
+					String from = "helperland.hetvee@gmail.com";
+					sendServiceEmail(message, subject, email, from);
 
-				List<Customer> splist = serviceProviderDao.getOtherSP(temp);
+					List<Customer> splist = serviceProviderDao.getOtherSP(temp);
 
-				String toemail = splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
-				String message1 = "Service Request with Id 27" + serviceid + " has been accepted.";
-				String subject1 = "Service Request Has Been Accepted";
-				sendServiceEmail(message1, subject1, toemail, from);
+					String toemail = splist.stream().map(Customer::getEmail).collect(Collectors.joining(","));
+					String message1 = "Service Request with Id 27" + serviceid + " has been accepted.";
+					String subject1 = "Service Request Has Been Accepted";
+					sendServiceEmail(message1, subject1, toemail, from);
+
+					return 1;
+				}
+				else {
+					return 0;
+				}
 			}
-
-			return accept;
+			else {
+				return 2;
+			}
 		}
 		else {
 			return 0;
 		}
-		
 	}
 
 	@RequestMapping(value = "/cancelsprequest/{serviceid}", method = RequestMethod.GET)
@@ -263,7 +282,7 @@ public class ServiceProviderController {
 	}
 
 	@RequestMapping(value = "/updateSPPassword/{OldPassword},{NewPassword}", method = RequestMethod.GET)
-	public @ResponseBody int settingsCustAddress(@PathVariable("OldPassword") String OldPassword,
+	public @ResponseBody int settingsSPPassword(@PathVariable("OldPassword") String OldPassword,
 			@PathVariable("NewPassword") String NewPassword, HttpServletRequest request, Customer customer,
 			Model model) {
 		HttpSession session = request.getSession();
@@ -278,7 +297,7 @@ public class ServiceProviderController {
 	}
 
 	@RequestMapping(value = "/updateSPDetails/{FirstName},{LastName},{Email},{Mobile},{Day},{Month},{Year},{Nationality},{Gender},{AddressLine1},{AddressLine2},{PostalCode},{City},{Avatar}", method = RequestMethod.GET)
-	public @ResponseBody void settingsCustDetails(@PathVariable("FirstName") String FirstName,
+	public @ResponseBody void settingsSPDetails(@PathVariable("FirstName") String FirstName,
 			@PathVariable("LastName") String LastName, @PathVariable("Email") String Email,
 			@PathVariable("Mobile") String Mobile, @PathVariable("Day") String Day, @PathVariable("Month") String Month,
 			@PathVariable("Year") String Year, @PathVariable("Nationality") String Nationality,
@@ -303,16 +322,24 @@ public class ServiceProviderController {
 		session.setAttribute("custmobile", Mobile);
 		session.setAttribute("custemail", Email);
 		session.setAttribute("spavatar", Avatar);
+		session.setAttribute("spgender", Gender);
 
 		model.addAttribute("settingsfirstname", session.getAttribute("firstname"));
 		model.addAttribute("settingslastname", session.getAttribute("lastname"));
 		model.addAttribute("settingsmobile", session.getAttribute("custmobile"));
 		model.addAttribute("settingsemail", session.getAttribute("custemail"));
+		model.addAttribute("settingsgender", session.getAttribute("spgender"));
 		model.addAttribute("settingsaddline1", AddressLine1);
 		model.addAttribute("settingsaddline2", AddressLine2);
 		model.addAttribute("settingscity", City);
 		model.addAttribute("settingspostalcode", postalcode);
 		model.addAttribute("settingsavatar", Avatar);
+		
+		session.setAttribute("custdob", DateOfBirth);
+		
+		model.addAttribute("settingsprobdate", Day);
+		model.addAttribute("settingsprobmonth", Month);
+		model.addAttribute("settingsprobyear", Year);
 
 		spSettingsDao.updateSp(customer);
 		spSettingsDao.updateSpAddressSettings(userAddress);

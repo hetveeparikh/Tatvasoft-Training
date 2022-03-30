@@ -35,3 +35,12 @@ $(document).ready(function() {
 	var maxDate = year + '-' + month + '-' + day;
 	$('#tomorrowdate').attr('min', maxDate);
 });
+
+/*Disable back button*/
+
+$(document).ready(function() {
+	window.history.pushState(null, "", window.location.href);
+	window.onpopstate = function() {
+		window.history.pushState(null, "", window.location.href);
+	};
+});

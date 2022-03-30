@@ -88,13 +88,11 @@ $(document).ready(function() {
 	});
 });
 
-$("#passwordform").submit(function(event) {
-	var password = document.forms["passwordform"]["password"].value;
-	var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
-	if (!regularExpression.test(password)) {
-		return false;
-	}
-	else {
-		return true;
-	}
+/*Disable back button*/
+
+$(document).ready(function() {
+	window.history.pushState(null, "", window.location.href);
+	window.onpopstate = function() {
+		window.history.pushState(null, "", window.location.href);
+	};
 });

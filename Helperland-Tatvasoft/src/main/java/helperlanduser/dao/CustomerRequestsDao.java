@@ -146,11 +146,20 @@ public class CustomerRequestsDao {
 	}
 
 	public List<ServiceRequest> readHistory(int id) {
+		
+		StringBuffer sql = new StringBuffer();
+		sql.append(" SELECT u1.FirstName, u1.LastName, u1.UserProfilePicture AS SPProfile,");
+		sql.append(" sr.ServiceId, sr.ServiceStartDate, sr.ServiceStartTime, sr.SubTotal, sr.Status, sr.ExtraHours, sr.ServiceProviderId, avg(r.Ratings) AS Avgrate, ");
+		sql.append(" r1.ServiceRequestId AS SRID");
+		sql.append(" FROM servicerequest sr ");
+		sql.append(" LEFT JOIN user u1 ON sr.ServiceProviderId = u1.UserId ");
+		sql.append(" AND (sr.Status='Completed' or sr.status='Cancelled') ");
+		sql.append(" LEFT JOIN rating r ON sr.ServiceProviderId=r.RatingTo ");
+		sql.append(" LEFT JOIN rating r1 ON sr.ServiceId=r1.ServiceRequestId ");
+		sql.append(" WHERE sr.Status in ('Cancelled','Completed') AND sr.UserId= "+ id + "");
+		sql.append(" GROUP BY (sr.ServiceRequestId) ");
 
-		String sql = "select *,avg(Ratings) as Avgrate from servicerequest sr left join user u on sr.ServiceProviderId=u.UserId and (sr.Status='Completed' or sr.status='Cancelled') left join rating r on sr.ServiceProviderId=r.RatingTo where sr.Status in ('Cancelled','Completed') and sr.UserId= '"
-				+ id + "' group by(sr.ServiceRequestId) ";
-
-		return template.query(sql, new ResultSetExtractor<List<ServiceRequest>>() {
+		return template.query(sql.toString(), new ResultSetExtractor<List<ServiceRequest>>() {
 			public List<ServiceRequest> extractData(ResultSet rs) throws SQLException, DataAccessException {
 
 				List<ServiceRequest> list = new ArrayList<ServiceRequest>();
@@ -170,24 +179,20 @@ public class CustomerRequestsDao {
 					Customer customer = new Customer();
 
 					customer.setFirstName(rs.getString("FirstName"));
-					customer.setPassword(rs.getString("Password"));
 					customer.setLastName(rs.getString("Lastname"));
-					customer.setEmail(rs.getString("Email"));
-					customer.setMobile(rs.getString("Mobile"));
-					customer.setUserTypeId(rs.getInt("UserTypeId"));
-					customer.setUserId(rs.getInt("UserId"));
-					customer.setCreatedDate(rs.getString("CreatedDate"));
-					customer.setUserProfilePicture(rs.getString("UserProfilePicture"));
+					customer.setUserProfilePicture(rs.getString("SPProfile"));
 
 					Rating rating = new Rating();
 
-					rating.setRatingTo(rs.getInt("RatingTo"));
-					rating.setRatingFrom(rs.getInt("RatingFrom"));
-					rating.setRatings(rs.getInt("Ratings"));
 					rating.setAvgrating(rs.getFloat("Avgrate"));
+					
+					Rating rating1 = new Rating();
+
+					rating1.setServiceRequestId(rs.getInt("SRID"));
 
 					request.setCustomer(customer);
 					request.setRating(rating);
+					request.setRating1(rating1);
 
 					list.add(request);
 

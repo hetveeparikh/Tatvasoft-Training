@@ -12,7 +12,7 @@
     margin-left: inherit !important;
   }
 }
-@media only screen and (max-width:992px){
+@media only screen and (max-width:991px){
   .sidebar{
       display: none;
   }
@@ -24,6 +24,13 @@
   }
   #SettingsDetails, #SettingsPassword, .bottom{
   	  padding: 0px 20px;
+  }
+  #blocktable{
+  	display: flex;
+  	justify-content: center;
+  }
+  .scheduledata,.scheduleinfo{
+  	padding: 0px 10px;
   }
 }
 @media only screen and (min-width: 761px) and (max-width: 1220px) {
@@ -101,5 +108,10 @@
   #history_paginate{
   margin-top: 10px;
   text-align: center;
+  }
+}
+@media screen and (max-width: 370px) {
+  #fc-dom-1{
+  	font-size: 22px;
   }
 }

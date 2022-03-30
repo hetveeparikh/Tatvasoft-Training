@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
+import helperlanduser.dto.ServiceRequestAcceptConflictDTO;
 import helperlanduser.dto.ServiceRequestBlockDTO;
 import helperlanduser.dto.ServiceRequestScheduleDTO;
 import helperlanduser.model.Customer;
@@ -43,12 +44,12 @@ public class ServiceProviderDao {
 
 	}
 
-	public List<ServiceRequest> servicedash() {
+	public List<ServiceRequest> servicedash(int id) {
 
 		String sql = "SELECT * FROM servicerequest sr\n"
 				+ "LEFT JOIN servicerequestaddress sra ON sr.ServiceRequestId = sra.ServiceRequestId\n"
 				+ "INNER JOIN user u ON u.UserId = sr.UserId\n" 
-				+ "LEFT JOIN favoriteandblocked fab on sr.UserId=fab.TargetUserId and fab.TargetUserId IS NOT NULL\n"
+				+ "LEFT JOIN favoriteandblocked fab on sr.UserId=fab.TargetUserId and fab.TargetUserId IS NOT NULL AND fab.UserId='"+ id + "' \n"
 				+ "WHERE sr.Status='New' AND sr.ServiceProviderId=0 AND (fab.IsBlocked=0 OR fab.IsBlocked IS NULL)";
 
 		return template.query(sql, new ResultSetExtractor<List<ServiceRequest>>() {
@@ -324,8 +325,8 @@ public class ServiceProviderDao {
 	public List<ServiceRequestScheduleDTO> serviceschedule(String str) {
 
 		String sql = "SELECT sr.ServiceRequestId AS id, CONCAT( 'Time: ', sr.ServiceStartTime, ' & Hours: ', sr.ExtraHours) AS title, "
-				+ "sr.ServiceStartDate AS start, sr.ServiceStartDate AS end, IF(sr.status='Completed','#1d7a8c','gainsboro') AS color, "
-				+ "IF(sr.status='Completed','white','#1d7a8c') AS textColor FROM servicerequest sr WHERE sr.ServiceProviderId = '"
+				+ "sr.ServiceStartDate AS start, sr.ServiceStartDate AS end, IF(sr.status='Accepted','#1d7a8c','gainsboro') AS color, "
+				+ "IF(sr.status='Accepted','white','#1d7a8c') AS textColor FROM servicerequest sr WHERE sr.ServiceProviderId = '"
 				+ str + "' AND sr.Status IN ('Completed','Accepted') ";
 
 		List<ServiceRequestScheduleDTO> requestlist = template.query(sql, new RowMapper<ServiceRequestScheduleDTO>() {
@@ -351,7 +352,7 @@ public class ServiceProviderDao {
 	public List<ServiceRequestBlockDTO> blockcustomer(int id) {
 		String sql = "SELECT DISTINCT u.UserId as CustomerId, CONCAT(u.FirstName, ' ', u.LastName) as CustomerName,"
 				+ " fab.IsBlocked as CustomerBlocked from servicerequest sr LEFT JOIN user u ON sr.UserId=u.UserId "
-				+ "LEFT JOIN favoriteandblocked fab ON sr.SerViceProviderId=fab.UserId "
+				+ "LEFT JOIN favoriteandblocked fab ON sr.UserId=fab.TargetUserId "
 				+ "where sr.status='Completed' AND sr.ServiceProviderId='" + id + "' ";
 
 		List<ServiceRequestBlockDTO> custlist = template.query(sql, new RowMapper<ServiceRequestBlockDTO>() {
@@ -405,6 +406,30 @@ public class ServiceProviderDao {
 		String sql = "insert into rating(RatingFrom, RatingTo, Ratings, ServiceRequestId, OnTimeArrival, Friendly, QualityOfService, RatingDate, Comments) values(?,?,?,?,?,?,?,?,?)";
 		int rating = template.update(sql, new Object[] { r.getRatingFrom(), r.getRatingTo(), r.getRatings(), 0,0,0,0, dtf.format(date), "NA"});
 		return rating;
+	}
+
+	public int checkconflict(int spid, String serviceStartDate, String serviceStartTime, float totalHours) {
+		
+		String sql= "select (ServiceStartTime+ExtraHours)-'"+serviceStartTime+"'  as AcceptTime from servicerequest where Status='Accepted' and ServiceProviderId='"+spid+"'"
+				+ " and ServiceStartDate='" + serviceStartDate + "' and (ServiceStartTime+ExtraHours)-'"+serviceStartTime+"'>1";
+		List<ServiceRequestAcceptConflictDTO> conflict = template.query(sql, new serviceRequestConflictMapper());
+		
+		String sql1= "select ('"+ serviceStartTime+totalHours+1 +"'>ServiceStartTime)  as AcceptTime from servicerequest where Status='Accepted' and ServiceProviderId='"+spid+"'"
+				+ " and ServiceStartDate='" + serviceStartDate + "' and ('"+ serviceStartTime+totalHours+1 +"'>ServiceStartTime)";
+		List<ServiceRequestAcceptConflictDTO> conflict1 = template.query(sql1, new serviceRequestConflictMapper());
+		
+		if(conflict.size()==0 && conflict1.size()==0) {
+			return 0;
+		}
+		else {
+			return 1;
+		}
+	}
+
+	public  ServiceRequest getConflictData(String serviceid) {
+		String sql = "select * from servicerequest where ServiceId='" + serviceid + "' ";
+		ServiceRequest serviceRequest = template.queryForObject(sql, new spServiceRequestDetailsMapper());
+		return serviceRequest;
 	}
 
 }
@@ -469,5 +494,17 @@ class spBlockedCustomersMapper implements RowMapper<FavouriteAndBlocked> {
 		blocked.setId(rs.getInt("Id"));
 
 		return blocked;
+	}
+}
+
+class serviceRequestConflictMapper implements RowMapper<ServiceRequestAcceptConflictDTO> {
+
+	public ServiceRequestAcceptConflictDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+		ServiceRequestAcceptConflictDTO requests = new ServiceRequestAcceptConflictDTO();
+
+		requests.setAcceptTime(rs.getString("AcceptTime"));
+
+		return requests;
 	}
 }

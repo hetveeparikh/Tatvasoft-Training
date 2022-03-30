@@ -14,6 +14,14 @@ body {
 .modal-open {
 	padding: 0px;
 }
+.modal{
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    z-index:9999;
+    display:none;
+}
 
 .aboutnav {
 	background-color: rgb(82, 82, 82, 0.8) !important;
@@ -605,4 +613,8 @@ body {
 
 .dropdown-menu a {
 	color: #111 !important;
+}
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
 }

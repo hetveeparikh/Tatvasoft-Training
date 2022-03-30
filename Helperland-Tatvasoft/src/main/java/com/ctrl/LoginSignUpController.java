@@ -57,6 +57,7 @@ public class LoginSignUpController {
 			customer.setIsActive(1);
 			customer.setIsDeleted(0);
 			customer.setIsApproved(1);
+			customer.setDateOfBirth("1 January 2022");
 			customerDao.save(customer);
 			
 			String email = customer.getEmail();
@@ -92,6 +93,7 @@ public class LoginSignUpController {
 			customer.setIsActive(1);
 			customer.setIsDeleted(0);
 			customer.setIsApproved(0);
+			customer.setDateOfBirth("1 January 2022");
 			customerDao.save(customer);
 			
 			useraddress.setUserId(randomno);
@@ -103,7 +105,7 @@ public class LoginSignUpController {
 			
 			rating.setRatingTo(randomno);
 			rating.setRatings(0);
-			rating.setRatingFrom(0);
+			rating.setRatingFrom(1);
 			serviceProviderDao.addratings(rating);
 			
 			String email = customer.getEmail();
@@ -141,7 +143,8 @@ public class LoginSignUpController {
 			session.setAttribute("spgender", customer.getGender());
 			session.setAttribute("spavatar", customer.getUserProfilePicture());
 			session.setAttribute("spstatus", customer.getIsActive());
-
+			session.setAttribute("custdob", customer.getDateOfBirth());
+			
 			session.setMaxInactiveInterval(15 * 60);
 
 			int type = customer.getUserTypeId();

@@ -582,7 +582,7 @@
 			</div>
 		</form>
 	</section>
-
+	
 	<footer>
 		<div class="Rectangle-12">
 			<div class="row justify-content-between align-items-center">

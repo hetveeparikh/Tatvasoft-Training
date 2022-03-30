@@ -23,6 +23,14 @@ html {
 .modal-open {
 	padding: 0px;
 }
+.modal{
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(0,0,0,0.5);
+    z-index:9999;
+    display:none;
+}
 
 .aumnav {
 	background-color: #1fb6ff;
@@ -668,4 +676,51 @@ img.ghar {
 }
 .datetime-edit-field{
 	color: #646464 !important;
+}
+.badge {
+  padding: .5em .7em;
+  font-size: 1em;
+  font-weight: 600;
+}
+/* Loader */
+
+.loader {
+  border: 8px solid #4c4c4c;
+  border-radius: 50%;
+  border-top: 8px solid #1d7a8c;
+  border-bottom: 8px solid #1d7a8c;
+  width: 80px;
+  height: 80px;
+  position:absolute;
+  left: 48%;
+  top: 40%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#loading-image{
+    position:fixed;
+    width:100%;
+    left:0;right:0;top:0;bottom:0;
+    background-color: rgba(0,0,0,0.7);
+    z-index:9999;
+    display:none;
+}
+.rate:disabled {
+	background-color: #27a1b9;
+	border: solid 1px #27a1b9; 
+}
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
 }

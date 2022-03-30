@@ -18,10 +18,11 @@ public class CustomerDao {
 	}
 	
 	public void save(Customer c) {
-		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId,UserProfilePicture,IsApproved,IsDeleted,IsActive) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into user(UserId,FirstName,LastName,Email,Password,Mobile,CreatedDate,UserTypeId,UserProfilePicture,IsApproved,IsDeleted,IsActive,DateOfBirth) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		template.update(sql, new Object[] { c.getUserId(), c.getFirstName(), c.getLastName(), c.getEmail(),
 				c.getPassword(), c.getMobile(), c.getCreatedDate(), c.getUserTypeId(), c.getUserProfilePicture(),
-				c.getIsApproved(), c.getIsDeleted(), c.getIsActive()});
+				c.getIsApproved(), c.getIsDeleted(), c.getIsActive(), c.getDateOfBirth()});
 	}
 	
 	public Customer validEmail(Customer c) {
@@ -62,6 +63,7 @@ class CustomerUserMapper implements RowMapper<Customer> {
 	    customer.setIsActive(rs.getInt("IsActive"));
 	    customer.setIsApproved(rs.getInt("IsApproved"));
 	    customer.setIsDeleted(rs.getInt("IsDeleted"));
+	    customer.setDateOfBirth(rs.getString("DateOfBirth"));
 
 	    return customer;
 	  }

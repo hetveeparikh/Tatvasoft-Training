@@ -28,6 +28,12 @@ public class ServiceRequestBlockDTO {
 	public void setCustomerBlocked(int customerBlocked) {
 		CustomerBlocked = customerBlocked;
 	}
+
+	@Override
+	public String toString() {
+		return "ServiceRequestBlockDTO [CustomerName=" + CustomerName + ", CustomerId=" + CustomerId
+				+ ", CustomerBlocked=" + CustomerBlocked + "]";
+	}
 	
 	
 }

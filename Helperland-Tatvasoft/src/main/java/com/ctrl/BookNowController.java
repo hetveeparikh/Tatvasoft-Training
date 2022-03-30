@@ -61,8 +61,8 @@ public class BookNowController {
 		}
 
 		else {
-			model.addAttribute("plsbook", "Please Login First!");
-			model.addAttribute("plsbookdiv", "style='display: block !important';");
+			model.addAttribute("plslogin", "Please Login First!");
+			model.addAttribute("plslogindiv", "style='display: block !important';");
 			return "Homepage";
 		}
 

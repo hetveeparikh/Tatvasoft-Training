@@ -37,10 +37,24 @@ var det = document.getElementById("details");
 var pay = document.getElementById("payment");
 
 
-window.onload = function() {
+window.onload = firsttab();
+
+function firsttab() {
 	first.style.display = "block";
+	second.style.display = "none";
+	third.style.display = "none";
+	fourth.style.display = "none";
+	
+	$('#service').attr('disabled',false);
+	$('#schedule').attr('disabled',true);
+	$('#details').attr('disabled',true);
+	$('#payment').attr('disabled',true);
+	
 	serv.style.color = "#fff";
 	serv.style.backgroundColor = "#1d7a8c";
+	
+	sche.style.color = "#646464";
+	sche.style.backgroundColor = "#f3f3f3";
 }
 
 function secondtab() {
@@ -48,6 +62,11 @@ function secondtab() {
 	second.style.display = "block";
 	third.style.display = "none";
 	fourth.style.display = "none";
+	
+	$('#service').attr('disabled',true);
+	$('#schedule').attr('disabled',false);
+	$('#details').attr('disabled',true);
+	$('#payment').attr('disabled',true);
 	
 	det.style.color = "#646464";
 	det.style.backgroundColor = "#f3f3f3";
@@ -64,7 +83,7 @@ function thirdtab() {
 
 	var x = document.forms["secondform"]["TomorrowDate"].value;
 	if (x == "" || x == null) {
-		alert("Please select date!");
+		$('#datemodal').modal("show");
 		return false;
 	}
 
@@ -72,6 +91,11 @@ function thirdtab() {
 	second.style.display = "none";
 	third.style.display = "block";
 	fourth.style.display = "none";
+	
+	$('#service').attr('disabled',true);
+	$('#schedule').attr('disabled',true);
+	$('#details').attr('disabled',false);
+	$('#payment').attr('disabled',true);
 
 	det.style.color = "#fff";
 	det.style.backgroundColor = "#1d7a8c";
@@ -147,6 +171,11 @@ function fourthtab() {
 	second.style.display = "none";
 	third.style.display = "none";
 	fourth.style.display = "block";
+	
+	$('#service').attr('disabled',true);
+	$('#schedule').attr('disabled',true);
+	$('#details').attr('disabled',true);
+	$('#payment').attr('disabled',false);
 
 	pay.style.color = "#fff";
 	pay.style.backgroundColor = "#1d7a8c";
@@ -160,7 +189,7 @@ function fourthtab() {
 function firstvalid() {
 	var x = document.forms["firstform"]["PostalCode"].value;
 	if (x == "" || x == null) {
-		alert("Please enter postal code");
+		$('#firstdiv').html("Please enter postal code!");
 		return false;
 	}
 }
@@ -177,7 +206,7 @@ jQuery(document).ready(function($) {
 function searchpincode() {
 	var search = {}
 	search["pincode"] = $("#pincode").val();
-
+	
 	$.ajax({
 		type: "POST",
 		contentType: "application/json",
@@ -186,6 +215,7 @@ function searchpincode() {
 		success: function(data) {
 			console.log("SUCCESS: ", data);
 			if (data == "true") {
+				$('#firstdiv').html("");
 				secondtab();
 			}
 			else {
@@ -254,4 +284,14 @@ $("#addAddressForm").submit(function(event) {
 	else {
 		return true;
 	}
+});
+
+
+/*Disable back button*/
+
+$(document).ready(function() {
+	window.history.pushState(null, "", window.location.href);
+	window.onpopstate = function() {
+		window.history.pushState(null, "", window.location.href);
+	};
 });

@@ -218,12 +218,12 @@
 											<div>
 												<select title="Time" class="timerect"
 													name="ServiceStartTime" id="starttime">
-													<option value="8:00">8:00</option>
-													<option value="8:30">8:30</option>
-													<option value="9:00">9:00</option>
-													<option value="9:30">9:30</option>
-													<option value="10:00">10:00</option>
-													<option value="11:30">11:30</option>
+													<option value="8.0" selected>8:00</option>
+													<option value="8.5">8:30</option>
+													<option value="9.0">9:00</option>
+													<option value="9.5">9:30</option>
+													<option value="10.0">10:00</option>
+													<option value="11.5">11:30</option>
 												</select>
 											</div>
 										</div>
@@ -339,7 +339,8 @@
 
 								<div class="divider3"></div>
 
-								<div class="cbtn1">
+								<div class="cbtn">
+									<button type="button" class="schecontinue" onclick="firsttab()">Go back</button>
 									<input type="button" class="schecontinue" onclick="thirdtab()"
 										value="Continue">
 								</div>
@@ -422,10 +423,10 @@
 								</div>
 							</div>
 
-							<div>
+							<!-- <div>
 								<input type="checkbox" id="invoice" /> <label for="invoice"
 									class="invoice">Send invoice on this address</label>
-							</div>
+							</div> -->
 
 							<div class="divider3"></div>
 
@@ -720,6 +721,8 @@
 
 		</div>
 		
+		<!-- Success Modal -->
+		
 		<div class="modal fade" id="successmodal">
 		  <div class="modal-dialog modal-dialog-centered">
 		    <div class="modal-content">
@@ -735,6 +738,36 @@
 		      </div>
 		    </div>
 		  </div>
+		</div>
+		
+		<!-- Date Modal -->
+		
+		<div class="modal fade" id="datemodal">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		        <p class="text-center ques1">Please enter date!</p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- Date Modal -->
+		
+		<div class="modal fade" id="addressmodal">
+		  <div class="modal-dialog modal-dialog-centered">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		        <p class="text-center ques1">Please go to previous page and select address!</p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<!-- Loader -->
+
+		<div id="loading-image">
+			<div class="loader"></div>
 		</div>
 
 	</section>
@@ -1171,7 +1204,7 @@
 			});
 			
 			console.log(finalarray);
-			
+			$('#loading-image').show();
 			$.ajax({
 				
 				type: "GET",
@@ -1188,10 +1221,14 @@
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);
-					alert('Please go to previous page and select address!');
+					$('#loading-image').hide();
+					$('#addressmodal').modal("show");
 				},
 				done: function(e) {
 					console.log("DONE");
+				},
+				complete: function() {
+					$('#loading-image').hide();
 				}
 			});
 		}

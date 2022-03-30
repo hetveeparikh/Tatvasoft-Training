@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import helperlanduser.dao.ContactDao;
 import helperlanduser.model.Contact;
 
@@ -82,8 +85,10 @@ public class PublicPagesController {
 	}
 
 	@RequestMapping(value = "/savecontact", method = RequestMethod.POST)
-	public String saveContact(@ModelAttribute("con") Contact con) throws Exception {
-		contactdao.save(con);
+	public String saveContact(@ModelAttribute("contact") Contact contact, @RequestParam CommonsMultipartFile file) throws Exception {
+		String filename = file.getOriginalFilename();
+		contact.setUploadFileName(filename);
+		contactdao.save(contact);
 		return "Contact";
 	}
 

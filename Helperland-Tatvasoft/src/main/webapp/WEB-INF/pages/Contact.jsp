@@ -486,7 +486,7 @@
 		<span class="Get-in-touch-with-us"> Get in touch with us </span>
 
 		<div class="text-center">
-			<form action="savecontact" method="post" id="contactform">
+			<form action="savecontact" method="post" id="contactform" enctype="multipart/form-data">
 				<div class="f1">
 
 					<input type="text" placeholder="First Name" name="FName"
@@ -521,13 +521,13 @@
 						class="Rounded-Rectangle-2-copy-11" required>
 				</div>
 
-				<!-- <label class="attachment">Attachment</label><br>
+				<label class="attachment">Attachment</label><br>
 				<div class="d-flex justify-content-center">
 					<div class="input-group mb-3 Rounded-Rectangle-2-copy-12"
 						style="height: auto">
-						<input type="file" class="form-control" id="inputGroupFile02">
+						<input type="file" name="file" class="form-control" id="inputGroupFile02">
 					</div>
-				</div> -->
+				</div>
 
 				<div class="text-center mb-2 mt-2" id="Mobileformdiv"></div>
 

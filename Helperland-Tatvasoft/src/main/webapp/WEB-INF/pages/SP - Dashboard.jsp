@@ -89,10 +89,10 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#" class="active tablinks" onclick="clicksp(event, 'spdashboard')" id="dashnav">Dashboard</a>
             <a href="#" class="tablinks" onclick="clicksp(event, 'spupcoming')" id="upcomingnav">Upcoming Services</a>
-            <a href="#">Service Schedule</a>
+            <a href="#" class="tablinks" onclick="clicksp(event, 'spschedule')" id="schedulenav">Service Schedule</a>
             <a href="#" class="tablinks" onclick="clicksp(event, 'sphistory')" id="historynav">Service History</a>
             <a href="#" class="tablinks" onclick="clicksp(event, 'sprating')" id="ratingnav">My Ratings </a>
-            <a href="#" class="tablinks">Block Customer</a>
+            <a href="#" class="tablinks" onclick="clicksp(event, 'spblock')" id="blocknav">Block Customer</a>
             <a href="BookNow">Book Now</a>
             <a href="prices">Prices</a>
             <a href="warranty">Warranty</a>
@@ -157,11 +157,6 @@
                                 <th>
                                     <div class="d-flex">
                                         <span class="heading">Payment</span>
-                                    </div>
-                                </th>
-                                <th>
-                                    <div class="d-flex">
-                                        <span class="heading">Time conflict</span>
                                     </div>
                                 </th>
                                 <th>
@@ -274,12 +269,12 @@
         <!-- Schedule -->
         
         <div class="col-lg-7 tabcontent" id="spschedule">
-            <div class="row">
+            <div class="row scheduledata">
                 <div class="col-lg-12" id="calendar">
                     
                 </div>
             </div>
-            <div>
+            <div class="scheduleinfo">
             	<div class="mt-3 d-flex align-items-center">
 	            	<span class="upcomingline"></span>
 	            	<span class="lineschedule">Upcoming</span>
@@ -358,8 +353,7 @@
 						        <div class="divider2"></div>
 						    </div>
 							<div id="change">
-								<img
-									src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-${settingsavatar }.png">
+								<img src="<%= request.getContextPath() %>/resources/img/img-Settings/avatar-${settingsavatar }.png">
 							</div>
 						</div>
 						
@@ -389,7 +383,7 @@
 						        <label>Date of birth</label>
 						        <div>
 						            <select class="bdayset" id="detailsBdate" required>
-						                <option value="">DD</option>
+						                <option value="Day">DD</option>
 						                <option value="1">01</option>
 						                <option value="2">02</option>
 						                <option value="3">03</option>
@@ -423,7 +417,7 @@
 						                <option value="31">31</option>
 						            </select>
 						            <select class="bdayset"  id="detailsBMonth" required>
-						                <option value="">MM</option>
+						                <option value="Month">MM</option>
 										<option value="January">January</option>
 										<option value="February">February</option>
 										<option value="March">March</option>
@@ -438,7 +432,7 @@
 										<option value="December">December</option>
 						            </select>
 						            <select class="bdayset" id="detailsBYear" required>
-						                <option value="">YY</option>
+						                <option value="Year">YY</option>
 										<option value="2022">2022</option>
 										<option value="2021">2021</option>
 										<option value="2020">2020</option>
@@ -639,9 +633,11 @@
 	
 						</div>
 						<div class="d-flex justify-content-center">
-							<button class="csupdate" data-bs-dismiss="modal" >Cancel
+							<button class="csupdate" id="cancelbtn">Cancel
 								Request</button>
 						</div>
+						<input type="hidden" id="cancelserviceid">
+						<div class="text-center mb-4 mt-2 h5" id="canceldiv"></div>
 					</form>
 
 				</div>
@@ -665,42 +661,52 @@
 					<br><br>
 
 					<div class="d-flex justify-content-center">
-						<button type="button" class="csupdate" data-bs-dismiss="modal"
-							id="acceptbtn">Accept Request</button>
+						<button type="button" class="csupdate "
+							id="acceptbtn" >Accept Request</button>
 					</div>
+					<input type="hidden" id="acceptserviceid">
+					<div class="text-center mb-2 mt-2 h5" id="acceptdiv"></div>
 				</div>
-				
 				
 			</div>
 		</div>
 	</div>
 
 	<div class="modal fade" id="completedmodal">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
 
-					<!-- Modal Header -->
-					<div class="modal-header">
-						<h4 class="modal-title">Completed Service Request</h4>
-						<button type="button" class="btn-close"
-							data-bs-dismiss="modal"></button>
-					</div>
-					
-					<form id="completedform">
-						<!-- Modal body -->
-						<div class="modal-body">
-							<span class="newdate">Have you completed this service request?</span>
-	
-						</div>
-						<div class="d-flex justify-content-center">
-							<button class="csupdate" data-bs-dismiss="modal" >Completed
-								Request</button>
-						</div>
-					</form>
-
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Completed Service Request</h4>
+					<button type="button" class="btn-close"
+						data-bs-dismiss="modal"></button>
 				</div>
+				
+				<form id="completedform">
+					<!-- Modal body -->
+					<div class="modal-body">
+						<span class="newdate">Have you completed this service request?</span>
+
+					</div>
+					<div class="d-flex justify-content-center">
+						<button class="csupdate" id="completedbtn" >Completed
+							Request</button>
+					</div>
+					<input type="hidden" id="completedserviceid">
+					<div class="text-center mb-4 mt-2 h5" id="completeddiv"></div>
+					
+				</form>
+
 			</div>
 		</div>
+	</div>
+	
+	<!-- Loader -->
+	
+	<div id="loading-image">
+		<div class="loader"></div>
+	</div>
 
     <footer>
         <div class="Rectangle-12">
@@ -741,11 +747,12 @@
                 <div class="Rectangle-12-copy-2"></div>
 
                 <span class="-Helperland-All-rights-reserved-Terms-and-Conditions">
-                    ©2022 Helperland<span class="text-style-1">.</span> All rights
-                    reserved.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="terms text-decoration-none">
-                        Terms and Conditions </a>&nbsp; | &nbsp;
-                    <a href="#" class="terms text-decoration-none">Privacy Policy</a>
-                </span>
+					&#169;2022 Helperland<span class="text-style-1">.</span> All rights
+					reserved.&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"
+					class="terms text-decoration-none"> Terms and Conditions </a>&nbsp;
+					| &nbsp; <a href="#" class="terms text-decoration-none">Privacy
+						Policy</a>
+				</span>
             </div>
         </div>
     </footer>
@@ -819,9 +826,15 @@
 					petsbool=`<img src="<%=request.getContextPath()%>/resources/img/img-CS/notpets.png">  I don't have pets at home`;
 				}
 				
-				console.log("SUCCESS: modal", data);
-				
-				$("#detailsduration").html(data.servicerequest.serviceStartTime);
+				var starttime=data.servicerequest.serviceStartTime;
+				if(starttime.includes(".0")){
+					starttime=starttime.replace(".0",":00");
+				}
+				else{
+					starttime=starttime.replace(".5",":30");
+				}
+									
+				$("#detailsduration").html(starttime);
 				$("#detailsextras").html(data.servicerequestextra);
 				$("#detailsid").html('27'+data.servicerequest.serviceId);
 				$("#detailsamount").html(data.servicerequest.subTotal + " &euro;");
@@ -851,20 +864,28 @@
 			success: function(response) {
 				console.log("SUCCESS: ", response);
 
-				var result = '<table class="table display nowrap" id="dashboard" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Customer Details</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Time Conflict</span></div></th><th><div class="d-flex"><span class="heading">Actions</span></div></th></tr></thead>'
+				var result = '<table class="table display nowrap" id="dashboard" colspacing="0" style="width: 100%;"><thead><tr id="firstrow"><th><div class="d-flex"><span class="heading">Service ID</span></div></th><th><div class="d-flex"><span class="heading">Service Date</span></div></th><th><div class="d-flex"><span class="heading">Customer Details</span></div></th><th><div class="d-flex"><span class="heading">Payment</span></div></th><th><div class="d-flex"><span class="heading">Actions</span></div></th></tr></thead>'
 				result += "<tbody>";
 				$.each(response, function(k, v) {
 					console.log(v.serviceId);
-										
+					
+					var starttime=v.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
+					}
+					
 					result += "<tr>";
 					result += '<td class="align-middle"><span class="sid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 					result += '<td class="align-middle">';
 					result += '<div class="d-flex flex-column justify-content-center calghadi spmodal">';
 					result += '<div class="d-flex"  data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date" id="startdate">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -881,9 +902,6 @@
 					result += '<img src="<%=request.getContextPath()%>/resources/img/img-BookNow/blue-euro.png" class="totaleuro">';
 					result += '<span>&nbsp;'+v.subTotal+'</span>';
 					result += '</span></td>';
-					result += '<td class="align-middle">';
-					result += ' ';
-					result += '</td>';
 					result += '<td class="align-middle">';
 					result += '<button class="accept text-white" data-bs-toggle="modal" data-bs-target="#acceptmodal" onclick="acceptreq('+ v.serviceId +')">Accept</button>';
 					result += '</td>';
@@ -928,7 +946,14 @@
 				$.each(response, function(k, v) {
 					console.log(v.serviceId);
 
-										
+					var starttime=v.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
+					}
+					
 					result += "<tr>";
 					result += '<td class="align-middle"><span class="sid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 					result += '<td class="align-middle">';
@@ -937,7 +962,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -985,27 +1010,30 @@
 	});
 	
 	function cancelreq(v){
-		jQuery(document).ready(function($) {
-			$("#cancelform").submit(function(event) {
-				event.preventDefault();
-				cancelRequest(v);
-				console.log(v);
-			});
-		});
+		$('#cancelserviceid').val(v);
 	}
     function cancelRequest(v){
+    	$('#loading-image').show();
     	$.ajax({
 			type: "GET",
 			url: "/Helperland-Tatvasoft/cancelsprequest/" + v,
 			success: function(data) {
-				console.log("SUCCESS: cancelled", data);
 				
 				if(data==0){
-					alert("Not cancelled!");
+					$('#canceldiv').html('<span class="text-danger">Not cancelled.<span>');
 				}
 				else{
+					$('#canceldiv').html('<span class="text-success font-weight-bold">You have cancelled this service request.<span>');
+					$("#cancelbtn").attr("disabled", true);
+					$('#cancelbtn').css('background-color','#6da9b5');
+					$('#cancelbtn').css('border','solid 1px #6da9b5');
 					upcoming();
-					alert("Cancelled successfully! \n\nServiceId : 27" + v);
+					$('#cancelmodal').on('hidden.bs.modal', function () {
+						$("#cancelbtn").attr("disabled", false);
+						$('#cancelbtn').css('background-color','#1d7a8c');
+						$('#cancelbtn').css('border','solid 1px #1d7a8c');
+						$('#canceldiv').html('');
+					});
 				}
 			},
 			error: function(e) {
@@ -1013,69 +1041,108 @@
 			},
 			done: function(e) {
 				console.log("DONE");
+			},
+			complete: function() {
+				$('#loading-image').hide();
 			}
 		});
     }
+    
+    /* ready function */
+    
+    jQuery(document).ready(function($) {
+		$("#acceptbtn").click(function(event) {
+			acceptRequest($('#acceptserviceid').val());
+		});
+		$("#cancelbtn").click(function(event) {
+			cancelRequest($('#cancelserviceid').val());
+		});
+		$("#completedbtn").click(function(event) {
+			completeRequest($('#completedserviceid').val());
+		});
+	});
+    
     
     /* accept req */
     
     function acceptreq(v){
-		jQuery(document).ready(function($) {
-			$("#acceptbtn").click(function(event) {
-				acceptRequest(v);
-				console.log(v);
-			});
-		});
+		$('#acceptserviceid').val(v);
 	}
+    
     function acceptRequest(v){
+    	$('#loading-image').show();
     	$.ajax({
 			type: "GET",
 			url: "/Helperland-Tatvasoft/acceptsprequest/" + v,
 			success: function(data) {
-				console.log("SUCCESS: accepted", data);
 				
 				if(data==0){
-					alert("Not accepted!");
+					$('#acceptdiv').html('<span class="text-danger">You are currently inactive.<span>');
+					acceptprocess();
 				}
-				else{
-					dashboard();
-					alert("Accepted successfully! \n\nServiceId : 27" + v);
+				else if(data==1){
+					$('#acceptdiv').html('<span class="text-success font-weight-bold">You have accepted this service request.<span>');
+					acceptprocess();
 				}
+				else if(data==2){
+					$('#acceptdiv').html('<span class="text-danger">Another service request has already been assigned which has time overlap with this service request. You can\'t pick this one!<span>');
+					acceptprocess();
+				}
+				
 			},
 			error: function(e) {
 				console.log("ERROR: ", e);
 			},
 			done: function(e) {
 				console.log("DONE");
+			},
+			complete: function() {
+				$('#loading-image').hide();
 			}
 		});
     }
+    
+    function acceptprocess() {
+    	$("#acceptbtn").attr("disabled", true);
+		$('#acceptbtn').css('background-color','#6da9b5');
+		$('#acceptbtn').css('border','solid 1px #6da9b5');
+		dashboard();
+		$('#acceptmodal').on('hidden.bs.modal', function () {
+			$("#acceptbtn").attr("disabled", false);
+			$('#acceptbtn').css('background-color','#1d7a8c');
+			$('#acceptbtn').css('border','solid 1px #1d7a8c');
+			$('#acceptdiv').html('');
+		});
+	}
     
     
     /* completed req */
     
     function completedreq(v){
-		jQuery(document).ready(function($) {
-			$("#completedform").submit(function(event) {
-				event.preventDefault();
-				completeRequest(v);
-				console.log(v);
-			});
-		});
+    	$('#completedserviceid').val(v);
 	}
     function completeRequest(v){
+    	$('#loading-image').show();
     	$.ajax({
 			type: "GET",
 			url: "/Helperland-Tatvasoft/completedsprequest/" + v,
 			success: function(data) {
-				console.log("SUCCESS: completed", data);
 				
 				if(data==0){
-					alert("Not completed!");
+					$('#completeddiv').html('<span class="text-danger">Not completed.<span>');
 				}
 				else{
+					$('#completeddiv').html('<span class="text-success font-weight-bold">You have completed this service request.<span>');
+					$("#completedbtn").attr("disabled", true);
+					$('#completedbtn').css('background-color','#6da9b5');
+					$('#completedbtn').css('border','solid 1px #6da9b5');
 					upcoming();
-					alert("Completed successfully! \n\nServiceId : 27" + v);
+					$('#completedmodal').on('hidden.bs.modal', function () {
+						$("#completedbtn").attr("disabled", false);
+						$('#completedbtn').css('background-color','#1d7a8c');
+						$('#completedbtn').css('border','solid 1px #1d7a8c');
+						$('#completeddiv').html('');
+					});
 				}
 			},
 			error: function(e) {
@@ -1083,6 +1150,9 @@
 			},
 			done: function(e) {
 				console.log("DONE");
+			},
+			complete: function() {
+				$('#loading-image').hide();
 			}
 		});
     }
@@ -1111,7 +1181,14 @@
 						status='<button class="pinkbtn">Cancelled</button>';
 					}
 
-										
+					var starttime=v.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
+					}
+					
 					result += "<tr>";
 					result += '<td class="align-middle"><span class="sid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 					result += '<td class="align-middle">';
@@ -1120,7 +1197,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -1172,7 +1249,16 @@
 	jQuery(document).ready(function($) {
 		$("#passwordform").submit(function(event) {
 			event.preventDefault();
-			updatePassword();
+			var password = document.forms["passwordform"]["password"].value;
+			var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+			if (!regularExpression.test(password)) {
+				$('#Passwordspdetailsdiv').html("");
+				alert("Please enter correct format!");
+			}
+			else {
+				updatePassword();
+				$('#Passwordspdetailsdiv').html("");
+			}
 		});
 	});
 	function updatePassword() {
@@ -1211,10 +1297,10 @@
 	function updatespDetails() {
 		$.ajax({
 			type: "GET",
-			url: "/Helperland-Tatvasoft/updateSPDetails/" + $("#detailsFirstname").val() + "," + $("#detailsLastname").val() + "," + $("#detailsEmail").val() + "," + $("#detailsMobile").val()
-				+ "," + $("#detailsBdate").val() + "," + $("#detailsBMonth").val() + "," + $("#detailsBYear").val() + "," + $("#detailsNationality").val()
-				+ "," +  $("input[type=radio][name=gender]:checked").val() + "," + $("#addline1").val() + "," + $("#addline2").val() + "," + $("#addpostalcode").val() 
-				+ "," + $("#addcity").val() + "," + $('input[name="avatar"]:checked').val(),
+			url: "/Helperland-Tatvasoft/updateSPDetails/" + $("#detailsFirstname").val() + "," + $("#detailsLastname").val() + "," + $("#detailsEmail").val()
+				+ "," + $("#detailsMobile").val() + "," + $("#detailsBdate").val() + "," + $("#detailsBMonth").val() + "," + $("#detailsBYear").val() 
+				+ "," + $("#detailsNationality").val()	+ "," +  $("input[type=radio][name=gender]:checked").val() + "," + $("#addline1").val() 
+				+ "," + $("#addline2").val() + "," + $("#addpostalcode").val() 	+ "," + $("#addcity").val() + "," + $('input[name="avatar"]:checked').val(),
 			success: function(data) {
 				console.log("SUCCESS: ", data);
 				$("#bannername").html($("#detailsFirstname").val());
@@ -1272,6 +1358,14 @@
 					else{
 						ratingcomment="Poor";
 					}
+					
+					var starttime=v.serviceRequest.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
+					}
 										
 					result += "<tr>";
 					result += '<td class="align-middle"><div class="sid">27'+ v.serviceRequest.serviceId +'</div><div>'+ v.customer.firstName +' '+ v.customer.lastName +'</div></td>';
@@ -1281,7 +1375,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceRequest.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceRequest.serviceStartTime + ' (Total Hours: '+ v.serviceRequest.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.serviceRequest.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -1348,9 +1442,14 @@
           events: 'http://localhost:8080/Helperland-Tatvasoft/spserviceschedule'
         });
         calendar.render();
-   }
+  	}
     
     $(document).on('click','#scheduletab', function(){
+    	serviceSchedule();
+    	calendar();
+	});
+    
+    $(document).on('click','#schedulenav', function(){
     	serviceSchedule();
     	calendar();
 	});
@@ -1436,6 +1535,13 @@
 		});
 	}
     
+	jQuery(document).ready(function($){
+	    $("#detailsBdate").val(${settingsprobdate });
+	    $("#detailsBMonth").val("${settingsprobmonth }");
+	    $("#detailsBYear").val(${settingsprobyear });
+	    $('input:radio[name=avatar][value="${settingsavatar}"]').prop('checked',true);
+	    $('input:radio[name=gender][value="${settingsgender}"]').prop('checked',true);
+	});
     </script>
 
 </body>

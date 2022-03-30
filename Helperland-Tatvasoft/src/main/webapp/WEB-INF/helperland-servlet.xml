@@ -55,10 +55,13 @@
 
 	</bean>
 
+	<bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
 	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="ds"></property>
 	</bean>
-
+	
 	<bean id="ContactDao" class="helperlanduser.dao.ContactDao">
 		<property name="template" ref="jt"></property>
 	</bean>

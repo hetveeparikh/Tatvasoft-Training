@@ -64,12 +64,6 @@
             <div class="divider"></div>
             <a href="#"  class="tablinks " id="umtab" onclick="clickadmin(event, 'adminum')">User Management</a>
             <div class="divider"></div>
-            <a href="#">Coupon Code Management</a>
-            <div class="divider"></div>
-            <a href="#">Content Management</a>
-            <div class="divider"></div>
-            <a href="#">Invoices</a>
-            <div class="divider"></div>
         </div>
 
         <div class="container-fluid aumbg tabcontent" id="adminsr">
@@ -86,6 +80,18 @@
                 <input type="text" placeholder="Customer Name" class="zipaum" id="custfilter">
                 
                 <input type="text" placeholder="Service Provider Name" class="zipaum" id="spfilter">
+                
+                <div id="statusfilter">
+					<select title="Status" class="userdrop">
+	                   <option value="">Status</option> 
+	                </select>
+				</div>
+				
+				<div id="paystatusfilter">
+					<select title="Payment Status" class="userdrop">
+	                    <option value="">Payment Status</option>
+	                </select>
+				</div>
 
                 <button class="clearaum" id="clearsr">Clear</button>
             </div>
@@ -139,9 +145,9 @@
     	<div class="container-fluid aumbg tabcontent" id="adminum">
             <div class="d-flex justify-content-between aumfirst">
                 <span class="um d-flex align-items-center">User Management</span>
-                <button class="d-flex addbtn align-items-center">
+                <!-- <button class="d-flex addbtn align-items-center">
                     <span>Export</span>
-                </button>
+                </button> -->
             </div>
 
             <div class="aumform d-flex justify-content-between">
@@ -319,6 +325,12 @@
 		</div>
     </section>
     
+    <!-- Loader -->
+	
+	<div id="loading-image">
+		<div class="loader"></div>
+	</div>
+    
     <footer>
     	 <p class="aumrights">©2022 Helperland. All rights reserved.</p>
     </footer>
@@ -392,7 +404,7 @@
 	    	$('#zipcodefilter').val('');
 	    	$('#typefilter').val('');
 			event.preventDefault();
-			adminManage();
+			usermanagement();
 		});
 	});
 	
@@ -434,6 +446,34 @@
 	                .search(this.value)
 	                .draw();
 			});
+   	     	
+	   	     $("#statusfilter").each(function () {
+	             var select = $('<select title="Status" class="userdrop" ><option value="">Status</option></select>')
+	                 .appendTo($(this).empty())
+	                 .on('change', function () {
+	                	 reqtable.column(5)
+	                         .search($(this).val())
+	                         .draw();
+	                 });
+	
+	             reqtable.column(5).data().unique().sort().each(function (d, j) {
+	                 select.append("<option value='" + d + "'>" + d + "</option>")
+	             });
+	         });
+   	     
+		   	  $("#paystatusfilter").each(function () {
+		          var select = $('<select title="Payment Status" class="userdrop" ><option value="">Payment Status</option></select>')
+		              .appendTo($(this).empty())
+		              .on('change', function () {
+		            	  reqtable.column(6)
+		                      .search($(this).val())
+		                      .draw();
+		              });
+		
+		          reqtable.column(6).data().unique().sort().each(function (d, j) {
+		        	  select.append("<option value='" + d + "'>" + d + "</option>")
+		          });
+		      });
    	     	
 	    });
 	}
@@ -493,32 +533,40 @@
 					
 					var paymentstatus="";
 					if(v.paymentDone==1){
-						paymentstatus='<button class="greenbtn">Completed</button>';
+						paymentstatus='<td class="text-success fw-bolder h5 align-middle">Completed</td>';
 					}
 					else if(v.paymentDone==0 && v.status=="Cancelled"){
-						paymentstatus='<button class="pinkbtn">Cancelled</button>';
+						paymentstatus='<td class="text-danger fw-bolder h5 align-middle">Cancelled</td>';
 					}
 					else if(v.paymentDone==0 && (v.status=="New" || v.status=="Accepted")){
-						paymentstatus='<button class="tableorangebtn">Pending</button>';
+						paymentstatus='<td class="text-primary fw-bolder h5 align-middle">Pending</td>';
 					}
 					
 					var status="";
 					if(v.status=="Completed"){
-						status='<button class="greenbtn">Completed</button>';
+						status='<td class="align-middle text-success fw-bolder h5">Completed</td>';
 					}
 					else if(v.status=="Accepted"){
-						status='<button class="pinkbtn">Accepted</button>';
+						status='<td class="text-secondary align-middle fw-bolder h5">Accepted</td>';
 					}
 					else if(v.status=="New"){
-						status='<button class="tableorangebtn">New</button>';
+						status='<td class="text-warning align-middle fw-bolder h5">New</td>';
 					}
 					else if(v.status=="Cancelled"){
-						status='<button class="tablegraybtn">Cancelled</button>';
+						status='<td class="text-danger align-middle fw-bolder h5">Cancelled</td>';
 					}
 					
 					var editreschedule="";
 					if(v.status=="New" || v.status=="Accepted"){
 						editreschedule='<a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#reschedulemodal" onclick="reschedule('+ v.serviceId +')">Edit and Reschedule</a>';
+					}
+					
+					var starttime=v.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
 					}
 					
 					result += "<tr>";
@@ -529,7 +577,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-ASR/icon-clock.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-ASR/icon-clock.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -559,8 +607,8 @@
 					result += '<class="totaleuro">';
 					result += '<span>&euro; '+v.subTotal+'</span>';
 					result += '</span></td>';
-					result += '<td class="align-middle tablestatus">'+ status +'</td>';
-					result += '<td class="align-middle tablestatus">'+ paymentstatus +'</td>';
+					result += status;
+					result += paymentstatus;
 					result += '<td><div class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">';
 					result += '<img src="<%= request.getContextPath() %>/resources/img/img-AUM/dots.png"></a>';
 					result += '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
@@ -628,6 +676,7 @@
 		});
 	}
 	function reschedulerequest(v) {
+		$('#loading-image').show();
 		$.ajax({
 			type: "GET",
 			url: "/Helperland-Tatvasoft/rescheduleRequestsAdmin/" +$("#tomorrowdate").val() + "," + $("#updatedtime").val() + "," + v + "," + $("#addline1").val()
@@ -641,6 +690,9 @@
 			},
 			done: function(e) {
 				console.log("DONE");
+			},
+			complete: function() {
+				$('#loading-image').hide();
 			}
 		});
 	}
@@ -683,22 +735,22 @@
 					var activestatus="";
 					var active="";
 					if(v.isActive==1){
-						activestatus='<button class="tablegreenbtn">Active</button>';
+						activestatus='<span class="badge bg-success">Active</span>';
 						active="Deactivate";
 					}
 					else{
-						activestatus='<button class="tableorangebtn">Inactive</button>';
+						activestatus='<span class="badge bg-secondary">Inactive</span>';
 						active="Activate";
 					}
 					
 					var approvestatus="";
 					var approvedrop="";
 					if(v.isApproved==1){
-						approvestatus='<button class="tablepinkbtn">Approved</button>';
+						approvestatus='<div class="badge bg-info text-dark">Approved</div>';
 						approvedrop='';
 					}
 					else{
-						approvestatus='<button class="tablegraybtn">Not Approved</button>';
+						approvestatus='<div class="badge bg-danger">Not Approved</div>';
 						approvedrop='<a onclick="approvestatus('+ v.userId + ')" class="dropdown-item" href="#">Approve</a>';
 					}
 					
@@ -775,6 +827,7 @@
 	/* Approve status */
 	
 	function approvestatus(v) {
+		$('#loading-image').show();
 		$.ajax({
 			type: "GET",
 			url: "/Helperland-Tatvasoft/adminapprove/"  + v,
@@ -793,6 +846,9 @@
 			},
 			done: function(e) {
 				console.log("DONE");
+			},
+			complete: function() {
+				$('#loading-image').hide();
 			}
 		});
 	}
@@ -800,6 +856,7 @@
 	/* Delete status */
 	
 	function deletestatus(v) {
+		$('#loading-image').show();
 		$.ajax({
 			type: "GET",
 			url: "/Helperland-Tatvasoft/admindelete/"  + v,
@@ -818,6 +875,9 @@
 			},
 			done: function(e) {
 				console.log("DONE");
+			},
+			complete: function() {
+				$('#loading-image').hide();
 			}
 		});
 	}
@@ -838,9 +898,16 @@
 					petsbool=`<img src="<%=request.getContextPath()%>/resources/img/img-CS/notpets.png">  I don't have pets at home`;
 				}
 				
-				console.log("SUCCESS: modal", data);
+				var starttime=data.servicerequest.serviceStartTime;
+				if(starttime.includes(".0")){
+					starttime=starttime.replace(".0",":00");
+				}
+				else{
+					starttime=starttime.replace(".5",":30");
+				}
 				
-				$("#detailsduration").html(data.servicerequest.serviceStartTime);
+				
+				$("#detailsduration").html(starttime);
 				$("#detailsextras").html(data.servicerequestextra);
 				$("#detailsid").html(data.servicerequest.serviceId);
 				$("#detailsamount").html(data.servicerequest.subTotal + " &euro;");

@@ -25,6 +25,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
 <title>Customer Page | Helperland</title>
 <link rel="shortcut icon"
 	href="<%=request.getContextPath()%>/resources/img/img-Homepage/favicon_img.png"
@@ -204,10 +205,8 @@
 
 		<div class="tabcontent col-lg-7" id="custrequests">
 			<div class="d-flex flex-column justify-content-center datamain ">
-				<div class="d-flex justify-content-between container">
-					<p class="history">Service History</p>
-					<a class="exportt text-decoration-none">Export</a>
-				</div>
+					<p class="history1">Service History</p>
+					<!-- <a class="exportt text-decoration-none">Export</a> -->
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12">
@@ -318,7 +317,7 @@
 						<label>Date of birth</label>
 						<div>
 							<select class="bdayset" id="detailsBdate" required>
-								<option value="">Day</option>
+								<option value="Day">Day</option>
 								<option value="1">01</option>
 								<option value="2">02</option>
 								<option value="3">03</option>
@@ -350,8 +349,9 @@
 								<option value="29">29</option>
 								<option value="30">30</option>
 								<option value="31">31</option>
-							</select> <select class="bdayset" id="detailsBMonth" required>
-								<option value="">Month</option>
+							</select> 
+							<select class="bdayset" id="detailsBMonth" required>
+								<option value="Month">Month</option>
 								<option value="January">January</option>
 								<option value="February">February</option>
 								<option value="March">March</option>
@@ -364,8 +364,9 @@
 								<option value="October">October</option>
 								<option value="November">November</option>
 								<option value="December">December</option>
-							</select> <select class="bdayset" id="detailsBYear" required>
-								<option value="">Year</option>
+							</select> 
+							<select class="bdayset" id="detailsBYear" required>
+								<option value="Year">Year</option>
 								<option value="2022">2022</option>
 								<option value="2021">2021</option>
 								<option value="2020">2020</option>
@@ -419,7 +420,7 @@
 							<option value="Hindi">Hindi</option>
 						</select>
 					</div>
-					<button type="submit" class="savedetails">Save</button>
+					<button type="submit" id="custdetailssave" class="savedetails">Save</button>
 
 				</form>
 			</div>
@@ -622,10 +623,11 @@
 									</div>
 								</div>
 								<div>
-									<button type="submit" class="saveadd"> Reschedule</button>
+									<button type="submit" class="saveadd" id="reschedulebtn"> Reschedule</button>
 									<input type="button" class="canceladd" value="Close"
 										data-bs-dismiss="modal" />
 								</div>
+								<div class="text-center mb-4 mt-2 h5" id="reschedulediv"></div>
 							</form>
 						</div>
 					</div>
@@ -656,9 +658,11 @@
 	
 						</div>
 						<div class="d-flex justify-content-center">
-							<button type="submit" class="csupdate" data-bs-dismiss="modal" >Cancel
+							<button type="submit" class="csupdate"  id="cancelbtn">Cancel
 								Request</button>
 						</div>
+						
+						<div class="text-center mb-4 mt-2 h5" id="canceldiv"></div>
 					</form>
 
 				</div>
@@ -770,12 +774,20 @@
 		                    <textarea rows="2" style="width: 100%;" id="ratingcomments"></textarea>
 		                    
 		                    <button type="submit" class="saveadd" data-bs-dismiss="modal"> Submit</button>
+		                    <input type="hidden" id="spid">
+		                    <input type="hidden" id="srid">
 							<input type="button" class="canceladd" value="Close" data-bs-dismiss="modal" />
 		            	</form>
 		            </div>
 	            </div>
 	        </div>
 	    </div>
+	    
+	    <!-- Loader -->
+	
+		<div id="loading-image">
+			<div class="loader"></div>
+		</div>
 		
 
 	</section>
@@ -836,6 +848,16 @@
 		
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	
+	<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+	<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	
+	
+	
 	<script src="<%=request.getContextPath()%>/resources/js/CS-Dashboard.js"></script>
 	
 
@@ -856,7 +878,11 @@
 	function historydt(){
 		$(document).ready(function() {
 			$('#historytable').DataTable({
-				"dom": '<"top">rt<"bottom"lip><"clear">', responsive: true, "aaSorting": [],
+				"dom": '<"top"B>rt<"bottom"lip><"clear">',
+				responsive: true, "aaSorting": [],
+				buttons: [
+		            'excel'
+		        ],
 				columnDefs: [{
 					orderable: false,
 					targets: 4
@@ -1031,8 +1057,14 @@
 						rate = "";
 					}
 					
-					//var ratingavg = Math.round(rate);
-					
+					var starttime=v.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
+					}
+										
 					result += "<tr>";
 					result += '<td class="align-middle"><span class="csid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 					result += '<td class="align-middle">';
@@ -1041,7 +1073,7 @@
 					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 					result += '</div>';
 					result += '<div class="d-flex ">';
-					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+					result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.extraHours + ') </span>';
 					result += '</div>';
 					result += '</div>';
 					result += "</td>";
@@ -1104,31 +1136,38 @@
 					}
 					event.preventDefault();
 					reschedulerequest(v);
-					console.log(v);
+					console.log("27"+v);
 				});
 			});
 		}
 		function reschedulerequest(v) {
 			console.log(document.getElementById("updatedtime").value);
+			$('#loading-image').show();
 			$.ajax({
 				type: "GET",
 				url: "/Helperland-Tatvasoft/rescheduleRequests/" +$("#tomorrowdate").val() + "," + $("#updatedtime").val() + "," + v,
 				success: function(data) {
-					console.log("SUCCESS: resch", data);
+					$('#reschedulediv').html('<span class="text-success font-weight-bold">You have rescheduled this service request.<span>');
+					$("#reschedulebtn").attr("disabled", true);
+					$('#reschedulebtn').css('background-color','#6da9b5');
+					$('#reschedulebtn').css('border','solid 1px #6da9b5');
 					custdashboard();
-					/* if(data==0){
-						alert("Not rescheduled!");
-					}
-					else{
-						
-						alert("Rescheduled successfully! \n\nServiceId : 27" + v);
-					} */
+					$('#reschedulemodal').on('hidden.bs.modal', function () {
+						$("#reschedulebtn").attr("disabled", false);
+						$('#reschedulebtn').css('background-color','#29626d');
+						$('#reschedulebtn').css('border','solid 1px #29626d');
+						$('#reschedulediv').html('');
+					});
+					
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);
 				},
 				done: function(e) {
 					console.log("DONE");
+				},
+				complete: function() {
+					$('#loading-image').hide();
 				}
 			});
 		}
@@ -1141,23 +1180,33 @@
 				$("#cancelform").submit(function(event) {
 					event.preventDefault();
 					cancelrequest(v);
-					console.log(v);
+					console.log("27"+v);
 				});
 			});
 		}
 		function cancelrequest(v) {
+			$('#loading-image').show();
 			$.ajax({
 				type: "GET",
 				url: "/Helperland-Tatvasoft/cancelrequest/"  + v,
 				success: function(data) {
-					console.log("SUCCESS: request cancelled", data);
 
 					if(data==0){
-						alert("Not cancelled!");
+						$('#canceldiv').html('<span class="text-danger">Not cancelled.<span>');
 					}
 					else{
+						$('#canceldiv').html('<span class="text-success font-weight-bold">You have cancelled this service request.<span>');
+						$("#cancelbtn").attr("disabled", true);
+						$('#cancelbtn').css('background-color','#6da9b5');
+						$('#cancelbtn').css('border','solid 1px #6da9b5');
 						custdashboard();
-						alert("Cancelled successfully! \n\nServiceId : 27" + v);
+						$('#cancelmodal').on('hidden.bs.modal', function () {
+							$("#cancelbtn").attr("disabled", false);
+							$('#cancelbtn').css('background-color','#1d7a8c');
+							$('#cancelbtn').css('border','solid 1px #1d7a8c');
+							$('#canceldiv').html('');
+						});
+						
 					}
 				},
 				error: function(e) {
@@ -1165,6 +1214,9 @@
 				},
 				done: function(e) {
 					console.log("DONE");
+				},
+				complete: function() {
+					$('#loading-image').hide();
 				}
 			});
 		}
@@ -1185,9 +1237,15 @@
 						petsbool=`<img src="<%=request.getContextPath()%>/resources/img/img-CS/notpets.png">  I don't have pets at home`;
 					}
 					
-					console.log("SUCCESS: modal", data);
-					
-					$("#detailsduration").html(data.servicerequest.serviceStartTime);
+					var starttime=data.servicerequest.serviceStartTime;
+					if(starttime.includes(".0")){
+						starttime=starttime.replace(".0",":00");
+					}
+					else{
+						starttime=starttime.replace(".5",":30");
+					}
+										
+					$("#detailsduration").html(starttime);
 					$("#detailsextras").html(data.servicerequestextra);
 					$("#detailsid").html(data.servicerequest.serviceId);
 					$("#detailsamount").html(data.servicerequest.subTotal + " &euro;");
@@ -1222,12 +1280,16 @@
 						
 						var status="";
 						var disabledRate="";
-						if(v.status=="Completed"){
+						if(v.status=="Completed" || v.rating.serviceRequestId!=0){
 							status='<button class="greenbtn">Completed</button>';
 							disabledRate="";
 						}
 						else{
 							status='<button class="pinkbtn">Cancelled</button>';
+							disabledRate="disabled";
+						}
+						
+						if(v.rating1.serviceRequestId==v.serviceId){
 							disabledRate="disabled";
 						}
 						
@@ -1256,6 +1318,14 @@
 							rate = "";
 						}
 						
+						var starttime=v.serviceStartTime;
+						if(starttime.includes(".0")){
+							starttime=starttime.replace(".0",":00");
+						}
+						else{
+							starttime=starttime.replace(".5",":30");
+						}
+						
 						result += "<tr>";
 						result += '<td class="align-middle"><span class="csid"><a class="text-decoration-none detailsid" href="#" data-bs-toggle="modal" data-bs-target="#DetailsModal" onclick="detailsmodal('+ v.serviceId +')">27'+ v.serviceId +'</a></span></td>';
 						result += '<td class="align-middle">';
@@ -1264,7 +1334,7 @@
 						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/calendar.png" class="gcal"> <span class="cs-date">'+v.serviceStartDate+'</span>';
 						result += '</div>';
 						result += '<div class="d-flex ">';
-						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ v.serviceStartTime + ' (Total Hours: '+ v.extraHours + ') </span>';
+						result += '<img	src="<%=request.getContextPath()%>/resources/img/img-CS/ghadi.png" class="ghaditime"> <span class="cs-time" id="newtime">'+ starttime + ' (Total Hours: '+ v.extraHours + ') </span>';
 						result += '</div>';
 						result += '</div>';
 						result += "</td>";
@@ -1292,7 +1362,7 @@
 						result += '<div class="statusdiv">'+status+'</div>';
 						result += '</td>';
 						result += '<td class="align-middle">';
-						result += '<button class="rate" '+ disabledRate +' data-bs-toggle="modal" data-bs-target="#ratingmodal" onclick="ratingsmodal('+ v.serviceId +','+ v.serviceProviderId +')">Rate SP</button>';
+						result += '<button id="rattingspBtn'+ v.serviceId +'" class="rate" '+ disabledRate +' data-bs-toggle="modal" data-bs-target="#ratingmodal" onclick="ratingsmodal('+ v.serviceId +','+ v.serviceProviderId +')">Rate SP</button>';
 						result += '</td>';
 						result += "</tr>";
 					});
@@ -1337,21 +1407,22 @@
         });
 		
 		function ratingsmodal(v,k){
-			jQuery(document).ready(function($) {
-				$("#ratingform").submit(function(event) {
-					event.preventDefault();
-					ratings(v,k);
-					console.log(v + k);
-				});
-			});
+			$("#srid").val(v);
+			$("#spid").val(k);
 		}
+		jQuery(document).ready(function($) {
+			$("#ratingform").submit(function(event) {
+				event.preventDefault();
+				ratings($("#srid").val(),$("#spid").val());
+			});
+		});
 		function ratings(v,k) {
 			$.ajax({
 				type: "GET",
 				url: "/Helperland-Tatvasoft/ratingsp/"  + r2 + "," + r3 + "," + r1 + "," + v + "," + k +"," + $('#ratingcomments').val() ,
 				success: function(data) {
 					console.log("SUCCESS: ratings given", data);
-					$('#rating-form1').prop('checked', false);
+					$("#rattingspBtn"+v+"").attr('disabled', true);
 				},
 				error: function(e) {
 					console.log("ERROR: ", e);
@@ -1362,7 +1433,89 @@
 			});
 		}
 		
+		$('#ratingmodal').on('hidden.bs.modal', function () {
+		    $('input:radio[name=rating1]:checked').prop('checked', false);
+		    $('input:radio[name=rating3]:checked').prop('checked', false);
+		    $('input:radio[name=rating2]:checked').prop('checked', false);
+		    $("#ratingcomments").val("");
+		});
 		
+		jQuery(document).ready(function($){
+		    $("#detailsBdate").val("${settingscustbdate }");
+		    $("#detailsBMonth").val("${settingscustbmonth }");
+		    $("#detailsBYear").val("${settingscustbyear }");
+		});
+		
+
+		/* Settings Details */
+
+		jQuery(document).ready(function($) {
+			$("#addDetailsForm").submit(function(event) {
+				event.preventDefault();
+				updateDetails();
+			});
+		});
+		function updateDetails() {
+			$.ajax({
+				type: "GET",
+				url: "/Helperland-Tatvasoft/updateCustomerDetails/" + $("#detailsFirstname").val() + "," + $("#detailsLastname").val() + "," + $("#detailsEmail").val() + "," + $("#detailsMobile").val()
+					+ "," + $("#detailsBdate").val() + "," + $("#detailsBMonth").val() + "," + $("#detailsBYear").val() + "," + $("#detailsLanguage").val(),
+				success: function(data) {
+					console.log("SUCCESS: ", data);
+					$("#bannername").html($("#detailsFirstname").val());
+					alert("Details updated successfully!");
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
+
+
+		/* Settings Password */
+
+		jQuery(document).ready(function($) {
+			$("#passwordform").submit(function(event) {
+				event.preventDefault();
+				var password = document.forms["passwordform"]["password"].value;
+				var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
+				if (!regularExpression.test(password)) {
+					$('#Passwordspdetailsdiv').html("");
+					alert("Please enter correct format!");
+				}
+				else {
+					updatePassword();
+					$('#Passwordspdetailsdiv').html("");
+				}
+			});
+		});
+		function updatePassword() {
+			$.ajax({
+				type: "GET",
+				url: "/Helperland-Tatvasoft/updateCustomerPassword/" + $("#settingsoldpassword").val() + "," + $("#settingsnewpassword").val(),
+				success: function(data) {
+					console.log("SUCCESS: ", data);
+					if (data == 0) {
+						alert("Please enter correct Old Password!");
+					}
+					else {
+						$("#settingsoldpassword").val('');
+						$("#settingsnewpassword").val('');
+						$("#settingsconfirmpassword").val('');
+						alert("Password Changed Successfully!");
+					}
+				},
+				error: function(e) {
+					console.log("ERROR: ", e);
+				},
+				done: function(e) {
+					console.log("DONE");
+				}
+			});
+		}
 		
 		
 	</script>

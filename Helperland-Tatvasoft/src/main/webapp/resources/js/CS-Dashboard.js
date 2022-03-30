@@ -50,66 +50,6 @@ $(function() {
 });
 
 
-/* Settings Details */
-
-jQuery(document).ready(function($) {
-	$("#addDetailsForm").submit(function(event) {
-		event.preventDefault();
-		updateDetails();
-	});
-});
-function updateDetails() {
-	$.ajax({
-		type: "GET",
-		url: "/Helperland-Tatvasoft/updateCustomerDetails/" + $("#detailsFirstname").val() + "," + $("#detailsLastname").val() + "," + $("#detailsEmail").val() + "," + $("#detailsMobile").val()
-			+ "," + $("#detailsBdate").val() + "," + $("#detailsBMonth").val() + "," + $("#detailsBYear").val() + "," + $("#detailsLanguage").val(),
-		success: function(data) {
-			console.log("SUCCESS: ", data);
-			$("#bannername").html($("#detailsFirstname").val());
-			alert("Details updated successfully!");
-		},
-		error: function(e) {
-			console.log("ERROR: ", e);
-		},
-		done: function(e) {
-			console.log("DONE");
-		}
-	});
-}
-
-
-/* Settings Password */
-
-jQuery(document).ready(function($) {
-	$("#passwordform").submit(function(event) {
-		event.preventDefault();
-		updatePassword();
-	});
-});
-function updatePassword() {
-	$.ajax({
-		type: "GET",
-		url: "/Helperland-Tatvasoft/updateCustomerPassword/" + $("#settingsoldpassword").val() + "," + $("#settingsnewpassword").val(),
-		success: function(data) {
-			console.log("SUCCESS: ", data);
-			if (data == 0) {
-				alert("Please enter correct Old Password!");
-			}
-			else {
-				$("#settingsoldpassword").val('');
-				$("#settingsnewpassword").val('');
-				$("#settingsconfirmpassword").val('');
-				alert("Password Changed Successfully!");
-			}
-		},
-		error: function(e) {
-			console.log("ERROR: ", e);
-		},
-		done: function(e) {
-			console.log("DONE");
-		}
-	});
-}
 
 $(document).ready(function() {
 	var dtToday = new Date();
@@ -139,17 +79,6 @@ $(document).ready(function() {
 			$('#Passwordspdetailsdiv').html("Password strength : Good").css("color", "green");
 		}
 	});
-});
-
-$("#passwordform").submit(function(event) {
-	var password = document.forms["passwordform"]["password"].value;
-	var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,14}$/;
-	if (!regularExpression.test(password)) {
-		return false;
-	}
-	else {
-		return true;
-	}
 });
 
 /*Details validation mobile*/
@@ -229,5 +158,14 @@ $("#addAddressSettingsForm").submit(function(event) {
 	else {
 		return true;
 	}
+});
+
+/*Disable back button*/
+
+$(document).ready(function() {
+	window.history.pushState(null, "", window.location.href);
+	window.onpopstate = function() {
+		window.history.pushState(null, "", window.location.href);
+	};
 });
 
